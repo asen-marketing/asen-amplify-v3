@@ -1,0 +1,58 @@
+.asen-page-banner {
+  padding: 10% $site-overall-gutter;
+  margin-bottom: 5%;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  @include site-gutter-breakpoint-chonky;
+
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    img {
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .inside {
+    max-width: $site-overall-max-width;
+    position: relative;
+    width: 100%;
+  }
+
+  p.eyebrow,
+  div.subtitle {
+    font-size: 23px;
+    line-height: 1.5;
+    @media (max-width: $breakpoint-small) {
+      font-size: 21px;
+    }
+  }
+  p.eyebrow {
+    margin-bottom: 4px;
+  }
+  div.subtitle {
+    p {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

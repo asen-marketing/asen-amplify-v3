@@ -1,0 +1,314 @@
+body {
+  font-family: "runda", sans-serif;
+}
+
+input,
+button {
+  font-family: "runda", sans-serif;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  color: #313d47;
+  line-height: 1.4;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #313d47;
+}
+
+.white-text h1,
+.white-text h2,
+.white-text h3,
+.white-text h4,
+.white-text h5,
+.white-text h6 {
+  color: #fff;
+}
+
+%h1 {
+  font-size: 60px;
+  line-height: 1.15;
+
+  @media (max-width: $breakpoint-laptop-small) {
+    font-size: 48px;
+  }
+
+  @media (max-width: $breakpoint-small) {
+    font-size: 37px;
+  }
+}
+
+%h2 {
+  font-size: 55px;
+  line-height: 1.15;
+
+  @media (max-width: $breakpoint-laptop-small) {
+    font-size: 45px;
+  }
+
+  @media (max-width: $breakpoint-small) {
+    font-size: 35px;
+  }
+}
+
+%h3 {
+  line-height: 1.15;
+  font-size: 45px;
+
+  @media (max-width: $breakpoint-laptop-small) {
+    font-size: 34px;
+  }
+
+  @media (max-width: $breakpoint-small) {
+    font-size: 31px;
+  }
+}
+
+%h4 {
+  line-height: 1.2;
+  font-size: 35px;
+
+  @media (max-width: $breakpoint-laptop-small) {
+    font-size: 28px;
+  }
+
+  @media (max-width: $breakpoint-small) {
+    font-size: 26px;
+  }
+}
+
+%h5 {
+  line-height: 1.3;
+  font-size: 30px;
+
+  @media (max-width: $breakpoint-laptop-small) {
+    font-size: 27px;
+  }
+
+  @media (max-width: $breakpoint-small) {
+    font-size: 24px;
+  }
+}
+
+%h6 {
+  line-height: 1.1;
+  font-size: 25px;
+
+  @media (max-width: $breakpoint-small) {
+    font-size: 22px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 1rem;
+}
+h1 {
+  @extend %h1;
+}
+h2 {
+  @extend %h2;
+}
+h3 {
+  @extend %h3;
+}
+h4 {
+  @extend %h4;
+}
+h5 {
+  @extend %h5;
+}
+h6 {
+  @extend %h6;
+}
+
+p {
+  font-size: 23px;
+  line-height: 1.5;
+  margin-bottom: 1.8rem;
+
+  @media (max-width: $breakpoint-small) {
+    font-size: 21px;
+  }
+}
+
+a {
+  color: $gray-800;
+  transition: color 200ms ease;
+
+  &:hover {
+    color: $gray-800;
+  }
+}
+
+span.script {
+  font-size: 1.4em;
+  line-height: 0.5;
+}
+
+ul,
+ol {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  li {
+    font-size: 23px;
+    line-height: 1.5;
+
+    @media (max-width: $breakpoint-small) {
+      font-size: 21px;
+    }
+  }
+
+  ul,
+  ol {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+// This is a container class.
+.text-large {
+  p,
+  p&,
+  ul li,
+  ul li&,
+  ol li,
+  ol li& {
+    font-size: 30px;
+    line-height: 1.5;
+    margin-bottom: 1.8rem;
+
+    @media (max-width: $breakpoint-laptop-small) {
+      font-size: 26px;
+    }
+
+    @media (max-width: $breakpoint-small) {
+      font-size: 23px;
+    }
+  }
+}
+
+.text-chonky {
+  p,
+  p&,
+  ul li,
+  ul li&,
+  ol li,
+  ol li& {
+    font-size: 40px;
+    line-height: 1.5;
+    margin-bottom: 1.8rem;
+
+    @media (max-width: $breakpoint-laptop-small) {
+      font-size: 32px;
+    }
+
+    @media (max-width: $breakpoint-small) {
+      font-size: 24px;
+    }
+  }
+}
+
+.text-small {
+  font-size: 16px;
+
+  @media (max-width: $breakpoint-small) {
+    font-size: 14px;
+  }
+}
+
+.small-disclaimer-text p {
+  font-size: 17px;
+  margin-bottom: 0;
+}
+
+// We want to unify the Gutenberg blockquote with the Asen Blockquote.
+.asen-blockquote blockquote,
+blockquote.wp-block-quote,
+.blog-post blockquote {
+  text-align: center;
+  margin: 0;
+  p {
+    font-size: 55px;
+    line-height: 1.2;
+    margin: 0;
+
+    @media (max-width: $breakpoint-laptop-small) {
+      font-size: 40px;
+    }
+    @media (max-width: $breakpoint-tablet-small) {
+      font-size: 30px;
+    }
+  }
+  cite {
+    font-size: 25px;
+    line-height: 1;
+    display: inline-block;
+    margin-top: 3%;
+
+    @media (max-width: $breakpoint-laptop-small) {
+      font-size: 20px;
+      margin-top: 6%;
+    }
+    @media (max-width: $breakpoint-small) {
+      font-size: 18px;
+    }
+  }
+
+  &.smaller {
+    p {
+      font-size: 46px;
+      @media (max-width: $breakpoint-laptop-small) {
+        font-size: 35px;
+      }
+      @media (max-width: $breakpoint-tablet-small) {
+        font-size: 28px;
+      }
+    }
+  }
+  &.so-much-text {
+    p {
+      font-size: 38px;
+      @media (max-width: $breakpoint-laptop-small) {
+        font-size: 32px;
+      }
+      @media (max-width: $breakpoint-tablet-small) {
+        font-size: 26px;
+      }
+    }
+  }
+}
+
+.asen-blockquote {
+  padding: 5% $site-overall-gutter 7%;
+  @include site-overall-gutter-small;
+  @media (max-width: $breakpoint-tablet-small) {
+    padding-top: 12%;
+    padding-bottom: 16%;
+  }
+  .inside {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+}
+
+main blockquote {
+  p,
+  cite {
+    font-style: normal;
+  }
+}

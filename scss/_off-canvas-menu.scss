@@ -1,0 +1,204 @@
+// TODO: For mobile devices, create horiztonal layout.
+
+$site-menu-max-width: 426px;
+$site-menu-max-width-mobile: 250px;
+
+.off-canvas-menu-backing-overlay {
+  pointer-events: none;
+  opacity: 0;
+  background-color: #25252d;
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: opacity 600ms ease;
+
+  &.is-active {
+    opacity: 0.9;
+    pointer-events: all;
+  }
+
+  display: none;
+}
+
+.off-canvas-menu-container {
+  background-color: $gray-700;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  transform: translate(100vw, 0);
+  transition: transform 600ms ease, opacity 0ms linear 600ms;
+  display: flex;
+  justify-content: center;
+  backface-visibility: hidden;
+  opacity: 0;
+  overflow: auto;
+
+  &.header-layout-1,
+  &.header-layout-2 {
+    display: none;
+  }
+  @media (max-width: $breakpoint-small) {
+    transform: translate(100vw, 0);
+  }
+
+  &.is-active {
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: transform 600ms ease, opacity 0ms linear 0ms;
+    .inside {
+      opacity: 1;
+    }
+  }
+
+  .inside {
+    width: 100vw;
+    padding: 28px $header-gutter-desktop $header-gutter-desktop 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 600ms ease;
+    backface-visibility: hidden;
+    position: relative;
+  }
+
+  p {
+    font-size: 23px;
+    line-height: 1;
+    color: $gray-700;
+
+    body.single-case_studies & {
+      color: $gray-700;
+    }
+    text-align: right;
+    margin-bottom: 10px;
+
+    a {
+      color: #fff;
+      transition: color 100ms ease;
+      &:hover {
+        color: $gray-700;
+
+        body.single-case_studies & {
+          color: $gray-700;
+        }
+      }
+    }
+
+    @media (max-height: 1000px) {
+      margin-bottom: 8px;
+    }
+  }
+
+  ul.site-social {
+    list-style: none;
+    padding: 30px 0 30px;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    li {
+      display: inline-block;
+      a {
+        display: block;
+        height: 30px;
+        padding: 0 10px;
+        display: flex;
+        align-items: center;
+        svg {
+          height: 100%;
+          width: auto;
+          path {
+            fill: #fff;
+            transition: fill 100ms ease;
+          }
+        }
+        &:hover {
+          svg {
+            path {
+              fill: $gray-700;
+
+              body.single-case_studies & {
+                fill: $gray-700;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.off-canvas-menu {
+  margin: 0 0 26px;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+      padding: 10px 0;
+      text-align: center;
+
+      @media (max-height: 1000px) {
+        padding: 2px 0;
+      }
+      @media (max-width: $breakpoint-small) {
+        padding: 2px 0;
+      }
+      a {
+        display: inline-block;
+        color: #fff;
+        // font-size: 38px;
+        line-height: 1;
+        padding: 8px 0;
+        transition: color 100ms ease;
+
+        // @media (max-width: $breakpoint-small) {
+        //   font-size: 26px;
+        // }
+        &:hover {
+          //   color: $gray-700;
+
+          body.single-case_studies & {
+            color: $gray-700;
+          }
+        }
+      }
+    }
+  }
+
+  .menu-item-has-children {
+    a {
+      cursor: pointer;
+    }
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+ul.sub-menu {
+  display: none;
+  width: 100%;
+  height: auto;
+
+  .expand {
+    display: none;
+  }
+
+  li.menu-item a {
+    font-size: 25px;
+    margin-right: 0;
+    padding: 5px 0;
+
+    @media (max-width: $breakpoint-small) {
+      font-size: 20px;
+    }
+  }
+}

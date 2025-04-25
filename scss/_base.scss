@@ -1,0 +1,81 @@
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+button {
+  &,
+  &:focus {
+    outline: none;
+  }
+}
+
+// WP ADMIN BAR TWEAK FOR FIXED HEADERS
+@media screen and (max-width: 600px) {
+  html #wpadminbar {
+    position: fixed;
+  }
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.site-container {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+// Force main body to fill space and send footer to the bottom of the page.
+.main-content {
+  flex: 1;
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+body.page {
+  main {
+    padding-top: 4%;
+    padding-bottom: 6%;
+  }
+}
+
+// Text meant only for screen readers.
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+
+  &:focus {
+    background-color: #eee;
+    clip: auto !important;
+    clip-path: none;
+    color: #444;
+    display: block;
+    font-size: 1em;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000; /* Above WP toolbar. */
+  }
+}

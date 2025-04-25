@@ -1,0 +1,37 @@
+.wp-pagenavi {
+  padding: 3% $site-overall-gutter 6%;
+  width: 100%;
+  @include site-overall-gutter-small;
+}
+
+body.blog .wp-pagenavi {
+  max-width: 1480px;
+  margin: auto;
+  padding: 3% 0 8%;
+  text-align: right;
+}
+
+body.search .wp-pagenavi {
+  padding: 3% 0 8%;
+  text-align: right;
+}
+
+.wp-pagenavi a,
+.wp-pagenavi span {
+  text-decoration: none;
+  margin: 2px;
+  background: $gray-700;
+  border: none;
+  color: #fff;
+  font-size: 25px;
+  padding: 10px 20px;
+}
+
+.wp-pagenavi a:hover,
+.wp-pagenavi span.current {
+  background: $gray-800;
+}
+
+.wp-pagenavi span.current {
+  font-weight: bold;
+}

@@ -1,0 +1,59 @@
+body.search {
+  main {
+    .search-banner {
+      padding: 4% $site-overall-gutter 3%;
+      @include site-overall-gutter-small;
+      background-color: $asen-placeholder-background-color-dark;
+
+      @media (max-width: $breakpoint-tablet-small) {
+        padding-top: 30px;
+        padding-bottom: 40px;
+      }
+
+      .inside {
+        max-width: 1280px;
+        margin: 0 auto;
+
+        h1 {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  form.search-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    label {
+      margin: 0;
+      flex: 1;
+
+      .search-field {
+        width: 100%;
+      }
+    }
+  }
+
+  .results {
+    padding: 4% $site-overall-gutter 6%;
+    @include site-overall-gutter-small;
+
+    .inside {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    article {
+      margin-top: 1rem;
+      border-bottom: 1px solid $gray-200;
+      margin-bottom: 2rem;
+      .type {
+        margin: 0;
+      }
+      .title {
+      }
+    }
+  }
+}

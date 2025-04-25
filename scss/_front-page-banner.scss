@@ -1,0 +1,86 @@
+.asen-front-page-banner {
+  padding: 10% $site-overall-gutter;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  @include site-gutter-breakpoint-chonky;
+
+  &.is-split-screen .copy {
+    max-width: 700px;
+  }
+  .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    img {
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 101%;
+      min-height: 101%;
+      width: auto;
+      height: auto;
+    }
+  }
+  .background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.8;
+
+    &.custom {
+      opacity: 0.35;
+      background-color: $asen-placeholder-background-color-dark;
+    }
+  }
+  .inside {
+    max-width: $site-overall-max-width;
+    position: relative;
+    width: 100%;
+  }
+  // .copy {}
+  .buttons {
+    .button {
+      margin: 0 8px 8px 0;
+    }
+  }
+
+  .h1 {
+    font-size: 100px;
+  }
+
+  p {
+    font-size: 32px;
+
+    @media (max-width: $breakpoint-laptop-small) {
+      font-size: 23px;
+    }
+
+    @media (max-width: $breakpoint-small) {
+      font-size: 21px;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.asen-fancy-list {
+  text-align: left;
+  ul {
+    &.type-image {
+      list-style-type: none;
+      margin-left: 50px;
+      padding-left: 0;
+      position: relative;
+      li {
+        img {
+          left: -50px;
+          position: absolute;
+          width: 40px;
+        }
+      }
+    }
+  }
+}

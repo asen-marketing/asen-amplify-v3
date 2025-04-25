@@ -1,0 +1,34 @@
+.asen-featured-blogs {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  @include site-vertical-padding-dynamic($top: 60px, $bottom: 60px);
+  @include site-overall-gutter-small;
+
+  &.homepage {
+    @include site-vertical-padding-dynamic($top: 100px, $bottom: 160px);
+  }
+
+  .inside {
+    width: 100%;
+    max-width: 1724px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .posts-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px 20px;
+
+    @media (max-width: $breakpoint-tablet-large) {
+      gap: 15px;
+    }
+  }
+
+  @media (max-width: $breakpoint-tablet-large) {
+    gap: 20px;
+  }
+}

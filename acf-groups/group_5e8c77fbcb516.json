@@ -1,0 +1,777 @@
+{
+    "key": "group_5e8c77fbcb516",
+    "title": "Asen Builders Only",
+    "fields": [
+        {
+            "key": "field_5e9098420f796",
+            "label": "Layout Options",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_5e8cb8a2af0df",
+            "label": "Header Layout",
+            "name": "site_header_layout",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "When choosing  Layout 2 (centered logo), you'll need to add a menu item for the \"Home\" page into your Primary Navigation and add a class named \"layout-2-logo\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "1": "1",
+                "2": "2",
+                "3": "3"
+            },
+            "default_value": 1,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5eb46583bc8a7",
+            "label": "Header Position",
+            "name": "site_header_position",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "fixed": "Fixed\/Sticky",
+                "static": "Static"
+            },
+            "default_value": "fixed",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5e8e28b6228ba",
+            "label": "Header CTA Option",
+            "name": "site_header_cta_option",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "These options are available for Header Layouts 1 (in header) & 3 (in off-canvas). Update settings for these to fully take effect.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5e8cb8a2af0df",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5e8cb8a2af0df",
+                        "operator": "==",
+                        "value": "3"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "button": "Button",
+                "phone": "Phone",
+                "social": "Social Media",
+                "none": "None"
+            },
+            "default_value": "none",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5e97547ed012c",
+            "label": "Header Height",
+            "name": "site_header_height",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "This height in pixels will determine the desktop height and be used to calculate heights on smaller devices.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 76,
+            "placeholder": "",
+            "prepend": "",
+            "append": "pixels",
+            "min": 50,
+            "max": "",
+            "step": 1
+        },
+        {
+            "key": "field_5e975cdba93f6",
+            "label": "Header Logo Height",
+            "name": "site_header_logo_height",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "This will set the height of the logo. If you select a height higher than the header height, the logo will be positioned from the top (for overhang below).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 90,
+            "placeholder": "",
+            "prepend": "",
+            "append": "pixels",
+            "min": 50,
+            "max": "",
+            "step": 1
+        },
+        {
+            "key": "field_5e8e27c27438a",
+            "label": "Hamburger Menu Animation",
+            "name": "site_hamburger_menu_animation",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "For examples, see: <a href=\"https:\/\/jonsuh.com\/hamburgers\/\" target=\"_blank\">https:\/\/jonsuh.com\/hamburgers\/<\/a>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "3dx": "3dx",
+                "3dx-r": "3dx-r",
+                "3dy": "3dy",
+                "3dy-r": "3dy-r",
+                "3dxy": "3dxy",
+                "3dxy-r": "3dxy-r",
+                "arrow": "arrow",
+                "arrow-r": "arrow-r",
+                "arrowalt": "arrowalt",
+                "arrowalt-r": "arrowalt-r",
+                "arrowturn": "arrowturn",
+                "arrowturn-r": "arrowturn-r",
+                "boring": "boring",
+                "collapse": "collapse",
+                "collapse-r": "collapse-r",
+                "elastic": "elastic",
+                "elastic-r": "elastic-r",
+                "emphatic": "emphatic",
+                "emphatic-r": "emphatic-r",
+                "minus": "minus",
+                "slider": "slider",
+                "slider-r": "slider-r",
+                "spring": "spring",
+                "spring-r": "spring-r",
+                "stand": "stand",
+                "stand-r": "stand-r",
+                "spin": "spin",
+                "spin-r": "spin-r",
+                "squeeze": "squeeze",
+                "vortex": "vortex",
+                "vortex-r": "vortex-r"
+            },
+            "default_value": "minus",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5e8cb8bbaf0e0",
+            "label": "Footer Layout",
+            "name": "site_footer_layout",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "1": "1",
+                "2": "2",
+                "3": "3"
+            },
+            "default_value": 1,
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5e8df52c55884",
+            "label": "Font Snippets",
+            "name": "site_font_snippets",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Snippets placed here are injected into the <head>.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "<script src=\"https:\/\/kit.fontawesome.com\/e23da11b62.js\" crossorigin=\"anonymous\"><\/script>",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_5e97330bdbc22",
+            "label": "Font Awesome Separator Character",
+            "name": "font_awesome_separator_character",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "<i class=\"fas fa-circle\"><\/i>",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5e9095a7eab1c",
+            "label": "Content Types",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_5e9094a1eab1b",
+            "label": "Services",
+            "name": "site_services_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Enable Services Content Type",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5e9095b5eab1d",
+            "label": "Products",
+            "name": "site_products_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Enable Products Content Type",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5e90971feab1e",
+            "label": "Team Members",
+            "name": "site_team_members_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Enable Team Members Content Type",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5eb036ea6b93a",
+            "label": "404 Not Found",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_5eb0374930678",
+            "label": "404 Page Title",
+            "name": "site_404_page_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "<span class=\"h2-big\">Whoops!<\/span> <br \/>You found a page that doesn't exist.",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5eb036fd6b93b",
+            "label": "404 Page Blurb",
+            "name": "site_404_page_blurb",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Try one of our other pages!",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5eb1b4017c036",
+            "label": "Page Banners",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_67193d86b4274",
+            "label": "Enable Styling Options",
+            "name": "enable_styling_options",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "message": "If enabled, below settings will override stylesheets",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5eb1b4097c037",
+            "label": "Eyebrow",
+            "name": "page_banner_eyebrow",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_5eb1b2fd3be3a"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 1,
+            "prefix_name": 1
+        },
+        {
+            "key": "field_5eb1b4a9727f3",
+            "label": "Title",
+            "name": "page_banner_title",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_5eb1b2fd3be3a"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 1,
+            "prefix_name": 1
+        },
+        {
+            "key": "field_5eb1b4c0727f4",
+            "label": "Subtitle",
+            "name": "page_banner_subtitle",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_5eb1b2fd3be3a"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 1,
+            "prefix_name": 1
+        },
+        {
+            "key": "field_5eb1caa1e0373",
+            "label": "Page Banner Text Align",
+            "name": "page_banner_text_align",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "center": "Center",
+                "left": "Left",
+                "right": "Right"
+            },
+            "default_value": "center",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5eb1b92e693de",
+            "label": "Background Color",
+            "name": "page_banner_background_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "enable_opacity": false,
+            "return_format": "string"
+        },
+        {
+            "key": "field_5eb1b968693df",
+            "label": "Background Blend Mode",
+            "name": "page_banner_background_blend_mode",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "normal": "normal",
+                "multiply": "multiply",
+                "screen": "screen",
+                "overlay": "overlay",
+                "darken": "darken",
+                "lighten": "lighten",
+                "color-dodge": "color-dodge",
+                "color-burn": "color-burn",
+                "hard-light": "hard-light",
+                "soft-light": "soft-light",
+                "difference": "difference",
+                "exclusion": "exclusion",
+                "hue": "hue",
+                "saturation": "saturation",
+                "color": "color",
+                "luminosity": "luminosity"
+            },
+            "default_value": false,
+            "allow_null": 1,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5eb1b9bb693e0",
+            "label": "Background Overlay Color",
+            "name": "page_banner_background_overlay_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "<span style=\"color: red;\">NOTE: This color layer is not affected by the Background Blend Mode!<\/span>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "enable_opacity": false,
+            "return_format": "string"
+        },
+        {
+            "key": "field_5eb316d2400fe",
+            "label": "Background Overlay Opacity",
+            "name": "page_banner_background_overlay_opacity",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "0.8",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_5eb1c017a2d98",
+            "label": "Padding",
+            "name": "page_banner_padding",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_5eb1bf33881c9"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 1,
+            "prefix_name": 1
+        },
+        {
+            "key": "field_5f906bbc1d311",
+            "label": "Custom Script\/Snippet Injection",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_5f906996cfcdd",
+            "label": "Head Script Snippets",
+            "name": "site_head_script_snippets",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "These snippets will be injected into the &#60;head&#62; of the document.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_5f9069e3cfcde",
+            "label": "After Opening Body Tag Script Snippets",
+            "name": "site_after_opening_body_tag_script_snippets",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "These snippets will be injected after the opening &#60;body&#62; tag of the document.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_5f9069f8cfcdf",
+            "label": "Before Closing Body Tag Script Snippets",
+            "name": "site_before_closing_body_tag_script_snippets",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "These snippets will be injected before the closing &#60;\/body&#62; tag of the document.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "custom-options"
+            },
+            {
+                "param": "asen_domain",
+                "operator": "==",
+                "value": "0"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1729707611
+}

@@ -1,0 +1,33 @@
+body.error404 {
+  main {
+    padding: 6% $site-overall-gutter 8%;
+    @include site-overall-gutter-small;
+  }
+  .entry {
+    max-width: 1440px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+  }
+  .widget_search {
+    form {
+      display: flex;
+      justify-content: flex-start;
+    }
+    label {
+      margin: 0;
+    }
+    input.search-field {
+      margin: 0;
+    }
+  }
+  nav.not-found-menu {
+    a {
+      color: $gray-700;
+      transition: color 200ms ease;
+      &:hover {
+        color: $gray-800;
+      }
+    }
+  }
+}

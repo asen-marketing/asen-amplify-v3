@@ -1,0 +1,151 @@
+{
+    "key": "group_5e5e8aad1e847",
+    "title": "Gutenberg - Asen Split Fancy Copy",
+    "fields": [
+        {
+            "key": "field_5e5e9ec0c0c28",
+            "label": "Box Copy",
+            "name": "box_copy",
+            "type": "textarea",
+            "instructions": "This box is not \"auto paragraph\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_5e5e8abb8c9a1",
+            "label": "Copy",
+            "name": "copy",
+            "type": "textarea",
+            "instructions": "This box is \"auto paragraph\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_5e65448214d2d",
+            "label": "Copy Size",
+            "name": "copy_size",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "normal": "normal",
+                "text-enlarge": "text-enlarge",
+                "text-chonky": "text-chonky"
+            },
+            "default_value": [
+                "normal"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5e5e8cd9d0a6e",
+            "label": "Background Image",
+            "name": "background_image",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5e5e909d44f5e",
+            "label": "Box Gradient",
+            "name": "box_gradient",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "none": "none",
+                "tequila-sunrise-gradient": "Tequila Sunrise",
+                "tequila-sunrise-gradient-reverse": "Tequila Sunrise Reverse",
+                "summer-sunset-gradient": "Summer Sunset",
+                "summer-sunset-gradient-reverse": "Summer Sunset Gradient Reverse",
+                "mimosa-gradient": "Mimosa",
+                "mimosa-gradient-reverse": "Mimosa Reverse",
+                "peach-mango-gradient": "Peach Mango",
+                "peach-mango-gradient-reverse": "Peach Mango Reverse",
+                "orange-mango-gradient": "Orange Mango",
+                "orange-mango-gradient-reverse": "Orange Mango Reverse",
+                "amplify-green-gradient": "Amplify Green"
+            },
+            "default_value": [
+                "tequila-sunrise-gradient"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/asen-split-fancy-copy"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1589380332
+}
