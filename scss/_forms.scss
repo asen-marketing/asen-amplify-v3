@@ -6,7 +6,9 @@ body .gform_wrapper.gravity-theme {
   }
 }
 
-input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="image"]):not([type="file"]):not([type="submit"]),
+input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not(
+    [type="button"]
+  ):not([type="image"]):not([type="file"]):not([type="submit"]),
 textarea {
   body .gform_wrapper.gravity-theme &,
   form & {
@@ -14,8 +16,9 @@ textarea {
     border-radius: 0;
     border: none;
     background-color: #ededed;
-    padding-left: 12px;
+    padding-left: 20px;
     color: $gray-700;
+
     &::placeholder {
       color: #919191;
     }
@@ -46,7 +49,8 @@ select {
     border: none;
     border-radius: 0;
     background-color: #ededed;
-    padding-left: 12px;
+    padding-left: 20px;
+
     &[multiple="multiple"] {
       padding: 12px;
     }
@@ -100,7 +104,9 @@ body .gform_wrapper.gravity-theme .ginput_container_consent {
 // Line height overrides: Gravity Forms base styling is very opinionated with line-height.
 // They make the line-height taller on mobile, which makes styling things that aren't text inputs weird.
 .gform_wrapper.gravity-theme
-  input:not([type="radio"]):not([type="checkbox"]):not([type="image"]):not([type="file"]):not([type="textarea"]):not([type="button"]):not([type="submit"]) {
+  input:not([type="radio"]):not([type="checkbox"]):not([type="image"]):not(
+    [type="file"]
+  ):not([type="textarea"]):not([type="button"]):not([type="submit"]) {
   line-height: 2;
 }
 

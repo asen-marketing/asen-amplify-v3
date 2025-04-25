@@ -1,0 +1,155 @@
+// Icon + Copy Grid
+.asen-icon-copy-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  //@include site-overall-gutter-large;
+  @include site-vertical-padding-dynamic($top: 150px, $bottom: 160px);
+
+  @media (max-width: $breakpoint-screen-small) {
+    padding-top: 82px;
+    padding-bottom: 65px;
+  }
+
+  @media (max-width: $breakpoint-tablet-small) {
+    padding-top: 50px;
+    padding-bottom: 30px;
+  }
+
+  .inside {
+    width: 100%;
+    max-width: 1592px;
+
+    @media (max-width: #{$breakpoint-tablet-large - 1px}) {
+      max-width: 980px;
+    }
+
+    .items {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 50px;
+      width: 100%;
+
+      @media (max-width: $breakpoint-laptop-small) {
+        gap: 30px;
+      }
+
+      &.color-background {
+      }
+      &.button-link {
+      }
+      &.text-link {
+      }
+      &.invisible-link {
+      }
+
+      .item {
+        //max-width: 469px;
+        // width: 29.5%;
+        width: calc(33.33% - 33.33px);
+
+        @media (max-width: $breakpoint-laptop-small) {
+          width: calc(33.33% - 20px);
+        }
+
+        @media (max-width: $breakpoint-tablet-small) {
+          width: 100%;
+        }
+      }
+
+      i {
+        color: #e81771;
+        font-size: 40px;
+
+        @media (max-width: $breakpoint-screen-small) {
+          font-size: 35px;
+        }
+        @media (max-width: $breakpoint-tablet-small) {
+          font-size: 30px;
+        }
+        @media (max-width: #{$breakpoint-small - 1px}) {
+          font-size: 35px;
+        }
+      }
+
+      a.asen-text-link {
+        color: #e81771;
+        font-size: 25px;
+        font-weight: 500;
+
+        @media (max-width: $breakpoint-screen-small) {
+          font-size: 22px;
+        }
+        @media (max-width: $breakpoint-tablet-small) {
+          font-size: 20px;
+        }
+
+        i {
+          font-size: inherit;
+          padding-left: 7px;
+          color: inherit;
+
+          @media (max-width: ($breakpoint-small - 1px)) {
+            font-size: 22px;
+          }
+        }
+
+        &:hover {
+          color: #b71259;
+        }
+      }
+
+      .copy {
+        margin-top: 35px;
+
+        @media (max-width: $breakpoint-screen-small) {
+          margin-top: 25px;
+        }
+
+        h4 {
+          font-size: 28px;
+          margin-bottom: 1.07em;
+          font-weight: 900;
+
+          @media (max-width: $breakpoint-screen-small) {
+            font-size: 25px;
+            margin-bottom: 0.8em;
+          }
+          @media (max-width: $breakpoint-tablet-large) {
+            font-size: 23px;
+          }
+          @media (max-width: $breakpoint-small) {
+            margin-bottom: 18px;
+          }
+          @media (max-width: ($breakpoint-small - 1px)) {
+            font-size: 22px;
+          }
+        }
+
+        p {
+          font-weight: 500;
+
+          @media (max-width: $breakpoint-laptop-small) {
+            font-size: 22px;
+          }
+          @media (max-width: $breakpoint-screen-small) {
+            font-size: 20px;
+          }
+          @media (max-width: #{$breakpoint-tablet-large - 1px}) {
+            font-size: 22px;
+          }
+          @media (max-width: $breakpoint-tablet-small) {
+            font-size: 18px;
+          }
+          @media (max-width: #{$breakpoint-small - 1px}) {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}

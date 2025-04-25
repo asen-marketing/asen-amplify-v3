@@ -1,0 +1,230 @@
+{
+    "key": "group_680bd317e89af",
+    "title": "Asen Off-Canvas Options",
+    "fields": [
+        {
+            "key": "field_680a7d461406a",
+            "label": "Off-canvas Breakpoint",
+            "name": "off_canvas_breakpoint",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Size in pixels for switching from header menu to off-canvas.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": 1024,
+            "min": 50,
+            "max": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "pixels"
+        },
+        {
+            "key": "field_680a8fdc02f99",
+            "label": "Off-canvas Font Size",
+            "name": "off_canvas_font_size",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Sets the menu links font size.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": 40,
+            "min": 20,
+            "max": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "pixels"
+        },
+        {
+            "key": "field_680a93cd89edd",
+            "label": "Off-canvas Mobile Font Size",
+            "name": "off_canvas_mobile_font_size",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Sets the menu links font size on mobile screens.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": 30,
+            "min": 20,
+            "max": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "pixels"
+        },
+        {
+            "key": "field_680a97054ea97",
+            "label": "Set Link Colors",
+            "name": "off_canvas_custom_colors",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Sets the menu links color.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_680a90b102f9a",
+            "label": "Off-canvas Link Color",
+            "name": "off_canvas_text_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "Sets the menu links color.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_680a97054ea97",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "#FFFFFF",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_680a912802f9b",
+            "label": "Off-canvas Hover Color",
+            "name": "off_canvas_hover_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "Sets the menu links color.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_680a97054ea97",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "#999999",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_5e8e27c27438a",
+            "label": "Hamburger Menu Animation",
+            "name": "site_hamburger_menu_animation",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "For examples, see: <a href=\"https:\/\/jonsuh.com\/hamburgers\/\" target=\"_blank\">https:\/\/jonsuh.com\/hamburgers\/<\/a>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "3dx": "3dx",
+                "3dx-r": "3dx-r",
+                "3dy": "3dy",
+                "3dy-r": "3dy-r",
+                "3dxy": "3dxy",
+                "3dxy-r": "3dxy-r",
+                "arrow": "arrow",
+                "arrow-r": "arrow-r",
+                "arrowalt": "arrowalt",
+                "arrowalt-r": "arrowalt-r",
+                "arrowturn": "arrowturn",
+                "arrowturn-r": "arrowturn-r",
+                "boring": "boring",
+                "collapse": "collapse",
+                "collapse-r": "collapse-r",
+                "elastic": "elastic",
+                "elastic-r": "elastic-r",
+                "emphatic": "emphatic",
+                "emphatic-r": "emphatic-r",
+                "minus": "minus",
+                "slider": "slider",
+                "slider-r": "slider-r",
+                "spring": "spring",
+                "spring-r": "spring-r",
+                "stand": "stand",
+                "stand-r": "stand-r",
+                "spin": "spin",
+                "spin-r": "spin-r",
+                "squeeze": "squeeze",
+                "vortex": "vortex",
+                "vortex-r": "vortex-r"
+            },
+            "default_value": "minus",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "off-canvas-options"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1745605662
+}

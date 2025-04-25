@@ -1,0 +1,369 @@
+{
+    "key": "group_680bd09cf1e06",
+    "title": "Asen Header Options",
+    "fields": [
+        {
+            "key": "field_5e8cb8a2af0df",
+            "label": "Header Layout",
+            "name": "site_header_layout",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "When choosing  Layout 2 (centered logo), you'll need to add a menu item for the \"Home\" page into your Primary Navigation and add a class named \"layout-2-logo\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "choices": {
+                "1": "1. Logo on left, menu on right",
+                "2": "2. Logo centered, menu centered around it",
+                "3": "3. Logo on left, hamburger button on right",
+                "4": "4. Logo on left, menu and hamburger button on right"
+            },
+            "default_value": 1,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5e97547ed012c",
+            "label": "Header Height",
+            "name": "site_header_height",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "This height in pixels will determine the desktop height and be used to calculate heights on smaller devices.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": 76,
+            "min": 50,
+            "max": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "pixels"
+        },
+        {
+            "key": "field_5e975cdba93f6",
+            "label": "Header Logo Height",
+            "name": "site_header_logo_height",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "This will set the height of the logo. If you select a height higher than the header height, the logo will be positioned from the top (for overhang below).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": 90,
+            "min": 50,
+            "max": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "pixels"
+        },
+        {
+            "key": "field_680b900760af3",
+            "label": "Full Width Header",
+            "name": "full_width_header",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Allow header width to be dictated by width of the screen.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_680b90af60af4",
+            "label": "Header Max Width",
+            "name": "header_max_width",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Sets maximum width of header (will shrink when screen size is smaller than this value).",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_680b900760af3",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": 1400,
+            "min": 900,
+            "max": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "pixels"
+        },
+        {
+            "key": "field_5eb46583bc8a7",
+            "label": "Header Position",
+            "name": "site_header_position",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Sets static or sticky header.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "choices": {
+                "static": "Static",
+                "fixed": "Fixed\/Sticky"
+            },
+            "default_value": "static",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5e8e28b6228ba",
+            "label": "Header CTA Option",
+            "name": "site_header_cta_option",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "These options are available for Header Layouts 1 (in header) & 3 (in off-canvas). Update settings for these to fully take effect.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5e8cb8a2af0df",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5e8cb8a2af0df",
+                        "operator": "==",
+                        "value": "3"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "choices": {
+                "button": "Button",
+                "phone": "Phone",
+                "social": "Social Media",
+                "none": "None"
+            },
+            "default_value": "none",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_680b8b6538795",
+            "label": "Header CTA Option",
+            "name": "site_header_4_cta",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Option to include a button between menu and off-canvas.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5e8cb8a2af0df",
+                        "operator": "==",
+                        "value": "4"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "choices": {
+                "none": "None",
+                "button": "Button"
+            },
+            "default_value": "none",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_680b95729676c",
+            "label": "CTA Button Link",
+            "name": "site_header_cta_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_680b8b6538795",
+                        "operator": "==",
+                        "value": "button"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5e8e28b6228ba",
+                        "operator": "==",
+                        "value": "button"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "return_format": "array",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_680b95cb9676f",
+            "label": "CTA Button Color",
+            "name": "site_header_cta_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5e8e28b6228ba",
+                        "operator": "==",
+                        "value": "button"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_680b8b6538795",
+                        "operator": "==",
+                        "value": "button"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "#000000",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_680b961696770",
+            "label": "CTA Button Text Color",
+            "name": "site_header_cta_text_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5e8e28b6228ba",
+                        "operator": "==",
+                        "value": "button"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_680b8b6538795",
+                        "operator": "==",
+                        "value": "button"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "#FFFFFF",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "allow_in_bindings": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "header-options"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1745605346
+}

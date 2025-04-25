@@ -147,6 +147,19 @@ function site_acf_init() {
 			'supports'          => array( 'align' => false ),
 		));
 
+		// Asen Icon + Copy Grid
+		acf_register_block(array(
+			'name'				=> 'asen-icon-copy-grid',
+			'title'				=> __('Asen Icon + Copy Grid'),
+			'description'		=> __('A CTA grid made up of icons with headings and copy.'),
+			'mode'              => 'edit',
+			'render_callback'	=> 'site_acf_block_callback',
+			'category'			=> 'asen-blocks',
+			'icon'				=> 'screenoptions',
+			'keywords'			=> array( 'icon', 'asen', 'copy', 'grid', 'cta' ),
+			'supports'          => array( 'align' => false ),
+		));
+
 	}
 }
 add_action('acf/init', 'site_acf_init');

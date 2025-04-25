@@ -6,6 +6,7 @@
             "key": "field_5e39ca6b274de",
             "label": "Team Member Image",
             "name": "team_member_image",
+            "aria-label": "",
             "type": "image",
             "instructions": "",
             "required": 0,
@@ -30,43 +31,7 @@
             "key": "field_5e39ca85274df",
             "label": "Team Member Position",
             "name": "team_member_position",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_5e90679a8183d",
-            "label": "Team Member Email Address",
-            "name": "team_member_email_address",
-            "type": "email",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_5e9067a38183e",
-            "label": "Team Member Phone Number",
-            "name": "team_member_phone_number",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -86,6 +51,7 @@
             "key": "field_5e94b322254e7",
             "label": "Team Member Bio",
             "name": "team_member_bio",
+            "aria-label": "",
             "type": "textarea",
             "instructions": "",
             "required": 0,
@@ -117,7 +83,8 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1586810788
+    "show_in_rest": 0,
+    "modified": 1745512671
 }
