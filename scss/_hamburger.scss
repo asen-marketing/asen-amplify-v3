@@ -22,20 +22,6 @@
     //   display: block;
     // }
   }
-
-  // &.header-layout-4 {
-  //   position: relative;
-
-  //   &:not(.is-active) {
-  //     body.admin-bar & {
-  //       top: 0;
-  //     }
-  //   }
-  // }
-
-  // @media (max-width: $breakpoint-tablet-small) {
-  //   right: $site-overall-gutter-small;
-  // }
 }
 
 button.hamburger {
@@ -68,6 +54,7 @@ button.hamburger {
 
   .off-canvas-menu-hamburger {
     position: relative;
+    top: 0;
 
     &.is-active {
       display: flex;

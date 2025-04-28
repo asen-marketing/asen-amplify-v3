@@ -189,6 +189,23 @@ header.site-header .inside,
     ?>;
 }
 
+.off-canvas-menu-hamburger {
+    position: <?php echo get_field('sticky_hamburger', 'option') ? 'fixed': 'relative';
+    ?>;
+}
+
+body.admin-bar header.site-header .off-canvas-menu-hamburger {
+    top: <?php echo get_field('sticky_hamburger', 'option') ? '32px': '0';
+    ?>;
+}
+
+@media screen and (max-width: 782px) {
+    body.admin-bar header.site-header .off-canvas-menu-hamburger {
+        top: <?php echo get_field('sticky_hamburger', 'option') ? '46px': '0';
+        ?>;
+    }
+}
+
 header.site-header .button.header-cta {
     background-color: <?php the_field('site_header_cta_color', 'option');
     ?>;
