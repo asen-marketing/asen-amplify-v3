@@ -16,6 +16,8 @@ header.site-header {
   .inside {
     display: flex;
     width: 100%;
+    justify-content: space-between;
+    align-items: center;
   }
 
   body.admin-bar & {

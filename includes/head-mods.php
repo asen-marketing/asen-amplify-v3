@@ -179,7 +179,7 @@ body.admin-bar .site-container {
 }
 
 header.site-header .inside {
-    max-width: <?php echo !get_field('full_width_header') ? $header_width_px: '100%';
+    max-width: <?php echo get_field('full_width_header', 'option')==false ? $header_width_px: '100%';
     ?>;
 }
 
@@ -203,7 +203,7 @@ header.site-header .button.header-cta:hover {
     ?>;
 }
 
-header.site-header .off-canvas-menu ul li a {
+.off-canvas-menu ul li a {
     font-size: <?php echo get_field('off_canvas_font_size', 'option') . 'px';
     ?>;
     color: <?php get_field('off_canvas_custom_colors', 'option') ? the_field('off_canvas_text_color', 'option'): '#fff'; // TODO: change to primary/secondary color
@@ -236,9 +236,8 @@ header.site-header .off-canvas-menu ul li a {
     }
 
     header.site-header.layout-1 .navigation,
-    header.site-header.layout-2 .navigation,
     header.site-header.layout-1 nav.header-menu,
-    header.site-header.layout-2 nav.header-menu li,
+    header.site-header.layout-2 nav.header-menu li:not(.layout-2-logo),
     header.site-header.layout-3 nav.header-menu,
     header.site-header.layout-4 ul.primary-menu {
         display: none;

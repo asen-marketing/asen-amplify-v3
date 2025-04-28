@@ -18,9 +18,6 @@
             if ( class_exists('ACF') ) :
                 if ( is_page_template('custom-blank.php') == false ) : 
                     get_template_part('templates/menu/off-canvas');
-                    if (get_field('site_header_layout', 'option') !== '4') : 
-                    get_template_part('templates/menu/hamburger');
-                    endif;
                 endif;
             endif;
         ?>

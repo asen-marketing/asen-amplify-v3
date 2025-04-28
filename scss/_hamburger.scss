@@ -1,5 +1,5 @@
 .off-canvas-menu-hamburger {
-  position: fixed;
+  position: relative;
   z-index: 100;
   top: 0;
   right: 0;
@@ -23,27 +23,19 @@
     // }
   }
 
-  &.header-layout-4 {
-    position: relative;
+  // &.header-layout-4 {
+  //   position: relative;
 
-    body.admin-bar & {
-      top: 0;
-    }
-  }
+  //   &:not(.is-active) {
+  //     body.admin-bar & {
+  //       top: 0;
+  //     }
+  //   }
+  // }
 
   // @media (max-width: $breakpoint-tablet-small) {
   //   right: $site-overall-gutter-small;
   // }
-
-  body.admin-bar & {
-    top: 32px;
-
-    @media screen and (max-width: 782px) {
-      & {
-        top: 46px;
-      }
-    }
-  }
 }
 
 button.hamburger {
@@ -81,10 +73,21 @@ button.hamburger {
       display: flex;
       z-index: 2;
       opacity: 1;
+      top: none;
     }
     svg {
       width: 30px;
       fill: #fff;
+    }
+  }
+
+  body.admin-bar & {
+    top: 32px;
+
+    @media screen and (max-width: 782px) {
+      & {
+        top: 46px;
+      }
     }
   }
 }
