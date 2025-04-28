@@ -178,6 +178,14 @@ body.admin-bar .site-container {
     }
 }
 
+header.site-header {
+    <?php if (get_field('overlapping_header', 'option') && !get_field('disable_overlapping_header', get_the_ID())): ?> position: absolute;
+    background: transparent;
+    box-shadow: none;
+    <?php endif;
+    ?>
+}
+
 header.site-header .inside {
     max-width: <?php echo get_field('full_width_header', 'option')==false ? $header_width_px: '100%';
     ?>;
