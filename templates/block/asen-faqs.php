@@ -35,8 +35,14 @@ $args = array(
         ),
     ),
 );
-$all_faqs = get_posts($args);
 }
+if (!$categories) {
+    $args = array(
+        'post_type' => 'faq',
+        'posts_per_page' => -1
+    );
+}
+$all_faqs = get_posts($args);
 }
 
 ?>
@@ -45,21 +51,19 @@ $all_faqs = get_posts($args);
     <div class="inside">
         <?php
         if( $all_faqs ): ?>
-        <div class="faqs">
-            <?php foreach( $all_faqs as $index => $faq_post ): 
+        <?php foreach( $all_faqs as $index => $faq_post ): 
                 $title = get_the_title( $faq_post->ID );
                 $faq_answer = get_field( 'faq_answer', $faq_post->ID );
                 ?>
-            <div class="faq">
-                <div class="question trigger-<?php echo trim($className); ?>" data-faq="<?php echo $index; ?>">
-                    <h6 class="copy"><?php echo ( $title ); ?></h6>
-                </div>
-                <p class="answer faq-answer-<?php echo trim($className); ?>" data-faq="<?php echo $index; ?>">
-                    <?php echo ( $faq_answer ); ?>
-                </p>
+        <div class="faq">
+            <div class="question trigger-<?php echo trim($className); ?>" data-faq="<?php echo $index; ?>">
+                <h6 class="copy"><?php echo ( $title ); ?></h6>
             </div>
-            <?php endforeach; ?>
+            <p class="answer faq-answer-<?php echo trim($className); ?>" data-faq="<?php echo $index; ?>">
+                <?php echo ( $faq_answer ); ?>
+            </p>
         </div>
+        <?php endforeach; ?>
         <?php endif; ?>
         <?php wp_reset_postdata(); ?>
         <?php if (get_field('show_contact_us_disclaimer')) : ?>

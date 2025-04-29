@@ -1,0 +1,28 @@
+.asen-team-hub {
+  display: flex;
+  justify-content: center;
+  padding-left: $site-overall-gutter;
+  padding-right: $site-overall-gutter;
+  @include site-overall-gutter-small;
+  @include site-vertical-padding-dynamic();
+
+  .inside {
+    max-width: $site-overall-max-width;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 2rem;
+
+    &.grid {
+      .team-item {
+      }
+    }
+
+    &.carousel {
+      .team-item {
+        width: 100%;
+      }
+    }
+  }
+}

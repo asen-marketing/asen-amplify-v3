@@ -160,7 +160,7 @@ function site_acf_init() {
 			'supports'          => array( 'align' => false ),
 		));
 
-		// Asen Icon + Copy Grid
+		// Asen FAQs
 		acf_register_block(array(
 			'name'				=> 'asen-faqs',
 			'title'				=> __('Asen FAQs'),
@@ -168,11 +168,28 @@ function site_acf_init() {
 			'mode'              => 'edit',
 			'render_callback'	=> 'site_acf_block_callback',
 			'category'			=> 'asen-blocks',
-			'icon'				=> 'dashicons-info-outline',
+			'icon'				=> 'info-outline',
 			'keywords'			=> array( 'frequently', 'asked', 'question', 'answer', 'dropwdown' ),
 			'supports'          => array( 'align' => false ),
 		));
 		
+		// Asen Team Hub
+		acf_register_block(array(
+			'name'				=> 'asen-team-hub',
+			'title'				=> __('Asen Team Hub'),
+			'description'		=> __('Displays team CPT as a grid or carousel.'),
+			'mode'              => 'edit',
+			'enqueue_assets' => function() {
+				if ( !is_admin() ) {
+					asen_enqueue_glide_js();
+				}
+			},
+			'render_callback'	=> 'site_acf_block_callback',
+			'category'			=> 'asen-blocks',
+			'icon'				=> 'admin-users',
+			'keywords'			=> array( 'team', 'grid', 'carousel', 'hub', 'member' ),
+			'supports'          => array( 'align' => false ),
+		));
 
 	}
 }
