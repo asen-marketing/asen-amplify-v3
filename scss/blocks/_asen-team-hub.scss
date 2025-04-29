@@ -13,15 +13,34 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 2rem;
+  }
 
-    &.grid {
-      .team-item {
-      }
-    }
+  ul,
+  li {
+    list-style: none;
+  }
 
-    &.carousel {
-      .team-item {
-        width: 100%;
+  .glide {
+    max-width: #{$site-overall-max-width - 100px};
+  }
+
+  .controls {
+    position: absolute;
+    top: 36%;
+    right: -100px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    button {
+      border-radius: 50%;
+      border: 3px solid #000;
+      background-color: transparent;
+      width: 50px;
+      font-size: 30px;
+
+      i {
+        font-weight: 500;
       }
     }
   }

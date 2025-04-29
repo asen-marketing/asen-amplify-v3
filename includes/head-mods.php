@@ -22,6 +22,9 @@ function asen_head_code() {
             echo get_field('site_head_script_snippets', 'option');
         endif;
     endif;
+
+    $site_max_width_px = '$site-overall-max-width: ' . get_field('site_max_width', 'option') . 'px' . ';';
+file_put_contents('wp-content/themes/amplify2020/scss/_site-option-styles.scss', $site_max_width_px);
 }
 add_action('wp_head', 'asen_head_code');
 

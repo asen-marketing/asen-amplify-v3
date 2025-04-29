@@ -1,0 +1,56 @@
+.asen-services-hub {
+  display: flex;
+  justify-content: center;
+  padding-left: $site-overall-gutter;
+  padding-right: $site-overall-gutter;
+  @include site-overall-gutter-small;
+  @include site-vertical-padding-dynamic();
+
+  .inside {
+    max-width: $site-overall-max-width;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 2rem;
+  }
+
+  ul,
+  li {
+    list-style: none;
+  }
+
+  .glide {
+    max-width: #{$site-overall-max-width - 100px};
+  }
+
+  .service-item {
+    height: auto;
+    padding: 2rem 2rem 2.5rem;
+  }
+
+  .controls {
+    position: absolute;
+    top: 33%;
+    right: -100px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    button {
+      border-radius: 50%;
+      border: 3px solid #000;
+      background-color: transparent;
+      width: 50px;
+      font-size: 30px;
+
+      i {
+        font-weight: 500;
+      }
+    }
+  }
+
+  a.service-link {
+    font-size: 23px;
+  }
+}

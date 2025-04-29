@@ -150,6 +150,10 @@ a {
   color: $gray-800;
   transition: color 200ms ease;
 
+  i {
+    transition: color 200ms ease;
+  }
+
   &:hover {
     color: $gray-800;
   }
