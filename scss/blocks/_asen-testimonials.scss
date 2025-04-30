@@ -1,0 +1,131 @@
+.asen-testimonials {
+  display: flex;
+  justify-content: center;
+  padding-left: $site-overall-gutter;
+  padding-right: $site-overall-gutter;
+  @include site-overall-gutter-small;
+  @include site-vertical-padding-dynamic();
+
+  &.carousel {
+    padding: 0;
+    @include site-vertical-margin-dynamic();
+
+    .width-container {
+      width: $site-overall-max-width;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      @include site-vertical-padding-dynamic(80px, 60px);
+
+      &.full {
+        width: 100%;
+      }
+    }
+  }
+
+  .inside {
+    max-width: $site-overall-max-width;
+    width: 100%;
+
+    &.grid {
+      display: grid;
+      gap: 2rem;
+
+      .testimonial-item {
+        grid-column: initial;
+      }
+
+      p.quote {
+        font-style: italic;
+      }
+    }
+    &.carousel {
+      display: grid;
+      grid-template-columns: 1fr;
+
+      .testimonial-item {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        grid-row-start: 1;
+        grid-column-start: 1;
+        opacity: 0;
+        transition: opacity 350ms ease-in-out;
+
+        &.active {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .testimonial-item {
+    height: fit-content;
+    padding: 2rem 2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &.text {
+      &-small {
+        p.quote {
+          font-size: 22px;
+        }
+        p.author {
+          font-size: 22px;
+
+          span.name {
+            font-weight: 600;
+          }
+        }
+      }
+      &-medium {
+        p.quote {
+          font-size: 40px;
+        }
+        p.author {
+          font-size: 25px;
+        }
+      }
+      &-large {
+        p.quote {
+          font-size: 55px;
+        }
+        p.author {
+          font-size: 30px;
+        }
+      }
+    }
+
+    img {
+      max-width: 200px;
+      margin-bottom: 1.8rem;
+    }
+  }
+
+  .selectors {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    @include site-vertical-padding-dynamic(30px, 0);
+
+    button {
+      border-radius: 50%;
+      border: none;
+      background-color: #fff;
+      width: 12px;
+      height: 12px;
+      opacity: 0.5;
+      transition: opacity 350ms ease-in-out;
+
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+}

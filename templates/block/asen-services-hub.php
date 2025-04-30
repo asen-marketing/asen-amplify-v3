@@ -35,12 +35,12 @@ $carousel = get_field('use_carousel');
                     <?php endif; ?>
                     <?php foreach( $services as $index => $service ): 
                 $name = get_the_title( $service->ID );
-                $use_icon = get_field('use_icon', $service->ID);
+                $use_icon = get_field('media_options', $service->ID) === 'icon';
                 $image = get_field( 'service_image', $service->ID );
                 $icon = get_field('icon_code', $service->ID);
                 $blurb = get_field('service_blurb', $service->ID);
                 $link = get_field('service_link', $service->ID);
-                ?>
+                    ?>
                     <li class="<?php echo $carousel ? 'glide__slide ' : ''; ?> service-item<?php echo ($index == 1 ? ' is-active' : ''); ?>"
                         data-slide-id="<?php echo $index - 1; ?>">
                         <?php if (!$use_icon && $image) : ?>

@@ -209,6 +209,24 @@ function site_acf_init() {
 			'supports'          => array( 'align' => false ),
 		));
 
+		// Asen Testimonials
+		acf_register_block(array(
+			'name'				=> 'asen-testimonials',
+			'title'				=> __('Asen Testimonials'),
+			'description'		=> __('Displays testimonials CPT as a grid or carousel.'),
+			'mode'              => 'edit',
+			'enqueue_assets' => function() {
+				if ( !is_admin() ) {
+					asen_enqueue_glide_js();
+				}
+			},
+			'render_callback'	=> 'site_acf_block_callback',
+			'category'			=> 'asen-blocks',
+			'icon'				=> 'star-filled',
+			'keywords'			=> array( 'testimonials', 'quote', 'author' ),
+			'supports'          => array( 'align' => false ),
+		));
+
 	}
 }
 add_action('acf/init', 'site_acf_init');

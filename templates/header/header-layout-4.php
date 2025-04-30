@@ -21,7 +21,7 @@
                         'depth' => 1
                     )); ?>
                 <?php if ($cta_button && get_field('site_header_4_cta', 'option') === 'button') : ?>
-                <a class="button button-small header-cta" href="<?php echo $cta_button['link']; ?>"
+                <a class="button button-small header-cta" href="<?php echo $cta_button['url']; ?>"
                     title="<?php echo $cta_button['title']; ?>" target="<?php echo $cta_button['target']; ?>">
                     <?php echo $cta_button['title']; ?>
                 </a>

@@ -231,16 +231,30 @@ header.site-header .button.header-cta:hover {
     ?>;
 }
 
-.off-canvas-menu ul li a {
-    font-size: <?php echo get_field('off_canvas_font_size', 'option') . 'px';
-    ?>;
-    color: <?php get_field('off_canvas_custom_colors', 'option') ? the_field('off_canvas_text_color', 'option'): '#fff'; // TODO: change to primary/secondary color
+nav.header-menu ul li a {
+    color: <?php the_field('header_menu_color', 'option');
     ?>;
 }
 
-.off-canvas-menu ul li a:hover {
-    color: <?php get_field('off_canvas_custom_colors', 'option') ? the_field('off_canvas_hover_color', 'option'): '#fff'; // TODO: change to primary/secondary color
+nav.header-menu ul li a:hover {
+    color: <?php the_field('header_menu_hover_color', 'option');
     ?>;
+}
+
+.off-canvas-menu-container {
+    background-color: <?php the_field('off_canvas_background_color', 'option');
+    ?>
+}
+
+.off-canvas-menu ul li a {
+    font-size: <?php echo get_field('off_canvas_font_size', 'option') . 'px';
+    ?>;
+    color: <?php the_field('off_canvas_text_color', 'option') ?>;
+}
+
+.off-canvas-menu ul li a:hover {
+    color: <?php the_field('off_canvas_hover_color', 'option');
+    ?>?>;
 }
 
 @media (max-width: 639px) {

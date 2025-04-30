@@ -23,7 +23,8 @@
                     'container' => '',
                     'menu_class' => 'off-canvas-menu',
                     'theme_location' => 'off-canvas-menu',
-                    'depth' => 2
+                    'depth' => 2,
+                    'after' => '<i class="fa-solid fa-angle-right"></i>'
                 )); ?>
         </nav>
         <?php else : ?>
