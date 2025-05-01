@@ -53,6 +53,14 @@ function asen_setup_acf_option_pages() {
             'capability'    => 'edit_posts',
             'redirect'      => false
         ]);
+        acf_add_options_page([
+            'page_title'    => 'Footer Options',
+            'menu_title'    => 'Footer Options',
+            'menu_slug'     => 'footer-options',
+            'parent_slug'   => 'site-options',
+            'capability'    => 'edit_posts',
+            'redirect'      => false
+        ]);
         acf_add_options_page(array(
             'page_title' 	=> 'Blog Archive Options',
             'menu_title'	=> 'Archive Options',

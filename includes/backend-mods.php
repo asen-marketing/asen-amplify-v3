@@ -39,3 +39,23 @@ function asen_hide_editor()
     }
 }
 add_action( 'admin_init', 'asen_hide_editor' );
+
+// $global_tiers = get_field_object('site_tier', 'option');
+// $condition_field = get_field_object('sub-menu_indicator_closed', 'option');
+
+// function set_conditions() {
+//         $condition_field['conditional_logic'] = array(
+//             array(
+//                 'field' => $global_tiers['key'],
+//                 'operator' => '!=',
+//                 'value' => '0'
+//             )
+//             );
+
+//         // if ($global_tiers['value'] != 1) {
+//         //     return false;
+//         // }
+//     return $condition_field;
+// }
+
+// apply_filters('acf/prepare_field/key=' . $condition_field['key'], 'set_conditions');
