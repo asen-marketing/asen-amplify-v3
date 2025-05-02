@@ -7,6 +7,14 @@ footer.site-footer {
     margin: 0 auto;
   }
 
+  li {
+    list-style: none;
+  }
+
+  ul {
+    margin: 0;
+  }
+
   p {
     color: $gray-900;
   }
@@ -20,70 +28,37 @@ footer.site-footer {
     }
   }
 
-  body & {
-    .inline-button {
-      .gform_wrapper {
-        form {
-          display: flex;
-          flex-wrap: wrap;
-          flex-direction: row;
-          align-items: flex-end;
+  p.copyright {
+    display: flex;
+    align-items: center;
 
-          @media (max-width: $breakpoint-footer-tablet-small) {
-            flex-direction: column;
-            align-items: stretch;
-          }
-
-          .gform_footer {
-            margin-top: 0;
-          }
-        }
-      }
+    i {
+      padding: 0 6px;
+      font-size: 5px;
     }
-
-    .gform_wrapper {
-      max-width: 450px;
-      width: 100%;
-
-      .gform_body {
-        width: auto;
-        flex: 1;
-      }
-      .gform_footer {
-        width: auto;
-        padding: 0;
-        margin-top: 10px;
-      }
-      input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not(
-          [type="button"]
-        ):not([type="image"]):not([type="file"]):not([type="submit"]) {
-        background-color: #fff;
-        width: 100%;
-        height: 60px;
-        @media (max-width: $breakpoint-footer-tablet-small) {
-          text-align: center;
-        }
-      }
-      .top_label div.ginput_container {
-        margin: 0;
-      }
-      input[type="submit"] {
-        padding-top: 0;
-        padding-bottom: 0;
-        margin: 0;
-        width: 100%;
-        height: 60px;
-      }
-
-      img.gform_ajax_spinner {
-        display: none !important;
-      }
+  }
+  .site-social.links {
+    li {
+      padding: 0 6px;
     }
   }
 
+  .footer-mailing-list-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h5 {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 23px;
+  }
+
   &.layout-1,
-  &.layout-2,
-  &.layout-3 {
+  &.layout-2 {
     .top {
       font-size: 24px;
     }
@@ -96,6 +71,7 @@ footer.site-footer {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        align-items: center;
 
         @media (max-width: $breakpoint-footer-tablet-small) {
           flex-direction: column;
@@ -103,12 +79,11 @@ footer.site-footer {
       }
     }
     .bottom {
-      background-color: $gray-400;
       padding: 30px $site-overall-gutter 30px;
       @include site-overall-gutter-small;
       .inside {
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between;
         align-items: center;
 
         @media (max-width: $breakpoint-footer-tablet-small) {
@@ -124,8 +99,9 @@ footer.site-footer {
     }
 
     .column {
+      min-width: 33%;
+
       &-1 {
-        width: 20%;
         @media (max-width: $breakpoint-footer-laptop-small) {
           width: 18%;
           margin-bottom: 50px;
@@ -137,23 +113,17 @@ footer.site-footer {
           max-height: 260px;
         }
       }
+
+      // Sub-columns
       &-2 {
-        width: 24%;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
         @media (max-width: $breakpoint-footer-laptop-small) {
-          width: 32%;
           margin-bottom: 50px;
         }
       }
       &-3 {
-        width: 20%;
-        @media (max-width: $breakpoint-footer-laptop-small) {
-          width: 22%;
-          margin-bottom: 50px;
-        }
-      }
-      &-4 {
-        width: 28%;
-
         @media (max-width: $breakpoint-footer-laptop-small) {
           width: 100%;
           display: flex;
@@ -197,8 +167,7 @@ footer.site-footer {
       }
     }
     .bottom {
-      border-top: 2px solid $gray-400;
-      padding: 30px + 24px $site-overall-gutter 30px;
+      padding: 30px (24px + $site-overall-gutter) 30px;
       @include site-overall-gutter-small;
       .inside {
         display: flex;
@@ -210,9 +179,16 @@ footer.site-footer {
         }
       }
       .column {
+        &-1 {
+          img {
+            max-height: 150px;
+            width: auto;
+          }
+        }
         &-2 {
           display: flex;
-          justify-content: space-between;
+          justify-content: flex-end;
+          gap: 2rem;
           align-items: center;
 
           @media (max-width: $breakpoint-footer-tablet-small) {
@@ -246,79 +222,7 @@ footer.site-footer {
     }
   }
 
-  &.layout-3 {
-    .top {
-      padding: 80px $site-overall-gutter 80px;
-      @include site-overall-gutter-small;
-      .inside {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-    }
-    .bottom {
-      background-color: $gray-400;
-      padding: 30px $site-overall-gutter 30px;
-      @include site-overall-gutter-small;
-      .inside {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    }
-    .row {
-      text-align: center;
-
-      img {
-        width: auto;
-        height: auto;
-        max-width: 300px;
-        max-height: 260px;
-        margin-bottom: 30px;
-      }
-    }
-  }
-
-  ul.footer-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    li {
-      a {
-        display: inline-block;
-      }
-    }
-  }
-
-  ul.site-social {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: flex-start;
-    li {
-      display: inline-block;
-      a {
-        display: block;
-        padding: 0 10px;
-        display: flex;
-        align-items: center;
-        font-size: 28px;
-      }
-    }
-  }
-
   .bottom {
-    // display: flex;
-    // flex-direction: row;
-    // justify-content: space-between;
-    // align-items: flex-end;
-
-    // @media (max-width: $breakpoint-footer-tablet-small) {
-    //   flex-direction: column;
-    // }
-
     p,
     a {
       margin: 0;

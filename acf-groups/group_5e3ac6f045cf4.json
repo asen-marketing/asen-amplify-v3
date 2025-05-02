@@ -3,9 +3,32 @@
     "title": "Page Options by Asen",
     "fields": [
         {
+            "key": "field_680fb3ec9231d",
+            "label": "Disable Overlapping Header",
+            "name": "disable_overlapping_header",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Overrides global overlapping header setting.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_5e3acf77b12d4",
             "label": "Padding Top",
             "name": "page_padding_top",
+            "aria-label": "",
             "type": "number",
             "instructions": "",
             "required": 0,
@@ -27,6 +50,7 @@
             "key": "field_5e3acf82b12d5",
             "label": "Padding Top Unit Type",
             "name": "page_padding_top_unit_type",
+            "aria-label": "",
             "type": "radio",
             "instructions": "",
             "required": 0,
@@ -51,6 +75,7 @@
             "key": "field_5e3acf1c83f74",
             "label": "Padding Bottom",
             "name": "page_padding_bottom",
+            "aria-label": "",
             "type": "number",
             "instructions": "",
             "required": 0,
@@ -72,6 +97,7 @@
             "key": "field_5e3acf0e83f73",
             "label": "Padding Bottom Unit Type",
             "name": "page_padding_bottom_unit_type",
+            "aria-label": "",
             "type": "radio",
             "instructions": "",
             "required": 0,
@@ -96,6 +122,7 @@
             "key": "field_5e95c4915e66d",
             "label": "Footer Gravity Form",
             "name": "page_footer_gravity_form",
+            "aria-label": "",
             "type": "select",
             "instructions": "",
             "required": 0,
@@ -106,12 +133,10 @@
                 "id": ""
             },
             "choices": {
-                "1": "Footer Mailing List",
-                "4": "Job Application",
-                "7": "Contact Page",
-                "8": "General Contact"
+                "1": "Mailing List",
+                "2": "General Contact"
             },
-            "default_value": [],
+            "default_value": false,
             "allow_null": 1,
             "multiple": 0,
             "ui": 0,
@@ -135,7 +160,8 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1588622775
+    "show_in_rest": 0,
+    "modified": 1745860543
 }

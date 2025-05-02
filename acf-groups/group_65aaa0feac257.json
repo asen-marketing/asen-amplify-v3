@@ -201,7 +201,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "all"
+                "value": "acf\/asen-icon-copy-grid"
             }
         ]
     ],
@@ -214,5 +214,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1745518423
+    "modified": 1745867476
 }

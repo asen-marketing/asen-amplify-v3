@@ -18,7 +18,56 @@
             },
             "placement": "top",
             "endpoint": 0,
-            "selected": 0
+            "selected": 0,
+            "no_preference": 0
+        },
+        {
+            "key": "field_68123902d19e3",
+            "label": "Site Tier",
+            "name": "site_tier",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Enables additional large site features if set to Tier 3.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "Tier 3",
+            "ui_off_text": "Tiers 1 and 2",
+            "ui": 1,
+            "style": "",
+            "acfe_field_group_condition": 1
+        },
+        {
+            "key": "field_6810ff8d0b1ee",
+            "label": "Site Overall Max Width",
+            "name": "site_max_width",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": 1400,
+            "min": 800,
+            "max": 2000,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": 5,
+            "prepend": "",
+            "append": "pixels"
         },
         {
             "key": "field_5e8b7a8bf1bd5",
@@ -43,7 +92,10 @@
             "max_width": "",
             "max_height": "",
             "max_size": "",
-            "mime_types": ""
+            "mime_types": "",
+            "uploader": "",
+            "acfe_thumbnail": 0,
+            "upload_folder": ""
         },
         {
             "key": "field_5e8b7e24937e4",
@@ -68,23 +120,10 @@
             "max_width": "",
             "max_height": "",
             "max_size": "",
-            "mime_types": ""
-        },
-        {
-            "key": "field_5e8f3b55fb138",
-            "label": "CTA Button",
-            "name": "site_cta_button",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array"
+            "mime_types": "",
+            "uploader": "",
+            "acfe_thumbnail": 0,
+            "upload_folder": ""
         },
         {
             "key": "field_5e8df3a4652f5",
@@ -102,7 +141,8 @@
             },
             "placement": "top",
             "endpoint": 0,
-            "selected": 0
+            "selected": 0,
+            "no_preference": 0
         },
         {
             "key": "field_5e221e4e145c0",
@@ -259,122 +299,6 @@
             "append": ""
         },
         {
-            "key": "field_5e32e813c0cd3",
-            "label": "Footer Mailing List",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "placement": "top",
-            "endpoint": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_680a5c9d38e48",
-            "label": "Site Footer Mailing List Heading",
-            "name": "site_footer_mailing_list_heading",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_680a5cc58ec7d",
-            "label": "Site Footer Mailing List Sub Heading",
-            "name": "site_footer_mailing_list_sub_heading",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_5e94bbdfd1b71",
-            "label": "Site Footer Mailing List Form",
-            "name": "site_footer_mailing_list_form",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "1": "Mailing List",
-                "2": "General Contact"
-            },
-            "default_value": false,
-            "allow_null": 1,
-            "multiple": 0,
-            "ui": 0,
-            "return_format": "value",
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
-            "key": "field_680a5e05b2bca",
-            "label": "Submit Button Alignment",
-            "name": "site_footer_mailing_list_submit_button_alignment",
-            "aria-label": "",
-            "type": "radio",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "choices": {
-                "inline-button": "Inline",
-                "stacked-button": "Stacked"
-            },
-            "default_value": "",
-            "return_format": "value",
-            "allow_null": 0,
-            "other_choice": 0,
-            "allow_in_bindings": 1,
-            "layout": "horizontal",
-            "save_other_choice": 0
-        },
-        {
             "key": "field_5e330ce948262",
             "label": "Social Media",
             "name": "",
@@ -390,7 +314,8 @@
             },
             "placement": "top",
             "endpoint": 0,
-            "selected": 0
+            "selected": 0,
+            "no_preference": 0
         },
         {
             "key": "field_5e8f5f50f7eb8",
@@ -445,6 +370,12 @@
                     "ui": 0,
                     "ajax": 0,
                     "placeholder": "",
+                    "allow_custom": 0,
+                    "search_placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": "",
+                    "max": "",
                     "parent_repeater": "field_5e8f5f50f7eb8"
                 },
                 {
@@ -466,7 +397,8 @@
                     "parent_repeater": "field_5e8f5f50f7eb8"
                 }
             ],
-            "rows_per_page": 20
+            "rows_per_page": 20,
+            "acfe_repeater_stylised_button": 0
         }
     ],
     "location": [
@@ -487,5 +419,12 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1745511065
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1746126476
 }

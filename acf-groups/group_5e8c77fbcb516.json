@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_5e9098420f796",
-            "label": "Layout Options",
+            "label": "Fonts",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -16,36 +16,11 @@
                 "class": "",
                 "id": ""
             },
+            "relevanssi_exclude": 0,
             "placement": "top",
             "endpoint": 0,
+            "no_preference": 0,
             "selected": 0
-        },
-        {
-            "key": "field_5e8cb8bbaf0e0",
-            "label": "Footer Layout",
-            "name": "site_footer_layout",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "1": "1",
-                "2": "2",
-                "3": "3"
-            },
-            "default_value": 1,
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "return_format": "value",
-            "ajax": 0,
-            "placeholder": ""
         },
         {
             "key": "field_5e8df52c55884",
@@ -65,7 +40,8 @@
             "placeholder": "",
             "maxlength": "",
             "rows": "",
-            "new_lines": ""
+            "new_lines": "",
+            "acfe_textarea_code": 0
         },
         {
             "key": "field_5e97330bdbc22",
@@ -103,7 +79,8 @@
             },
             "placement": "top",
             "endpoint": 0,
-            "selected": 0
+            "selected": 0,
+            "no_preference": 0
         },
         {
             "key": "field_5e9094a1eab1b",
@@ -123,7 +100,8 @@
             "default_value": 0,
             "ui": 0,
             "ui_on_text": "",
-            "ui_off_text": ""
+            "ui_off_text": "",
+            "style": ""
         },
         {
             "key": "field_5e9095b5eab1d",
@@ -143,7 +121,8 @@
             "default_value": 0,
             "ui": 0,
             "ui_on_text": "",
-            "ui_off_text": ""
+            "ui_off_text": "",
+            "style": ""
         },
         {
             "key": "field_5e90971feab1e",
@@ -163,7 +142,8 @@
             "default_value": 0,
             "ui": 0,
             "ui_on_text": "",
-            "ui_off_text": ""
+            "ui_off_text": "",
+            "style": ""
         },
         {
             "key": "field_5eb036ea6b93a",
@@ -181,7 +161,8 @@
             },
             "placement": "top",
             "endpoint": 0,
-            "selected": 0
+            "selected": 0,
+            "no_preference": 0
         },
         {
             "key": "field_5eb0374930678",
@@ -239,7 +220,8 @@
             },
             "placement": "top",
             "endpoint": 0,
-            "selected": 0
+            "selected": 0,
+            "no_preference": 0
         },
         {
             "key": "field_67193d86b4274",
@@ -261,7 +243,8 @@
             "allow_in_bindings": 0,
             "ui": 0,
             "ui_on_text": "",
-            "ui_off_text": ""
+            "ui_off_text": "",
+            "style": ""
         },
         {
             "key": "field_5eb1b4097c037",
@@ -283,7 +266,12 @@
             "display": "seamless",
             "layout": "block",
             "prefix_label": 1,
-            "prefix_name": 1
+            "prefix_name": 1,
+            "acfe_seamless_style": 0,
+            "acfe_clone_modal": 0,
+            "acfe_clone_modal_close": 0,
+            "acfe_clone_modal_button": "",
+            "acfe_clone_modal_size": "large"
         },
         {
             "key": "field_5eb1b4a9727f3",
@@ -305,7 +293,12 @@
             "display": "seamless",
             "layout": "block",
             "prefix_label": 1,
-            "prefix_name": 1
+            "prefix_name": 1,
+            "acfe_seamless_style": 0,
+            "acfe_clone_modal": 0,
+            "acfe_clone_modal_close": 0,
+            "acfe_clone_modal_button": "",
+            "acfe_clone_modal_size": "large"
         },
         {
             "key": "field_5eb1b4c0727f4",
@@ -327,7 +320,12 @@
             "display": "seamless",
             "layout": "block",
             "prefix_label": 1,
-            "prefix_name": 1
+            "prefix_name": 1,
+            "acfe_seamless_style": 0,
+            "acfe_clone_modal": 0,
+            "acfe_clone_modal_close": 0,
+            "acfe_clone_modal_button": "",
+            "acfe_clone_modal_size": "large"
         },
         {
             "key": "field_5eb1caa1e0373",
@@ -354,7 +352,13 @@
             "ui": 0,
             "return_format": "value",
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "allow_custom": 0,
+            "search_placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": ""
         },
         {
             "key": "field_5eb1b92e693de",
@@ -372,7 +376,15 @@
             },
             "default_value": "",
             "enable_opacity": false,
-            "return_format": "string"
+            "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": true,
+            "absolute": false,
+            "input": true,
+            "allow_null": true,
+            "theme_colors": false,
+            "colors": []
         },
         {
             "key": "field_5eb1b968693df",
@@ -412,7 +424,13 @@
             "ui": 0,
             "return_format": "value",
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "allow_custom": 0,
+            "search_placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": ""
         },
         {
             "key": "field_5eb1b9bb693e0",
@@ -430,7 +448,15 @@
             },
             "default_value": "",
             "enable_opacity": false,
-            "return_format": "string"
+            "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": true,
+            "absolute": false,
+            "input": true,
+            "allow_null": true,
+            "theme_colors": false,
+            "colors": []
         },
         {
             "key": "field_5eb316d2400fe",
@@ -474,7 +500,12 @@
             "display": "seamless",
             "layout": "block",
             "prefix_label": 1,
-            "prefix_name": 1
+            "prefix_name": 1,
+            "acfe_seamless_style": 0,
+            "acfe_clone_modal": 0,
+            "acfe_clone_modal_close": 0,
+            "acfe_clone_modal_button": "",
+            "acfe_clone_modal_size": "large"
         },
         {
             "key": "field_5f906bbc1d311",
@@ -492,7 +523,8 @@
             },
             "placement": "top",
             "endpoint": 0,
-            "selected": 0
+            "selected": 0,
+            "no_preference": 0
         },
         {
             "key": "field_5f906996cfcdd",
@@ -512,7 +544,8 @@
             "placeholder": "",
             "maxlength": "",
             "rows": "",
-            "new_lines": ""
+            "new_lines": "",
+            "acfe_textarea_code": 0
         },
         {
             "key": "field_5f9069e3cfcde",
@@ -532,7 +565,8 @@
             "placeholder": "",
             "maxlength": "",
             "rows": "",
-            "new_lines": ""
+            "new_lines": "",
+            "acfe_textarea_code": 0
         },
         {
             "key": "field_5f9069f8cfcdf",
@@ -552,7 +586,8 @@
             "placeholder": "",
             "maxlength": "",
             "rows": "",
-            "new_lines": ""
+            "new_lines": "",
+            "acfe_textarea_code": 0
         }
     ],
     "location": [
@@ -578,5 +613,12 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1745605519
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1746126504
 }

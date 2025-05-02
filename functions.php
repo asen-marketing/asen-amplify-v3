@@ -4,6 +4,7 @@ require_once(get_template_directory() . '/includes/development.php');
 require_once(get_template_directory() . '/includes/theme.php');
 require_once(get_template_directory() . '/includes/helpers.php');
 require_once(get_template_directory() . '/includes/head-mods.php');
+require_once(get_template_directory() . '/includes/footer-mods.php');
 require_once(get_template_directory() . '/includes/body-class-mods.php');
 require_once(get_template_directory() . '/includes/backend-mods.php');
 require_once(get_template_directory() . '/includes/custom-post-types.php');

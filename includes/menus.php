@@ -8,7 +8,8 @@ function asen_theme_menus() {
         'primary-menu' => 'Primary Menu',
         'off-canvas-menu' => 'Off Canvas Menu',
         'off-canvas-bottom-menu' => 'Off Canvas Bottom Menu',
-        'footer-menu' => 'Footer Menu'
+        'footer-menu' => 'Footer Menu',
+        'footer-menu-2' => 'Footer Menu Column 2'
     ]);
 }
 add_action( 'after_setup_theme', 'asen_theme_menus' );
