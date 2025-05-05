@@ -11,8 +11,27 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 2rem;
+  }
+
+  .team-item {
+    img {
+      padding-bottom: 1rem;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    h3.team-member-name {
+      text-align: center;
+      font-size: 30px;
+    }
+
+    h4.team-member-position {
+      text-align: center;
+      font-size: 25px;
+    }
   }
 
   ul,

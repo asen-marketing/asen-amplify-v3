@@ -1,3 +1,4 @@
+<?php function asen_custom_css_footer() { ?>
 <style>
 .site-footer {
     .top {
@@ -58,3 +59,8 @@
     }
 }
 </style>
+
+<?php
+}
+add_action('wp_footer', 'asen_custom_css_footer', 100);
+?>

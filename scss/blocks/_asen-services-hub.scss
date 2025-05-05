@@ -1,18 +1,44 @@
 .asen-services-hub {
+  position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding-left: $site-overall-gutter;
   padding-right: $site-overall-gutter;
   @include site-overall-gutter-small;
   @include site-vertical-padding-dynamic();
+
+  &.has-background {
+    padding-bottom: 0;
+    @include site-vertical-margin-dynamic();
+
+    &::after {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 85%;
+      content: "";
+      z-index: 0;
+    }
+
+    .heading-container {
+      position: relative;
+      z-index: 1;
+      width: #{$site-overall-max-width - 200px};
+    }
+  }
 
   .inside {
     max-width: $site-overall-max-width;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 2rem;
+    position: relative;
+    z-index: 1;
   }
 
   ul,
@@ -21,25 +47,51 @@
   }
 
   .glide {
-    max-width: #{$site-overall-max-width - 100px};
+    max-width: #{$site-overall-max-width - 200px};
   }
 
   .service-item {
     height: auto;
-    padding: 2rem 2rem 2.5rem;
+    padding-top: 2rem;
+
+    &.has-image {
+      padding-top: 0;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    i {
+      padding-left: 2rem;
+      font-size: 40px;
+    }
+
+    .copy-container {
+      padding: 2rem;
+    }
+
+    h3.service-title {
+      font-size: 34px;
+    }
+    p.service-blurb {
+      font-size: 22px;
+    }
   }
 
   .controls {
     position: absolute;
-    top: 33%;
-    right: -100px;
+    top: 45%;
+    left: 0;
+    right: 0;
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    flex-direction: row;
+    justify-content: space-between;
 
     button {
       border-radius: 50%;
-      border: 3px solid #000;
       background-color: transparent;
       width: 50px;
       font-size: 30px;

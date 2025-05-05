@@ -42,9 +42,10 @@ $carousel = get_field('use_carousel');
                     <li class="<?php echo $carousel ? 'glide__slide ' : ''; ?> team-item<?php echo ($index == 1 ? ' is-active' : ''); ?>"
                         data-slide-id="<?php echo $index - 1; ?>">
                         <?php echo wp_get_attachment_image($image, 'full'); ?>
-                        <h3><?php echo $name; ?></h3>
-                        <h4><?php echo $position; ?></h4>
-                        <p><?php echo $bio; ?></p>
+                        <h3 class="team-member-name"><?php echo $name; ?></h3>
+                        <h4 class="team-member-position"><?php echo $position; ?></h4>
+                        <?php if ($bio && get_field('tier_3', 'option')) : ?><p><?php echo $bio; ?></p>
+                        <?php endif; ?>
                     </li>
                     <?php endforeach; ?>
                     <?php endif; ?>
@@ -63,6 +64,17 @@ $carousel = get_field('use_carousel');
 
 ?>.inside .glide__slide {
     width: calc(100% / <?php echo get_field('number_of_columns'); ?> + (2rem / <?php echo get_field('number_of_columns'); ?>) - 2rem);
+
+    h3.team-member-name {
+        color: <?php the_field('name_color');
+        ?>;
+    }
+
+    h4,
+    p {
+        color: <?php the_field('text_color');
+        ?>;
+    }
 }
 
 @media (max-width: 1024px) {
