@@ -43,23 +43,23 @@
       &::after {
         font-weight: 700;
         text-transform: none;
-        content: "+";
+        font-family: "Font Awesome 6 Pro";
+        content: "\2b";
         display: block;
-        font-size: 40px;
+        font-size: 35px;
         position: absolute;
         right: 1rem;
         top: 50%;
-        transform: translateY(-55%);
+        transform: translateY(-50%);
 
         @media (max-width: $breakpoint-small) {
-          font-size: 35px;
+          font-size: 28px;
         }
       }
 
       &.active {
         &::after {
-          content: "-";
-          transform: translateY(-55%) scaleX(1.5);
+          content: "\f068";
         }
       }
 

@@ -81,6 +81,7 @@
     right: 0;
     bottom: 0;
     opacity: 0.8;
+    z-index: 2;
 
     &.custom {
       opacity: 0.35;
@@ -91,12 +92,17 @@
     max-width: $site-overall-max-width;
     position: relative;
     width: 100%;
-    z-index: 2;
+    z-index: 3;
   }
   // .copy {}
   .buttons {
     .button {
       margin: 0 8px 8px 0;
+    }
+
+    i {
+      padding-left: 8px;
+      transition: none;
     }
   }
 
@@ -104,7 +110,13 @@
     font-size: 100px;
   }
 
-  p {
+  p.eyebrow {
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+
+  p.subtitle {
     font-size: 32px;
 
     @media (max-width: $breakpoint-laptop-small) {

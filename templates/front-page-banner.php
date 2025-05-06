@@ -12,6 +12,7 @@ $styles = '';
 $background_image_styles = '';
 $background_overlay_classes = '';
 $background_overlay_styles = '';
+$eyebrow_styles = '';
 $title_styles = '';
 $title_classes = '';
 $subtitle_styles = '';
@@ -20,7 +21,7 @@ $blurb_styles = '';
 $button_styles = '';
 $thumb_size = 'asen-banner-general';
 
-$slider = get_field('enable_slider');
+$slider = get_field('slider_options') != 'none';
 $slides = get_field('hero_slides');
 
 if ($slides) {
@@ -38,6 +39,9 @@ if (!$slider || !$total_slides) {
         $background_image_styles .= 'mix-blend-mode: ' . get_field('background_blend_mode') . ';';
     }
 }
+if ( get_field('background_overlay_opacity') ) {
+    $background_overlay_styles .= 'opacity: ' . get_field('background_overlay_opacity') . ';';
+}
 if ( get_field('background_overlay_color') ) {
     $background_overlay_styles .= 'background-color: ' . get_field('background_overlay_color') . ';';
 }
@@ -52,6 +56,12 @@ if ( get_field('margin_top') ) {
 }
 if ( get_field('margin_bottom') ) {
     $styles .= 'margin-bottom: ' . get_field('margin_bottom') . get_field('margin_bottom_unit_type') . ';';
+}
+if ( get_field('eyebrow_color') ) {
+    $eyebrow_styles .= 'color: ' . get_field('eyebrow_color') . ';';
+}
+if (get_field('eyebrow_size')) {
+    $eyebrow_styles .= 'font-size: ' . get_field('eyebrow_size') . 'px;';
 }
 if ( get_field('title_color') ) {
     $title_styles .= 'color: ' . get_field('title_color') . ';';
@@ -75,6 +85,7 @@ if (get_field('blurb_size')) {
     $blurb_styles .= 'font-size: ' . get_field('blurb_size') . 'px;';
 }
 if ( get_field('text_align') ) {
+    $eyebrow_styles .= 'text-align: ' . get_field('text_align') . ';';
     $title_styles .= 'text-align: ' . get_field('text_align') . ';';
     $subtitle_styles .= 'text-align: ' . get_field('text_align') . ';';
     $blurb_styles .= 'text-align: ' . get_field('text_align') . ';';
@@ -88,6 +99,7 @@ if ( get_field('text_align') ) {
     <div class="slider<?php if (get_field('slider_options') === 'text') echo ' has-text'; ?>">
         <?php foreach ($slides as $index => $slide_row) : 
             $image = $slide_row['image'];
+            $eyebrow = $slide_row['eyebrow'];
             $title = $slide_row['title'];
             $subtitle = $slide_row['subtitle'];
             $blurb = $slide_row['blurb'];
@@ -108,7 +120,7 @@ if ( get_field('text_align') ) {
         (get_field('background_desktop_video') ||
         get_field('background_desktop_video_webm') ||
         get_field('background_mobile_video') ||
-        get_field('background_mobile_video_webm')) && !get_field('enable_slider')
+        get_field('background_mobile_video_webm')) && !$slider
     ) : ?>
     <div class="background-video">
         <video autoplay muted loop playsinline></video>
@@ -120,6 +132,11 @@ if ( get_field('text_align') ) {
     <?php endif; ?>
     <div class="inside">
         <div class="copy">
+            <?php if (get_field('eyebrow')) : ?>
+            <p class="eyebrow" <?php echo ($eyebrow_styles != '' ? 'style="' . $eyebrow_styles . '"' : ''); ?>>
+                <?php the_field('eyebrow'); ?>
+            </p>
+            <?php endif; ?>
             <?php if ( get_field('title') ) : ?>
             <h1 class="<?php echo $title_classes ; ?>"
                 <?php echo ($title_styles != '' ? 'style="' . $title_styles . '"' : ''); ?>>
@@ -133,38 +150,91 @@ if ( get_field('text_align') ) {
             </h2>
             <?php endif; ?>
             <?php if ( get_field('blurb') ) : ?>
-            <p <?php echo ($blurb_styles != '' ? 'style="' . $blurb_styles . '"' : ''); ?>>
+            <p class="blurb" <?php echo ($blurb_styles != '' ? 'style="' . $blurb_styles . '"' : ''); ?>>
                 <?php the_field('blurb'); ?>
             </p>
             <?php endif; ?>
         </div>
-        <?php if (
-            get_field('button_1_wp_link') && get_field('button_1_text') || get_field('button_1_text_link') && get_field('button_1_text') ||
-            get_field('button_2_wp_link') && get_field('button_2_text') || get_field('button_2_text_link') && get_field('button_2_text')
-        ) : ?>
+        <?php 
+        $link_1 = get_field('link_1');
+        $link_2 = get_field('link_2');
+        $icon = get_field('link_icon');
+        $button_options = get_field('button_options');
+
+        if (
+            $button_options !== 'none'
+        ) : 
+        ?>
         <div class="buttons" <?php echo ($button_styles != '' ? 'style="' . $button_styles . '"' : ''); ?>>
-            <?php if (get_field('button_1_wp_link') && get_field('button_1_text') || get_field('button_1_text_link') && get_field('button_1_text')) : ?>
-            <?php
-                        $button_1_link = (get_field('button_1_link_type') == true ? get_field('button_1_text_link') : get_field('button_1_wp_link'));
-                    ?>
-            <a class="button button-1" href="<?php echo $button_1_link; ?>" title="<?php the_field('button_1_text'); ?>"
-                <?php echo (get_field('button_1_target') == '_blank' ? 'target="_blank"' : ''); ?>>
-                <?php the_field('button_1_text'); ?>
+            <?php if ($link_1) : ?>
+            <a class="<?php echo $button_options === 'text' ? 'link' : 'button button-1'; ?>"
+                href="<?php echo $link_1['url']; ?>" title="<?php echo $link_1['title']; ?>"
+                target="<?php echo $link_1['target']; ?>">
+                <?php echo $link_1['title']; ?><?php if ($button_options === 'text' && $icon) echo $icon; ?>
             </a>
             <?php endif; ?>
-            <?php if (get_field('button_2_wp_link') && get_field('button_2_text') || get_field('button_2_text_link') && get_field('button_2_text')) : ?>
-            <?php
-                        $button_2_link = (get_field('button_2_link_type') == true ? get_field('button_2_text_link') : get_field('button_2_wp_link'));
-                    ?>
-            <a class="button button-2" href="<?php echo $button_2_link; ?>" title="<?php the_field('button_2_text'); ?>"
-                <?php echo (get_field('button_2_target') == '_blank' ? 'target="_blank"' : ''); ?>>
-                <?php the_field('button_2_text'); ?>
+            <?php if ($link_2 && $button_options === 'two') : ?>
+            <a class="button button-2" href="<?php echo $link_2['url']; ?>" title="<?php echo $link_2['title']; ?>"
+                target="<?php echo $link_2['target']; ?>">
+                <?php echo $link_2['title']; ?>
             </a>
             <?php endif; ?>
         </div>
         <?php endif; ?>
     </div>
 </header>
+
+<?php 
+        $single_button_styles = get_field('button_styles');
+        $link_font_size = get_field('link_font_size');
+        
+        if (is_array($single_button_styles)) {
+
+            if ($single_button_styles[0]['button_text_color']) {
+                $button_text = $single_button_styles[0]['button_text_color'];
+            }
+            if ($single_button_styles[0]['button_text_hover_color']) {
+                $button_text_hover = $single_button_styles[0]['button_text_hover_color'];
+            }
+            if ($single_button_styles[0]['button_background_color']) {
+                $button_background = $single_button_styles[0]['button_background_color'];
+            }
+            if ($single_button_styles[0]['button_background_hover_color']) {
+                $button_background_hover = $single_button_styles[0]['button_background_hover_color'];
+            }
+        }
+        ?>
+<style>
+.asen-front-page-banner .buttons a {
+    color: <?php echo $button_text;
+    ?>;
+    font-size: <?php echo $link_font_size . 'px';
+    ?>;
+
+    i {
+        font-size: <?php echo ($link_font_size * 0.8) . 'px';
+        ?>;
+    }
+}
+
+.asen-front-page-banner .buttons a:hover {
+    color: <?php echo $button_text_hover;
+    ?>;
+    font-size: <?php echo $link_font_size . 'px';
+    ?>;
+}
+
+.asen-front-page-banner .buttons a.button {
+    background-color: <?php echo $button_background;
+    ?>;
+}
+
+.asen-front-page-banner .buttons a.button:hover {
+    background-color: <?php echo $button_background_hover;
+    ?>;
+}
+</style>
+
 <?php if ((
     get_field('background_desktop_video') ||
     get_field('background_desktop_video_webm') ||
