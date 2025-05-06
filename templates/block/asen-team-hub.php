@@ -16,20 +16,23 @@ if( !empty($block['className']) ) {
 
 $team_members = get_field('team_members');
 $carousel = get_field('use_carousel');
+$nav_rows = get_field('nav_arrow_icons');
+$prev_icon = $nav_rows[0]['previous_button_icon'];
+$next_icon = $nav_rows[0]['next_button_icon'];
+$nav_color = $nav_rows[0]['nav_arrow_color'];
 ?>
 
 <section class="asen-team-hub asen-team-hub-<?php echo $block['id']; echo $className; ?>">
     <div class="inside<?php echo $carousel ? ' carousel' : ' grid'; ?>">
         <?php if ($team_members) : ?>
         <?php if ($carousel) : ?>
+        <div class="controls" data-glide-el="controls">
+            <button class="previous" data-glide-dir="<" title="Show previous slide"
+                aria-controls="carousel-<?php echo $block['id']; ?>"><?php echo $prev_icon; ?></button>
+            <button class="next" data-glide-dir="&#x0003E;" title="Show next slide"
+                aria-controls="carousel-<?php echo $block['id']; ?>"><?php echo $next_icon; ?></button>
+        </div>
         <div class="glide glide-<?php echo $block['id']; ?>">
-            <div class="controls" data-glide-el="controls">
-                <button class="next" data-glide-dir="&#x0003E;" title="Show next slide"
-                    aria-controls="carousel-<?php echo $block['id']; ?>"><i
-                        class="fa-regular fa-angle-right"></i></button>
-                <button class="previous" data-glide-dir="<" title="Show previous slide"
-                    aria-controls="carousel-<?php echo $block['id']; ?>"><i class="fa-light fa-angle-left"></i></button>
-            </div>
             <div data-glide-el="track" class="glide__track" id="carousel-<?php echo $block['id']; ?>">
                 <ul class="glide__slides">
                     <?php endif; ?>
@@ -44,8 +47,6 @@ $carousel = get_field('use_carousel');
                         <?php echo wp_get_attachment_image($image, 'full'); ?>
                         <h3 class="team-member-name"><?php echo $name; ?></h3>
                         <h4 class="team-member-position"><?php echo $position; ?></h4>
-                        <?php if ($bio && get_field('tier_3', 'option')) : ?><p><?php echo $bio; ?></p>
-                        <?php endif; ?>
                     </li>
                     <?php endforeach; ?>
                     <?php endif; ?>
@@ -77,6 +78,20 @@ $carousel = get_field('use_carousel');
     }
 }
 
+.asen-team-hub-<?php echo $block['id'] . ' ';
+
+?>.controls {
+    button {
+        border: 3px solid <?php echo $nav_color;
+        ?>;
+    }
+
+    i {
+        color: <?php echo $nav_color;
+        ?>;
+    }
+}
+
 @media (max-width: 1024px) {
 
     .asen-team-hub .inside .team-item,
@@ -100,7 +115,9 @@ $carousel = get_field('use_carousel');
 (function($) {
     "use strict";
     var windowObject = $(window),
-        carouselContainer = $('.asen-team-grid-<?php echo $block['id']; ?>');
+        carouselContainer = $('.asen-team-grid-<?php echo $block['id']; ?>'),
+        prevButton = $('.controls > .previous'),
+        nextButton = $('.controls > .next')
 
     $(document).ready(function() {
         var glide = new Glide(".glide-<?php echo $block['id']; ?>", {
@@ -142,6 +159,13 @@ $carousel = get_field('use_carousel');
             newActive.next().next().addClass('third');
             newActive.removeClass('is-previous').addClass('is-active');
         });
+
+        prevButton.on('click', function() {
+            glide.go('<')
+        })
+        nextButton.on('click', function() {
+            glide.go('>')
+        })
 
         glide.mount();
     }); // End window loaded.

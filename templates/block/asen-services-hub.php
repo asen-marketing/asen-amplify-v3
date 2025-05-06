@@ -23,11 +23,31 @@ $nav_color = $nav_rows[0]['nav_arrow_color'];
 $colors = get_field('service_colors');
 $bg_colors = [];
 $text_colors = [];
+$link_colors = [];
+$link_hover_colors = [];
+$button_colors = [];
+$button_hover_colors = [];
 $total_colors = 1;
 
 foreach ($colors as $index => $color_row) {
-    array_push($bg_colors, $color_row['bg_color']);
+    if ($color_row['bg_color']) {
+        array_push($bg_colors, $color_row['bg_color']);
+    }
+    if ($color_row['text_color']) {
     array_push($text_colors, $color_row['text_color']);
+    }
+    if ($color_row['link_color']) {
+    array_push($link_colors, $color_row['link_color']);
+    }
+    if ($color_row['link_hover_color']) {
+    array_push($link_hover_colors, $color_row['link_hover_color']);
+    }
+    if ($color_row['button_color']) {
+        array_push($button_colors, $color_row['button_color']);
+        }
+    if ($color_row['button_hover_color']) {
+        array_push($button_hover_colors, $color_row['button_hover_color']);
+        }
     $total_colors++;
 }
 
@@ -62,7 +82,7 @@ foreach ($colors as $index => $color_row) {
                 $image = get_field( 'service_image', $service->ID );
                 $icon = get_field('icon_code', $service->ID);
                 $blurb = get_field('service_blurb', $service->ID);
-                $link = get_field('service_link', $service->ID);
+                $link = get_permalink($service->ID);
                 $color = ($index + 1) % $total_colors;
                 if ($color === 0) $color = 1;
                 
@@ -77,11 +97,14 @@ foreach ($colors as $index => $color_row) {
                         <div class="copy-container">
                             <h3 class="service-title"><?php echo $name; ?></h3>
                             <p class="service-blurb"><?php echo $blurb; ?></p>
-                            <?php if ($link && get_field('tier_3', 'option')) : ?>
-                            <a class="service-link" href="<?php echo $link['url']; ?>"
-                                title="<?php echo $link['title']; ?>"
-                                target="<?php echo $link['target']; ?>"><?php echo $link['title']; ?>
-                                <?php echo get_field('link_icon_code'); ?></a>
+                            <?php if ($link && get_field('tier_3', 'option') && get_field('link_style') !== 'none') : ?>
+                            <?php 
+                                $link_text = get_field('link_text');
+                                $style = get_field('link_style');
+                                ?>
+
+                            <a class="service-link <?php echo $style; ?>" href="<?php echo $link; ?>"
+                                title="<?php echo $link_text; ?>"><?php echo $link_text; if ($style === 'icon') echo get_field('link_icon_code'); ?></a>
                             <?php endif; ?>
                         </div>
                     </li>
@@ -152,12 +175,6 @@ foreach ($colors as $index => $color_row) {
         ?>;
     }
 
-    a,
-    a>i {
-        color: <?php echo get_field('service_link_color');
-        ?>;
-    }
-
     a:hover {
         color: <?php echo get_field('service_link_hover_color');
         ?>;
@@ -204,6 +221,28 @@ foreach ($colors as $index => $color_row) {
             color: <?php echo $text_colors[0];
             ?>;
         }
+
+        a,
+        a>i {
+            color: <?php echo $link_colors[0];
+            ?>;
+        }
+
+        a:hover,
+        a:hover>i {
+            color: <?php echo $link_hover_colors[0];
+            ?>;
+        }
+
+        a.button {
+            background-color: <?php echo $button_colors[0];
+            ?>;
+        }
+
+        a.button:hover {
+            background-color: <?php echo $button_hover_colors[0];
+            ?>;
+        }
     }
 
     .service-item.color-2 {
@@ -216,6 +255,28 @@ foreach ($colors as $index => $color_row) {
             color: <?php echo $text_colors[1];
             ?>;
         }
+
+        a,
+        a>i {
+            color: <?php echo $link_colors[1];
+            ?>;
+        }
+
+        a:hover,
+        a:hover>i {
+            color: <?php echo $link_hover_colors[1];
+            ?>;
+        }
+
+        a.button {
+            background-color: <?php echo $button_colors[1];
+            ?>;
+        }
+
+        a.button:hover {
+            background-color: <?php echo $button_hover_colors[1];
+            ?>;
+        }
     }
 
     .service-item.color-3 {
@@ -226,6 +287,28 @@ foreach ($colors as $index => $color_row) {
 
         h3 {
             color: <?php echo $text_colors[2];
+            ?>;
+        }
+
+        a,
+        a>i {
+            color: <?php echo $link_colors[2];
+            ?>;
+        }
+
+        a:hover,
+        a:hover>i {
+            color: <?php echo $link_hover_colors[2];
+            ?>;
+        }
+
+        a.button {
+            background-color: <?php echo $button_colors[2];
+            ?>;
+        }
+
+        a.button:hover {
+            background-color: <?php echo $button_hover_colors[2];
             ?>;
         }
     }
