@@ -8,10 +8,12 @@
 
   &.carousel {
     padding: 0;
+    position: relative;
     @include site-vertical-margin-dynamic();
 
     .width-container {
       width: $site-overall-max-width;
+      position: relative;
       height: 100%;
       display: flex;
       justify-content: center;
@@ -28,11 +30,13 @@
     width: 100%;
 
     &.grid {
-      display: grid;
-      gap: 2rem;
+      // display: grid;
+      // gap: 2rem;
 
       .testimonial-item {
-        grid-column: initial;
+        break-inside: avoid-column;
+        width: 100%;
+        margin-bottom: 1em;
       }
 
       p.quote {
@@ -125,6 +129,27 @@
 
       &.active {
         opacity: 1;
+      }
+    }
+  }
+
+  .controls {
+    position: absolute;
+    top: 40%;
+    left: $site-overall-gutter;
+    right: $site-overall-gutter;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    button {
+      border-radius: 50%;
+      background-color: transparent;
+      width: 50px;
+      font-size: 30px;
+
+      i {
+        font-weight: 500;
       }
     }
   }

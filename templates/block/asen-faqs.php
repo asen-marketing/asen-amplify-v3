@@ -62,6 +62,9 @@ $all_faqs = get_posts($args);
             <?php if ($copy) : ?>
             <?php echo $copy; ?>
             <?php endif; ?>
+            <?php if (get_field('show_contact_us_disclaimer')) : ?>
+            <p class="disclaimer">Didn't find your answer? <a href="/contact" title="Contact Us">Contact us</a>.</p>
+            <?php endif; ?>
         </div>
         <?php endif; ?>
 
@@ -85,7 +88,7 @@ $all_faqs = get_posts($args);
         <?php endif; ?>
 
         <?php wp_reset_postdata(); ?>
-        <?php if (get_field('show_contact_us_disclaimer')) : ?>
+        <?php if (get_field('show_contact_us_disclaimer') && !$split_layout) : ?>
         <p class="disclaimer">Didn't find your answer? <a href="/contact" title="Contact Us">Contact us</a>.</p>
         <?php endif; ?>
     </div>
@@ -128,54 +131,57 @@ if ($split_styles) {
         }
     }
 
-    .question {
-        background-color: <?php the_field('question_bar_color');
-        ?>;
 
-        h6 {
+    .faq {
+        .question {
+            background-color: <?php the_field('question_bar_color');
+            ?>;
+
+            h6 {
+                color: <?php the_field('question_bar_text_color');
+                ?>;
+            }
+        }
+
+
+        .question::after {
             color: <?php the_field('question_bar_text_color');
             ?>;
+            font-size: <?php echo $icon_size . 'px';
+            ?>;
+            content: "<?php echo '\\' . $open_icon; ?>";
         }
-    }
 
+        .question:hover {
+            background-color: <?php the_field('question_bar_active_color');
+            ?>;
 
-    .question::after {
-        color: <?php the_field('question_bar_text_color');
-        ?>;
-        font-size: <?php echo $icon_size . 'px';
-        ?>;
-        content: "<?php echo '\\' . $open_icon; ?>";
-    }
+            h6 {
+                color: <?php the_field('question_bar_active_text_color');
+                ?>;
+            }
+        }
 
-    .question:hover {
-        background-color: <?php the_field('question_bar_active_color');
-        ?>;
+        .question:hover::after {
+            color: <?php the_field('question_bar_active_text_color');
+            ?>
+        }
 
-        h6 {
+        .question.active {
+            background-color: <?php the_field('question_bar_active_color');
+            ?>;
+
+            h6 {
+                color: <?php the_field('question_bar_active_text_color');
+                ?>;
+            }
+        }
+
+        .question.active::after {
             color: <?php the_field('question_bar_active_text_color');
             ?>;
+            content: "<?php echo '\\' . $close_icon; ?>";
         }
-    }
-
-    .question:hover::after {
-        color: <?php the_field('question_bar_active_text_color');
-        ?>
-    }
-
-    .question.active {
-        background-color: <?php the_field('question_bar_active_color');
-        ?>;
-
-        h6 {
-            color: <?php the_field('question_bar_active_text_color');
-            ?>;
-        }
-    }
-
-    .question.active::after {
-        color: <?php the_field('question_bar_active_text_color');
-        ?>;
-        content: "<?php echo '\\' . $close_icon; ?>";
     }
 }
 </style>

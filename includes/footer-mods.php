@@ -74,7 +74,7 @@
     }
 }
 
-.site-footer.layout-2 {
+.site-footer.simple {
     .bottom {
         background-color: <?php the_field('footer_background_color', 'option');
         ?>;

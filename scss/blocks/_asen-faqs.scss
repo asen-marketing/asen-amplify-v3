@@ -47,6 +47,7 @@
       transition: all 100ms ease;
       position: relative;
       cursor: pointer;
+      background-color: #eaeaea;
 
       h6 {
         font-weight: 700;
@@ -56,6 +57,7 @@
         padding: 0;
         max-width: 88%;
         transition: all 200ms ease;
+        color: #212527;
 
         @media (max-width: $breakpoint-small) {
           font-size: 23px;
@@ -79,6 +81,18 @@
 
       &:hover {
         transition: all 200ms ease;
+      }
+
+      &.active {
+        background-color: #e81771;
+
+        h6 {
+          color: #fff;
+        }
+
+        &::after {
+          color: #fff;
+        }
       }
     }
 
