@@ -84,6 +84,9 @@ if ( get_field('blurb_color') ) {
 if (get_field('blurb_size')) {
     $blurb_styles .= 'font-size: ' . get_field('blurb_size') . 'px;';
 }
+if (get_field('blurb_max_width') && get_field('text_align') == 'center') {
+    $blurb_styles .= 'max-width: ' . get_field('blurb_max_width') . '%;';
+}
 if ( get_field('text_align') ) {
     $eyebrow_styles .= 'text-align: ' . get_field('text_align') . ';';
     $title_styles .= 'text-align: ' . get_field('text_align') . ';';
@@ -131,9 +134,9 @@ if ( get_field('text_align') ) {
         <?php echo ($background_overlay_styles != '' ? 'style="' . $background_overlay_styles . '"' : ''); ?>></div>
     <?php endif; ?>
     <div class="inside">
-        <div class="copy">
+        <div class="copy <?php echo get_field('text_align'); ?>">
             <?php if (get_field('eyebrow')) : ?>
-            <p class="eyebrow" <?php echo ($eyebrow_styles != '' ? 'style="' . $eyebrow_styles . '"' : ''); ?>>
+            <p class=" eyebrow" <?php echo ($eyebrow_styles != '' ? 'style="' . $eyebrow_styles . '"' : ''); ?>>
                 <?php the_field('eyebrow'); ?>
             </p>
             <?php endif; ?>

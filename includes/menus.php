@@ -9,7 +9,8 @@ function asen_theme_menus() {
         'off-canvas-menu' => 'Off Canvas Menu',
         'off-canvas-bottom-menu' => 'Off Canvas Bottom Menu',
         'footer-menu' => 'Footer Menu',
-        'footer-menu-2' => 'Footer Menu Column 2'
+        'footer-menu-2' => 'Footer Menu Column 2',
+        'footer-menu-3' => 'Footer Menu Column 3'
     ]);
 }
 add_action( 'after_setup_theme', 'asen_theme_menus' );

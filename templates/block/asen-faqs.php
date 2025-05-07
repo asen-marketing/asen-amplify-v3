@@ -15,6 +15,9 @@ if( !empty($block['className']) ) {
 }
 
 $all_faqs = null;
+$split_layout = get_field('split_layout');
+$heading = get_field('heading');
+$copy = get_field('copy');
 
 if (!get_field('faq_categories')) {
     $all_faqs = get_field('faq_selection');
@@ -47,24 +50,40 @@ $all_faqs = get_posts($args);
 
 ?>
 
-<section class="asen-faqs asen-faqs-<?php echo $block['id']; echo $className; ?>">
+<section
+    class="asen-faqs<?php echo $split_layout ? ' split-layout' : ''; ?> asen-faqs-<?php echo $block['id']; echo $className; ?>">
     <div class="inside">
+
+        <?php if ($split_layout) : ?>
+        <div class="copy-container">
+            <?php if ($heading) : ?>
+            <h3><?php echo $heading; ?></h3>
+            <?php endif; ?>
+            <?php if ($copy) : ?>
+            <?php echo $copy; ?>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
+
         <?php
         if( $all_faqs ): ?>
-        <?php foreach( $all_faqs as $index => $faq_post ): 
+        <div class="faq-container">
+            <?php foreach( $all_faqs as $index => $faq_post ): 
                 $title = get_the_title( $faq_post->ID );
                 $faq_answer = get_field( 'faq_answer', $faq_post->ID );
                 ?>
-        <div class="faq">
-            <div class="question trigger-<?php echo trim($className); ?>" data-faq="<?php echo $index; ?>">
-                <h6 class="copy"><?php echo ( $title ); ?></h6>
+            <div class="faq">
+                <div class="question trigger-<?php echo trim($className); ?>" data-faq="<?php echo $index; ?>">
+                    <h6 class="copy"><?php echo ( $title ); ?></h6>
+                </div>
+                <p class="answer faq-answer-<?php echo trim($className); ?>" data-faq="<?php echo $index; ?>">
+                    <?php echo ( $faq_answer ); ?>
+                </p>
             </div>
-            <p class="answer faq-answer-<?php echo trim($className); ?>" data-faq="<?php echo $index; ?>">
-                <?php echo ( $faq_answer ); ?>
-            </p>
+            <?php endforeach; ?>
         </div>
-        <?php endforeach; ?>
         <?php endif; ?>
+
         <?php wp_reset_postdata(); ?>
         <?php if (get_field('show_contact_us_disclaimer')) : ?>
         <p class="disclaimer">Didn't find your answer? <a href="/contact" title="Contact Us">Contact us</a>.</p>
@@ -72,8 +91,43 @@ $all_faqs = get_posts($args);
     </div>
 </section>
 
+<?php 
+$open_close_styles = get_field('open_close_icons');
+$split_styles = get_field('split_text_styles');
+
+if ($open_close_styles) {
+    $icon_size = $open_close_styles[0]['icon_size'];
+    $open_icon = $open_close_styles[0]['open_icon'];
+    $close_icon = $open_close_styles[0]['close_icon'];
+}
+if ($split_styles) {
+    $heading_size = $split_styles[0]['heading_size'];
+    $heading_color = $split_styles[0]['heading_color'];
+    $copy_size = $split_styles[0]['copy_size'];
+    $copy_color = $split_styles[0]['copy_color'];
+}
+?>
+
 <style>
-.asen-faqs {
+.asen-faqs-<?php echo $block['id'];
+
+?> {
+    .copy-container {
+        h3 {
+            font-size: <?php echo $heading_size . 'px';
+            ?>;
+            color: <?php echo $heading_color;
+            ?>;
+        }
+
+        p {
+            font-size: <?php echo $copy_size . 'px';
+            ?>;
+            color: <?php echo $copy_color;
+            ?>;
+        }
+    }
+
     .question {
         background-color: <?php the_field('question_bar_color');
         ?>;
@@ -87,7 +141,10 @@ $all_faqs = get_posts($args);
 
     .question::after {
         color: <?php the_field('question_bar_text_color');
-        ?>
+        ?>;
+        font-size: <?php echo $icon_size . 'px';
+        ?>;
+        content: "<?php echo '\\' . $open_icon; ?>";
     }
 
     .question:hover {
@@ -117,15 +174,18 @@ $all_faqs = get_posts($args);
 
     .question.active::after {
         color: <?php the_field('question_bar_active_text_color');
-        ?>
+        ?>;
+        content: "<?php echo '\\' . $close_icon; ?>";
     }
 }
 </style>
 
 <script defer>
 (function($) {
-    var triggers = $('.trigger-<?php echo trim($className); ?>'),
-        answers = $('.faq-answer-<?php echo trim($className); ?>')
+
+    var faqBlock = $('.asen-faqs-<?php echo $block['id']; ?>'),
+        triggers = faqBlock.find('.trigger-<?php echo trim($className); ?>'),
+        answers = faqBlock.find('.faq-answer-<?php echo trim($className); ?>')
 
     answers.hide()
 
@@ -134,13 +194,13 @@ $all_faqs = get_posts($args);
 
         if ($(this).hasClass('active')) {
             $(this).removeClass('active')
-            answer.hide(250)
+            answer.hide(350)
             return
         }
         triggers.removeClass('active')
-        answers.hide(250)
+        answers.hide(350)
 
-        answer.toggle(250)
+        answer.toggle(350)
         $(this).toggleClass('active')
     })
 })(jQuery)

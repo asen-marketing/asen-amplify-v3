@@ -39,6 +39,52 @@
     gap: 2rem;
     position: relative;
     z-index: 1;
+
+    &.alternating {
+      max-width: 1050px;
+      gap: 3rem;
+
+      .service-item {
+        display: flex;
+        align-items: center;
+        max-height: 450px;
+        gap: 2rem;
+
+        @media (max-width: $breakpoint-tablet-small) {
+          flex-direction: column;
+          max-height: 100%;
+        }
+
+        &.reverse {
+          flex-direction: row-reverse;
+
+          @media (max-width: $breakpoint-tablet-small) {
+            flex-direction: column;
+          }
+        }
+
+        .copy-container {
+          width: 100%;
+          max-width: 46%;
+          padding: 0;
+
+          @media (max-width: $breakpoint-tablet-small) {
+            max-width: 100%;
+          }
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          max-width: 54%;
+
+          @media (max-width: $breakpoint-tablet-small) {
+            max-width: 100%;
+          }
+        }
+      }
+    }
   }
 
   ul,

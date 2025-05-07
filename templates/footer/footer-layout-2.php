@@ -4,27 +4,6 @@
 ?>
 
 <footer class="site-footer layout-2">
-    <div class="top">
-        <div class="inside">
-            <?php if (get_field('footer_mailing_list', 'option')) :?>
-            <div
-                class="footer-mailing-list-container <?php the_field('site_footer_mailing_list_submit_button_alignment', 'option'); ?>">
-                <?php if ( get_field('site_footer_mailing_list_heading', 'option') ) : ?>
-                <h5><?php the_field('site_footer_mailing_list_heading', 'option'); ?></h5>
-                <p><?php the_field('site_footer_mailing_list_sub_heading', 'option'); ?></p>
-                <?php endif; ?>
-                <?php
-                    if ( get_field('site_footer_mailing_list_form', 'option') ) :
-                    $footer_gravity_form = get_field('site_footer_mailing_list_form', 'option');
-                ?>
-                <?php echo apply_shortcodes(
-                        '[gravityform id="' . $footer_gravity_form .'" title="false" description="false" ajax="true"]'
-                    ); ?>
-                <?php endif; ?>
-            </div>
-            <?php endif; ?>
-        </div>
-    </div>
     <div class="bottom">
         <div class="inside">
             <div class="column column-1">

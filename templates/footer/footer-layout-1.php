@@ -15,6 +15,20 @@
                     Add footer logo!
                     <?php endif; ?>
                 </a>
+                <?php if (get_field('show_address_section', 'option')) : ?>
+                <ul class="address-container">
+                    <li><?php the_field('site_address_1', 'option'); ?></li>
+                    <li><?php the_field('site_address_2', 'option'); ?></li>
+                    <li><?php the_field('site_city', 'option'); ?>, <?php the_field('site_state', 'option'); ?>
+                        <?php the_field('site_zip', 'option'); ?></li>
+                    <li class="email"><?php the_field('site_email_address', 'option'); ?>
+                    <li>
+                    <li class="phone">
+                        <?php if (get_field('phone_icon', 'option')) the_field('phone_icon', 'option'); ?>
+                        <?php the_field('site_phone_number', 'option'); ?>
+                    </li>
+                </ul>
+                <?php endif; ?>
             </div>
             <div class="column column-2">
                 <?php if ( has_nav_menu('footer-menu') ) : ?>
@@ -33,29 +47,18 @@
                         'depth' => 1
                     )); ?>
                 <?php endif; ?>
+                <?php if (has_nav_menu('footer-menu-3')) : ?>
+                <?php wp_nav_menu(array(
+                        'container' => '',
+                        'menu_class' => 'footer-menu-3',
+                        'theme_location' => 'footer-menu-3',
+                        'depth' => 1
+                    )); ?>
+                <?php endif; ?>
                 <?php else : ?>
                 <p>Create a menu called "Footer Menu"! </p>
                 <?php endif; ?>
             </div>
-            <?php if (get_field('footer_mailing_list', 'option')) : ?>
-            <div class="column column-3">
-                <div
-                    class="footer-mailing-list-container <?php the_field('site_footer_mailing_list_submit_button_alignment', 'option'); ?>">
-                    <?php if ( get_field('site_footer_mailing_list_heading', 'option') ) : ?>
-                    <h5><?php the_field('site_footer_mailing_list_heading', 'option'); ?></h5>
-                    <p><?php the_field('site_footer_mailing_list_sub_heading', 'option'); ?></p>
-                    <?php endif; ?>
-                    <?php
-                        if ( get_field('site_footer_mailing_list_form', 'option') ) :
-                        $footer_gravity_form = get_field('site_footer_mailing_list_form', 'option');
-                    ?>
-                    <?php echo apply_shortcodes(
-                            '[gravityform id="' . $footer_gravity_form .'" title="false" description="false" ajax="true"]'
-                        ); ?>
-                    <?php endif; ?>
-                </div>
-            </div>
-            <?php endif; ?>
         </div>
     </div>
     <div class="bottom">

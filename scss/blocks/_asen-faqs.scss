@@ -6,13 +6,36 @@
   @include site-overall-gutter-small;
   @include site-vertical-padding-dynamic();
 
+  &.split-layout {
+    .inside {
+      display: grid;
+      grid-template-columns: 47% 53%;
+      gap: 2rem;
+
+      @media (max-width: $breakpoint-screen-small) {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
   .inside {
     width: 100%;
     max-width: $site-overall-max-width;
   }
 
+  .copy-container {
+    grid-column: 1;
+  }
+
+  .faq-container {
+    display: flex;
+    flex-direction: column;
+    grid-column: 2;
+    gap: 1rem;
+  }
+
   .faq {
-    margin-bottom: 1.25rem;
     //padding: 30px;
 
     &:last-child {
@@ -20,7 +43,6 @@
     }
 
     .question {
-      margin-bottom: 6px;
       padding: 1rem 0.75rem;
       transition: all 100ms ease;
       position: relative;
@@ -44,9 +66,7 @@
         font-weight: 700;
         text-transform: none;
         font-family: "Font Awesome 6 Pro";
-        content: "\2b";
         display: block;
-        font-size: 35px;
         position: absolute;
         right: 1rem;
         top: 50%;
@@ -54,12 +74,6 @@
 
         @media (max-width: $breakpoint-small) {
           font-size: 28px;
-        }
-      }
-
-      &.active {
-        &::after {
-          content: "\f068";
         }
       }
 
@@ -80,6 +94,7 @@
 
   p.disclaimer {
     text-align: center;
-    padding-top: 2rem;
+    padding-top: 1rem;
+    grid-column: span 2;
   }
 }

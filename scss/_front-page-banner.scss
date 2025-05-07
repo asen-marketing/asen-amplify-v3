@@ -94,7 +94,23 @@
     width: 100%;
     z-index: 3;
   }
-  // .copy {}
+  .copy {
+    display: flex;
+    flex-direction: column;
+    &.center {
+      align-items: center;
+
+      p.blurb {
+        max-width: 50%;
+      }
+    }
+
+    &.left {
+      p.blurb {
+        max-width: 35%;
+      }
+    }
+  }
   .buttons {
     .button {
       margin: 0 8px 8px 0;

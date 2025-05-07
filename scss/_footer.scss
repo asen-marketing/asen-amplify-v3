@@ -63,7 +63,8 @@ footer.site-footer {
       font-size: 24px;
     }
   }
-  &.layout-1 {
+  &.layout-1,
+  &.layout-3 {
     .top {
       padding: 80px $site-overall-gutter 80px;
       @include site-overall-gutter-small;
@@ -71,7 +72,6 @@ footer.site-footer {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        align-items: center;
 
         @media (max-width: $breakpoint-footer-tablet-small) {
           flex-direction: column;
@@ -98,19 +98,42 @@ footer.site-footer {
       }
     }
 
+    &:not(.layout-1) .column-1 {
+      flex-direction: column;
+    }
+
     .column {
       min-width: 33%;
 
       &-1 {
+        min-width: fit-content;
+        display: flex;
+        gap: 2rem;
+
         @media (max-width: $breakpoint-footer-laptop-small) {
           width: 18%;
           margin-bottom: 50px;
         }
         img {
-          width: 100%;
-          height: auto;
+          width: auto;
           max-width: 100%;
           max-height: 260px;
+        }
+
+        ul {
+          padding-left: 0;
+        }
+        li {
+          list-style: none;
+        }
+
+        li.email {
+          padding-top: 1.5rem;
+        }
+        li.phone {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
         }
       }
 
@@ -118,9 +141,13 @@ footer.site-footer {
       &-2 {
         display: flex;
         justify-content: center;
-        gap: 2rem;
+        gap: 5em;
         @media (max-width: $breakpoint-footer-laptop-small) {
           margin-bottom: 50px;
+        }
+
+        ul {
+          padding-left: 0;
         }
       }
       &-3 {
@@ -146,7 +173,8 @@ footer.site-footer {
     }
   }
 
-  &.layout-2 {
+  &.layout-2,
+  &.layout-4 {
     .top {
       padding: 80px $site-overall-gutter 80px;
       @include site-overall-gutter-small;
@@ -181,7 +209,6 @@ footer.site-footer {
       .column {
         &-1 {
           img {
-            max-height: 150px;
             width: auto;
           }
         }

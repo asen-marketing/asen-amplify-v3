@@ -16,6 +16,7 @@ if( !empty($block['className']) ) {
 
 $services = get_field('services');
 $carousel = get_field('use_carousel');
+$alternating = get_field('alternating_grid');
 $nav_rows = get_field('nav_arrow_icons');
 $prev_icon = $nav_rows[0]['previous_button_icon'];
 $next_icon = $nav_rows[0]['next_button_icon'];
@@ -27,6 +28,7 @@ $link_colors = [];
 $link_hover_colors = [];
 $button_colors = [];
 $button_hover_colors = [];
+$service_icon_colors = [];
 $total_colors = 1;
 
 foreach ($colors as $index => $color_row) {
@@ -34,23 +36,34 @@ foreach ($colors as $index => $color_row) {
         array_push($bg_colors, $color_row['bg_color']);
     }
     if ($color_row['text_color']) {
-    array_push($text_colors, $color_row['text_color']);
+        array_push($text_colors, $color_row['text_color']);
     }
     if ($color_row['link_color']) {
-    array_push($link_colors, $color_row['link_color']);
+        array_push($link_colors, $color_row['link_color']);
     }
     if ($color_row['link_hover_color']) {
-    array_push($link_hover_colors, $color_row['link_hover_color']);
+        array_push($link_hover_colors, $color_row['link_hover_color']);
     }
     if ($color_row['button_color']) {
         array_push($button_colors, $color_row['button_color']);
         }
     if ($color_row['button_hover_color']) {
         array_push($button_hover_colors, $color_row['button_hover_color']);
-        }
+    }
+    if ($color_row['service_icon_color']) {
+        array_push($service_icon_colors, $color_row['service_icon_color']);
+    }
     $total_colors++;
 }
 
+if ($alternating) {
+    $alternating_styles = get_field('alternating_styles');
+}
+if (is_array($alternating_styles)) {
+    $alt_color = $alternating_styles[0]['text_color'];
+    $alt_heading_size = $alternating_styles[0]['heading_font_size'];
+    $alt_copy_size = $alternating_styles[0]['copy_font_size'];
+}
 ?>
 
 <section
@@ -63,7 +76,7 @@ foreach ($colors as $index => $color_row) {
     </div>
     <?php endif; ?>
 
-    <div class="inside<?php echo $carousel ? ' carousel' : ' grid'; ?>">
+    <div class="inside<?php echo $carousel ? ' carousel' : ' grid'; ?><?php if ($alternating) echo ' alternating'; ?>">
         <?php if ($services) : ?>
         <?php if ($carousel) : ?>
         <div class="controls" data-glide-el="controls">
@@ -87,7 +100,7 @@ foreach ($colors as $index => $color_row) {
                 if ($color === 0) $color = 1;
                 
                     ?>
-                    <li class="<?php echo $carousel ? 'glide__slide ' : ''; ?> service-item<?php echo ($index == 1 ? ' is-active' : ''); ?><?php if (!$use_icon && $image) echo ' has-image'; ?><?php echo ' color-' . $color;?>"
+                    <li class="<?php echo $carousel ? 'glide__slide ' : ''; ?> service-item<?php echo ($index == 1 ? ' is-active' : ''); ?><?php if (!$use_icon && $image) echo ' has-image'; ?><?php echo ' color-' . $color;?><?php if ($alternating && $index % 2 === 1) echo ' reverse'; ?>"
                         data-slide-id="<?php echo $index - 1; ?>">
                         <?php if (!$use_icon && $image) : ?>
                         <?php echo wp_get_attachment_image($image, 'full'); ?>
@@ -170,11 +183,6 @@ foreach ($colors as $index => $color_row) {
         ?>;
     }
 
-    i {
-        color: <?php echo get_field('service_icon_color');
-        ?>;
-    }
-
     a:hover {
         color: <?php echo get_field('service_link_hover_color');
         ?>;
@@ -222,11 +230,17 @@ foreach ($colors as $index => $color_row) {
             ?>;
         }
 
+        i {
+            color: <?php echo $service_icon_colors[0];
+            ?>;
+        }
+
         a,
         a>i {
             color: <?php echo $link_colors[0];
             ?>;
         }
+
 
         a:hover,
         a:hover>i {
@@ -253,6 +267,11 @@ foreach ($colors as $index => $color_row) {
 
         h3 {
             color: <?php echo $text_colors[1];
+            ?>;
+        }
+
+        i {
+            color: <?php echo $service_icon_colors[1];
             ?>;
         }
 
@@ -287,6 +306,11 @@ foreach ($colors as $index => $color_row) {
 
         h3 {
             color: <?php echo $text_colors[2];
+            ?>;
+        }
+
+        i {
+            color: <?php echo $service_icon_colors[2];
             ?>;
         }
 
