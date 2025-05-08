@@ -3,7 +3,7 @@
     $site_tagline = get_bloginfo('description', 'display');
 ?>
 
-<footer class="site-footer layout-2">
+<footer class="site-footer simple layout-2">
     <div class="bottom">
         <div class="inside">
             <div class="column column-1">

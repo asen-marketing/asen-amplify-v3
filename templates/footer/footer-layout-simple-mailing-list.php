@@ -3,7 +3,7 @@
     $site_tagline = get_bloginfo('description', 'display');
 ?>
 
-<footer class="site-footer layout-4">
+<footer class="site-footer simple-mailing-list layout-4">
     <div class="top">
         <div class="inside">
             <div

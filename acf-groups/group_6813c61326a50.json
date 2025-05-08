@@ -3,6 +3,26 @@
     "title": "Asen Footer Options",
     "fields": [
         {
+            "key": "field_6813d32908f1a",
+            "label": "General",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "placement": "top",
+            "endpoint": 0,
+            "no_preference": 0,
+            "selected": 0
+        },
+        {
             "key": "field_5e8cb8bbaf0e0",
             "label": "Footer Layout",
             "name": "site_footer_layout",
@@ -16,34 +36,97 @@
                 "class": "",
                 "id": ""
             },
+            "relevanssi_exclude": 0,
             "choices": {
-                "1": "1",
-                "2": "2",
-                "3": "3"
+                "standard": "Standard Footer",
+                "standard-mailing-list": "Standard + Mailing List",
+                "simple": "Simple Footer",
+                "simple-mailing-list": "Simple + Mailing List"
             },
-            "default_value": 1,
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
+            "default_value": "standard",
             "return_format": "value",
+            "multiple": 0,
+            "max": "",
+            "prepend": "",
+            "append": "",
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
             "ajax": 0,
             "placeholder": "",
             "allow_custom": 0,
             "search_placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": ""
+            "min": ""
         },
         {
-            "key": "field_680a5c9d38e48",
-            "label": "Site Footer Mailing List Heading",
-            "name": "site_footer_mailing_list_heading",
+            "key": "field_5e8b7e24937e4",
+            "label": "Footer Logo Image",
+            "name": "site_footer_logo_image",
             "aria-label": "",
-            "type": "text",
+            "type": "image",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "uploader": "",
+            "acfe_thumbnail": 0,
+            "upload_folder": ""
+        },
+        {
+            "key": "field_681b750f04f8b",
+            "label": "Footer Logo Height",
+            "name": "footer_logo_height",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": 50,
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "px"
+        },
+        {
+            "key": "field_681b7ebe72101",
+            "label": "Phone Icon (optional)",
+            "name": "phone_icon",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "FontAwesome icon code to be shown next to phone number.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_681b678851436",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -58,9 +141,321 @@
             "append": ""
         },
         {
-            "key": "field_680a5cc58ec7d",
-            "label": "Site Footer Mailing List Sub Heading",
-            "name": "site_footer_mailing_list_sub_heading",
+            "key": "field_6813d33f08f1b",
+            "label": "Styling",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "placement": "top",
+            "endpoint": 0,
+            "no_preference": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6813d34e08f1c",
+            "label": "Footer Background Color",
+            "name": "footer_background_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "#999999",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 1,
+            "theme_colors": 0,
+            "colors": [],
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_6813d36e08f1d",
+            "label": "Footer Text Color",
+            "name": "footer_text_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "#000000",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 1,
+            "theme_colors": 0,
+            "colors": [],
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_6813d3a008f1f",
+            "label": "Footer Text Hover Color",
+            "name": "footer_text_hover_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "#FFFFFF",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 1,
+            "theme_colors": 0,
+            "colors": [],
+            "allow_in_bindings": 1
+        },
+        {
+            "key": "field_6813d38008f1e",
+            "label": "Footer Font Size",
+            "name": "footer_font_size",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": 20,
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "pixels"
+        },
+        {
+            "key": "field_6813d3b408f20",
+            "label": "Footer Bottom Background Color",
+            "name": "footer_bottom_background_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5e8cb8bbaf0e0",
+                        "operator": "!=",
+                        "value": "2"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "#999999",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 1,
+            "theme_colors": 0,
+            "colors": [],
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_6813d55e48179",
+            "label": "Footer Bottom Text Color",
+            "name": "footer_bottom_text_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5e8cb8bbaf0e0",
+                        "operator": "!=",
+                        "value": "2"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 1,
+            "theme_colors": 0,
+            "colors": [],
+            "allow_in_bindings": 1
+        },
+        {
+            "key": "field_6813d5844817a",
+            "label": "Footer Bottom Text Hover Color",
+            "name": "footer_bottom_text_hover_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5e8cb8bbaf0e0",
+                        "operator": "!=",
+                        "value": "2"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 1,
+            "theme_colors": 0,
+            "colors": [],
+            "allow_in_bindings": 1
+        },
+        {
+            "key": "field_6813d54148178",
+            "label": "Footer Bottom Font Size",
+            "name": "footer_bottom_font_size",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5e8cb8bbaf0e0",
+                        "operator": "!=",
+                        "value": "2"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": 18,
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "pixels"
+        },
+        {
+            "key": "field_6813e0841d785",
+            "label": "Footer Social Links Size",
+            "name": "footer_social_links_size",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": 22,
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "pixels"
+        },
+        {
+            "key": "field_6813d31708f19",
+            "label": "Footer Mailing List",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "placement": "top",
+            "endpoint": 0,
+            "no_preference": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_680a5c9d38e48",
+            "label": "Site Footer Mailing List Heading",
+            "name": "site_footer_mailing_list_heading",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -93,23 +488,47 @@
                 "class": "",
                 "id": ""
             },
+            "relevanssi_exclude": 0,
             "choices": {
                 "1": "Mailing List",
                 "2": "General Contact"
             },
             "default_value": false,
-            "allow_null": 1,
-            "multiple": 0,
-            "ui": 0,
             "return_format": "value",
-            "ajax": 0,
+            "multiple": 0,
+            "max": "",
             "placeholder": "",
-            "allow_custom": 0,
-            "search_placeholder": "",
             "prepend": "",
             "append": "",
-            "min": "",
-            "max": ""
+            "allow_null": 1,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ajax": 0,
+            "allow_custom": 0,
+            "search_placeholder": "",
+            "min": ""
+        },
+        {
+            "key": "field_680a5cc58ec7d",
+            "label": "Site Footer Mailing List Sub Heading",
+            "name": "site_footer_mailing_list_sub_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_680a5e05b2bca",
@@ -137,6 +556,110 @@
             "allow_in_bindings": 1,
             "layout": "horizontal",
             "save_other_choice": 0
+        },
+        {
+            "key": "field_6813dc5f5dead",
+            "label": "Mailing List Title Size",
+            "name": "footer_mailing_list_title_size",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": 40,
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "pixels"
+        },
+        {
+            "key": "field_6813dc87b5184",
+            "label": "Mailing List Subtitle Size",
+            "name": "footer_mailing_list_subtitle_size",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": 30,
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "pixels"
+        },
+        {
+            "key": "field_6813d941c09c2",
+            "label": "Mailing List Title Color",
+            "name": "footer_mailing_list_title_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 1,
+            "theme_colors": 0,
+            "colors": [],
+            "allow_in_bindings": 1
+        },
+        {
+            "key": "field_6813d96dc09c3",
+            "label": "Mailing List Subtitle Color",
+            "name": "footer_mailing_list_subtitle_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 1,
+            "theme_colors": 0,
+            "colors": [],
+            "allow_in_bindings": 1
         }
     ],
     "location": [
@@ -164,5 +687,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1746126625
+    "modified": 1746645931
 }

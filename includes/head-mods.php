@@ -264,14 +264,17 @@ nav.header-menu ul li a:hover {
     ?>
 }
 
-.off-canvas-bottom-menu ul li a {
-    font-size: <?php echo (get_field('off_canvas_font_size', 'option') * 0.66) . 'px';
+<?php $off_canvas_font_size_smaller=get_field('off_canvas_font_size', 'option') ? (get_field('off_canvas_font_size', 'option') * 0.66) : '';
+$off_canvas_mobile_font_size_smaller=get_field('off_canvas_mobile_font_size', 'option') ? (get_field('off_canvas_mobile_font_size', 'option') * 0.66) : '';
+
+?>.off-canvas-bottom-menu ul li a {
+    font-size: <?php echo $off_canvas_font_size_smaller . 'px';
     ?>;
     color: <?php the_field('off_canvas_text_color', 'option') ?>;
 }
 
 .off-canvas-menu ul li.menu-item-has-children>a::after {
-    font-size: <?php echo (get_field('off_canvas_font_size', 'option') * 0.66) . 'px';
+    font-size: <?php echo $off_canvas_font_size_smaller . 'px';
     ?>;
     content: "<?php echo '\\' . get_field('sub-menu_indicator_closed', 'option');
 ?>";
@@ -318,12 +321,12 @@ nav.header-menu ul li a:hover {
     }
 
     .off-canvas-bottom-menu ul li a {
-        font-size: <?php echo (get_field('off_canvas_mobile_font_size', 'option') * 0.66) . 'px';
+        font-size: <?php echo $off_canvas_mobile_font_size_smaller . 'px';
         ?>;
     }
 
     .off-canvas-menu ul li.menu-item-has-children>a::after {
-        font-size: <?php echo (get_field('off_canvas_mobile_font_size', 'option') * 0.66) . 'px';
+        font-size: <?php echo $off_canvas_mobile_font_size_smaller . 'px';
         ?>;
 
     }

@@ -47,7 +47,14 @@
             "allow_in_bindings": 0,
             "bidirectional": 0,
             "ui": 1,
-            "bidirectional_target": []
+            "bidirectional_target": [],
+            "save_custom": 0,
+            "save_post_type": "",
+            "save_post_status": "",
+            "acfe_add_post": 0,
+            "acfe_edit_post": 0,
+            "min": "",
+            "max": ""
         },
         {
             "key": "field_6810ccfb22dd4",
@@ -69,7 +76,117 @@
             "allow_in_bindings": 0,
             "ui_on_text": "Carousel",
             "ui_off_text": "Grid",
-            "ui": 1
+            "ui": 1,
+            "style": ""
+        },
+        {
+            "key": "field_681a277272ae1",
+            "label": "Nav Arrow Icons",
+            "name": "nav_arrow_icons",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Font Awesome codes for previous and next buttons",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6810ccfb22dd4",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "acfe_repeater_stylised_button": 1,
+            "layout": "table",
+            "pagination": 0,
+            "min": 1,
+            "max": 1,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_681a277272ae2",
+                    "label": "Previous Button Icon",
+                    "name": "previous_button_icon",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "<i class=\"fa-light fa-angle-left\"><\/i>",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_681a277272ae1"
+                },
+                {
+                    "key": "field_681a277272ae3",
+                    "label": "Next Button Icon",
+                    "name": "next_button_icon",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "<i class=\"fa-regular fa-angle-right\"><\/i>",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_681a277272ae1"
+                },
+                {
+                    "key": "field_681a277272ae4",
+                    "label": "Nav Arrow Color",
+                    "name": "nav_arrow_color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "",
+                    "enable_opacity": 0,
+                    "return_format": "string",
+                    "display": "default",
+                    "button_label": "Select Color",
+                    "color_picker": 1,
+                    "absolute": 0,
+                    "input": 1,
+                    "allow_null": 1,
+                    "theme_colors": 0,
+                    "colors": [],
+                    "allow_in_bindings": 1,
+                    "parent_repeater": "field_681a277272ae1"
+                }
+            ]
         },
         {
             "key": "field_6810da1de0ea1",
@@ -94,6 +211,62 @@
             "step": 1,
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_68150e4263902",
+            "label": "Name Color",
+            "name": "name_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "#000000",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 1,
+            "theme_colors": 0,
+            "colors": [],
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_68150f358bb47",
+            "label": "Title\/Bio Color",
+            "name": "text_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "#000000",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 1,
+            "theme_colors": 0,
+            "colors": [],
+            "allow_in_bindings": 0
         }
     ],
     "location": [
@@ -114,5 +287,12 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1745935906
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1746544572
 }

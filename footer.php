@@ -3,7 +3,37 @@
                 if ( class_exists('ACF') ) :
                     if (
                         is_page_template('custom-blank.php') == false && 
-                        get_field('site_footer_layout', 'option')
+                        get_field('site_footer_layout', 'option') == 'standard'
+                    ) : 
+                        get_template_part(
+                            'templates/footer/footer-layout',
+                            get_field('site_footer_layout', 'option')
+                        );
+                    endif;
+
+                    if (
+                        is_page_template('custom-blank.php') == false && 
+                        get_field('site_footer_layout', 'option') == 'simple'
+                    ) : 
+                        get_template_part(
+                            'templates/footer/footer-layout',
+                            get_field('site_footer_layout', 'option')
+                        );
+                    endif;
+
+                    if (
+                        is_page_template('custom-blank.php') == false && 
+                        get_field('site_footer_layout', 'option') == 'standard-mailing-list'
+                    ) : 
+                        get_template_part(
+                            'templates/footer/footer-layout',
+                            get_field('site_footer_layout', 'option')
+                        );
+                    endif;
+
+                    if (
+                        is_page_template('custom-blank.php') == false && 
+                        get_field('site_footer_layout', 'option') == 'simple-mailing-list'
                     ) : 
                         get_template_part(
                             'templates/footer/footer-layout',

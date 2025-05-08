@@ -3,7 +3,7 @@
     $site_tagline = get_bloginfo('description', 'display');
 ?>
 
-<footer class="site-footer layout-3">
+<footer class="site-footer standard-mailing-list layout-3">
     <div class="top">
         <div class="inside">
             <div class="column column-1">
@@ -15,19 +15,44 @@
                     Add footer logo!
                     <?php endif; ?>
                 </a>
-                <?php if (get_field('show_address_section', 'option')) : ?>
-                <ul class="address-container">
-                    <li><?php the_field('site_address_1', 'option'); ?></li>
-                    <li><?php the_field('site_address_2', 'option'); ?></li>
-                    <li><?php the_field('site_city', 'option'); ?>, <?php the_field('site_state', 'option'); ?>
-                        <?php the_field('site_zip', 'option'); ?></li>
-                    <li class="email"><?php the_field('site_email_address', 'option'); ?>
-                    <li>
-                    <li class="phone">
-                        <?php if (get_field('phone_icon', 'option')) the_field('phone_icon', 'option'); ?>
-                        <?php the_field('site_phone_number', 'option'); ?>
-                    </li>
-                </ul>
+                <?php if ( get_field('site_address_1', 'option') || get_field('site_email_address', 'option') || get_field('site_phone_number', 'option')) : ?>
+                    <div class="footer-contact-info">
+                        <?php 
+                            if ( get_field('site_address_1', 'option') && get_field('site_city', 'option') && get_field('site_state', 'option') && get_field('site_zip', 'option') ) :
+                            $footer_site_address_string = get_field('site_address_1', 'option') . ', ' . get_field('site_city', 'option') . ', ' . get_field('site_state', 'option') . ' ' . get_field('site_zip', 'option');
+                        ?>
+                            <p>
+                                <a 
+                                    <?php if (get_field('google_maps_link', 'option')) : ?>
+                                        href="<?php the_field('google_maps_link', 'option'); ?>" 
+                                    <?php else : ?>
+                                        href="https://www.google.com/maps/place/<?php echo urlencode($footer_site_address_string); ?>" 
+                                    <?php endif; ?>
+                                    title="Locate <?php echo $site_name; ?>" 
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <?php the_field('site_address_1', 'option');
+                                        if ( get_field('site_address_2', 'option') ) : echo ', ' . get_field('site_address_2', 'option'); endif; ?><br />
+                                    <?php the_field('site_city', 'option'); ?>, <?php the_field('site_state', 'option'); ?> <?php the_field('site_zip', 'option'); ?>
+                                </a>
+                            </p>
+                        <?php endif; ?>
+                        <?php if ( get_field('site_email_address', 'option') ) : ?>
+                            <p>
+                                <a href="mailto:<?php echo esc_html( antispambot(get_field('site_email_address', 'option')) ); ?>" title="Email <?php echo $site_name; ?> about questions.">
+                                    <?php echo esc_html( antispambot(get_field('site_email_address', 'option')) ); ?>
+                                </a>
+                            </p>
+                        <?php endif; ?>                   
+                        <?php if ( get_field('site_phone_number', 'option') ) : ?>
+                            <p>
+                                <a href="tel:<?php echo asen_clean_phone_number(get_field('site_phone_number', 'option')); ?>" title="Call <?php echo $site_name; ?>.">
+                                    <?php the_field('site_phone_number', 'option'); ?>
+                                </a>
+                            </p>
+                        <?php endif; ?>
+                    </div>
                 <?php endif; ?>
             </div>
             <div class="column column-2">

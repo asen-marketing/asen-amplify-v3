@@ -22,6 +22,26 @@
             "esc_html": 0
         },
         {
+            "key": "field_6814f1e872191",
+            "label": "General",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "placement": "top",
+            "endpoint": 0,
+            "no_preference": 0,
+            "selected": 0
+        },
+        {
             "key": "field_6810ee560b0f8",
             "label": "Services",
             "name": "services",
@@ -47,7 +67,14 @@
             "allow_in_bindings": 0,
             "bidirectional": 0,
             "ui": 1,
-            "bidirectional_target": []
+            "bidirectional_target": [],
+            "save_custom": 0,
+            "save_post_type": "",
+            "save_post_status": "",
+            "acfe_add_post": 0,
+            "acfe_edit_post": 0,
+            "min": "",
+            "max": ""
         },
         {
             "key": "field_6810ee560b13a",
@@ -69,7 +96,148 @@
             "allow_in_bindings": 0,
             "ui_on_text": "Carousel",
             "ui_off_text": "Grid",
-            "ui": 1
+            "ui": 1,
+            "style": ""
+        },
+        {
+            "key": "field_681b8479679f6",
+            "label": "Alternating Grid?",
+            "name": "alternating_grid",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Split image + text layout, alternating positions for each service. Images need to be added to the selected services in the CPT. Square images work best.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6810ee560b13a",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No",
+            "ui": 1,
+            "style": ""
+        },
+        {
+            "key": "field_681506408dd2f",
+            "label": "Nav Arrow Icons",
+            "name": "nav_arrow_icons",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Font Awesome codes for previous and next buttons",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6810ee560b13a",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "acfe_repeater_stylised_button": 1,
+            "layout": "table",
+            "pagination": 0,
+            "min": 1,
+            "max": 1,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_681506798dd30",
+                    "label": "Previous Button Icon",
+                    "name": "previous_button_icon",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "<i class=\"fa-light fa-angle-left\"><\/i>",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_681506408dd2f"
+                },
+                {
+                    "key": "field_681506898dd31",
+                    "label": "Next Button Icon",
+                    "name": "next_button_icon",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "<i class=\"fa-regular fa-angle-right\"><\/i>",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_681506408dd2f"
+                },
+                {
+                    "key": "field_681506178dd2e",
+                    "label": "Nav Arrow Color",
+                    "name": "nav_arrow_color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "",
+                    "enable_opacity": 0,
+                    "return_format": "string",
+                    "display": "default",
+                    "button_label": "Select Color",
+                    "color_picker": 1,
+                    "absolute": 0,
+                    "input": 1,
+                    "allow_null": 1,
+                    "theme_colors": 0,
+                    "colors": [],
+                    "allow_in_bindings": 1,
+                    "parent_repeater": "field_681506408dd2f"
+                }
+            ]
         },
         {
             "key": "field_6810ee560b178",
@@ -79,7 +247,15 @@
             "type": "number",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_681b8479679f6",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "50",
                 "class": "",
@@ -96,6 +272,72 @@
             "append": ""
         },
         {
+            "key": "field_6818b7a7ea877",
+            "label": "Link Style",
+            "name": "link_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "choices": {
+                "none": "None",
+                "button": "Button",
+                "text": "Text Only",
+                "icon": "Text + Icon"
+            },
+            "default_value": "none",
+            "return_format": "value",
+            "multiple": 0,
+            "max": "",
+            "allow_custom": 0,
+            "search_placeholder": "",
+            "prepend": "",
+            "append": "",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "min": ""
+        },
+        {
+            "key": "field_6818beb13b975",
+            "label": "Link Text",
+            "name": "link_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6818b7a7ea877",
+                        "operator": "!=",
+                        "value": "none"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "View Service",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_6810f57d70127",
             "label": "Link Icon Code",
             "name": "link_icon_code",
@@ -103,7 +345,15 @@
             "type": "text",
             "instructions": "FA code for adding an arrow or other icon after all service links",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6818b7a7ea877",
+                        "operator": "==",
+                        "value": "icon"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -118,36 +368,67 @@
             "append": ""
         },
         {
-            "key": "field_6810f85465a4f",
-            "label": "Service Icon Color",
-            "name": "service_icon_color",
+            "key": "field_681505b88dd2a",
+            "label": "Background and Heading",
+            "name": "",
             "aria-label": "",
-            "type": "color_picker",
+            "type": "tab",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "20",
+                "width": "",
                 "class": "",
                 "id": ""
             },
             "relevanssi_exclude": 0,
-            "default_value": "#000000",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "allow_in_bindings": 0
+            "placement": "top",
+            "endpoint": 0,
+            "no_preference": 0,
+            "selected": 0
         },
         {
-            "key": "field_6810f6b370beb",
-            "label": "Service Background Color",
-            "name": "service_background_color",
+            "key": "field_6814f012904d6",
+            "label": "Full Width Background Color?",
+            "name": "has_background",
             "aria-label": "",
-            "type": "color_picker",
+            "type": "true_false",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "20",
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1,
+            "style": ""
+        },
+        {
+            "key": "field_6814f059904d7",
+            "label": "Background Color",
+            "name": "background_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6814f012904d6",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
                 "class": "",
                 "id": ""
             },
@@ -155,67 +436,549 @@
             "default_value": "#999999",
             "enable_opacity": 0,
             "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 1,
+            "theme_colors": 0,
+            "colors": [],
             "allow_in_bindings": 0
         },
         {
-            "key": "field_6810f6d170bec",
-            "label": "Service Text Color",
-            "name": "service_text_color",
+            "key": "field_6815020d494e0",
+            "label": "Block Heading",
+            "name": "services_heading",
             "aria-label": "",
-            "type": "color_picker",
+            "type": "text",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6814f012904d6",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
-                "width": "20",
+                "width": "",
                 "class": "",
                 "id": ""
             },
             "relevanssi_exclude": 0,
-            "default_value": "#000000",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "allow_in_bindings": 0
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
-            "key": "field_6810f87365a50",
-            "label": "Service Link Color",
-            "name": "service_link_color",
+            "key": "field_681505e38dd2c",
+            "label": "Block Heading Color",
+            "name": "services_heading_color",
             "aria-label": "",
             "type": "color_picker",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6814f012904d6",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
-                "width": "20",
+                "width": "",
                 "class": "",
                 "id": ""
             },
             "relevanssi_exclude": 0,
-            "default_value": "#000000",
+            "default_value": "",
             "enable_opacity": 0,
             "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 1,
+            "theme_colors": 0,
+            "colors": [],
             "allow_in_bindings": 0
         },
         {
-            "key": "field_6810f94d9e2b7",
-            "label": "Service Link Hover Color",
-            "name": "service_link_hover_color",
+            "key": "field_6815024a494e1",
+            "label": "Block Subheading",
+            "name": "services_subheading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6814f012904d6",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_681505ef8dd2d",
+            "label": "Block Subheading Color",
+            "name": "services_subheading_color",
             "aria-label": "",
             "type": "color_picker",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6814f012904d6",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
-                "width": "20",
+                "width": "",
                 "class": "",
                 "id": ""
             },
             "relevanssi_exclude": 0,
-            "default_value": "#FFFFFF",
+            "default_value": "",
             "enable_opacity": 0,
             "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 1,
+            "theme_colors": 0,
+            "colors": [],
             "allow_in_bindings": 0
+        },
+        {
+            "key": "field_6814f072904d8",
+            "label": "Styling",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "placement": "top",
+            "endpoint": 0,
+            "no_preference": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6810f6b370beb",
+            "label": "Individual Services Colors",
+            "name": "service_colors",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Select up to three color variants to rotate through.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_681b8479679f6",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "acfe_repeater_stylised_button": 1,
+            "layout": "table",
+            "pagination": 0,
+            "min": 1,
+            "max": 3,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_6814f13e904d9",
+                    "label": "Background",
+                    "name": "bg_color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "#000000",
+                    "enable_opacity": 0,
+                    "return_format": "string",
+                    "display": "default",
+                    "button_label": "Select Color",
+                    "color_picker": 1,
+                    "absolute": 0,
+                    "input": 1,
+                    "allow_null": 1,
+                    "theme_colors": 0,
+                    "colors": [],
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6810f6b370beb"
+                },
+                {
+                    "key": "field_6810f6d170bec",
+                    "label": "Text Color",
+                    "name": "text_color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "#FFFFFF",
+                    "enable_opacity": 0,
+                    "return_format": "string",
+                    "display": "default",
+                    "button_label": "Select Color",
+                    "color_picker": 1,
+                    "absolute": 0,
+                    "input": 1,
+                    "allow_null": 1,
+                    "theme_colors": 0,
+                    "colors": [],
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6810f6b370beb"
+                },
+                {
+                    "key": "field_6810f87365a50",
+                    "label": "Link Color",
+                    "name": "link_color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6818b7a7ea877",
+                                "operator": "!=",
+                                "value": "none"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "#000000",
+                    "enable_opacity": 0,
+                    "return_format": "string",
+                    "display": "default",
+                    "button_label": "Select Color",
+                    "color_picker": 1,
+                    "absolute": 0,
+                    "input": 1,
+                    "allow_null": 1,
+                    "theme_colors": 0,
+                    "colors": [],
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6810f6b370beb"
+                },
+                {
+                    "key": "field_6810f94d9e2b7",
+                    "label": "Link Hover Color",
+                    "name": "link_hover_color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6818b7a7ea877",
+                                "operator": "!=",
+                                "value": "none"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "#FFFFFF",
+                    "enable_opacity": 0,
+                    "return_format": "string",
+                    "display": "default",
+                    "button_label": "Select Color",
+                    "color_picker": 1,
+                    "absolute": 0,
+                    "input": 1,
+                    "allow_null": 1,
+                    "theme_colors": 0,
+                    "colors": [],
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6810f6b370beb"
+                },
+                {
+                    "key": "field_6818c3fb9e5e5",
+                    "label": "Button Background Color",
+                    "name": "button_color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6818b7a7ea877",
+                                "operator": "==",
+                                "value": "button"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "#999999",
+                    "enable_opacity": 0,
+                    "return_format": "string",
+                    "display": "default",
+                    "button_label": "Select Color",
+                    "color_picker": 1,
+                    "absolute": 0,
+                    "input": 1,
+                    "allow_null": 1,
+                    "theme_colors": 0,
+                    "colors": [],
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6810f6b370beb"
+                },
+                {
+                    "key": "field_6818c4399e5e6",
+                    "label": "Button Background Hover Color",
+                    "name": "button_hover_color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6818b7a7ea877",
+                                "operator": "==",
+                                "value": "button"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "#DDDDDD",
+                    "enable_opacity": 0,
+                    "return_format": "string",
+                    "display": "default",
+                    "button_label": "Select Color",
+                    "color_picker": 1,
+                    "absolute": 0,
+                    "input": 1,
+                    "allow_null": 1,
+                    "theme_colors": 0,
+                    "colors": [],
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6810f6b370beb"
+                },
+                {
+                    "key": "field_6810f85465a4f",
+                    "label": "Service Icon Color",
+                    "name": "service_icon_color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "#000000",
+                    "enable_opacity": 0,
+                    "return_format": "string",
+                    "display": "default",
+                    "button_label": "Select Color",
+                    "color_picker": 1,
+                    "absolute": 0,
+                    "input": 1,
+                    "allow_null": 1,
+                    "theme_colors": 0,
+                    "colors": [],
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6810f6b370beb"
+                }
+            ]
+        },
+        {
+            "key": "field_681b87d0fdcea",
+            "label": "Alternating Grid Styles",
+            "name": "alternating_styles",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_681b8479679f6",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "acfe_repeater_stylised_button": 0,
+            "layout": "table",
+            "pagination": 0,
+            "min": 1,
+            "max": 1,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_681b8852fdceb",
+                    "label": "Text Color",
+                    "name": "text_color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "#000000",
+                    "enable_opacity": 0,
+                    "return_format": "string",
+                    "display": "default",
+                    "button_label": "Select Color",
+                    "color_picker": 1,
+                    "absolute": 0,
+                    "input": 1,
+                    "allow_null": 1,
+                    "theme_colors": 0,
+                    "colors": [],
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_681b87d0fdcea"
+                },
+                {
+                    "key": "field_681b887afdcec",
+                    "label": "Heading Font Size",
+                    "name": "heading_font_size",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": 40,
+                    "min": "",
+                    "max": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "px",
+                    "parent_repeater": "field_681b87d0fdcea"
+                },
+                {
+                    "key": "field_681b88bffdced",
+                    "label": "Copy Font Size",
+                    "name": "copy_font_size",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": 22,
+                    "min": "",
+                    "max": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "px",
+                    "parent_repeater": "field_681b87d0fdcea"
+                }
+            ]
         }
     ],
     "location": [
@@ -236,5 +999,12 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1745943441
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1746641972
 }

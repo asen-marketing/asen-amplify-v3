@@ -39,6 +39,34 @@
             "max": ""
         },
         {
+            "key": "field_5e8b7a8bf1bd5",
+            "label": "Header Logo Image",
+            "name": "site_header_logo_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "uploader": "",
+            "acfe_thumbnail": 0,
+            "upload_folder": ""
+        },
+        {
             "key": "field_680fb1018b825",
             "label": "Overlapping Header",
             "name": "overlapping_header",
@@ -86,30 +114,6 @@
             "append": "pixels"
         },
         {
-            "key": "field_5e975cdba93f6",
-            "label": "Header Logo Height",
-            "name": "site_header_logo_height",
-            "aria-label": "",
-            "type": "number",
-            "instructions": "This will set the height of the logo. If you select a height higher than the header height, the logo will be positioned from the top (for overhang below).",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": 90,
-            "min": 50,
-            "max": "",
-            "allow_in_bindings": 1,
-            "placeholder": "",
-            "step": 1,
-            "prepend": "",
-            "append": "pixels"
-        },
-        {
             "key": "field_68123034c5104",
             "label": "Header Menu Link Color",
             "name": "header_menu_color",
@@ -136,6 +140,30 @@
             "allow_null": true,
             "theme_colors": false,
             "colors": []
+        },
+        {
+            "key": "field_5e975cdba93f6",
+            "label": "Header Logo Height",
+            "name": "site_header_logo_height",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "This will set the height of the logo. If you select a height higher than the header height, the logo will be positioned from the top (for overhang below).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": 90,
+            "min": 50,
+            "max": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "pixels"
         },
         {
             "key": "field_68123055c5105",
@@ -576,5 +604,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1746027850
+    "modified": 1746128031
 }
