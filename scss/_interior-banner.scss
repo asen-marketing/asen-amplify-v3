@@ -59,28 +59,29 @@
     }
   }
 
+  .h1 {
+    font-size: 105px;
+  }
+
   p.eyebrow,
-  div.subtitle {
-    font-size: 23px;
+  p.subtitle {
     line-height: 1.5;
-    @media (max-width: $breakpoint-small) {
-      font-size: 21px;
-    }
   }
   p.eyebrow {
+    font-size: 18px;
+    font-weight: 500;
     margin-bottom: 4px;
   }
-  div.subtitle {
-    p {
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
+  p.subtitle {
+    font-size: 25px;
   }
 
   .button-container {
     display: flex;
     gap: 1rem;
+    .button {
+      font-size: 22px;
+    }
 
     &.align-center {
       justify-content: center;

@@ -54,19 +54,19 @@ if ( is_archive() ) {
 ?>
 
 <header class="asen-page-banner">
-    <?php if ( get_field('banner_background_image') ) : ?>
+    <?php if ( get_field('banner_background_image') && get_field('background_options') === 'image') : ?>
     <div class="background-image">
         <?php echo wp_get_attachment_image( get_field('banner_background_image'), 'asen-banner-general' ); ?>
     </div>
     <?php endif; ?>
-    <?php if (get_field('banner_background_video')) : ?>
+    <?php if (get_field('banner_background_video') && get_field('background_options') === 'video') : ?>
     <div class="background-video">
         <video src="<?php the_field('banner_background_video'); ?>" autoplay loop muted></video>
     </div>
     <?php endif; ?>
     <div class=" background-overlay">
     </div>
-    <div class="inside<?php if (get_field('align_center')) echo ' align-center'; ?>">
+    <div class="inside">
         <div class="copy">
             <?php if ( $eyebrow_text ) : ?>
             <p class="eyebrow <?php echo $eyebrow_classes ; ?>">
@@ -89,7 +89,8 @@ if ( is_archive() ) {
 
             if ($button_1) : 
             ?>
-        <div class="button-container<?php if (get_field('align_center')) echo ' align-center'; ?>">
+        <div
+            class="button-container<?php if (get_field('page_banner_text_align', 'option') === 'center') echo ' align-center'; ?>">
             <a class="button" href="<?php echo $button_1['url']; ?>" title="<?php echo $button_1['title']; ?>"
                 target="<?php echo $button_1['target']; ?>">
                 <?php echo $button_1['title']; ?>
@@ -108,23 +109,21 @@ if ( is_archive() ) {
 
 <style>
 .asen-page-banner {
-    background-color: <?php the_field('banner_background_color');
-    ?>;
+    <?php if (get_field('background_options') !=='default'): ?> background-color: transparent;
+    <?php endif;
 
-    .inside {
-        .copy {
-
-            p,
-            h1 {
-                color: <?php the_field('banner_text_color');
-                ?>;
-            }
+    ?>.inside {
+        .button-container .button {
+            background-color: <?php the_field('banner_button_background_color', 'option');
+            ?>;
+            color: <?php the_field('banner_button_text_color', 'option');
+            ?>;
         }
 
-        .button-container .button {
-            background-color: <?php the_field('button_background_color');
+        .button-container .button:hover {
+            background-color: <?php the_field('banner_button_background_hover_color', 'option');
             ?>;
-            color: <?php the_field('button_text_color');
+            color: <?php the_field('banner_button_text_hover_color', 'option');
             ?>;
         }
     }

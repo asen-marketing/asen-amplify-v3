@@ -42,6 +42,10 @@
                     endif;
                 endif;
             ?>
+
+            <?php if (get_field('enable_floating_cta', 'option')) : ?>
+            <?php get_template_part( 'templates/fixed-contact-cta-button' ); ?>
+            <?php endif; ?>
             </div><!-- .site-container -->
 
             <?php 

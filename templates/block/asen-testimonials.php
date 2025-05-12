@@ -16,7 +16,7 @@ if( !empty($block['className']) ) {
 
 $testimonials = get_field('testimonials');
 $carousel = get_field('use_carousel');
-$nav_arrows = get_field('nav_arrows');
+$nav_options = get_field('nav_options');
 $grid_colors = get_field('grid_colors');
 
 if (is_array($grid_colors)) {
@@ -46,9 +46,9 @@ if (is_array($grid_colors)) {
                 <?php if ($image) : ?>
                 <?php echo wp_get_attachment_image($image, 'full'); ?>
                 <?php endif; ?>
-                <p class="quote">
+                <p class="quote<?php echo ' ' . get_field('font_style'); ?>">
                     <?php echo '"' . $quote . '"'; ?></p>
-                <p class="author"><span class="name"><?php echo $author; ?></span><?php if ($company) echo ', '; ?>
+                <p class=" author"><span class="name"><?php echo $author; ?></span><?php if ($company) echo ', '; ?>
                     <?php if ($company) : ?>
                     <?php echo $company; ?>
                     <?php endif; ?>
@@ -58,21 +58,22 @@ if (is_array($grid_colors)) {
             <?php endif; ?>
 
             <?php if ($carousel && count($testimonials) > 1) : ?>
-            <?php if (!$nav_arrows) : ?>
+            <?php if ($nav_options !== 'arrows') : ?>
             <div class="selectors">
                 <?php for ($i = 0; $i < count($testimonials); $i++) : ?>
                 <button data-index="<?php echo $i; ?>"></button>
                 <?php endfor; ?>
             </div>
-            <?php else : 
+            <?php endif; ?>
+            <?php if ($nav_options === 'arrows' || $nav_options === 'both') :
                 $prev_icon = get_field('previous_icon');
                 $next_icon = get_field('next_icon');
                 ?>
             <div class="controls">
                 <button class="previous" data-glide-dir="<" title="Show previous slide"
-                    aria-controls="carousel-<?php echo $block['id']; ?>"><?php echo $prev_icon; ?></button>
+                    aria-controls="carousel-<?php echo $block['id']; ?>"><?php echo $prev_icon ? $prev_icon : '<i class="fa-regular fa-circle-chevron-left"></i>'; ?></button>
                 <button class="next" data-glide-dir="&#x0003E;" title="Show next slide"
-                    aria-controls="carousel-<?php echo $block['id']; ?>"><?php echo $next_icon; ?></button>
+                    aria-controls="carousel-<?php echo $block['id']; ?>"><?php echo $next_icon ? $next_icon : '<i class="fa-regular fa-circle-chevron-right"></i>'; ?></button>
             </div>
             <?php endif; ?>
             <?php endif; ?>
@@ -116,8 +117,6 @@ if (is_array($grid_colors)) {
         button {
 
             color: <?php the_field('nav_color');
-            ?>;
-            border: 3px solid <?php the_field('nav_color');
             ?>;
         }
     }
@@ -166,10 +165,13 @@ if (is_array($grid_colors)) {
 <?php if ($carousel && count($testimonials) > 1) : ?>
 <script defer>
 (function($) {
-    var quotes = $('.testimonial-item'),
-        selectors = $('.selectors button'),
+    var quotes = $('.asen-testimonials-<?php echo $block['id']; ?> .testimonial-item'),
+        selectors = $('.asen-testimonials-<?php echo $block['id']; ?> .selectors button'),
         current = 0,
-        intId
+        intId,
+        carouselContainer = $('.asen-testimonials-<?php echo $block['id']; ?>'),
+        prevButton = $('.asen-testimonials-<?php echo $block['id']; ?> .controls > .previous'),
+        nextButton = $('.asen-testimonials-<?php echo $block['id']; ?> .controls > .next')
 
     selectors.eq(0).addClass('active')
 
@@ -177,6 +179,7 @@ if (is_array($grid_colors)) {
         intId = setInterval(() => {
             quotes.removeClass('active')
             selectors.removeClass('active')
+            console.log(current)
             if (current === quotes.length - 1) {
                 current = 0
             } else {
@@ -197,6 +200,29 @@ if (is_array($grid_colors)) {
             selectors.eq(current).addClass('active')
             startInterval()
         }
+    })
+
+    prevButton.on('click', function() {
+        clearInterval(intId)
+        current--
+        quotes.removeClass('active')
+        selectors.removeClass('active')
+        quotes.eq(current).addClass('active')
+        selectors.eq(current).addClass('active')
+        startInterval()
+    })
+    nextButton.on('click', function() {
+        clearInterval(intId)
+        if (current === quotes.length - 1) {
+            current = 0
+        } else {
+            current++
+        }
+        quotes.removeClass('active')
+        selectors.removeClass('active')
+        quotes.eq(current).addClass('active')
+        selectors.eq(current).addClass('active')
+        startInterval()
     })
 
     startInterval()

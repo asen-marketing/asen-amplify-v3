@@ -108,18 +108,6 @@ function asen_custom_css_head() {
         if ( get_field('page_banner_background_overlay_opacity', 'option') ) {
             $page_banner_background_overlay_styles .= 'opacity: ' . get_field('page_banner_background_overlay_opacity', 'option') . ';';
         }
-        if ( get_field('page_banner_padding_top', 'option') ) {
-            $page_banner_styles .= 'padding-top: ' . get_field('page_banner_padding_top', 'option') . get_field('page_banner_padding_top_unit_type', 'option') . ';';
-        }
-        if ( get_field('page_banner_padding_right', 'option') ) {
-            $page_banner_styles .= 'padding-right: ' . get_field('page_banner_padding_right', 'option') . get_field('page_banner_padding_right_unit_type', 'option') . ';';
-        }
-        if ( get_field('page_banner_padding_bottom', 'option') ) {
-            $page_banner_styles .= 'padding-bottom: ' . get_field('page_banner_padding_bottom', 'option') . get_field('page_banner_padding_bottom_unit_type', 'option') . ';';
-        }
-        if ( get_field('page_banner_padding_left', 'option') ) {
-            $page_banner_styles .= 'padding-left: ' . get_field('page_banner_padding_left', 'option') . get_field('page_banner_padding_left_unit_type', 'option') . ';';
-        }
     }
 ?>
 
@@ -405,7 +393,7 @@ body.admin-bar .asen-front-page-banner.is-full-screen {
 <?php
 
 /* Banner styling from Site Options fields */
-?><?php if ((is_page() && get_field('banner_disable') !=true && get_field("enable_styling_options", 'options')==1) || get_post_type()=='products'&& get_field('products_archive_use_page_banner_styles', 'option') || get_post_type()=='services'&& get_field('services_archive_use_page_banner_styles', 'option') || get_post_type()=='team'&& get_field('team_archive_use_page_banner_styles', 'option')) : ?><?php if ($page_banner_styles !='') : ?>.asen-page-banner {
+?><?php if (is_page() && get_field('banner_disable') !=true) : ?><?php if ($page_banner_styles !='') : ?>.asen-page-banner {
     <?php echo $page_banner_styles;
     ?>
 }
@@ -440,7 +428,7 @@ body.admin-bar .asen-front-page-banner.is-full-screen {
 
 <?php endif;
 
-?><?php if ($page_banner_subtitle_styles !='') : ?>.asen-page-banner div.subtitle {
+?><?php if ($page_banner_subtitle_styles !='') : ?>.asen-page-banner p.subtitle {
     <?php echo $page_banner_subtitle_styles;
     ?>
 }

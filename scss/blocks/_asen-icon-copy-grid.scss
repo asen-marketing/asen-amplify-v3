@@ -48,9 +48,9 @@
       }
 
       .item {
-        //max-width: 469px;
-        // width: 29.5%;
+        padding: 2rem;
         width: calc(33.33% - 33.33px);
+        display: grid;
 
         @media (max-width: $breakpoint-laptop-small) {
           width: calc(33.33% - 20px);
@@ -59,11 +59,27 @@
         @media (max-width: $breakpoint-tablet-small) {
           width: 100%;
         }
+
+        &.rounded {
+          &-small {
+            border-radius: 15px;
+          }
+          &-medium {
+            border-radius: 25px;
+          }
+          &-large {
+            border-radius: 35px;
+          }
+        }
+        &.align-center {
+          text-align: center;
+        }
       }
 
       i {
         color: #e81771;
         font-size: 40px;
+        padding-bottom: 2rem;
 
         @media (max-width: $breakpoint-screen-small) {
           font-size: 35px;
@@ -74,6 +90,15 @@
         @media (max-width: #{$breakpoint-small - 1px}) {
           font-size: 35px;
         }
+      }
+
+      a.asen-text-link,
+      a.button {
+        align-self: flex-end;
+      }
+
+      a.button {
+        width: fit-content;
       }
 
       a.asen-text-link {
@@ -92,6 +117,7 @@
           font-size: inherit;
           padding-left: 7px;
           color: inherit;
+          transition: none;
 
           @media (max-width: ($breakpoint-small - 1px)) {
             font-size: 22px;
@@ -104,15 +130,18 @@
       }
 
       .copy {
-        margin-top: 35px;
-
-        @media (max-width: $breakpoint-screen-small) {
-          margin-top: 25px;
-        }
-
         h4 {
+          &.small {
+            font-size: 24px;
+          }
+          &.medium {
+            font-size: 28px;
+          }
+          &.large {
+            font-size: 32px;
+          }
           font-size: 28px;
-          margin-bottom: 1.07em;
+          margin-bottom: 1rem;
           font-weight: 900;
 
           @media (max-width: $breakpoint-screen-small) {
