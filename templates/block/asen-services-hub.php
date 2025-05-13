@@ -16,6 +16,7 @@ if( !empty($block['className']) ) {
 
 $services = get_field('services');
 $carousel = get_field('use_carousel');
+$image_icon = get_field('display_options');
 $alternating = get_field('alternating_grid');
 $nav_rows = get_field('nav_arrow_icons');
 $prev_icon = $nav_rows[0]['previous_button_icon'];
@@ -67,23 +68,23 @@ if (is_array($alternating_styles)) {
 ?>
 
 <section
-    class="asen-services-hub asen-services-hub-<?php echo $block['id']; echo $className; ?><?php if (get_field('has_background')) echo ' has-background'; ?>">
-
+    class="asen-services-hub asen-services-hub-<?php echo $block['id']; echo $className; ?><?php if (get_field('has_background')) echo ' has-background'; ?><?php echo ' ' . $image_icon; ?><?php if ($alternating) echo ' alternating-grid'; ?>">
     <?php if (get_field('has_background')) : ?>
-    <div class="heading-container">
+    <div class=" heading-container">
         <h2 class="services-heading"><?php echo get_field('services_heading'); ?></h2>
         <p class="services-subheading"><?php echo get_field('services_subheading'); ?></p>
     </div>
     <?php endif; ?>
 
-    <div class="inside<?php echo $carousel ? ' carousel' : ' grid'; ?><?php if ($alternating) echo ' alternating'; ?>">
+    <div
+        class="inside<?php echo $carousel ? ' carousel' : ' grid'; ?><?php if ($alternating && $image_icon === 'image') echo ' alternating'; ?>">
         <?php if ($services) : ?>
         <?php if ($carousel) : ?>
         <div class="controls" data-glide-el="controls">
             <button class="previous" data-glide-dir="<" title="Show previous slide"
-                aria-controls="carousel-<?php echo $block['id']; ?>"><?php echo $prev_icon; ?></button>
+                aria-controls="carousel-<?php echo $block['id']; ?>"><?php echo $prev_icon ? $prev_icon : '<i class="fa-regular fa-circle-chevron-left"></i>'; ?></button>
             <button class="next" data-glide-dir="&#x0003E;" title="Show next slide"
-                aria-controls="carousel-<?php echo $block['id']; ?>"><?php echo $next_icon; ?></button>
+                aria-controls="carousel-<?php echo $block['id']; ?>"><?php echo $next_icon ? $next_icon : '<i class="fa-regular fa-circle-chevron-right"></i>'; ?></button>
         </div>
         <div class="glide glide-<?php echo $block['id']; ?>">
             <div data-glide-el="track" class="glide__track" id="carousel-<?php echo $block['id']; ?>">
@@ -102,9 +103,10 @@ if (is_array($alternating_styles)) {
                     ?>
                     <li class="<?php echo $carousel ? 'glide__slide ' : ''; ?> service-item<?php echo ($index == 1 ? ' is-active' : ''); ?><?php if (!$use_icon && $image) echo ' has-image'; ?><?php echo ' color-' . $color;?><?php if ($alternating && $index % 2 === 1) echo ' reverse'; ?>"
                         data-slide-id="<?php echo $index - 1; ?>">
-                        <?php if (!$use_icon && $image) : ?>
+                        <?php if ($image_icon === 'image' && $image) : ?>
                         <?php echo wp_get_attachment_image($image, 'full'); ?>
-                        <?php elseif ($use_icon) : ?>
+                        <?php endif; ?>
+                        <?php if ($image_icon === 'icon' && $icon) : ?>
                         <?php echo $icon; ?>
                         <?php endif; ?>
                         <div class="copy-container">
@@ -156,11 +158,6 @@ if (is_array($alternating_styles)) {
 .asen-services-hub-<?php echo $block['id'] . ' ';
 
 ?>.controls {
-    button {
-        border: 3px solid <?php echo $nav_color;
-        ?>;
-    }
-
     i {
         color: <?php echo $nav_color;
         ?>;

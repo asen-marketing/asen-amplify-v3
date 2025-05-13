@@ -1,2 +1,50 @@
 .asen-location-map {
+  @include site-vertical-margin-dynamic();
+
+  &.fixed-width {
+    display: flex;
+    justify-content: center;
+    padding-left: $site-overall-gutter;
+    padding-right: $site-overall-gutter;
+    @include site-overall-gutter-small;
+
+    .inside {
+      width: 100%;
+      max-width: $site-overall-max-width;
+    }
+  }
+  .inside {
+    position: relative;
+  }
+  #mapDiv {
+    position: relative;
+    z-index: 1;
+  }
+  .heading-container {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    z-index: 2;
+    padding: $site-overall-gutter;
+    max-width: 45%;
+    transform: translate(-50%, -50%);
+  }
+
+  h2 {
+    text-wrap: balance;
+    &.uppercase {
+      text-transform: uppercase;
+    }
+    &.lowercase {
+      text-transform: lowercase;
+    }
+  }
+
+  span.business-name {
+    font-weight: 600;
+  }
+
+  a.directions-link {
+    font-weight: 600;
+  }
 }

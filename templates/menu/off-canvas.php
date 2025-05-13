@@ -18,7 +18,7 @@
     <div class="inside<?php if (get_field('off_canvas_footer', 'option')) echo ' has-footer'; ?>">
         <div class="column-container<?php if (get_field('off_canvas_two_column', 'option')) echo ' two-column'; ?>">
             <?php if ( has_nav_menu('off-canvas-menu') ) : ?>
-            <nav class="off-canvas-menu">
+            <nav class="off-canvas-menu off-canvas-menu-large">
                 <?php wp_nav_menu(array(
                     'menu' => 'Off Canvas Menu',
                     'container' => '',
@@ -32,7 +32,7 @@
             <?php endif; ?>
             <?php get_template_part('templates/custom-cta-options'); ?>
             <?php if ( has_nav_menu('off-canvas-bottom-menu') ) : ?>
-            <nav class="off-canvas-menu off-canvas-bottom-menu">
+            <nav class="off-canvas-menu off-canvas-menu-small">
                 <?php wp_nav_menu(array(
                     'menu' => 'Off Canvas Bottom Menu',
                     'container' => '',
@@ -56,7 +56,7 @@
             ?>
 
             <?php if ($show_button && $cta_button) : ?>
-            <a class="button button-small header-cta" href="<?php echo $cta_button['url']; ?>"
+            <a class="button button-small" href="<?php echo $cta_button['url']; ?>"
                 title="<?php echo $cta_button['title']; ?>" target="<?php echo $cta_button['target']; ?>">
                 <?php echo $cta_button['title']; ?>
             </a>
@@ -100,6 +100,31 @@
         <?php endif; ?>
     </div>
 </div>
+
+<?php if (have_rows('off_canvas_button_options', 'option')) : 
+$button_options = get_field('off_canvas_button_options', 'option');
+$button_bg = $button_options[0]['button_background_color'];
+$button_bg_hover = $button_options[0]['button_background_hover_color'];
+$button_color = $button_options[0]['button_text_color'];
+$button_color_hover = $button_options[0]['button_text_hover_color'];
+?>
+
+<style>
+.off-canvas-menu-container .off-canvas-footer .button.button-small {
+    background-color: <?php echo $button_bg;
+    ?>;
+    color: <?php echo $button_color;
+    ?>;
+}
+
+.off-canvas-menu-container .off-canvas-footer .button.button-small:hover {
+    background-color: <?php echo $button_bg_hover;
+    ?>;
+    color: <?php echo $button_color_hover;
+    ?>;
+}
+</style>
+<?php endif; ?>
 
 <script defer>
 (function($) {

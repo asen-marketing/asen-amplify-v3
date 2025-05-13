@@ -25,7 +25,8 @@ $heading_size = get_field('heading_size');
 
 ?>
 <?php if ( have_rows('copy_text_blocks') ) : ?>
-<section class="asen-icon-copy-grid asen-icon-copy-grid-<?php echo $block['id']; echo $className; ?>">
+<section
+    class="asen-icon-copy-grid asen-icon-copy-grid-<?php echo $block['id']; echo $className; ?><?php echo ' link-' . $link_type; ?><?php echo ' bg-style-' . get_field('background_options'); ?><?php if (get_field('rounded_corners')) echo ' rounded'; ?><?php if (get_field('alignment_options')) echo ' align-center'; ?>">
     <div class="inside">
         <div class="items">
             <?php while ( have_rows('copy_text_blocks') ) : the_row(); ?>
@@ -36,7 +37,8 @@ $heading_size = get_field('heading_size');
                         $link_title = $link['title'];
                         $link_target = $link['target'] ? $link['target'] : '_self';
                         ?>
-            <a class="item<?php if(get_field('rounded_corners')) echo ' rounded'; ?><?php if(get_field('alignment_options')) echo ' align-center'; ?>"
+            <a class="
+    item<?php if(get_field('rounded_corners')) echo ' rounded'; ?><?php if(get_field('alignment_options')) echo ' align-center'; ?>"
                 href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"
                 title="<?php echo esc_attr( $link_title ); ?>">
                 <?php else : ?>

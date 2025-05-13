@@ -26,12 +26,29 @@
 
     h3.team-member-name {
       text-align: center;
-      font-size: 30px;
+      font-size: 25px;
+      margin-bottom: 5px;
+      font-weight: 600;
+
+      &.uppercase {
+        text-transform: uppercase;
+      }
+      &.lowercase {
+        text-transform: lowercase;
+      }
     }
 
     h4.team-member-position {
       text-align: center;
-      font-size: 25px;
+      font-size: 20px;
+      font-weight: 300;
+
+      &.uppercase {
+        text-transform: uppercase;
+      }
+      &.lowercase {
+        text-transform: lowercase;
+      }
     }
   }
 
@@ -55,7 +72,7 @@
 
     button {
       border-radius: 50%;
-      border: 3px solid #000;
+      border: none;
       background-color: transparent;
       width: 50px;
       font-size: 30px;

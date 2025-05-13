@@ -227,6 +227,19 @@ function site_acf_init() {
 			'supports'          => array( 'align' => false ),
 		));
 
+		// Asen Location Map
+		acf_register_block(array(
+			'name'				=> 'asen-location-map',
+			'title'				=> __('Asen Location Map'),
+			'description'		=> __('Google Map block for marking and linking a location.'),
+			'mode'              => 'edit',
+			'render_callback'	=> 'site_acf_block_callback',
+			'category'			=> 'admin-site-alt3',
+			'icon'				=> 'star-filled',
+			'keywords'			=> array( 'location', 'map', 'Google Maps', 'address' ),
+			'supports'          => array( 'align' => false ),
+		));
+
 	}
 }
 add_action('acf/init', 'site_acf_init');

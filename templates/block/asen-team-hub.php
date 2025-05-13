@@ -22,15 +22,16 @@ $next_icon = $nav_rows[0]['next_button_icon'];
 $nav_color = $nav_rows[0]['nav_arrow_color'];
 ?>
 
-<section class="asen-team-hub asen-team-hub-<?php echo $block['id']; echo $className; ?>">
+<section
+    class="asen-team-hub asen-team-hub-<?php echo $block['id']; echo $className; ?><?php echo $carousel ? ' carousel' : ' grid'; ?>">
     <div class="inside<?php echo $carousel ? ' carousel' : ' grid'; ?>">
         <?php if ($team_members) : ?>
         <?php if ($carousel) : ?>
         <div class="controls" data-glide-el="controls">
             <button class="previous" data-glide-dir="<" title="Show previous slide"
-                aria-controls="carousel-<?php echo $block['id']; ?>"><?php echo $prev_icon; ?></button>
+                aria-controls="carousel-<?php echo $block['id']; ?>"><?php echo $prev_icon ? $prev_icon : '<i class="fa-regular fa-circle-chevron-left"></i>'; ?></button>
             <button class="next" data-glide-dir="&#x0003E;" title="Show next slide"
-                aria-controls="carousel-<?php echo $block['id']; ?>"><?php echo $next_icon; ?></button>
+                aria-controls="carousel-<?php echo $block['id']; ?>"><?php echo $next_icon ? $next_icon : '<i class="fa-regular fa-circle-chevron-right"></i>'; ?></button>
         </div>
         <div class="glide glide-<?php echo $block['id']; ?>">
             <div data-glide-el="track" class="glide__track" id="carousel-<?php echo $block['id']; ?>">
@@ -45,8 +46,10 @@ $nav_color = $nav_rows[0]['nav_arrow_color'];
                     <li class="<?php echo $carousel ? 'glide__slide ' : ''; ?> team-item<?php echo ($index == 1 ? ' is-active' : ''); ?>"
                         data-slide-id="<?php echo $index - 1; ?>">
                         <?php echo wp_get_attachment_image($image, 'full'); ?>
-                        <h3 class="team-member-name"><?php echo $name; ?></h3>
-                        <h4 class="team-member-position"><?php echo $position; ?></h4>
+                        <h3 class="team-member-name<?php echo ' text-' . get_field('name_text_transform'); ?>">
+                            <?php echo $name; ?></h3>
+                        <h4 class="team-member-position<?php echo ' text-' . get_field('title_text_transform'); ?>">
+                            <?php echo $position; ?></h4>
                     </li>
                     <?php endforeach; ?>
                     <?php endif; ?>
@@ -69,6 +72,13 @@ $nav_color = $nav_rows[0]['nav_arrow_color'];
     h3.team-member-name {
         color: <?php the_field('name_color');
         ?>;
+        font-weight: <?php the_field('name_font_weight');
+        ?>;
+    }
+
+    h4.team-member-position {
+        font-weight: <?php the_field('title_font_weight');
+        ?>;
     }
 
     h4,
@@ -81,11 +91,6 @@ $nav_color = $nav_rows[0]['nav_arrow_color'];
 .asen-team-hub-<?php echo $block['id'] . ' ';
 
 ?>.controls {
-    button {
-        border: 3px solid <?php echo $nav_color;
-        ?>;
-    }
-
     i {
         color: <?php echo $nav_color;
         ?>;

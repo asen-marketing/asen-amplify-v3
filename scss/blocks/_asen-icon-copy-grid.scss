@@ -30,6 +30,7 @@
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
+      align-items: flex-start;
       flex-wrap: wrap;
       gap: 50px;
       width: 100%;
@@ -39,6 +40,9 @@
       }
 
       &.color-background {
+        .item {
+          background-color: #e0e0e0;
+        }
       }
       &.button-link {
       }
