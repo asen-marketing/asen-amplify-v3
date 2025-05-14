@@ -1,0 +1,23 @@
+.asen-special-copy-blurb {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-left: $site-overall-gutter;
+  padding-right: $site-overall-gutter;
+  @include site-vertical-padding-dynamic();
+  @include site-overall-gutter-small;
+
+  &.align-center {
+    text-align: center;
+  }
+
+  .inside {
+    width: 100%;
+    max-width: $site-overall-max-width;
+    position: relative;
+  }
+
+  .icon-container {
+    padding-bottom: 1.5rem;
+  }
+}

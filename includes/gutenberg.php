@@ -253,6 +253,32 @@ function site_acf_init() {
 			'supports'          => array( 'align' => false, 'anchor' => true ),
 		));
 
+		// Asen Special Copy Blurb
+		acf_register_block(array(
+			'name'				=> 'asen-special-copy-blurb',
+			'title'				=> __('Asen Special Copy Blurb'),
+			'description'		=> __('Blurb with styled copy and icon.'),
+			'mode'              => 'edit',
+			'render_callback'	=> 'site_acf_block_callback',
+			'category'			=> 'asen-blocks',
+			'icon'				=> 'editor-paragraph',
+			'keywords'			=> array( 'blurb', 'copy', 'icon' ),
+			'supports'          => array( 'align' => false, 'anchor' => true ),
+		));
+
+		// Asen Copy + Image
+		acf_register_block(array(
+			'name'				=> 'asen-copy-image',
+			'title'				=> __('Asen Copy + Image'),
+			'description'		=> __('Split block with copy on one side and image on the other.'),
+			'mode'              => 'edit',
+			'render_callback'	=> 'site_acf_block_callback',
+			'category'			=> 'asen-blocks',
+			'icon'				=> 'format-image',
+			'keywords'			=> array( 'copy', 'image', 'split' ),
+			'supports'          => array( 'align' => false, 'anchor' => true ),
+		));
+
 	}
 }
 add_action('acf/init', 'site_acf_init');
