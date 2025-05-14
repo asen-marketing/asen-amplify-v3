@@ -1,0 +1,88 @@
+.asen-mailing-list {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-left: $site-overall-gutter;
+  padding-right: $site-overall-gutter;
+  @include site-vertical-padding-dynamic();
+  @include site-overall-gutter-small;
+
+  &.none {
+    margin: 0;
+  }
+
+  .inside {
+    width: 100%;
+    max-width: 1000px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .heading-container {
+    text-align: center;
+
+    h2,
+    p {
+      &.uppercase {
+        text-transform: uppercase;
+      }
+      &.lowercase {
+        text-transform: lowercase;
+      }
+    }
+  }
+
+  .form-container {
+    .gform_wrapper {
+      form {
+        display: flex;
+      }
+
+      div.gform_body {
+        width: 100%;
+
+        input.large {
+          height: 60px;
+        }
+      }
+
+      .gform_footer {
+        margin: 0;
+        padding: 0;
+
+        .button {
+          margin: 0;
+          height: 60px;
+          width: 100%;
+        }
+      }
+    }
+
+    &.stacked {
+      .gform_wrapper form {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+    &.inline {
+      .gform_wrapper form {
+        flex-direction: row;
+      }
+    }
+  }
+
+  .background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

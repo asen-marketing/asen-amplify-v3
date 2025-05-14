@@ -52,10 +52,10 @@ $all_faqs = get_posts($args);
 
 <section
     class="asen-faqs<?php echo $split_layout ? ' split-layout' : ''; ?> asen-faqs-<?php echo $block['id']; echo $className; ?>">
-    <div class="inside">
+    <div class="inside" style="<?php echo 'max-width: ' . get_field('block_max_width') . 'px;'; ?>">
 
         <?php if ($split_layout) : ?>
-        <div class="copy-container">
+        <div class=" copy-container">
             <?php if ($heading) : ?>
             <h3><?php echo $heading; ?></h3>
             <?php endif; ?>

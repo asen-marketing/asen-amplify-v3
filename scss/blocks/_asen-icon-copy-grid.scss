@@ -18,6 +18,12 @@
     padding-bottom: 30px;
   }
 
+  &.bg-style-color {
+    .item {
+      background-color: #ececec;
+    }
+  }
+
   .inside {
     width: 100%;
     max-width: 1592px;
@@ -30,7 +36,6 @@
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
-      align-items: flex-start;
       flex-wrap: wrap;
       gap: 50px;
       width: 100%;
@@ -39,11 +44,6 @@
         gap: 30px;
       }
 
-      &.color-background {
-        .item {
-          background-color: #e0e0e0;
-        }
-      }
       &.button-link {
       }
       &.text-link {
@@ -103,6 +103,18 @@
 
       a.button {
         width: fit-content;
+
+        i {
+          font-size: inherit;
+          padding-left: 10px;
+          color: inherit;
+          transition: none;
+          padding-bottom: 0;
+
+          @media (max-width: ($breakpoint-small - 1px)) {
+            font-size: 22px;
+          }
+        }
       }
 
       a.asen-text-link {
@@ -122,6 +134,7 @@
           padding-left: 7px;
           color: inherit;
           transition: none;
+          padding-bottom: 0;
 
           @media (max-width: ($breakpoint-small - 1px)) {
             font-size: 22px;

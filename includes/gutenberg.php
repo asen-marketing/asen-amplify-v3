@@ -144,7 +144,7 @@ function site_acf_init() {
 			'category'			=> 'asen-blocks',
 			'icon'				=> '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M192 32c0 17.7 14.3 32 32 32c123.7 0 224 100.3 224 224c0 17.7 14.3 32 32 32s32-14.3 32-32C512 128.9 383.1 0 224 0c-17.7 0-32 14.3-32 32zm0 96c0 17.7 14.3 32 32 32c70.7 0 128 57.3 128 128c0 17.7 14.3 32 32 32s32-14.3 32-32c0-106-86-192-192-192c-17.7 0-32 14.3-32 32zM96 144c0-26.5-21.5-48-48-48S0 117.5 0 144V368c0 79.5 64.5 144 144 144s144-64.5 144-144s-64.5-144-144-144H128v96h16c26.5 0 48 21.5 48 48s-21.5 48-48 48s-48-21.5-48-48V144z"/></svg>',
 			'keywords'			=> array( 'blog', 'grid' ),
-			'supports'          => array( 'align' => false ),
+			'supports'          => array( 'align' => false, 'anchor' => true ),
 		));
 
 		// Asen Icon + Copy Grid
@@ -157,7 +157,7 @@ function site_acf_init() {
 			'category'			=> 'asen-blocks',
 			'icon'				=> 'screenoptions',
 			'keywords'			=> array( 'icon', 'asen', 'copy', 'grid', 'cta' ),
-			'supports'          => array( 'align' => false ),
+			'supports'          => array( 'align' => false, 'anchor' => true ),
 		));
 
 		// Asen FAQs
@@ -170,7 +170,7 @@ function site_acf_init() {
 			'category'			=> 'asen-blocks',
 			'icon'				=> 'info-outline',
 			'keywords'			=> array( 'frequently', 'asked', 'question', 'answer', 'dropwdown' ),
-			'supports'          => array( 'align' => false ),
+			'supports'          => array( 'align' => false, 'anchor' => true ),
 		));
 		
 		// Asen Team Hub
@@ -188,7 +188,7 @@ function site_acf_init() {
 			'category'			=> 'asen-blocks',
 			'icon'				=> 'admin-users',
 			'keywords'			=> array( 'team', 'grid', 'carousel', 'hub', 'member' ),
-			'supports'          => array( 'align' => false ),
+			'supports'          => array( 'align' => false, 'anchor' => true ),
 		));
 
 		// Asen Services Hub
@@ -206,7 +206,7 @@ function site_acf_init() {
 			'category'			=> 'asen-blocks',
 			'icon'				=> 'yes-alt',
 			'keywords'			=> array( 'service', 'grid', 'carousel', 'hub' ),
-			'supports'          => array( 'align' => false ),
+			'supports'          => array( 'align' => false, 'anchor' => true ),
 		));
 
 		// Asen Testimonials
@@ -224,7 +224,7 @@ function site_acf_init() {
 			'category'			=> 'asen-blocks',
 			'icon'				=> 'star-filled',
 			'keywords'			=> array( 'testimonials', 'quote', 'author' ),
-			'supports'          => array( 'align' => false ),
+			'supports'          => array( 'align' => false, 'anchor' => true ),
 		));
 
 		// Asen Location Map
@@ -234,10 +234,23 @@ function site_acf_init() {
 			'description'		=> __('Google Map block for marking and linking a location.'),
 			'mode'              => 'edit',
 			'render_callback'	=> 'site_acf_block_callback',
-			'category'			=> 'admin-site-alt3',
-			'icon'				=> 'star-filled',
+			'category'			=> 'asen-blocks',
+			'icon'				=> 'admin-site-alt3',
 			'keywords'			=> array( 'location', 'map', 'Google Maps', 'address' ),
-			'supports'          => array( 'align' => false ),
+			'supports'          => array( 'align' => false, 'anchor' => true ),
+		));
+
+		// Asen Mailing List
+		acf_register_block(array(
+			'name'				=> 'asen-mailing-list',
+			'title'				=> __('Asen Mailing List'),
+			'description'		=> __('Displays mailing list form.'),
+			'mode'              => 'edit',
+			'render_callback'	=> 'site_acf_block_callback',
+			'category'			=> 'asen-blocks',
+			'icon'				=> 'email-alt',
+			'keywords'			=> array( 'mailing', 'list', 'subscribe', 'newsletter', 'form' ),
+			'supports'          => array( 'align' => false, 'anchor' => true ),
 		));
 
 	}

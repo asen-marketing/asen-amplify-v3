@@ -1,0 +1,115 @@
+<?php
+/**
+ * Block Name: Asen Mailing List
+ *
+ * Displays mailing list form.
+ */
+
+if ( is_admin() ) {
+    echo '<h3 class="asen-block-heading">' . $block['title'] . '</h3>';
+}
+
+$className = '';
+if( !empty($block['className']) ) {
+    $className .= ' ' . $block['className'];
+}
+
+$icon = get_field('icon_code');
+$heading = get_field('heading');
+$subheading = get_field('subheading');
+$button_alignment = get_field('button_alignment');
+
+$icon_color = get_field('icon_color');
+$icon_size = get_field('icon_size');
+$heading_color = get_field('heading_color');
+$heading_size = get_field('heading_size');
+$subheading_color = get_field('subheading_color');
+$subheading_size = get_field('subheading_size');
+
+$button_colors = get_field('button_colors');
+$button_bg = $button_colors[0]['background_color'];
+$button_bg_hover = $button_colors[0]['background_hover_color'];
+$button_text_color = $button_colors[0]['text_color'];
+$button_text_hover_color = $button_colors[0]['text_hover_color'];
+
+$background_options = get_field('background_options');
+$background_color = get_field('background_color');
+$background_image = get_field('background_image');
+?>
+
+<section
+    class="asen-mailing-list asen-mailing-list-<?php echo $block['id']; echo $className; ?><?php echo ' background-' . $background_options; ?>">
+    <div class="inside" style="<?php echo 'max-width: ' . get_field('block_max_width') . 'px;'; ?>">
+        <div class="heading-container">
+            <?php if ($icon) echo $icon; ?>
+            <?php if ($heading) : ?>
+            <h2 class="<?php if (get_field('heading_text_transform')) echo get_field('heading_text_transform'); ?>">
+                <?php echo $heading; ?></h2>
+            <?php endif; ?>
+            <?php if ($subheading) : ?>
+            <p
+                class="subheading <?php if (get_field('subheading_text_transform')) echo get_field('subheading_text_transform'); ?>">
+                <?php echo $subheading; ?></p>
+            <?php endif; ?>
+        </div>
+        <div class="form-container <?php echo $button_alignment; ?>">
+            <?php echo do_shortcode('[gravityform id="1" title="false"]'); ?>
+        </div>
+    </div>
+    <?php if ($background_options === 'image' || $background_options === 'pattern') : ?>
+    <div class="background-container <?php echo $background_options; ?>"
+        style="<?php if ($background_options === 'pattern') echo 'background-image: url(' . wp_get_attachment_image_url($background_image) . ');'; ?>">
+        <?php if ($background_options === 'image') echo wp_get_attachment_image($background_image, 'full'); ?>
+    </div>
+    <?php endif; ?>
+</section>
+
+<style>
+.asen-mailing-list-<?php echo $block['id'];
+
+?> {
+    .heading-container {
+        i {
+            color: <?php echo $icon_color;
+            ?>;
+            font-size: <?php echo $icon_size . 'px';
+            ?>;
+        }
+
+        h2 {
+            color: <?php echo $heading_color;
+            ?>;
+            font-size: <?php echo $heading_size . 'px';
+            ?>;
+        }
+
+        p.subheading {
+            color: <?php echo $subheading_color;
+            ?>;
+            font-size: <?php echo $subheading_size . 'px';
+            ?>;
+        }
+    }
+
+    .gform_wrapper .gform_footer input[type="submit"] {
+        background-color: <?php echo $button_bg;
+        ?>;
+        color: <?php echo $button_text_color;
+        ?>;
+    }
+
+    .gform_wrapper .gform_footer input[type="submit"]:hover {
+        background-color: <?php echo $button_bg_hover;
+        ?>;
+        color: <?php echo $button_text_hover_color;
+        ?>;
+    }
+}
+
+.asen-mailing-list-<?php echo $block['id'];
+
+?>.background-color {
+    background-color: <?php echo $background_color;
+    ?>;
+}
+</style>

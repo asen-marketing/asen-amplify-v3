@@ -15,7 +15,7 @@ textarea {
     -webkit-appearance: none !important;
     border-radius: 0;
     border: none;
-    background-color: #ededed;
+    background-color: #fff;
     padding-left: 20px;
     color: $gray-700;
 
@@ -48,7 +48,7 @@ select {
     }
     border: none;
     border-radius: 0;
-    background-color: #ededed;
+    background-color: #fff;
     padding-left: 20px;
 
     &[multiple="multiple"] {

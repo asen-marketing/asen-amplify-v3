@@ -29,7 +29,8 @@ if (is_array($grid_colors)) {
     <?php if ($carousel) : ?>
     <div class="width-container<?php echo get_field('full_width') ? ' full' : ''; ?>">
         <?php endif; ?>
-        <div class="inside<?php echo $carousel ? ' carousel' : ' grid'; ?>">
+        <div class="inside<?php echo $carousel ? ' carousel' : ' grid'; ?>"
+            style="<?php if (!get_field('full_width')) echo 'max-width: ' . get_field('block_max_width') . 'px;'; ?>">
             <?php if ($testimonials) : ?>
             <?php foreach( $testimonials as $index => $testimonial ): 
                 $quote = get_field('testimonial_quote', $testimonial->ID );

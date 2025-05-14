@@ -68,16 +68,16 @@ if (is_array($alternating_styles)) {
 ?>
 
 <section
-    class="asen-services-hub asen-services-hub-<?php echo $block['id']; echo $className; ?><?php if (get_field('has_background')) echo ' has-background'; ?><?php echo ' ' . $image_icon; ?><?php if ($alternating) echo ' alternating-grid'; ?>">
+    class="asen-services-hub asen-services-hub-<?php echo $block['id']; echo $className; ?><?php if (get_field('has_background')) echo ' has-background'; ?><?php echo ' ' . $image_icon; ?><?php if ($alternating) echo ' alternating'; ?><?php if ($carousel) echo ' carousel'; if (!$carousel && !$alternating) echo ' grid' ?>">
     <?php if (get_field('has_background')) : ?>
-    <div class=" heading-container">
+    <div class="heading-container" style="<?php echo 'max-width: ' . (get_field('block_max_width') - 200) . 'px;'; ?>">
         <h2 class="services-heading"><?php echo get_field('services_heading'); ?></h2>
         <p class="services-subheading"><?php echo get_field('services_subheading'); ?></p>
     </div>
     <?php endif; ?>
 
-    <div
-        class="inside<?php echo $carousel ? ' carousel' : ' grid'; ?><?php if ($alternating && $image_icon === 'image') echo ' alternating'; ?>">
+    <div class="inside<?php if ($carousel) echo ' carousel'; if (!$carousel && !$alternating) echo ' grid' ?><?php if ($alternating && $image_icon === 'image') echo ' alternating'; ?>"
+        style="<?php echo 'max-width: ' . get_field('block_max_width') . 'px;'; ?>">
         <?php if ($services) : ?>
         <?php if ($carousel) : ?>
         <div class="controls" data-glide-el="controls">
@@ -86,13 +86,13 @@ if (is_array($alternating_styles)) {
             <button class="next" data-glide-dir="&#x0003E;" title="Show next slide"
                 aria-controls="carousel-<?php echo $block['id']; ?>"><?php echo $next_icon ? $next_icon : '<i class="fa-regular fa-circle-chevron-right"></i>'; ?></button>
         </div>
-        <div class="glide glide-<?php echo $block['id']; ?>">
+        <div class="glide glide-<?php echo $block['id']; ?>"
+            style="<?php echo 'max-width: ' . (get_field('block_max_width') - 200) . 'px;'; ?>">
             <div data-glide-el="track" class="glide__track" id="carousel-<?php echo $block['id']; ?>">
                 <ul class="glide__slides">
                     <?php endif; ?>
                     <?php foreach( $services as $index => $service ): 
                 $name = get_the_title( $service->ID );
-                $use_icon = get_field('media_options', $service->ID) === 'icon';
                 $image = get_field( 'service_image', $service->ID );
                 $icon = get_field('icon_code', $service->ID);
                 $blurb = get_field('service_blurb', $service->ID);
@@ -101,7 +101,7 @@ if (is_array($alternating_styles)) {
                 if ($color === 0) $color = 1;
                 
                     ?>
-                    <li class="<?php echo $carousel ? 'glide__slide ' : ''; ?> service-item<?php echo ($index == 1 ? ' is-active' : ''); ?><?php if (!$use_icon && $image) echo ' has-image'; ?><?php echo ' color-' . $color;?><?php if ($alternating && $index % 2 === 1) echo ' reverse'; ?>"
+                    <li class="<?php echo $carousel ? 'glide__slide ' : ''; ?> service-item<?php echo ($index == 1 ? ' is-active' : ''); ?><?php if ($image_icon === 'image' && $image) echo ' has-image'; ?><?php echo ' color-' . $color;?><?php if ($alternating && $index % 2 === 1) echo ' reverse'; ?>"
                         data-slide-id="<?php echo $index - 1; ?>">
                         <?php if ($image_icon === 'image' && $image) : ?>
                         <?php echo wp_get_attachment_image($image, 'full'); ?>
