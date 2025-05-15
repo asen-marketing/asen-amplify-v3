@@ -292,6 +292,24 @@ function site_acf_init() {
 			'supports'          => array( 'align' => false, 'anchor' => true ),
 		));
 
+		// Asen Products Showcase
+		acf_register_block(array(
+			'name'				=> 'asen-products-showcase',
+			'title'				=> __('Asen Products Showcase'),
+			'description'		=> __('Block for displaying Products CPT.'),
+			'mode'              => 'edit',
+			'enqueue_assets' => function() {
+				if ( !is_admin() ) {
+					asen_enqueue_glide_js();
+				}
+			},
+			'render_callback'	=> 'site_acf_block_callback',
+			'category'			=> 'asen-blocks',
+			'icon'				=> 'products',
+			'keywords'			=> array( 'products', 'showcase', 'hub' ),
+			'supports'          => array( 'align' => false, 'anchor' => true ),
+		));
+
 	}
 }
 add_action('acf/init', 'site_acf_init');

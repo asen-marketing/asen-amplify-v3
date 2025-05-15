@@ -19,5 +19,28 @@
 
   .icon-container {
     padding-bottom: 1.5rem;
+
+    i {
+      color: #e81771;
+      font-size: 50px;
+    }
+  }
+
+  .blurb-container {
+    p {
+      color: #313d47;
+      font-size: 40px;
+    }
+  }
+
+  .link-container {
+    a {
+      color: #e81771;
+      font-size: 25px;
+
+      &.button {
+        color: #fff;
+      }
+    }
   }
 }
