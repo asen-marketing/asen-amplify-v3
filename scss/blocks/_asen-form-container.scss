@@ -1,0 +1,33 @@
+.asen-form-container {
+  display: flex;
+  justify-content: center;
+  padding-left: $site-overall-gutter;
+  padding-right: $site-overall-gutter;
+  @include site-overall-gutter-small;
+  @include site-vertical-padding-dynamic();
+
+  .inside {
+    max-width: $site-overall-max-width;
+    width: 100%;
+  }
+
+  h2,
+  p {
+    &.uppercase {
+      text-transform: uppercase;
+    }
+    &.lowercase {
+      text-transform: lowercase;
+    }
+  }
+
+  .gform_wrapper {
+    .gform_body {
+      input,
+      textarea,
+      select {
+        border: 1px solid $gray-300 !important;
+      }
+    }
+  }
+}

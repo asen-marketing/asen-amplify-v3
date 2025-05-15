@@ -2,7 +2,7 @@
 /**
  * Block Name: Asen Mailing List
  *
- * Displays mailing list form.
+ * Displays mailing list form with heading and background.
  */
 
 if ( is_admin() ) {
@@ -58,7 +58,7 @@ $background_image = get_field('background_image');
     </div>
     <?php if ($background_options === 'image' || $background_options === 'pattern') : ?>
     <div class="background-container <?php echo $background_options; ?>"
-        style="<?php if ($background_options === 'pattern') echo 'background-image: url(' . wp_get_attachment_image_url($background_image) . ');'; ?>">
+        style="<?php if ($background_options === 'pattern') echo 'background-image: url(' . wp_get_attachment_image_url($background_image, 'full') . ');'; ?>">
         <?php if ($background_options === 'image') echo wp_get_attachment_image($background_image, 'full'); ?>
     </div>
     <?php endif; ?>

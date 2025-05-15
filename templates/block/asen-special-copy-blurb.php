@@ -55,7 +55,7 @@ $background_hover_color = $link_colors[0]['button_background_hover_color'];
         <div class="link-container">
             <?php if( $link_1 ) : ?>
             <a href="<?php echo $link_1['url']; ?>"
-                class="<?php if ($link_options === 'buttons') echo ' button button-small';?>">
+                class="<?php if ($link_options === 'buttons') echo 'button button-small'; if ($link_options === 'text') echo 'text-link'; if ($link_options === 'icon') echo 'text-icon-link'; ?>">
                 <?php echo $link_1['title']; ?><?php if ($link_icon && $link_options === 'icon') echo $link_icon; ?>
             </a>
             <?php endif; ?>

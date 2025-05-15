@@ -1,0 +1,61 @@
+.asen-copy-image {
+  display: flex;
+  justify-content: center;
+  padding-left: $site-overall-gutter;
+  padding-right: $site-overall-gutter;
+  @include site-overall-gutter-small;
+  @include site-vertical-padding-dynamic();
+
+  .inside {
+    max-width: $site-overall-max-width;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 3rem;
+
+    .item {
+      display: flex;
+      align-items: center;
+      max-height: 450px;
+      gap: 2rem;
+      background-color: transparent;
+
+      @media (max-width: $breakpoint-tablet-small) {
+        flex-direction: column;
+        max-height: 100%;
+      }
+
+      .copy-container {
+        width: 100%;
+        padding: 0;
+
+        h2,
+        p {
+          &.uppercase {
+            text-transform: uppercase;
+          }
+          &.lowercase {
+            text-transform: lowercase;
+          }
+          &.italic {
+            font-style: italic;
+          }
+        }
+      }
+
+      .image-container {
+        max-width: 55%;
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
