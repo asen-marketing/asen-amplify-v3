@@ -19,9 +19,13 @@ $carousel = get_field('use_carousel');
 $image_icon = get_field('display_options');
 $alternating = get_field('alternating_grid');
 $nav_rows = get_field('nav_arrow_icons');
+
+if (is_array($nav_rows)) {
 $prev_icon = $nav_rows[0]['previous_button_icon'];
 $next_icon = $nav_rows[0]['next_button_icon'];
 $nav_color = $nav_rows[0]['nav_arrow_color'];
+}
+
 $colors = get_field('service_colors');
 $bg_colors = [];
 $text_colors = [];
@@ -32,35 +36,37 @@ $button_hover_colors = [];
 $service_icon_colors = [];
 $total_colors = 1;
 
-foreach ($colors as $index => $color_row) {
-    if ($color_row['bg_color']) {
-        array_push($bg_colors, $color_row['bg_color']);
-    }
-    if ($color_row['text_color']) {
-        array_push($text_colors, $color_row['text_color']);
-    }
-    if ($color_row['link_color']) {
-        array_push($link_colors, $color_row['link_color']);
-    }
-    if ($color_row['link_hover_color']) {
-        array_push($link_hover_colors, $color_row['link_hover_color']);
-    }
-    if ($color_row['button_color']) {
-        array_push($button_colors, $color_row['button_color']);
+if (is_array($colors)) {
+    foreach ($colors as $index => $color_row) {
+        if ($color_row['bg_color']) {
+            array_push($bg_colors, $color_row['bg_color']);
         }
-    if ($color_row['button_hover_color']) {
-        array_push($button_hover_colors, $color_row['button_hover_color']);
+        if ($color_row['text_color']) {
+            array_push($text_colors, $color_row['text_color']);
+        }
+        if ($color_row['link_color']) {
+            array_push($link_colors, $color_row['link_color']);
+        }
+        if ($color_row['link_hover_color']) {
+            array_push($link_hover_colors, $color_row['link_hover_color']);
+        }
+        if ($color_row['button_color']) {
+            array_push($button_colors, $color_row['button_color']);
+            }
+        if ($color_row['button_hover_color']) {
+            array_push($button_hover_colors, $color_row['button_hover_color']);
+        }
+        if ($color_row['service_icon_color']) {
+            array_push($service_icon_colors, $color_row['service_icon_color']);
+        }
+        $total_colors++;
     }
-    if ($color_row['service_icon_color']) {
-        array_push($service_icon_colors, $color_row['service_icon_color']);
-    }
-    $total_colors++;
 }
 
 if ($alternating) {
     $alternating_styles = get_field('alternating_styles');
 }
-if (is_array($alternating_styles)) {
+if (isset($alternating_styles) && is_array($alternating_styles)) {
     $alt_color = $alternating_styles[0]['text_color'];
     $alt_heading_size = $alternating_styles[0]['heading_font_size'];
     $alt_copy_size = $alternating_styles[0]['copy_font_size'];
@@ -70,7 +76,8 @@ if (is_array($alternating_styles)) {
 <section
     class="asen-services-hub asen-services-hub-<?php echo $block['id']; echo $className; ?><?php if (get_field('has_background')) echo ' has-background'; ?><?php echo ' ' . $image_icon; ?><?php if ($alternating) echo ' alternating'; ?><?php if ($carousel) echo ' carousel'; if (!$carousel && !$alternating) echo ' grid' ?>">
     <?php if (get_field('has_background')) : ?>
-    <div class="heading-container" style="<?php echo 'max-width: ' . (get_field('block_max_width') - 200) . 'px;'; ?>">
+    <div class="heading-container"
+        style="<?php if (get_field('block_max_width')) echo 'max-width: ' . (get_field('block_max_width') - 200) . 'px;'; ?>">
         <h2 class="services-heading"><?php echo get_field('services_heading'); ?></h2>
         <p class="services-subheading"><?php echo get_field('services_subheading'); ?></p>
     </div>
@@ -87,7 +94,7 @@ if (is_array($alternating_styles)) {
                 aria-controls="carousel-<?php echo $block['id']; ?>"><?php echo $next_icon ? $next_icon : '<i class="fa-regular fa-circle-chevron-right"></i>'; ?></button>
         </div>
         <div class="glide glide-<?php echo $block['id']; ?>"
-            style="<?php echo 'max-width: ' . (get_field('block_max_width') - 200) . 'px;'; ?>">
+            style="<?php if (get_field('block_max_width')) echo 'max-width: ' . (get_field('block_max_width') - 200) . 'px;'; ?>">
             <div data-glide-el="track" class="glide__track" id="carousel-<?php echo $block['id']; ?>">
                 <ul class="glide__slides">
                     <?php endif; ?>
@@ -159,7 +166,7 @@ if (is_array($alternating_styles)) {
 
 ?>.controls {
     i {
-        color: <?php echo $nav_color;
+        color: <?php if (isset($nav_color)) echo $nav_color;
         ?>;
     }
 }
@@ -175,7 +182,6 @@ if (is_array($alternating_styles)) {
     p,
     h3,
     h4 {
-
         color: <?php echo get_field('service_text_color');
         ?>;
     }
@@ -215,124 +221,81 @@ if (is_array($alternating_styles)) {
 
 .asen-services-hub-<?php echo $block['id'] . ' ';
 
-?> {
-    .service-item.color-1 {
-        background-color: <?php echo $bg_colors[0];
-        ?>;
-        color: <?php echo $text_colors[0];
-        ?>;
+?>.inside {
+    <?php if (is_array($bg_colors) || is_array($text_colors) || is_array($link_colors)): ?> <?php for ($i=0; $i < $total_colors; $i++): ?> .service-item.color-<?php echo $i + 1;
 
-        h3 {
-            color: <?php echo $text_colors[0];
-            ?>;
-        }
+    ?> {
+        background-color: <?php if(isset($bg_colors[$i])) echo $bg_colors[$i];
+        ?>;
+        color: <?php if (isset($text_colors[$i])) echo $text_colors[$i];
+        ?>;
 
         i {
-            color: <?php echo $service_icon_colors[0];
+            color: <?php if (isset($service_icon_colors[$i])) echo $service_icon_colors[$i];
             ?>;
         }
 
-        a,
-        a>i {
-            color: <?php echo $link_colors[0];
-            ?>;
-        }
+        .copy-container {
+
+            h3.service-title,
+            p.service-blurb {
+                color: <?php if (isset($text_colors[$i])) echo $text_colors[$i];
+                ?>;
+            }
 
 
-        a:hover,
-        a:hover>i {
-            color: <?php echo $link_hover_colors[0];
-            ?>;
-        }
+            a,
+            a>i {
+                color: <?php if (isset($link_colors[$i])) echo $link_colors[$i];
+                ?>;
+            }
 
-        a.button {
-            background-color: <?php echo $button_colors[0];
-            ?>;
-        }
+            a:hover,
+            a:hover>i {
+                color: <?php if (isset($link_hover_colors[$i])) echo $link_hover_colors[$i];
+                ?>;
+            }
 
-        a.button:hover {
-            background-color: <?php echo $button_hover_colors[0];
-            ?>;
+            a.button {
+                background-color: <?php if (isset($button_colors[$i])) echo $button_colors[$i];
+                ?>;
+            }
+
+            a.button:hover {
+                background-color: <?php if (isset($button_hover_colors[$i])) echo $button_hover_colors[$i];
+                ?>;
+            }
         }
     }
 
-    .service-item.color-2 {
-        background-color: <?php echo $bg_colors[1];
+    <?php endfor;
+    ?><?php endif;
+
+    ?>
+}
+
+.asen-services-hub-<?php echo $block['id'] . ' ';
+
+?>.inside.alternating .service-item .copy-container {
+
+    <?php if (isset($alternating_styles)) : ?>h3.service-title,
+    p.service-blurb {
+        color: <?php echo $alt_color;
         ?>;
-        color: <?php echo $text_colors[1];
-        ?>;
-
-        h3 {
-            color: <?php echo $text_colors[1];
-            ?>;
-        }
-
-        i {
-            color: <?php echo $service_icon_colors[1];
-            ?>;
-        }
-
-        a,
-        a>i {
-            color: <?php echo $link_colors[1];
-            ?>;
-        }
-
-        a:hover,
-        a:hover>i {
-            color: <?php echo $link_hover_colors[1];
-            ?>;
-        }
-
-        a.button {
-            background-color: <?php echo $button_colors[1];
-            ?>;
-        }
-
-        a.button:hover {
-            background-color: <?php echo $button_hover_colors[1];
-            ?>;
-        }
     }
 
-    .service-item.color-3 {
-        background-color: <?php echo $bg_colors[2];
+    h3.service-title {
+        font-size: <?php echo $alt_heading_size . 'px';
         ?>;
-        color: <?php echo $text_colors[2];
-        ?>;
-
-        h3 {
-            color: <?php echo $text_colors[2];
-            ?>;
-        }
-
-        i {
-            color: <?php echo $service_icon_colors[2];
-            ?>;
-        }
-
-        a,
-        a>i {
-            color: <?php echo $link_colors[2];
-            ?>;
-        }
-
-        a:hover,
-        a:hover>i {
-            color: <?php echo $link_hover_colors[2];
-            ?>;
-        }
-
-        a.button {
-            background-color: <?php echo $button_colors[2];
-            ?>;
-        }
-
-        a.button:hover {
-            background-color: <?php echo $button_hover_colors[2];
-            ?>;
-        }
     }
+
+    p.service-blurb {
+        font-size: <?php echo $alt_copy_size . 'px';
+        ?>;
+    }
+
+    <?php endif;
+    ?>
 }
 </style>
 

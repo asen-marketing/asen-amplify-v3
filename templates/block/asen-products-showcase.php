@@ -18,22 +18,28 @@ $products = get_field('products');
 $carousel = get_field('use_carousel');
 $alternating = get_field('alternating_grid');
 $nav_rows = get_field('nav_arrow_icons');
+
+if (is_array($nav_rows)) {
 $prev_icon = $nav_rows[0]['previous_button_icon'];
 $next_icon = $nav_rows[0]['next_button_icon'];
 $nav_color = $nav_rows[0]['nav_arrow_color'];
+}
+
 $colors = get_field('product_colors');
 $bg_colors = [];
 $text_colors = [];
 $total_colors = 1;
 
-foreach ($colors as $index => $color_row) {
-    if ($color_row['bg_color']) {
-        array_push($bg_colors, $color_row['bg_color']);
+if (is_array($colors)) {
+    foreach ($colors as $index => $color_row) {
+        if ($color_row['bg_color']) {
+            array_push($bg_colors, $color_row['bg_color']);
+        }
+        if ($color_row['text_color']) {
+            array_push($text_colors, $color_row['text_color']);
+        }
+        $total_colors++;
     }
-    if ($color_row['text_color']) {
-        array_push($text_colors, $color_row['text_color']);
-    }
-    $total_colors++;
 }
 ?>
 
@@ -126,9 +132,9 @@ foreach ($colors as $index => $color_row) {
 
 .asen-products-showcase-<?php echo $block['id'] . ' ';
 
-?>.controls {
+?>.controls button {
     i {
-        color: <?php echo $nav_color;
+        color: <?php if (isset($nav_color)) echo $nav_color;
         ?>;
     }
 }
@@ -187,64 +193,32 @@ foreach ($colors as $index => $color_row) {
 
 ?> {
     .inside {
+        <?php if (is_array($bg_colors) || is_array($text_colors)): ?> <?php for ($i=0; $i < $total_colors; $i++): ?> .product-item.color-<?php echo $i + 1;
 
-        .product-item.color-1 {
-            background-color: <?php echo $bg_colors[0];
+        ?> {
+            background-color: <?php if (isset($bg_colors[$i])) echo $bg_colors[$i];
             ?>;
-            color: <?php echo $text_colors[0];
+            color: <?php if (isset($text_colors[$i])) echo $text_colors[$i];
             ?>;
 
             .copy-container {
-                background-color: <?php echo $bg_colors[0];
+                background-color: <?php if (isset($bg_colors[$i])) echo $bg_colors[$i];
                 ?>;
 
                 h3.product-title,
                 p.description,
                 p.price {
-                    color: <?php echo $text_colors[0];
+                    color: <?php if (isset($text_colors[$i])) echo $text_colors[$i];
                     ?>;
                 }
             }
         }
 
-        .product-item.color-2 {
-            background-color: <?php echo $bg_colors[1];
-            ?>;
-            color: <?php echo $text_colors[1];
-            ?>;
-
-            .copy-container {
-                background-color: <?php echo $bg_colors[1];
-                ?>;
-
-                h3.product-title,
-                p.description,
-                p.price {
-                    color: <?php echo $text_colors[1];
-                    ?>;
-                }
-            }
-        }
-
-        .product-item.color-3 {
-            background-color: <?php echo $bg_colors[2];
-            ?>;
-            color: <?php echo $text_colors[2];
-            ?>;
-
-            .copy-container {
-                background-color: <?php echo $bg_colors[2];
-                ?>;
-
-                h3.product-title,
-                p.description,
-                p.price {
-                    color: <?php echo $text_colors[2];
-                    ?>;
-                }
-            }
-        }
+        <?php endfor;
+        ?><?php endif;
+        ?>
     }
+
 
     .inside.alternating .product-item .copy-container {
         h3.product-title {

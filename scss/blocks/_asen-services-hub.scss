@@ -41,6 +41,19 @@
     position: relative;
     z-index: 1;
 
+    .service-item {
+      background-color: #313d47;
+    }
+    .copy-container {
+      h3.service-title {
+        font-size: 34px;
+        margin-bottom: 5px;
+      }
+      p.service-blurb {
+        font-size: 22px;
+      }
+    }
+
     &.alternating {
       max-width: 1050px;
       gap: 3rem;
@@ -75,12 +88,9 @@
           }
 
           h3.service-title {
-            font-size: 34px;
             color: #313d47;
-            margin-bottom: 5px;
           }
           p.service-blurb {
-            font-size: 22px;
             color: #313d47;
           }
         }
@@ -106,43 +116,27 @@
           color: #fff;
         }
 
-        .copy-container {
-          background-color: #313d47;
-
-          h3.service-title {
-            font-size: 34px;
-            color: #fff;
-            margin-bottom: 5px;
-          }
-          p.service-blurb {
-            font-size: 22px;
-            color: #fff;
-          }
+        h3.service-title {
+          color: #fff;
+        }
+        p.service-blurb {
+          color: #fff;
         }
       }
     }
     &.grid {
       .service-item {
-        background-color: #313d47;
-
         i {
           padding-left: 2rem;
           font-size: 40px;
           color: #fff;
         }
 
-        .copy-container {
-          background-color: #313d47;
-
-          h3.service-title {
-            font-size: 34px;
-            color: #fff;
-            margin-bottom: 5px;
-          }
-          p.service-blurb {
-            font-size: 22px;
-            color: #fff;
-          }
+        h3.service-title {
+          color: #fff;
+        }
+        p.service-blurb {
+          color: #fff;
         }
       }
     }

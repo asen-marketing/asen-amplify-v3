@@ -98,4 +98,5 @@ $background_hover_color = $link_colors[0]['button_background_hover_color'];
         background-color: <?php echo $background_hover_color;
         ?>;
     }
+}
 </style>

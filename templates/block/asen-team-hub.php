@@ -34,7 +34,8 @@ $nav_color = $nav_rows[0]['nav_arrow_color'];
             <button class="next" data-glide-dir="&#x0003E;" title="Show next slide"
                 aria-controls="carousel-<?php echo $block['id']; ?>"><?php echo $next_icon ? $next_icon : '<i class="fa-regular fa-circle-chevron-right"></i>'; ?></button>
         </div>
-        <div class="glide glide-<?php echo $block['id']; ?>">
+        <div class="glide glide-<?php echo $block['id']; ?>"
+            style="<?php if (get_field('block_max_width')) echo 'max-width: ' . (get_field('block_max_width') - 200) . 'px;'; ?>">
             <div data-glide-el="track" class="glide__track" id="carousel-<?php echo $block['id']; ?>">
                 <ul class="glide__slides">
                     <?php endif; ?>
