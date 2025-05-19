@@ -49,6 +49,11 @@ $button_hover_text = $button_colors[0]['text_hover_color'];
     </div>
 </section>
 
+
+<?php $heading_size = get_field('heading_size');
+$subheading_size = get_field('subheading_size');
+?>
+
 <style>
 .asen-form-container-<?php echo $block['id'];
 
@@ -58,14 +63,52 @@ $button_hover_text = $button_colors[0]['text_hover_color'];
             color: <?php echo get_field('heading_color');
             ?>;
             font-size: <?php echo get_field('heading_size') . 'px';
-            ?>
+
+            ?><?php if (isset($heading_size) && $heading_size > 40) {
+                $heading_size=round($heading_size * 0.85);
+            }
+
+            ?>;
+
+            @media (max-width: 1024px) {
+                font-size: <?php if (isset($heading_size)) echo $heading_size . 'px';
+                ?>;
+            }
+
+            <?php if (isset($heading_size) && $heading_size > 40) {
+                $heading_size=round($heading_size * 0.8);
+            }
+
+            ?>@media (max-width: 640px) {
+                font-size: <?php if (isset($heading_size)) echo $heading_size . 'px';
+                ?>;
+            }
         }
 
         p.subheading {
             color: <?php echo get_field('subheading_color');
             ?>;
             font-size: <?php echo get_field('subheading_size') . 'px';
-            ?>
+
+            ?>;
+
+            <?php if (isset($subheading_size) && $subheading_size > 25) {
+                $subheading_size=round($subheading_size * 0.85);
+            }
+
+            ?>@media (max-width: 1024px) {
+                font-size: <?php if (isset($subheading_size)) echo $subheading_size . 'px';
+                ?>;
+            }
+
+            <?php if (isset($subheading_size) && $subheading_size > 25) {
+                $subheading_size=round($subheading_size * 0.85);
+            }
+
+            ?>@media (max-width: 640px) {
+                font-size: <?php if (isset($subheading_size)) echo $subheading_size . 'px';
+                ?>;
+            }
         }
 
     }

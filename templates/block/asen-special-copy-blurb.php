@@ -47,7 +47,7 @@ $background_hover_color = $link_colors[0]['button_background_hover_color'];
         <?php endif; ?>
         <div class="blurb-container">
             <p class="blurb"
-                style="font-size: <?php echo $blurb_size . 'px'; ?>; color: <?php echo $blurb_color; ?>; font-weight: <?php echo $blurb_weight; ?>; text-transform: <?php echo $blurb_transform; ?>; font-style: <?php echo $blurb_style; ?>;">
+                style="color: <?php echo $blurb_color; ?>; font-weight: <?php echo $blurb_weight; ?>; text-transform: <?php echo $blurb_transform; ?>; font-style: <?php echo $blurb_style; ?>;">
                 <?php echo $blurb; ?>
             </p>
         </div>
@@ -72,11 +72,45 @@ $background_hover_color = $link_colors[0]['button_background_hover_color'];
 .asen-special-copy-blurb-<?php echo $block['id'];
 
 ?> {
+
+    p.blurb {
+        font-size: <?php echo $blurb_size . 'px';
+        ?>;
+
+        <?php if ($blurb_size && $blurb_size > 25) {
+            $blurb_size=round($blurb_size * 0.85);
+        }
+
+        ?>@media (max-width: 1024px) {
+            font-size: <?php echo $blurb_size . 'px';
+            ?>;
+        }
+
+        <?php if ($blurb_size && $blurb_size > 25) {
+            $blurb_size=round($blurb_size * 0.85);
+        }
+
+        ?>@media (max-width: 640px) {
+            font-size: <?php echo $blurb_size . 'px';
+            ?>;
+        }
+
+    }
+
     .icon-container i {
         font-size: <?php echo $icon_size . 'px';
         ?>;
         color: <?php echo $icon_color;
         ?>;
+
+        <?php if ($icon_size && $icon_size > 25) {
+            $icon_size=round($icon_size * 0.85);
+        }
+
+        ?>@media (max-width: 640px) {
+            font-size: <?php echo $icon_size . 'px';
+            ?>;
+        }
     }
 
     .link-container a {

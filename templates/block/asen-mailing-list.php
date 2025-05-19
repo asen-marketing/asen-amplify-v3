@@ -74,6 +74,15 @@ $background_image = get_field('background_image');
             ?>;
             font-size: <?php echo $icon_size . 'px';
             ?>;
+
+            <?php if ($icon_size && $icon_size > 25) {
+                $icon_size=round($icon_size * 0.85);
+            }
+
+            ?>@media (max-width: 640px) {
+                font-size: <?php echo $icon_size . 'px';
+                ?>;
+            }
         }
 
         h2 {
@@ -81,6 +90,24 @@ $background_image = get_field('background_image');
             ?>;
             font-size: <?php echo $heading_size . 'px';
             ?>;
+
+            <?php if (isset($heading_size) && $heading_size > 40) {
+                $heading_size=round($heading_size * 0.85);
+            }
+
+            ?>@media (max-width: 1024px) {
+                font-size: <?php if (isset($heading_size)) echo $heading_size . 'px';
+                ?>;
+            }
+
+            <?php if (isset($heading_size) && $heading_size > 40) {
+                $heading_size=round($heading_size * 0.8);
+            }
+
+            ?>@media (max-width: 640px) {
+                font-size: <?php if (isset($heading_size)) echo $heading_size . 'px';
+                ?>;
+            }
         }
 
         p.subheading {
@@ -88,6 +115,24 @@ $background_image = get_field('background_image');
             ?>;
             font-size: <?php echo $subheading_size . 'px';
             ?>;
+
+            <?php if (isset($subheading_size) && $subheading_size > 25) {
+                $subheading_size=round($subheading_size * 0.85);
+            }
+
+            ?>@media (max-width: 1024px) {
+                font-size: <?php if (isset($subheading_size)) echo $subheading_size . 'px';
+                ?>;
+            }
+
+            <?php if (isset($subheading_size) && $subheading_size > 25) {
+                $subheading_size=round($subheading_size * 0.85);
+            }
+
+            ?>@media (max-width: 640px) {
+                font-size: <?php if (isset($subheading_size)) echo $subheading_size . 'px';
+                ?>;
+            }
         }
     }
 

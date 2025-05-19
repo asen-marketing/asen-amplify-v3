@@ -49,10 +49,6 @@
         max-width: 88%;
         transition: all 200ms ease;
         color: #212527;
-
-        @media (max-width: $breakpoint-small) {
-          font-size: 23px;
-        }
       }
 
       &::after {
@@ -115,10 +111,11 @@
       @media (max-width: $breakpoint-screen-small) {
         display: flex;
         flex-direction: column;
+        gap: 1rem;
       }
 
       h3 {
-        font-size: 65px;
+        @include responsive-heading(65px);
       }
 
       p.disclaimer {

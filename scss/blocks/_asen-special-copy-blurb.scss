@@ -23,6 +23,10 @@
     i {
       color: #e81771;
       font-size: 50px;
+
+      @media (max-width: $breakpoint-small) {
+        font-size: 40px;
+      }
     }
   }
 
@@ -30,6 +34,13 @@
     p {
       color: #313d47;
       font-size: 40px;
+
+      @media (max-width: $breakpoint-tablet-large) {
+        font-size: 32px;
+      }
+      @media (max-width: $breakpoint-small) {
+        font-size: 27px;
+      }
     }
   }
 
@@ -38,8 +49,17 @@
       color: #e81771;
       font-size: 25px;
 
+      @media (max-width: $breakpoint-small) {
+        font-size: 22px;
+      }
+
       &.button {
         color: #fff;
+
+        @media (max-width: $breakpoint-small) {
+          width: 100%;
+          margin-bottom: 0.5rem;
+        }
       }
     }
   }

@@ -61,6 +61,8 @@ if( !empty($block['className']) ) {
         <?php endif; ?>
 </section>
 
+
+<?php $heading_size = get_field('heading_font_size'); ?>
 <style>
 .asen-location-map-<?php echo $block['id'];
 
@@ -71,6 +73,24 @@ if( !empty($block['className']) ) {
         ?>;
         color: <?php echo get_field('heading_color');
         ?>;
+
+        <?php if (isset($heading_size) && $heading_size > 40) {
+            $heading_size=round($heading_size * 0.85);
+        }
+
+        ?>@media (max-width: 1200px) {
+            font-size: <?php if (isset($heading_size)) echo $heading_size . 'px';
+            ?>;
+        }
+
+        <?php if (isset($heading_size) && $heading_size > 40) {
+            $heading_size=round($heading_size * 0.8);
+        }
+
+        ?>@media (max-width: 640px) {
+            font-size: <?php if (isset($heading_size)) echo $heading_size . 'px';
+            ?>;
+        }
     }
 
     a.directions-link {

@@ -8,6 +8,10 @@
   @include site-vertical-padding-dynamic();
   @include site-vertical-margin-dynamic();
 
+  &.background-color {
+    background-color: #ebebeb;
+  }
+
   &.none {
     margin: 0;
   }
@@ -22,6 +26,10 @@
   .heading-container {
     text-align: center;
 
+    h2 {
+      margin-bottom: 5px;
+    }
+
     h2,
     p {
       &.uppercase {
@@ -29,6 +37,13 @@
       }
       &.lowercase {
         text-transform: lowercase;
+      }
+    }
+    i {
+      font-size: 45px;
+
+      @media (max-width: $breakpoint-small) {
+        font-size: 35px;
       }
     }
   }
@@ -44,6 +59,10 @@
 
         input.large {
           height: 60px;
+
+          @media (max-width: $breakpoint-tablet-small) {
+            height: 50px;
+          }
         }
       }
 
@@ -55,6 +74,10 @@
           margin: 0;
           height: 60px;
           width: 100%;
+
+          @media (max-width: $breakpoint-tablet-small) {
+            height: 50px;
+          }
         }
       }
     }

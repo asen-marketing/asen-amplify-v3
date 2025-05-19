@@ -115,72 +115,120 @@ if ($split_styles) {
 .asen-faqs-<?php echo $block['id'];
 
 ?> {
-    .copy-container {
-        h3 {
-            font-size: <?php echo $heading_size . 'px';
-            ?>;
-            color: <?php echo $heading_color;
-            ?>;
+    .inside {
+
+        .copy-container {
+            h3 {
+                font-size: <?php if (isset($heading_size)) echo $heading_size . 'px';
+                ?>;
+                color: <?php if (isset($heading_color)) echo $heading_color;
+                ?>;
+
+                <?php if (isset($heading_size) && $heading_size > 40) {
+                    $heading_size=round($heading_size * 0.85);
+                }
+
+                ?>@media (max-width: 1024px) {
+                    font-size: <?php if (isset($heading_size)) echo $heading_size . 'px';
+                    ?>;
+                }
+
+                <?php if (isset($heading_size) && $heading_size > 40) {
+                    $heading_size=round($heading_size * 0.85);
+                }
+
+                ?>@media (max-width: 640px) {
+                    font-size: <?php if (isset($heading_size)) echo $heading_size . 'px';
+                    ?>;
+                }
+            }
+
+            p {
+                font-size: <?php if(isset($copy_size)) echo $copy_size . 'px';
+                ?>;
+                color: <?php if (isset($copy_color)) echo $copy_color;
+                ?>;
+
+                <?php if (isset($copy_size) && $copy_size > 22) {
+                    $copy_size=round($copy_size * 0.85);
+                }
+
+                ?>@media (max-width: 1024px) {
+                    font-size: <?php if (isset($copy_size)) echo $copy_size . 'px';
+                    ?>;
+                }
+
+                <?php if (isset($copy_size) && $copy_size > 22) {
+                    $copy_size=round($copy_size * 0.85);
+                }
+
+                ?>@media (max-width: 640px) {
+                    font-size: <?php if (isset($copy_size)) echo $copy_size . 'px';
+                    ?>;
+                }
+            }
         }
 
-        p {
-            font-size: <?php echo $copy_size . 'px';
-            ?>;
-            color: <?php echo $copy_color;
-            ?>;
-        }
-    }
+
+        .faq {
+            .question {
+                background-color: <?php the_field('question_bar_color');
+                ?>;
+
+                h6 {
+                    color: <?php the_field('question_bar_text_color');
+                    ?>;
+                }
+            }
 
 
-    .faq {
-        .question {
-            background-color: <?php the_field('question_bar_color');
-            ?>;
-
-            h6 {
+            .question::after {
                 color: <?php the_field('question_bar_text_color');
                 ?>;
+                font-size: <?php echo $icon_size . 'px';
+                ?>;
+                content: "<?php echo '\\' . $open_icon; ?>";
+
+                <?php if ($icon_size && $icon_size > 25) {
+                    $icon_size=round($icon_size * 0.85);
+                }
+
+                ?>@media (max-width: 640px) {
+                    font-size: <?php echo $icon_size . 'px';
+                    ?>;
+                }
             }
-        }
 
+            .question:hover {
+                background-color: <?php the_field('question_bar_active_color');
+                ?>;
 
-        .question::after {
-            color: <?php the_field('question_bar_text_color');
-            ?>;
-            font-size: <?php echo $icon_size . 'px';
-            ?>;
-            content: "<?php echo '\\' . $open_icon; ?>";
-        }
+                h6 {
+                    color: <?php the_field('question_bar_active_text_color');
+                    ?>;
+                }
+            }
 
-        .question:hover {
-            background-color: <?php the_field('question_bar_active_color');
-            ?>;
+            .question:hover::after {
+                color: <?php the_field('question_bar_active_text_color');
+                ?>
+            }
 
-            h6 {
+            .question.active {
+                background-color: <?php the_field('question_bar_active_color');
+                ?>;
+
+                h6 {
+                    color: <?php the_field('question_bar_active_text_color');
+                    ?>;
+                }
+            }
+
+            .question.active::after {
                 color: <?php the_field('question_bar_active_text_color');
                 ?>;
+                content: "<?php echo '\\' . $close_icon; ?>";
             }
-        }
-
-        .question:hover::after {
-            color: <?php the_field('question_bar_active_text_color');
-            ?>
-        }
-
-        .question.active {
-            background-color: <?php the_field('question_bar_active_color');
-            ?>;
-
-            h6 {
-                color: <?php the_field('question_bar_active_text_color');
-                ?>;
-            }
-        }
-
-        .question.active::after {
-            color: <?php the_field('question_bar_active_text_color');
-            ?>;
-            content: "<?php echo '\\' . $close_icon; ?>";
         }
     }
 }

@@ -121,13 +121,13 @@ $site-overall-gutter-small: 7%;
   }
 }
 
-@mixin site-font-size-dynamic($font-size: 16px) {
+@mixin responsive-heading($font-size: 60px) {
   font-size: $font-size;
-  @media (max-width: $breakpoint-laptop-small) {
+
+  @media (max-width: $breakpoint-tablet-large) {
     font-size: $font-size * 0.8;
   }
   @media (max-width: $breakpoint-small) {
-    // font-size: $font-size * 0.55;
-    font-size: $font-size * 0.65;
+    font-size: $font-size * 0.6;
   }
 }

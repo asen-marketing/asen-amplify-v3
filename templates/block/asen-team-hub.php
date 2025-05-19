@@ -17,9 +17,12 @@ if( !empty($block['className']) ) {
 $team_members = get_field('team_members');
 $carousel = get_field('use_carousel');
 $nav_rows = get_field('nav_arrow_icons');
+
+if ($nav_rows) {
 $prev_icon = $nav_rows[0]['previous_button_icon'];
 $next_icon = $nav_rows[0]['next_button_icon'];
 $nav_color = $nav_rows[0]['nav_arrow_color'];
+}
 ?>
 
 <section
@@ -34,8 +37,7 @@ $nav_color = $nav_rows[0]['nav_arrow_color'];
             <button class="next" data-glide-dir="&#x0003E;" title="Show next slide"
                 aria-controls="carousel-<?php echo $block['id']; ?>"><?php echo $next_icon ? $next_icon : '<i class="fa-regular fa-circle-chevron-right"></i>'; ?></button>
         </div>
-        <div class="glide glide-<?php echo $block['id']; ?>"
-            style="<?php if (get_field('block_max_width')) echo 'max-width: ' . (get_field('block_max_width') - 200) . 'px;'; ?>">
+        <div class="glide glide-<?php echo $block['id']; ?>">
             <div data-glide-el="track" class="glide__track" id="carousel-<?php echo $block['id']; ?>">
                 <ul class="glide__slides">
                     <?php endif; ?>
@@ -94,7 +96,7 @@ $nav_color = $nav_rows[0]['nav_arrow_color'];
 
 ?>.controls {
     i {
-        color: <?php echo $nav_color;
+        color: <?php if (isset($nav_color)) echo $nav_color;
         ?>;
     }
 }
@@ -136,8 +138,7 @@ $nav_color = $nav_rows[0]['nav_arrow_color'];
             rewind: true,
             breakpoints: {
                 1024: {
-                    perView: <?php echo get_field('number_of_columns') ? round(get_field('number_of_columns') / 2) : 2; ?>,
-                    gap: 30,
+                    perView: <?php echo get_field('number_of_columns') ? round(get_field('number_of_columns') / 2) : 2; ?>
                 },
                 640: {
                     perView: 1

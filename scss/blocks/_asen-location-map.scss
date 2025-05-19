@@ -28,10 +28,36 @@
     padding: $site-overall-gutter;
     max-width: 45%;
     transform: translate(-50%, -50%);
+    @include site-overall-gutter-small;
+
+    @media (max-width: $breakpoint-screen-medium) {
+      left: 0;
+      transform: translateY(-50%);
+    }
+    @media (max-width: $breakpoint-tablet-large) {
+      max-width: 100%;
+      width: 100%;
+      top: 75%;
+    }
   }
 
   h2 {
+    font-size: 85px;
     text-wrap: balance;
+    line-height: 1.05;
+
+    @media (max-width: $breakpoint-screen-small) {
+      font-size: 65px;
+    }
+    @media (max-width: $breakpoint-tablet-large) {
+      br {
+        display: none;
+      }
+    }
+    @media (max-width: $breakpoint-small) {
+      font-size: 50px;
+    }
+
     &.uppercase {
       text-transform: uppercase;
     }
