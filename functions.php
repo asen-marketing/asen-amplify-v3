@@ -1,6 +1,5 @@
 <?php
 
-require_once(get_template_directory() . '/includes/scss-mods.php');
 require_once(get_template_directory() . '/includes/development.php');
 require_once(get_template_directory() . '/includes/theme.php');
 require_once(get_template_directory() . '/includes/helpers.php');

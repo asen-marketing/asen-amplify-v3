@@ -17,8 +17,6 @@ $title_styles = '';
 $title_classes = '';
 $subtitle_styles = '';
 $subtitle_classes = '';
-$blurb_styles = '';
-$blurb_classes = '';
 $button_styles = '';
 $thumb_size = 'asen-banner-general';
 
@@ -73,26 +71,22 @@ if ( get_field('title_size') ) {
 if ( get_field('title_transform') ) {
     $title_styles .= 'text-transform: ' . get_field('title_transform') . ';';
 }
+if (get_field('title_max_width')) {
+    $title_styles .= 'max-width: ' . get_field('title_max_width') . 'px;';
+}
 if ( get_field('subtitle_color') ) {
     $subtitle_styles .= 'color: ' . get_field('subtitle_color') . ';';
 }
 if ( get_field('subtitle_size') ) {
     $subtitle_classes .= ' ' . get_field('subtitle_size');
 }
-if ( get_field('blurb_color') ) {
-    $blurb_styles .= 'color: ' . get_field('blurb_color') . ';';
-}
-if (get_field('blurb_size')) {
-    $blurb_classes .= ' ' . get_field('blurb_size');
-}
-if (get_field('blurb_max_width') && get_field('text_align') == 'center') {
-    $blurb_styles .= 'max-width: ' . get_field('blurb_max_width') . 'px;';
+if (get_field('subtitle_max_width')) {
+    $subtitle_styles .= 'max-width: ' . get_field('subtitle_max_width') . 'px;';
 }
 if ( get_field('text_align') ) {
     $eyebrow_styles .= 'text-align: ' . get_field('text_align') . ';';
     $title_styles .= 'text-align: ' . get_field('text_align') . ';';
     $subtitle_styles .= 'text-align: ' . get_field('text_align') . ';';
-    $blurb_styles .= 'text-align: ' . get_field('text_align') . ';';
     $button_styles .= 'text-align: ' . get_field('text_align') . ';';
 }
 ?>
@@ -106,7 +100,6 @@ if ( get_field('text_align') ) {
             $eyebrow = $slide_row['eyebrow'];
             $title = $slide_row['title'];
             $subtitle = $slide_row['subtitle'];
-            $blurb = $slide_row['blurb'];
             ?>
         <div class="slide<?php if ($index === 0) echo ' active'; ?>" data-id="<?php echo $index; ?>">
             <?php echo wp_get_attachment_image($image, 'full'); ?>
@@ -152,12 +145,6 @@ if ( get_field('text_align') ) {
                 <?php echo ($subtitle_styles != '' ? 'style="' . $subtitle_styles . '"' : ''); ?>>
                 <?php the_field('subtitle'); ?>
             </h2>
-            <?php endif; ?>
-            <?php if ( get_field('blurb') ) : ?>
-            <p class="blurb<?php echo $blurb_classes; ?>"
-                <?php echo ($blurb_styles != '' ? 'style="' . $blurb_styles . '"' : ''); ?>>
-                <?php the_field('blurb'); ?>
-            </p>
             <?php endif; ?>
         </div>
         <?php 

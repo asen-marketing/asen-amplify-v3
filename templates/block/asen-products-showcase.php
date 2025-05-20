@@ -90,8 +90,12 @@ if (is_array($colors)) {
                             <h3
                                 class="product-title <?php if (get_field('heading_text_transform')) echo get_field('heading_text_transform'); ?>">
                                 <?php echo $name; ?></h3>
+                            <?php if ($description) : ?>
                             <p class=" description"><?php echo $description; ?></p>
+                            <?php endif; ?>
+                            <?php if ($price) : ?>
                             <p class="price"><?php echo '$' . $price; ?></p>
+                            <?php endif; ?>
                         </div>
                     </li>
                     <?php endforeach; ?>

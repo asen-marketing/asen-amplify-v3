@@ -1,5 +1,6 @@
 <?php $cta_button = get_field('site_header_cta_link', 'option'); ?>
-<header class="site-header layout-4">
+<header
+    class="site-header layout-4<?php if (get_field('header_bottom_border', 'option') && !get_field('overlapping_header', 'option')) echo ' has-border'; ?>">
     <div class="inside">
         <div class="logo">
             <a href="<?php echo site_url( '/', 'https' ); ?>" title="<?php echo get_bloginfo('name', 'display'); ?>">
@@ -10,7 +11,8 @@
                 <?php endif; ?>
             </a>
         </div>
-        <div class="navigation">
+        <div
+            class="navigation<?php if (get_field('header_menu_text_transform', 'option')) echo ' ' . get_field('header_menu_text_transform', 'option'); ?>">
             <?php if ( has_nav_menu('primary-menu') ) : ?>
             <nav class="header-menu">
                 <?php wp_nav_menu(array(

@@ -1,4 +1,4 @@
-<header class="site-header layout-3">
+<header class="site-header layout-3<?php if (get_field('header_bottom_border', 'option') && !get_field('overlapping_header', 'option')) echo ' has-border'; ?>">
     <div class="inside">
         <div class="logo">
             <a href="<?php echo site_url( '/', 'https' ); ?>" title="<?php echo get_bloginfo('name', 'display'); ?>">

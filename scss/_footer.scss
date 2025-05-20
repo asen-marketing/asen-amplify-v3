@@ -3,7 +3,6 @@ footer.site-footer.standard {
   .top {
     padding: 80px $site-overall-gutter 80px;
     @include site-overall-gutter-small;
-    background-color: #212529;
 
     @media (max-width: $breakpoint-footer-tablet-small) {
       padding-top: 50px;
@@ -79,7 +78,6 @@ footer.site-footer.standard {
   .bottom {
     padding: 30px $site-overall-gutter 30px;
     @include site-overall-gutter-small;
-    background-color: #020202;
 
     .inside {
       display: flex;
@@ -148,6 +146,7 @@ footer.site-footer.standard {
           }
         }
         a {
+          font-size: 23px;
           transition: color 100ms ease;
         }
       }
@@ -161,7 +160,6 @@ footer.site-footer.standard-mailing-list {
   .top {
     padding: 80px $site-overall-gutter 80px;
     @include site-overall-gutter-small;
-    background-color: #212529;
 
     @media (max-width: $breakpoint-footer-tablet-small) {
       padding-top: 50px;
@@ -253,9 +251,8 @@ footer.site-footer.standard-mailing-list {
   }
 
   .bottom {
-    padding: 80px $site-overall-gutter 80px;
+    padding: 30px $site-overall-gutter 30px;
     @include site-overall-gutter-small;
-    background-color: #020202;
 
     @media (max-width: $breakpoint-footer-tablet-small) {
       padding-top: 50px;
@@ -335,7 +332,6 @@ footer.site-footer.simple {
   .bottom {
     padding: 30px $site-overall-gutter 30px;
     @include site-overall-gutter-small;
-    background-color: #020202;
 
     @media (max-width: $breakpoint-footer-tablet-small) {
       padding-top: 50px;
@@ -432,7 +428,6 @@ footer.site-footer.simple-mailing-list {
   .top {
     padding: 80px $site-overall-gutter 80px;
     @include site-overall-gutter-small;
-    background-color: #212529;
 
     @media (max-width: $breakpoint-footer-tablet-small) {
       padding-top: 50px;
@@ -476,7 +471,6 @@ footer.site-footer.simple-mailing-list {
   .bottom {
     padding: 30px $site-overall-gutter 30px;
     @include site-overall-gutter-small;
-    background-color: #020202;
 
     @media (max-width: $breakpoint-footer-tablet-small) {
       padding-top: 50px;
@@ -639,6 +633,12 @@ footer.site-footer {
         text-align: center;
       }
     }
+  }
+  .top {
+    background-color: #212529;
+  }
+  .bottom {
+    background-color: #020202;
   }
 }
 
