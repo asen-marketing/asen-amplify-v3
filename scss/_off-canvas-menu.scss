@@ -141,11 +141,8 @@ $site-menu-max-width-mobile: 250px;
         padding: 8px 0;
         transition: color 100ms ease;
 
-        // @media (max-width: $breakpoint-small) {
-        //   font-size: 26px;
-        // }
         &:hover {
-          color: #e81771;
+          color: #fff;
         }
       }
     }
@@ -161,19 +158,22 @@ $site-menu-max-width-mobile: 250px;
     > a {
       cursor: pointer;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
 
       &::after {
         font-family: "Font Awesome 6 Pro";
         content: "\f105";
         display: inline-block;
         position: absolute;
-        right: -40px;
-        top: 27%;
-        font-size: 2rem;
+        right: -10px;
+        font-size: 30px;
         transition: transform 200ms ease-in-out;
 
         @media (max-width: $breakpoint-small) {
-          right: -20px;
+          font-size: 25px;
         }
       }
     }
@@ -191,6 +191,10 @@ $site-menu-max-width-mobile: 250px;
       > li {
         font-size: 45px;
 
+        @media (max-width: $breakpoint-small) {
+          font-size: 38px;
+        }
+
         ul.sub-menu {
           > li {
             font-size: 25px;
@@ -204,6 +208,10 @@ $site-menu-max-width-mobile: 250px;
     ul {
       > li {
         font-size: 30px;
+
+        @media (max-width: $breakpoint-small) {
+          font-size: 25px;
+        }
 
         a {
           padding: 0;
@@ -247,6 +255,10 @@ ul.sub-menu {
   img {
     max-width: 300px;
     height: auto;
+
+    @media (max-width: 450px) {
+      max-width: 250px;
+    }
   }
 
   .button {

@@ -34,7 +34,7 @@ function asen_curate_menu_list() {
         remove_menu_page( 'edit.php?post_type=testimonial' );
     }
 }
-add_action( 'admin_init', 'asen_curate_menu_list' );
+add_action( 'admin_menu', 'asen_curate_menu_list' );
 
 function asen_hide_editor()
 {
