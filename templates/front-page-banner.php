@@ -18,6 +18,7 @@ $title_classes = '';
 $subtitle_styles = '';
 $subtitle_classes = '';
 $blurb_styles = '';
+$blurb_classes = '';
 $button_styles = '';
 $thumb_size = 'asen-banner-general';
 
@@ -82,10 +83,10 @@ if ( get_field('blurb_color') ) {
     $blurb_styles .= 'color: ' . get_field('blurb_color') . ';';
 }
 if (get_field('blurb_size')) {
-    $blurb_styles .= 'font-size: ' . get_field('blurb_size') . 'px;';
+    $blurb_classes .= ' ' . get_field('blurb_size');
 }
 if (get_field('blurb_max_width') && get_field('text_align') == 'center') {
-    $blurb_styles .= 'max-width: ' . get_field('blurb_max_width') . '%;';
+    $blurb_styles .= 'max-width: ' . get_field('blurb_max_width') . 'px;';
 }
 if ( get_field('text_align') ) {
     $eyebrow_styles .= 'text-align: ' . get_field('text_align') . ';';
@@ -153,7 +154,8 @@ if ( get_field('text_align') ) {
             </h2>
             <?php endif; ?>
             <?php if ( get_field('blurb') ) : ?>
-            <p class="blurb" <?php echo ($blurb_styles != '' ? 'style="' . $blurb_styles . '"' : ''); ?>>
+            <p class="blurb<?php echo $blurb_classes; ?>"
+                <?php echo ($blurb_styles != '' ? 'style="' . $blurb_styles . '"' : ''); ?>>
                 <?php the_field('blurb'); ?>
             </p>
             <?php endif; ?>

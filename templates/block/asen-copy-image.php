@@ -38,6 +38,11 @@ $rows = get_field('copy_image_rows');
     </div>
 </section>
 
+<?php
+$heading_size = get_field('heading_size');
+$copy_size = get_field('copy_size');
+?>
+
 <style>
 .asen-copy-image-<?php echo $block['id'];
 
@@ -58,17 +63,53 @@ $rows = get_field('copy_image_rows');
             ?>;
 
             h2 {
-                font-size: <?php echo get_field('heading_size') . 'px';
+                font-size: <?php if (isset($heading_size)) echo $heading_size . 'px';
                 ?>;
                 color: <?php echo get_field('heading_color');
                 ?>;
+
+                <?php if (isset($heading_size) && $heading_size > 40) {
+                    $heading_size=round($heading_size * 0.85);
+                }
+
+                ?>@media (max-width: 1024px) {
+                    font-size: <?php if (isset($heading_size)) echo $heading_size . 'px';
+                    ?>;
+                }
+
+                <?php if (isset($heading_size) && $heading_size > 40) {
+                    $heading_size=round($heading_size * 0.8);
+                }
+
+                ?>@media (max-width: 640px) {
+                    font-size: <?php if (isset($heading_size)) echo $heading_size . 'px';
+                    ?>;
+                }
             }
 
             p {
-                font-size: <?php echo get_field('copy_size') . 'px';
+                font-size: <?php if (isset($copy_size)) echo $copy_size . 'px';
                 ?>;
                 color: <?php echo get_field('copy_color');
                 ?>;
+
+                <?php if (isset($copy_size) && $copy_size > 25) {
+                    $copy_size=round($copy_size * 0.85);
+                }
+
+                ?>@media (max-width: 1024px) {
+                    font-size: <?php if (isset($copy_size)) echo $copy_size . 'px';
+                    ?>;
+                }
+
+                <?php if (isset($copy_size) && $copy_size > 25) {
+                    $copy_size=round($copy_size * 0.85);
+                }
+
+                ?>@media (max-width: 640px) {
+                    font-size: <?php if (isset($copy_size)) echo $copy_size . 'px';
+                    ?>;
+                }
             }
 
             @media (max-width: 768px) {

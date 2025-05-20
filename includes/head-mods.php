@@ -333,13 +333,19 @@ $off_canvas_mobile_font_size_smaller=get_field('off_canvas_mobile_font_size', 'o
         display: block;
     }
 
-    header.site-header.layout-1 .navigation,
     header.site-header.layout-1 nav.header-menu,
     header.site-header.layout-2 nav.header-menu li:not(.layout-2-logo),
     header.site-header.layout-3 nav.header-menu,
     header.site-header.layout-4 ul.primary-menu {
         display: none;
     }
+
+    <?php if (get_field('sticky_hamburger', 'option')): ?>.navigation .button {
+        margin-right: 3rem;
+    }
+
+    <?php endif;
+    ?>
 }
 
 header.site-header div.logo a,

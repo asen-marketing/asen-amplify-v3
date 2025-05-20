@@ -11,6 +11,12 @@
     position: relative;
     @include site-vertical-margin-dynamic();
 
+    &.arrows {
+      p {
+        max-width: calc(100% - 50px);
+      }
+    }
+
     .width-container {
       width: $site-overall-max-width;
       position: relative;
@@ -53,7 +59,7 @@
       .testimonial-item {
         width: 100%;
         height: 100%;
-        padding: 0;
+        padding: 0 $site-overall-gutter;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -62,10 +68,12 @@
         grid-column-start: 1;
         opacity: 0;
         transition: opacity 350ms ease-in-out;
+        @include site-overall-gutter-small;
 
         p.quote,
         p.author {
           color: #fff;
+          text-align: center;
         }
 
         &.active {
@@ -85,10 +93,10 @@
     &.text {
       &-small {
         p.quote {
-          font-size: 22px;
+          @include responsive-paragraph(25px);
         }
         p.author {
-          font-size: 22px;
+          @include responsive-paragraph(22px);
 
           span.name {
             font-weight: 600;
@@ -97,18 +105,18 @@
       }
       &-medium {
         p.quote {
-          font-size: 36px;
+          @include responsive-paragraph(36px);
         }
         p.author {
-          font-size: 25px;
+          @include responsive-paragraph(25px);
         }
       }
       &-large {
         p.quote {
-          font-size: 55px;
+          @include responsive-heading(55px);
         }
         p.author {
-          font-size: 30px;
+          @include responsive-paragraph(30px);
         }
       }
     }
@@ -153,6 +161,11 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    @media (max-width: $breakpoint-small) {
+      left: 15px;
+      right: 15px;
+    }
 
     button {
       border-radius: 50%;

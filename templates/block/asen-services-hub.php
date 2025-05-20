@@ -287,11 +287,47 @@ if (isset($alternating_styles) && is_array($alternating_styles)) {
     h3.service-title {
         font-size: <?php echo $alt_heading_size . 'px';
         ?>;
+
+        <?php if (isset($alt_heading_size) && $alt_heading_size > 40) {
+            $alt_heading_size=round($alt_heading_size * 0.85);
+        }
+
+        ?>@media (max-width: 1024px) {
+            font-size: <?php if (isset($alt_heading_size)) echo $alt_heading_size . 'px';
+            ?>;
+        }
+
+        <?php if (isset($alt_heading_size) && $alt_heading_size > 40) {
+            $alt_heading_size=round($alt_heading_size * 0.8);
+        }
+
+        ?>@media (max-width: 640px) {
+            font-size: <?php if (isset($alt_heading_size)) echo $alt_heading_size . 'px';
+            ?>;
+        }
     }
 
     p.service-blurb {
         font-size: <?php echo $alt_copy_size . 'px';
         ?>;
+
+        <?php if (isset($alt_copy_size) && $alt_copy_size > 25) {
+            $alt_copy_size=round($alt_copy_size * 0.85);
+        }
+
+        ?>@media (max-width: 1024px) {
+            font-size: <?php if (isset($alt_copy_size)) echo $alt_copy_size . 'px';
+            ?>;
+        }
+
+        <?php if (isset($alt_copy_size) && $alt_copy_size > 25) {
+            $alt_copy_size=round($alt_copy_size * 0.85);
+        }
+
+        ?>@media (max-width: 640px) {
+            font-size: <?php if (isset($alt_copy_size)) echo $alt_copy_size . 'px';
+            ?>;
+        }
     }
 
     <?php endif;
@@ -318,8 +354,7 @@ if (isset($alternating_styles) && is_array($alternating_styles)) {
             rewind: true,
             breakpoints: {
                 1024: {
-                    perView: <?php echo get_field('number_of_columns') ? round(get_field('number_of_columns') / 2) : 2; ?>,
-                    gap: 30,
+                    perView: <?php echo get_field('number_of_columns') ? round(get_field('number_of_columns') / 2) : 2; ?>
                 },
                 640: {
                     perView: 1

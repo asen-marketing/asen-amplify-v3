@@ -68,30 +68,30 @@ function asen_setup_acf_option_pages() {
             'parent_slug'	=> 'edit.php',
         ));
 
-        if ( get_field('site_services_enabled', 'option') ) {
-            acf_add_options_page(array(
-                'page_title' 	=> 'Services Archive Options',
-                'menu_title'	=> 'Archive Options',
-                'menu_slug'     => 'services-archive-options',
-                'parent_slug'	=> 'edit.php?post_type=services',
-            ));
-        }
-        if ( get_field('site_products_enabled', 'option') ) {
-            acf_add_options_page(array(
-                'page_title' 	=> 'Products Archive Options',
-                'menu_title'	=> 'Archive Options',
-                'menu_slug'     => 'products-archive-options',
-                'parent_slug'	=> 'edit.php?post_type=products',
-            ));
-        }
-        if ( get_field('site_team_members_enabled', 'option') ) {
-            acf_add_options_page(array(
-                'page_title' 	=> 'Team Archive Options',
-                'menu_title'	=> 'Archive Options',
-                'menu_slug'     => 'team-archive-options',
-                'parent_slug'	=> 'edit.php?post_type=team',
-            ));
-        }
+        // if ( get_field('site_services_enabled', 'option') ) {
+        //     acf_add_options_page(array(
+        //         'page_title' 	=> 'Services Archive Options',
+        //         'menu_title'	=> 'Archive Options',
+        //         'menu_slug'     => 'services-archive-options',
+        //         'parent_slug'	=> 'edit.php?post_type=services',
+        //     ));
+        // }
+        // if ( get_field('site_products_enabled', 'option') ) {
+        //     acf_add_options_page(array(
+        //         'page_title' 	=> 'Products Archive Options',
+        //         'menu_title'	=> 'Archive Options',
+        //         'menu_slug'     => 'products-archive-options',
+        //         'parent_slug'	=> 'edit.php?post_type=products',
+        //     ));
+        // }
+        // if ( get_field('site_team_members_enabled', 'option') ) {
+        //     acf_add_options_page(array(
+        //         'page_title' 	=> 'Team Archive Options',
+        //         'menu_title'	=> 'Archive Options',
+        //         'menu_slug'     => 'team-archive-options',
+        //         'parent_slug'	=> 'edit.php?post_type=team',
+        //     ));
+        // }
     }
 }
 add_action( 'init', 'asen_setup_acf_option_pages' );

@@ -25,7 +25,7 @@ if (is_array($grid_colors)) {
 ?>
 
 <section
-    class="asen-testimonials asen-testimonials-<?php echo $block['id']; echo $className; ?><?php echo $carousel ? ' carousel' : ' grid'; ?><?php if (get_field('full_width')) echo ' full-width'; ?><?php if (get_field('background_color')) echo ' has-background'; ?>">
+    class="asen-testimonials asen-testimonials-<?php echo $block['id']; echo $className; ?><?php echo $carousel ? ' carousel' : ' grid'; ?><?php if (get_field('full_width')) echo ' full-width'; ?><?php if (get_field('background_color')) echo ' has-background'; ?><?php echo ' ' . $nav_options; ?>">
     <?php if ($carousel) : ?>
     <div class="width-container<?php echo get_field('full_width') ? ' full' : ''; ?>">
         <?php endif; ?>
@@ -129,8 +129,17 @@ if (is_array($grid_colors)) {
     column-count: <?php the_field('number_of_columns');
     ?>;
 
+    @media (max-width: 1024px) {
+        column-count: <?php echo round(get_field('number_of_columns') / 2);
+        ?>;
+    }
+
+    @media (max-width: 640px) {
+        column-count: 1;
+    }
+
     <?php // color rotation ?>
-    <?php if (is_array($grid_colors)): ?> <?php for ($i=0; $i < count($grid_colors); $i++): ?> .color-<?php echo $i + 1;
+    <?php if (is_array($grid_colors)): ?><?php for ($i=0; $i < count($grid_colors); $i++): ?>.color-<?php echo $i+1;
 
     ?> {
         background-color: <?php echo $grid_colors[$i]['background_color'];

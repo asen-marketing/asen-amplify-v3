@@ -30,7 +30,6 @@
             <?php else : ?>
             <p>Create a menu called "Off Canvas Menu"!</p>
             <?php endif; ?>
-            <?php get_template_part('templates/custom-cta-options'); ?>
             <?php if ( has_nav_menu('off-canvas-bottom-menu') ) : ?>
             <nav class="off-canvas-menu off-canvas-menu-small">
                 <?php wp_nav_menu(array(

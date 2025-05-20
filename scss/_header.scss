@@ -42,14 +42,20 @@ header.site-header {
     }
   }
 
+  @media (max-width: 639px) {
+    .button {
+      display: none;
+    }
+  }
+
+  .navigation {
+    display: flex;
+    align-items: center;
+  }
+
   &.layout-1 {
     .inside {
       justify-content: space-between;
-    }
-
-    .navigation {
-      display: flex;
-      align-items: center;
     }
   }
 
@@ -60,21 +66,11 @@ header.site-header {
         justify-content: space-between;
       }
     }
-
-    .navigation {
-      display: flex;
-      align-items: center;
-    }
   }
 
   &.layout-4 {
     .inside {
       justify-content: space-between;
-    }
-
-    .navigation {
-      display: flex;
-      align-items: center;
     }
 
     nav.header-menu {
@@ -179,8 +175,12 @@ nav.header-menu {
     }
   }
   .layout-2 & {
+    ul > li > a {
+      padding: 10px 1.5rem;
+    }
+
     li.layout-2-logo {
-      padding: 0;
+      padding: 0 2rem;
       margin: 0;
       @media (max-width: $breakpoint-tablet-large) {
         display: inline-block;

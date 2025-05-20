@@ -27,7 +27,15 @@
     .heading-container {
       position: relative;
       z-index: 1;
-      width: #{$site-overall-max-width - 200px};
+      max-width: #{$site-overall-max-width - 200px};
+      width: calc(100% - 200px);
+
+      @media (max-width: $breakpoint-tablet-large) {
+        width: calc(100% - 150px);
+      }
+      @media (max-width: $breakpoint-small) {
+        width: calc(100% - 100px);
+      }
     }
   }
 
@@ -43,14 +51,28 @@
 
     .service-item {
       background-color: #313d47;
+
+      i {
+        padding-left: 2rem;
+        font-size: 40px;
+        color: #fff;
+
+        @media (max-width: $breakpoint-tablet-small) {
+          font-size: 34px;
+        }
+      }
+
+      h3.service-title {
+        color: #fff;
+      }
+      p.service-blurb {
+        color: #fff;
+      }
     }
     .copy-container {
       h3.service-title {
-        font-size: 34px;
+        @include responsive-heading(34px);
         margin-bottom: 5px;
-      }
-      p.service-blurb {
-        font-size: 22px;
       }
     }
 
@@ -110,34 +132,10 @@
 
     &.carousel {
       .service-item {
-        i {
-          padding-left: 2rem;
-          font-size: 40px;
-          color: #fff;
-        }
-
-        h3.service-title {
-          color: #fff;
-        }
-        p.service-blurb {
-          color: #fff;
-        }
       }
     }
     &.grid {
       .service-item {
-        i {
-          padding-left: 2rem;
-          font-size: 40px;
-          color: #fff;
-        }
-
-        h3.service-title {
-          color: #fff;
-        }
-        p.service-blurb {
-          color: #fff;
-        }
       }
     }
   }
@@ -148,7 +146,14 @@
   }
 
   .glide {
-    max-width: #{$site-overall-max-width - 200px};
+    width: calc(100% - 200px);
+
+    @media (max-width: $breakpoint-tablet-large) {
+      width: calc(100% - 150px);
+    }
+    @media (max-width: $breakpoint-small) {
+      width: calc(100% - 100px);
+    }
   }
 
   .service-item {
@@ -167,6 +172,10 @@
 
     .copy-container {
       padding: 2rem;
+
+      @media (max-width: $breakpoint-tablet-small) {
+        padding: 1.5rem;
+      }
     }
   }
 
@@ -182,9 +191,9 @@
     button {
       border-radius: 50%;
       background-color: transparent;
-      width: 50px;
       font-size: 30px;
       border: none;
+      padding: 0;
 
       i {
         font-weight: 500;
@@ -195,12 +204,20 @@
         &:hover {
           opacity: 1;
         }
+
+        @media (max-width: $breakpoint-tablet-large) {
+          font-size: 40px;
+        }
+        @media (max-width: $breakpoint-small) {
+          font-size: 28px;
+        }
       }
     }
   }
 
   a.service-link {
     font-size: 20px;
+
     i {
       font-size: 20px;
       padding-left: 0.5rem;

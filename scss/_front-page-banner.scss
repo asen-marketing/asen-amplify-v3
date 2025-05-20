@@ -10,6 +10,11 @@
 
   @include site-gutter-breakpoint-chonky;
 
+  @media (max-width: $breakpoint-small) {
+    padding: 50px $site-overall-gutter;
+    @include site-overall-gutter-small;
+  }
+
   &.is-split-screen .copy {
     max-width: 700px;
   }
@@ -114,6 +119,10 @@
   .buttons {
     .button {
       margin: 0 8px 8px 0;
+
+      @media (max-width: 450px) {
+        width: 100%;
+      }
     }
 
     i {
@@ -122,25 +131,21 @@
     }
   }
 
-  .h1 {
-    font-size: 100px;
-  }
-
   p.eyebrow {
     font-weight: 500;
     text-transform: uppercase;
     margin-bottom: 0;
   }
 
-  p.subtitle {
-    font-size: 32px;
-
-    @media (max-width: $breakpoint-laptop-small) {
-      font-size: 23px;
+  p.blurb {
+    &.small {
+      @include responsive-paragraph(22px);
     }
-
-    @media (max-width: $breakpoint-small) {
-      font-size: 21px;
+    &.medium {
+      @include responsive-paragraph(26px);
+    }
+    &.large {
+      @include responsive-paragraph(34px);
     }
   }
 }

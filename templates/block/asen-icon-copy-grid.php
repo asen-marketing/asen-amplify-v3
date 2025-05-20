@@ -60,7 +60,7 @@ $heading_size = get_field('heading_size');
                             ?>
                     <a class="<?php echo $link_type === 'button-link' ? 'button button-small' : 'asen-text-link'; ?>"
                         href="<?php echo esc_url( $link_url ); ?>"
-                        target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?><?php if ($link_type === 'text-link' || $link_type === 'button-link') echo $link_icon; ?></a>
+                        target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?><?php if ($link_type === 'text-link') echo $link_icon; ?></a>
                     <?php endif; ?>
                     <?php 
                         if( $link &&  $link_type === 'invisible-link' ) : ?>

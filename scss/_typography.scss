@@ -74,22 +74,28 @@ h5,
 h6 {
   margin-bottom: 1rem;
 }
-h1 {
+h1,
+.h1 {
   @extend %h1;
 }
-h2 {
+h2,
+.h2 {
   @extend %h2;
 }
-h3 {
+h3,
+.h3 {
   @extend %h3;
 }
-h4 {
+h4,
+.h4 {
   @extend %h4;
 }
-h5 {
+h5,
+.h5 {
   @extend %h5;
 }
-h6 {
+h6,
+.h6 {
   @extend %h6;
 }
 
@@ -98,17 +104,13 @@ p {
   line-height: 1.3;
   margin-bottom: 1.8rem;
 
-  @media (max-width: $breakpoint-small) {
+  @media (max-width: $breakpoint-tablet-small) {
     font-size: 21px;
   }
 }
 
 a {
   transition: color 200ms ease;
-
-  i {
-    padding-left: 8px;
-  }
 }
 
 span.script {

@@ -16,6 +16,23 @@ function asen_curate_menu_list() {
     ) {
         remove_menu_page( 'kadence-blocks' );
     }
+
+
+    if (!get_field('site_faqs_enabled', 'option')) {
+        remove_menu_page( 'edit.php?post_type=faq' );
+    }
+        if (!get_field('site_products_enabled', 'option')) {
+        remove_menu_page( 'edit.php?post_type=product' );
+    }
+    if (!get_field('site_services_enabled', 'option')) {
+        remove_menu_page( 'edit.php?post_type=service' );
+    }
+        if (!get_field('site_team_members_enabled', 'option')) {
+        remove_menu_page( 'edit.php?post_type=team' );
+    }
+        if (!get_field('site_testimonials_enabled', 'option')) {
+        remove_menu_page( 'edit.php?post_type=testimonial' );
+    }
 }
 add_action( 'admin_init', 'asen_curate_menu_list' );
 

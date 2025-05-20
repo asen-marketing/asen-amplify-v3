@@ -87,7 +87,7 @@ $site-menu-max-width-mobile: 250px;
 
     &.two-column {
       flex-direction: row;
-      gap: 4rem;
+      gap: 6rem;
 
       ul li {
         text-align: left;
@@ -102,64 +102,15 @@ $site-menu-max-width-mobile: 250px;
   p {
     font-size: 23px;
     line-height: 1;
-    color: $gray-700;
-
-    body.single-case_studies & {
-      color: $gray-700;
-    }
-    text-align: right;
+    color: #fff;
     margin-bottom: 10px;
 
     a {
       color: #fff;
       transition: color 100ms ease;
+
       &:hover {
-        color: $gray-700;
-
-        body.single-case_studies & {
-          color: $gray-700;
-        }
-      }
-    }
-
-    @media (max-height: 1000px) {
-      margin-bottom: 8px;
-    }
-  }
-
-  ul.site-social {
-    list-style: none;
-    padding: 30px 0 30px;
-    margin: 0;
-    display: flex;
-    justify-content: flex-end;
-    li {
-      display: inline-block;
-      a {
-        display: block;
-        height: 30px;
-        padding: 0 10px;
-        display: flex;
-        align-items: center;
-        svg {
-          height: 100%;
-          width: auto;
-          path {
-            fill: #fff;
-            transition: fill 100ms ease;
-          }
-        }
-        &:hover {
-          svg {
-            path {
-              fill: $gray-700;
-
-              body.single-case_studies & {
-                fill: $gray-700;
-              }
-            }
-          }
-        }
+        opacity: 0.75;
       }
     }
   }
@@ -167,10 +118,12 @@ $site-menu-max-width-mobile: 250px;
 
 .off-canvas-menu {
   margin: 0 0 26px;
+
   ul {
     list-style: none;
     padding: 0;
     margin: 0;
+
     li {
       padding: 10px 0;
       text-align: center;
@@ -184,7 +137,6 @@ $site-menu-max-width-mobile: 250px;
       a {
         display: inline-block;
         color: #fff;
-        // font-size: 38px;
         line-height: 1;
         padding: 8px 0;
         transition: color 100ms ease;
@@ -193,11 +145,7 @@ $site-menu-max-width-mobile: 250px;
         //   font-size: 26px;
         // }
         &:hover {
-          //   color: $gray-700;
-
-          body.single-case_studies & {
-            color: $gray-700;
-          }
+          color: #e81771;
         }
       }
     }
@@ -219,8 +167,9 @@ $site-menu-max-width-mobile: 250px;
         content: "\f105";
         display: inline-block;
         position: absolute;
-        right: -30px;
-        top: 28%;
+        right: -40px;
+        top: 27%;
+        font-size: 2rem;
         transition: transform 200ms ease-in-out;
 
         @media (max-width: $breakpoint-small) {
@@ -233,13 +182,33 @@ $site-menu-max-width-mobile: 250px;
     }
 
     &:hover {
-      color: #fff;
+      color: #e81771;
     }
   }
 
-  &.off-canvas-bottom-menu {
-    ul li a {
-      padding: 0;
+  &.off-canvas-menu-large {
+    ul {
+      > li {
+        font-size: 45px;
+
+        ul.sub-menu {
+          > li {
+            font-size: 25px;
+          }
+        }
+      }
+    }
+  }
+
+  &.off-canvas-menu-small {
+    ul {
+      > li {
+        font-size: 30px;
+
+        a {
+          padding: 0;
+        }
+      }
     }
   }
 }
@@ -265,6 +234,8 @@ ul.sub-menu {
   }
 }
 
+// Off Canvas Footer
+
 .off-canvas-footer {
   align-self: flex-end;
   justify-self: center;
@@ -278,7 +249,57 @@ ul.sub-menu {
     height: auto;
   }
 
-  .site-social.links {
-    padding: 0 0 0.5rem;
+  .button {
+    background-color: #fff;
+    color: #0a0101;
+    transition: color 100ms ease;
+    display: none;
+
+    @media (max-width: 639px) {
+      display: block;
+    }
+
+    &:hover {
+      background-color: #343a40;
+      color: #fff;
+    }
+  }
+
+  ul.site-social {
+    list-style: none;
+    padding: 10px 0 10px;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+
+    li {
+      display: inline-block;
+      a {
+        display: block;
+        height: 30px;
+        padding: 0 10px;
+        display: flex;
+        align-items: center;
+        color: #fff;
+
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+
+  p.copyright {
+    font-size: 16px;
+    color: #fff;
+
+    a {
+      color: #fff;
+      transition: color 100ms ease;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
   }
 }

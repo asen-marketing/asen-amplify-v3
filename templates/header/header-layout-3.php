@@ -9,6 +9,9 @@
                 <?php endif; ?>
             </a>
         </div>
-        <?php get_template_part('templates/menu/hamburger'); ?>
+        <div class="navigation">
+            <?php get_template_part('templates/custom-cta-options'); ?>
+            <?php get_template_part('templates/menu/hamburger'); ?>
+        </div>
     </div>
 </header>

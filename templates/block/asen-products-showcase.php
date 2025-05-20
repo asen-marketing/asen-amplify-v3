@@ -86,7 +86,7 @@ if (is_array($colors)) {
                         <?php if ($image) : ?>
                         <?php echo wp_get_attachment_image($image, 'full'); ?>
                         <?php endif; ?>
-                        <div class="copy-container">
+                        <div class="copy-container<?php if (count($bg_colors)) echo ' has-background'; ?>">
                             <h3
                                 class="product-title <?php if (get_field('heading_text_transform')) echo get_field('heading_text_transform'); ?>">
                                 <?php echo $name; ?></h3>
@@ -104,6 +104,13 @@ if (is_array($colors)) {
     </div>
 </section>
 
+<?php
+$block_heading_size = get_field('block_heading_size');
+$block_subheading_size = get_field('block_subheading_size');
+$alt_heading_size = get_field('heading_size');
+$alt_description_size = get_field('description_size');
+?>
+
 <style>
 .asen-products-showcase-<?php echo $block['id'];
 
@@ -120,6 +127,24 @@ if (is_array($colors)) {
         ?>;
         font-size: <?php echo get_field('block_heading_size') . 'px';
         ?>;
+
+        <?php if (isset($block_heading_size) && $block_heading_size > 40) {
+            $block_heading_size=round($block_heading_size * 0.85);
+        }
+
+        ?>@media (max-width: 1024px) {
+            font-size: <?php if (isset($block_heading_size)) echo $block_heading_size . 'px';
+            ?>;
+        }
+
+        <?php if (isset($block_heading_size) && $block_heading_size > 40) {
+            $block_heading_size=round($block_heading_size * 0.8);
+        }
+
+        ?>@media (max-width: 640px) {
+            font-size: <?php if (isset($block_heading_size)) echo $block_heading_size . 'px';
+            ?>;
+        }
     }
 
     p {
@@ -127,6 +152,24 @@ if (is_array($colors)) {
         ?>;
         font-size: <?php echo get_field('block_subheading_size') . 'px';
         ?>;
+
+        <?php if (isset($block_subheading_size) && $block_subheading_size > 25) {
+            $block_subheading_size=round($block_subheading_size * 0.85);
+        }
+
+        ?>@media (max-width: 1024px) {
+            font-size: <?php if (isset($block_subheading_size)) echo $block_subheading_size . 'px';
+            ?>;
+        }
+
+        <?php if (isset($block_subheading_size) && $block_subheading_size > 25) {
+            $block_subheading_size=round($block_subheading_size * 0.85);
+        }
+
+        ?>@media (max-width: 640px) {
+            font-size: <?php if (isset($block_subheading_size)) echo $block_subheading_size . 'px';
+            ?>;
+        }
     }
 }
 
@@ -152,16 +195,6 @@ if (is_array($colors)) {
         p,
         h3 {
             color: <?php echo get_field('product_text_color');
-            ?>;
-        }
-
-        h3.product-title {
-            font-size: <?php echo get_field('heading_size') . 'px';
-            ?>;
-        }
-
-        p.description {
-            font-size: <?php echo get_field('description_size') . 'px';
             ?>;
         }
     }
@@ -226,6 +259,24 @@ if (is_array($colors)) {
             ?>;
             font-size: <?php echo get_field('heading_size') . 'px';
             ?>;
+
+            <?php if (isset($alt_heading_size) && $alt_heading_size > 40) {
+                $alt_heading_size=round($alt_heading_size * 0.85);
+            }
+
+            ?>@media (max-width: 1024px) {
+                font-size: <?php if (isset($alt_heading_size)) echo $alt_heading_size . 'px';
+                ?>;
+            }
+
+            <?php if (isset($alt_heading_size) && $alt_heading_size > 40) {
+                $alt_heading_size=round($alt_heading_size * 0.8);
+            }
+
+            ?>@media (max-width: 640px) {
+                font-size: <?php if (isset($alt_heading_size)) echo $alt_heading_size . 'px';
+                ?>;
+            }
         }
 
         p.description {
@@ -233,6 +284,24 @@ if (is_array($colors)) {
             ?>;
             font-size: <?php echo get_field('description_size') . 'px';
             ?>;
+
+            <?php if (isset($alt_description_size) && $alt_description_size > 25) {
+                $alt_description_size=round($alt_description_size * 0.85);
+            }
+
+            ?>@media (max-width: 1024px) {
+                font-size: <?php if (isset($alt_description_size)) echo $alt_description_size . 'px';
+                ?>;
+            }
+
+            <?php if (isset($alt_description_size) && $alt_description_size > 25) {
+                $alt_description_size=round($alt_description_size * 0.85);
+            }
+
+            ?>@media (max-width: 640px) {
+                font-size: <?php if (isset($alt_description_size)) echo $alt_description_size . 'px';
+                ?>;
+            }
         }
     }
 }
@@ -257,8 +326,7 @@ if (is_array($colors)) {
             rewind: true,
             breakpoints: {
                 1024: {
-                    perView: <?php echo get_field('number_of_columns') ? round(get_field('number_of_columns') / 2) : 2; ?>,
-                    gap: 30,
+                    perView: <?php echo get_field('number_of_columns') ? round(get_field('number_of_columns') / 2) : 2; ?>
                 },
                 640: {
                     perView: 1
