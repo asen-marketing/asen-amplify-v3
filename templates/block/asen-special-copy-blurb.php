@@ -26,9 +26,12 @@ $blurb_style = get_field('blurb_text_style');
 
 $link_options = get_field('cta_options');
 $links = get_field('cta_links');
-$link_1 = $links[0]['link_1'];
-$link_2 = $links[0]['link_2'];
-$link_icon = $links[0]['link_icon'];
+
+if (have_rows($links))  {
+    $link_1 = $links[0]['link_1'];
+    $link_2 = $links[0]['link_2'];
+    $link_icon = $links[0]['link_icon'];
+}
 
 $align_center = get_field('align_center');
 $link_colors = get_field('link_colors');
@@ -53,13 +56,13 @@ $background_hover_color = $link_colors[0]['button_background_hover_color'];
         </div>
         <?php if( $link_options ) : ?>
         <div class="link-container">
-            <?php if( $link_1 ) : ?>
+            <?php if( isset($link_1) ) : ?>
             <a href="<?php echo $link_1['url']; ?>"
                 class="<?php if ($link_options === 'buttons') echo 'button button-small'; if ($link_options === 'text') echo 'text-link'; if ($link_options === 'icon') echo 'text-icon-link'; ?>">
-                <?php echo $link_1['title']; ?><?php if ($link_icon && $link_options === 'icon') echo $link_icon; ?>
+                <?php echo $link_1['title']; ?><?php if (isset($link_icon) && $link_options === 'icon') echo $link_icon; ?>
             </a>
             <?php endif; ?>
-            <?php if( $link_2 ) : ?>
+            <?php if( isset($link_2) ) : ?>
             <a href="<?php echo $link_2['url']; ?>" class="button button-small">
                 <?php echo $link_2['title']; ?>
             </a>

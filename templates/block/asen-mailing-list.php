@@ -153,7 +153,10 @@ $background_image = get_field('background_image');
 
 .asen-mailing-list-<?php echo $block['id'];
 
-?>.background-color {
+?>.background-color,
+.asen-mailing-list-<?php echo $block['id'];
+
+?>.background-pattern {
     background-color: <?php echo $background_color;
     ?>;
 }

@@ -7,6 +7,25 @@ if ( get_field('banner_disable') != true ) :
 $eyebrow_classes = '';
 $title_classes = '';
 $subtitle_classes = '';
+if (get_field('alignment_options')) {
+    if ( get_field('alignment_options') === 'left' ) {
+        $button_alignment = 'flex-start';
+    } elseif ( get_field('alignment_options') === 'right' ) {
+        $button_alignment = 'flex-end';
+    } elseif ( get_field('alignment_options') === 'center' ) {
+        $button_alignment = 'center';
+    } // end elseif
+} else if (get_field('page_banner_text_align', 'option')) {
+    if ( get_field('page_banner_text_align', 'option') === 'left' ) {
+        $button_alignment = 'flex-start';
+    } elseif ( get_field('page_banner_text_align', 'option') === 'right' ) {
+        $button_alignment = 'flex-end';
+    } elseif ( get_field('page_banner_text_align', 'option') === 'center' ) {
+        $button_alignment = 'center';
+    } // end elseif
+} else {
+    $button_alignment = 'center';
+}
 
 if ( get_field('page_banner_eyebrow_size', 'option') ) {
     $eyebrow_classes .= ' ' . get_field('page_banner_eyebrow_size', 'option');
@@ -53,9 +72,9 @@ if ( is_archive() ) {
 
 ?>
 
-<header class="asen-page-banner">
+<header class="asen-page-banner <?php echo $post->post_name; ?>">
     <?php if ( get_field('banner_background_image') && get_field('background_options') === 'image') : ?>
-    <div class="background-image">
+    <div class=" background-image">
         <?php echo wp_get_attachment_image( get_field('banner_background_image'), 'asen-banner-general' ); ?>
     </div>
     <?php endif; ?>
@@ -67,7 +86,7 @@ if ( is_archive() ) {
     <div class=" background-overlay">
     </div>
     <div class="inside">
-        <div class="copy">
+        <div class="copy" style="align-items: <?php if (isset($button_alignment)) echo $button_alignment; ?>;">
             <?php if ( $eyebrow_text ) : ?>
             <p class="eyebrow <?php echo $eyebrow_classes ; ?>">
                 <?php echo $eyebrow_text; ?>
@@ -89,8 +108,8 @@ if ( is_archive() ) {
 
             if ($button_1) : 
             ?>
-        <div
-            class="button-container<?php if (get_field('page_banner_text_align', 'option') === 'center') echo ' align-center'; ?>">
+        <div class="button-container"
+            style="justify-content: <?php if (isset($button_alignment)) echo $button_alignment; ?>;">
             <a class="button" href="<?php echo $button_1['url']; ?>" title="<?php echo $button_1['title']; ?>"
                 target="<?php echo $button_1['target']; ?>">
                 <?php echo $button_1['title']; ?>
@@ -109,8 +128,10 @@ if ( is_archive() ) {
 
 <style>
 .asen-page-banner {
-    <?php if (get_field('background_options') !=='default'): ?> background-color: transparent;
+    <?php if (get_field('background_options') !=='default'|| get_field('background_options') !=='color'): ?> background-color: transparent;
     <?php endif;
+
+    ?><?php if (get_field('background_options')==='color') echo 'background-color: '. get_field('background_color') . ';';
 
     ?>.inside {
         .button-container .button {
@@ -127,5 +148,55 @@ if ( is_archive() ) {
             ?>;
         }
     }
+}
+
+.asen-page-banner.<?php echo $post->post_name;
+
+?> {
+    .inside {
+        padding-top: <?php if (get_field('padding_top')) echo get_field('padding_top') . '%;';
+        ?>padding-right: <?php if (get_field('padding_right')) echo get_field('padding_right') . '%;';
+        ?>padding-bottom: <?php if (get_field('padding_bottom')) echo get_field('padding_bottom') . '%;';
+        ?>padding-left: <?php if (get_field('padding_left')) echo get_field('padding_left') . '%;';
+        ?>
+    }
+
+    h1 {
+        max-width: <?php if (get_field('content_max_width')) echo get_field('content_max_width') . 'px;';
+        ?>
+    }
+
+    p.subtitle {
+        max-width: <?php if (get_field('content_max_width')) echo get_field('content_max_width') . 'px;';
+        ?>
+    }
+
+    <?php if (get_field('alignment_options')) : ?>p.eyebrow {
+        text-align: <?php echo get_field('alignment_options');
+        ?>
+    }
+
+    h1 {
+        text-align: <?php echo get_field('alignment_options');
+        ?>
+    }
+
+    p.subtitle {
+        text-align: <?php echo get_field('alignment_options');
+        ?>
+    }
+
+    <?php endif;
+
+    ?><?php if (get_field('background_overlay')) : ?>.background-overlay {
+        background-color: <?php the_field('background_overlay');
+        ?>;
+        opacity: <?php if (get_field('background_overlay_opacity')) echo get_field('background_overlay_opacity');
+        ?>;
+    }
+
+    <?php endif;
+
+    ?>
 }
 </style>

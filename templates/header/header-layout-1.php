@@ -1,7 +1,7 @@
 <header
     class="site-header layout-1<?php if (get_field('header_bottom_border', 'option') && !get_field('overlapping_header', 'option')) echo ' has-border'; ?>"
     role="banner">
-    <div class="inside">
+    <div class="inside<?php if (get_field('header_menu_align_left', 'option')) echo ' align-left'; ?>">
         <div class="logo">
             <a href="<?php echo site_url( '/', 'https' ); ?>" title="<?php echo get_bloginfo('name', 'display'); ?>">
                 <?php if (get_field('site_header_logo_image', 'option') ) : ?>

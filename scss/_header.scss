@@ -21,6 +21,11 @@ header.site-header {
     width: 100%;
     justify-content: space-between;
     align-items: center;
+
+    &.align-left {
+      justify-content: flex-start;
+      gap: 3rem;
+    }
   }
 
   body.admin-bar & {
@@ -63,12 +68,6 @@ header.site-header {
     }
   }
 
-  &.layout-1 {
-    .inside {
-      justify-content: space-between;
-    }
-  }
-
   &.layout-2 {
     .inside {
       justify-content: center;
@@ -79,13 +78,18 @@ header.site-header {
   }
 
   &.layout-4 {
-    .inside {
-      justify-content: space-between;
-    }
-
     nav.header-menu {
       display: flex;
       align-items: center;
+    }
+    .inside.align-left {
+      .navigation {
+        width: 100%;
+      }
+      .header-menu {
+        width: 100%;
+        justify-content: space-between;
+      }
     }
   }
 

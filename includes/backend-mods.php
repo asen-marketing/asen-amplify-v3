@@ -60,6 +60,21 @@ function asen_hide_editor()
 }
 add_action( 'admin_init', 'asen_hide_editor' );
 
+
+function acfe_modal_width() {
+    echo '<style>
+    body.block-editor-page .edit-post-layout .acfe-modal.-open>.acfe-modal-wrapper {
+        width: 75%;
+
+        ul.acf-radio-list {
+        display: flex;
+        gap: 1rem;
+        } 
+        </style>';
+    } 
+add_action('admin_head', 'acfe_modal_width');
+
+
 // $global_tiers = get_field_object('site_tier', 'option');
 // $condition_field = get_field_object('sub-menu_indicator_closed', 'option');
 

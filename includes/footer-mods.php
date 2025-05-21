@@ -4,7 +4,7 @@
     ?>
 
 <style>
-.site-footer {
+footer.site-footer {
     .top {
 
         background-color: <?php the_field('footer_background_color', 'option');
@@ -16,6 +16,15 @@
             ?>;
             color: <?php the_field('footer_text_color', 'option');
             ?>;
+        }
+
+        .footer-mailing-list-container {
+
+            p,
+            h5 {
+                color: <?php the_field('footer_text_color', 'option');
+                ?>;
+            }
         }
 
         a:hover {
@@ -74,13 +83,15 @@
     }
 }
 
-.site-footer.simple {
+footer.site-footer.layout-2 {
     .bottom {
         background-color: <?php the_field('footer_background_color', 'option');
         ?>;
 
         p {
             font-size: <?php echo get_field('footer_font_size', 'option') . 'px';
+            ?>;
+            color: <?php the_field('footer_text_color', 'option');
             ?>;
         }
 

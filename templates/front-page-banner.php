@@ -197,33 +197,65 @@ if ( get_field('text_align') ) {
         }
         ?>
 <style>
-.asen-front-page-banner .buttons a {
-    color: <?php echo $button_text;
-    ?>;
-    font-size: <?php echo $link_font_size . 'px';
-    ?>;
+.asen-front-page-banner {
+    <?php if (get_field('subtitle_size')==='custom'&& get_field('subtitle_custom_size')):
+        $subtitle_size=get_field('subtitle_custom_size');
 
-    i {
-        font-size: <?php echo ($link_font_size * 0.8) . 'px';
+    ?>h2.custom {
+        font-size: <?php echo get_field('subtitle_custom_size') . 'px';
         ?>;
+
+        <?php if (isset($subtitle_size) && $subtitle_size > 25) {
+            $subtitle_size=round($subtitle_size * 0.85);
+        }
+
+        ?>@media (max-width: 1024px) {
+            font-size: <?php if (isset($subtitle_size)) echo $subtitle_size . 'px';
+            ?>;
+        }
+
+        <?php if (isset($subtitle_size) && $subtitle_size > 25) {
+            $subtitle_size=round($subtitle_size * 0.85);
+        }
+
+        ?>@media (max-width: 640px) {
+            font-size: <?php if (isset($subtitle_size)) echo $subtitle_size . 'px';
+            ?>;
+        }
     }
-}
 
-.asen-front-page-banner .buttons a:hover {
-    color: <?php echo $button_text_hover;
-    ?>;
-    font-size: <?php echo $link_font_size . 'px';
-    ?>;
-}
+    <?php endif;
 
-.asen-front-page-banner .buttons a.button {
-    background-color: <?php echo $button_background;
-    ?>;
-}
+    ?>.buttons {
+        a {
+            color: <?php echo $button_text;
+            ?>;
+            font-size: <?php echo $link_font_size . 'px';
+            ?>;
 
-.asen-front-page-banner .buttons a.button:hover {
-    background-color: <?php echo $button_background_hover;
-    ?>;
+            i {
+                font-size: <?php echo ($link_font_size * 0.8) . 'px';
+                ?>;
+            }
+        }
+
+        a:hover {
+            color: <?php echo $button_text_hover;
+            ?>;
+            font-size: <?php echo $link_font_size . 'px';
+            ?>;
+        }
+
+        a.button {
+            background-color: <?php echo $button_background;
+            ?>;
+        }
+
+        a.button:hover {
+            background-color: <?php echo $button_background_hover;
+            ?>;
+        }
+    }
 }
 </style>
 

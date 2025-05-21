@@ -64,6 +64,11 @@
     }
   }
 
+  .copy {
+    display: flex;
+    flex-direction: column;
+  }
+
   // .h1 {
   //   font-size: 105px;
   // }
@@ -98,6 +103,9 @@
 
     &.align-center {
       justify-content: center;
+    }
+    &.right {
+      justify-content: flex-end;
     }
   }
 }

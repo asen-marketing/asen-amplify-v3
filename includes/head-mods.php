@@ -174,6 +174,9 @@ header.site-header {
     background: transparent;
     box-shadow: none;
     <?php endif;
+    ?><?php if (get_field('disable_overlapping_header', get_the_ID()) && get_field('single_header_background_color', get_the_ID())): ?> background: <?php the_field('single_header_background_color', get_the_ID());
+    ?>;
+    <?php endif;
     ?>
 }
 
@@ -321,6 +324,19 @@ $off_canvas_mobile_font_size_smaller=get_field('off_canvas_mobile_font_size', 'o
 }
 
 @media (max-width: <?php echo $off_canvas_px; ?>) {
+
+    header.site-header.layout-1 .inside.align-left,
+    header.site-header.layout-4 .inside.align-left {
+        justify-content: space-between;
+
+        .navigation {
+            width: fit-content;
+        }
+
+        .header-menu {
+            width: fit-content;
+        }
+    }
 
     .off-canvas-menu-backing-overlay,
     .off-canvas-menu-container.header-layout-1,
