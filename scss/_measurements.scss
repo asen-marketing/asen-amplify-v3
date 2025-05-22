@@ -125,17 +125,21 @@ $site-overall-gutter-small: 7%;
   font-size: $font-size;
 
   @media (max-width: $breakpoint-tablet-large) {
-    @if ($font-size > 25px) {
+    @if ($font-size > 85px) {
+      font-size: $font-size * 0.7;
+    } @else if ($font-size > 40px) {
       font-size: $font-size * 0.8;
+    } @else {
+      font-size: $font-size * 0.9;
     }
   }
   @media (max-width: $breakpoint-small) {
-    @if ($font-size > 60px) {
-      font-size: $font-size * 0.6;
+    @if ($font-size > 85px) {
+      font-size: $font-size * 0.55;
     } @else if ($font-size > 40px) {
       font-size: $font-size * 0.7;
     } @else {
-      font-size: $font-size * 0.75;
+      font-size: $font-size * 0.85;
     }
   }
 }

@@ -464,6 +464,106 @@ body.admin-bar .asen-front-page-banner.is-full-screen {
 
 <?php endif;
 ?>
+/* Button and Link styling from Site Options fields */
+
+<?php if (get_field('link_color', 'option')) : ?>a {
+    color: <?php the_field('link_color', 'option');
+    ?>;
+}
+
+<?php endif;
+
+?><?php if (get_field('link_hover_color', 'option')) : ?>a:hover {
+    color: <?php the_field('link_hover_color', 'option');
+    ?>;
+}
+
+<?php endif;
+
+?><?php if (get_field('button_background_color', 'option')) : ?>.button {
+    background-color: <?php the_field('button_background_color', 'option');
+    ?>;
+}
+
+<?php endif;
+
+?><?php if (get_field('button_text_color', 'option')) : ?>.button {
+    color: <?php the_field('button_text_color', 'option');
+    ?>;
+}
+
+<?php endif;
+
+?><?php if (get_field('button_background_hover_color', 'option')) : ?>.button:hover {
+    background-color: <?php the_field('button_background_hover_color', 'option');
+    ?>;
+}
+
+<?php endif;
+
+?><?php if (get_field('button_text_hover_color', 'option')) : ?>.button:hover {
+    color: <?php the_field('button_text_hover_color', 'option');
+    ?>;
+}
+
+<?php endif;
+
+?><?php if (get_field('small_button_font_size', 'option')) : ?>.button.button-small {
+    font-size: <?php the_field('small_button_font_size', 'option');
+    ?>px;
+}
+
+<?php endif;
+
+?><?php if (get_field('small_button_vertical_padding', 'option')) : ?>.button.button-small {
+    padding-top: <?php the_field('small_button_vertical_padding', 'option');
+    ?>px;
+    padding-bottom: <?php the_field('small_button_vertical_padding', 'option');
+    ?>px;
+}
+
+<?php endif;
+
+?><?php if (get_field('small_button_horizontal_padding', 'option')) : ?>.button.button-small {
+    padding-left: <?php the_field('small_button_horizontal_padding', 'option');
+    ?>px;
+    padding-right: <?php the_field('small_button_horizontal_padding', 'option');
+    ?>px;
+}
+
+<?php endif;
+
+?><?php if (get_field('regular_button_font_size', 'option')) : ?>.button {
+    font-size: <?php the_field('regular_button_font_size', 'option');
+    ?>px;
+
+    @media (max-width: 768px) {
+        font-size: <?php echo round(get_field('regular_button_font_size', 'option') * 0.8);
+        ?>px;
+
+    }
+}
+
+<?php endif;
+
+?><?php if (get_field('regular_button_vertical_padding', 'option')) : ?>.button {
+    padding-top: <?php the_field('regular_button_vertical_padding', 'option');
+    ?>px;
+    padding-bottom: <?php the_field('regular_button_vertical_padding', 'option');
+    ?>px;
+}
+
+<?php endif;
+
+?><?php if (get_field('regular_button_horizontal_padding', 'option')) : ?>.button {
+    padding-left: <?php the_field('regular_button_horizontal_padding', 'option');
+    ?>px;
+    padding-right: <?php the_field('regular_button_horizontal_padding', 'option');
+    ?>px;
+}
+
+<?php endif;
+?>
 </style>
 
 <?php

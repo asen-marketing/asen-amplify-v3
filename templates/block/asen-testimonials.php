@@ -88,87 +88,113 @@ if (is_array($grid_colors)) {
 .asen-testimonials-<?php echo $block['id'];
 
 ?> {
-    p.author {
+    <?php $top_padding=get_field('top_padding');
+    $bottom_padding=get_field('bottom_padding');
+    $top_margin=get_field('top_margin');
+    $bottom_margin=get_field('bottom_margin');
+
+    if ($top_padding) {
+        echo 'padding-top: '. $top_padding . 'px;';
+        echo '@media (max-width: 1440px) {padding-top: '. $top_padding * 0.8 . 'px;}';
+        echo '@media (max-width: 1024px) {padding-top: '. $top_padding * 0.7 . 'px;}';
+        echo '@media (max-width: 768px) {padding-top: '. $top_padding * 0.55 . 'px;}';
+    }
+
+    if ($bottom_padding) {
+        echo 'padding-bottom: '. $bottom_padding . 'px;';
+        echo '@media (max-width: 1440px) {padding-bottom: '. $bottom_padding * 0.8 . 'px;}';
+        echo '@media (max-width: 1024px) {padding-bottom: '. $bottom_padding * 0.7 . 'px;}';
+        echo '@media (max-width: 768px) {padding-bottom: '. $bottom_padding * 0.55 . 'px;}';
+    }
+
+    if ($top_margin) {
+        echo 'margin-top: '. $top_margin . 'px;';
+        echo '@media (max-width: 1440px) {margin-top: '. $top_margin * 0.8 . 'px;}';
+        echo '@media (max-width: 1024px) {margin-top: '. $top_margin * 0.7 . 'px;}';
+        echo '@media (max-width: 768px) {margin-top: '. $top_margin * 0.55 . 'px;}';
+    }
+
+    if ($bottom_margin) {
+        echo 'margin-bottom: '. $bottom_margin . 'px;';
+        echo '@media (max-width: 1440px) {margin-bottom: '. $bottom_margin * 0.8 . 'px;}';
+        echo '@media (max-width: 1024px) {margin-bottom: '. $bottom_margin * 0.7 . 'px;}';
+        echo '@media (max-width: 768px) {margin-bottom: '. $bottom_margin * 0.55 . 'px;}';
+    }
+
+    ?>p.author {
         opacity: <?php the_field('author_opacity');
         ?>;
     }
-}
 
-.asen-testimonials-<?php echo $block['id'];
+    .carousel {
+        .width-container {
+            background-color: <?php echo get_field('background_color');
+            ?>;
 
-?>.carousel {
-    .width-container {
-        background-color: <?php echo get_field('background_color');
+            p {
+                color: <?php echo get_field('text_color');
+                ?>;
+            }
+        }
+
+        .selectors {
+            button {
+                background-color: <?php the_field('nav_color');
+                ?>;
+            }
+        }
+
+        .controls {
+            button {
+
+                color: <?php the_field('nav_color');
+                ?>;
+            }
+        }
+    }
+
+    .inside.grid {
+        column-count: <?php the_field('number_of_columns');
         ?>;
 
-        p {
-            color: <?php echo get_field('text_color');
+        @media (max-width: 1024px) {
+            column-count: <?php echo round(get_field('number_of_columns') / 2);
             ?>;
         }
-    }
 
-    .selectors {
-        button {
-            background-color: <?php the_field('nav_color');
+        @media (max-width: 640px) {
+            column-count: 1;
+        }
+
+        <?php // color rotation ?>
+        <?php if (is_array($grid_colors)): ?><?php for ($i=0; $i < count($grid_colors); $i++): ?>.color-<?php echo $i+1;
+
+        ?> {
+            background-color: <?php echo $grid_colors[$i]['background_color'];
+            ?>;
+            color: <?php echo $grid_colors[$i]['text_color'];
             ?>;
         }
+
+        <?php endfor;
+        ?><?php endif;
+        ?>
     }
-
-    .controls {
-        button {
-
-            color: <?php the_field('nav_color');
-            ?>;
-        }
-    }
-}
-
-.asen-testimonials-<?php echo $block['id'] . ' ';
-
-?>.inside.grid {
-    column-count: <?php the_field('number_of_columns');
-    ?>;
 
     @media (max-width: 1024px) {
-        column-count: <?php echo round(get_field('number_of_columns') / 2);
-        ?>;
+
+        .inside.grid {
+            grid-template-columns: repeat(<?php echo round(get_field('number_of_columns') / 2); ?>, minmax(0, 1fr));
+        }
     }
 
     @media (max-width: 640px) {
-        column-count: 1;
+
+        .inside.grid {
+            grid-template-columns: 1fr;
+        }
     }
 
-    <?php // color rotation ?>
-    <?php if (is_array($grid_colors)): ?><?php for ($i=0; $i < count($grid_colors); $i++): ?>.color-<?php echo $i+1;
-
-    ?> {
-        background-color: <?php echo $grid_colors[$i]['background_color'];
-        ?>;
-        color: <?php echo $grid_colors[$i]['text_color'];
-        ?>;
-    }
-
-    <?php endfor;
-    ?><?php endif;
-    ?>
-}
-
-@media (max-width: 1024px) {
-
-    .asen-testimonials-<?php echo $block['id'] . ' ';
-
-    ?>.inside.grid {
-        grid-template-columns: repeat(<?php echo round(get_field('number_of_columns') / 2); ?>, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 640px) {
-
-    .asen-testimonials-<?php echo $block['id'] . ' ';
-
-    ?>.inside.grid {
-        grid-template-columns: 1fr;
-    }
 }
 </style>
 

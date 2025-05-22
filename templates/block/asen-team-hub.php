@@ -67,54 +67,87 @@ $nav_color = $nav_rows[0]['nav_arrow_color'];
 
 <style>
 .asen-team-hub-<?php echo $block['id'] . ' ';
-?>.inside .team-item,
-.asen-team-hub-<?php echo $block['id'] . ' ';
 
-?>.inside .glide__slide {
-    width: calc(100% / <?php echo get_field('number_of_columns'); ?> + (2rem / <?php echo get_field('number_of_columns'); ?>) - 2rem);
+?> {
 
-    h3.team-member-name {
-        color: <?php the_field('name_color');
-        ?>;
-        font-weight: <?php the_field('name_font_weight');
-        ?>;
+    <?php $top_padding=get_field('top_padding');
+    $bottom_padding=get_field('bottom_padding');
+    $top_margin=get_field('top_margin');
+    $bottom_margin=get_field('bottom_margin');
+
+    if ($top_padding) {
+        echo 'padding-top: '. $top_padding . 'px;';
+        echo '@media (max-width: 1440px) {padding-top: '. $top_padding * 0.8 . 'px;}';
+        echo '@media (max-width: 1024px) {padding-top: '. $top_padding * 0.7 . 'px;}';
+        echo '@media (max-width: 768px) {padding-top: '. $top_padding * 0.55 . 'px;}';
     }
 
-    h4.team-member-position {
-        font-weight: <?php the_field('title_font_weight');
-        ?>;
+    if ($bottom_padding) {
+        echo 'padding-bottom: '. $bottom_padding . 'px;';
+        echo '@media (max-width: 1440px) {padding-bottom: '. $bottom_padding * 0.8 . 'px;}';
+        echo '@media (max-width: 1024px) {padding-bottom: '. $bottom_padding * 0.7 . 'px;}';
+        echo '@media (max-width: 768px) {padding-bottom: '. $bottom_padding * 0.55 . 'px;}';
     }
 
-    h4,
-    p {
-        color: <?php the_field('text_color');
-        ?>;
+    if ($top_margin) {
+        echo 'margin-top: '. $top_margin . 'px;';
+        echo '@media (max-width: 1440px) {margin-top: '. $top_margin * 0.8 . 'px;}';
+        echo '@media (max-width: 1024px) {margin-top: '. $top_margin * 0.7 . 'px;}';
+        echo '@media (max-width: 768px) {margin-top: '. $top_margin * 0.55 . 'px;}';
     }
-}
 
-.asen-team-hub-<?php echo $block['id'] . ' ';
-
-?>.controls {
-    i {
-        color: <?php if (isset($nav_color)) echo $nav_color;
-        ?>;
+    if ($bottom_margin) {
+        echo 'margin-bottom: '. $bottom_margin . 'px;';
+        echo '@media (max-width: 1440px) {margin-bottom: '. $bottom_margin * 0.8 . 'px;}';
+        echo '@media (max-width: 1024px) {margin-bottom: '. $bottom_margin * 0.7 . 'px;}';
+        echo '@media (max-width: 768px) {margin-bottom: '. $bottom_margin * 0.55 . 'px;}';
     }
-}
 
-@media (max-width: 1024px) {
+    ?>.inside .team-item,
+    .inside .glide__slide {
+        width: calc(100% / <?php echo get_field('number_of_columns'); ?> + (2rem / <?php echo get_field('number_of_columns'); ?>) - 2rem);
 
-    .asen-team-hub .inside .team-item,
-    .asen-team-hub .inside .glide__slide {
-        width: calc(100% / <?php echo round(get_field('number_of_columns') / 2); ?> + (2rem / <?php echo round(get_field('number_of_columns') / 2); ?>) - 2rem);
+        h3.team-member-name {
+            color: <?php the_field('name_color');
+            ?>;
+            font-weight: <?php the_field('name_font_weight');
+            ?>;
+        }
 
+        h4.team-member-position {
+            font-weight: <?php the_field('title_font_weight');
+            ?>;
+        }
+
+        h4,
+        p {
+            color: <?php the_field('text_color');
+            ?>;
+        }
     }
-}
 
-@media (max-width: 640px) {
+    .controls {
+        i {
+            color: <?php if (isset($nav_color)) echo $nav_color;
+            ?>;
+        }
+    }
 
-    .asen-team-hub .inside .team-item,
-    .asen-team-hub .inside .glide__slide {
-        width: 100%;
+    @media (max-width: 1024px) {
+
+        .asen-team-hub .inside .team-item,
+        .asen-team-hub .inside .glide__slide {
+            width: calc(100% / <?php echo round(get_field('number_of_columns') / 2); ?> + (2rem / <?php echo round(get_field('number_of_columns') / 2); ?>) - 2rem);
+
+        }
+    }
+
+    @media (max-width: 640px) {
+
+        .asen-team-hub .inside .team-item,
+        .asen-team-hub .inside .glide__slide {
+            width: 100%;
+        }
     }
 }
 </style>

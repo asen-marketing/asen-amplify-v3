@@ -154,10 +154,10 @@ if ( is_archive() ) {
 
 ?> {
     .inside {
-        padding-top: <?php if (get_field('padding_top')) echo get_field('padding_top') . '%;';
-        ?>padding-right: <?php if (get_field('padding_right')) echo get_field('padding_right') . '%;';
-        ?>padding-bottom: <?php if (get_field('padding_bottom')) echo get_field('padding_bottom') . '%;';
-        ?>padding-left: <?php if (get_field('padding_left')) echo get_field('padding_left') . '%;';
+        <?php if (get_field('padding_top')) echo 'padding-top: '. get_field('padding_top') . '%;';
+        ?><?php if (get_field('padding_right')) echo 'padding-right: '. get_field('padding_right') . '%;';
+        ?><?php if (get_field('padding_bottom')) echo 'padding-bottom: '. get_field('padding_bottom') . '%;';
+        ?><?php if (get_field('padding_left')) echo 'padding-left: '. get_field('padding_left') . '%;';
         ?>
     }
 

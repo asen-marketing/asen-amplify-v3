@@ -276,62 +276,100 @@ if (isset($alternating_styles) && is_array($alternating_styles)) {
 
 .asen-services-hub-<?php echo $block['id'] . ' ';
 
-?>.inside.alternating .service-item .copy-container {
+?>,
+.asen-services-hub-<?php echo $block['id'] . '.has-background ';
 
-    <?php if (isset($alternating_styles)) : ?>h3.service-title,
-    p.service-blurb {
-        color: <?php echo $alt_color;
-        ?>;
+?> {
+    <?php $top_padding=get_field('top_padding');
+    $bottom_padding=get_field('bottom_padding');
+    $top_margin=get_field('top_margin');
+    $bottom_margin=get_field('bottom_margin');
+
+    if ($top_padding) {
+        echo 'padding-top: '. $top_padding . 'px;';
+        echo '@media (max-width: 1440px) {padding-top: '. $top_padding * 0.8 . 'px;}';
+        echo '@media (max-width: 1024px) {padding-top: '. $top_padding * 0.7 . 'px;}';
+        echo '@media (max-width: 768px) {padding-top: '. $top_padding * 0.55 . 'px;}';
     }
 
-    h3.service-title {
-        font-size: <?php echo $alt_heading_size . 'px';
-        ?>;
-
-        <?php if (isset($alt_heading_size) && $alt_heading_size > 40) {
-            $alt_heading_size=round($alt_heading_size * 0.85);
-        }
-
-        ?>@media (max-width: 1024px) {
-            font-size: <?php if (isset($alt_heading_size)) echo $alt_heading_size . 'px';
-            ?>;
-        }
-
-        <?php if (isset($alt_heading_size) && $alt_heading_size > 40) {
-            $alt_heading_size=round($alt_heading_size * 0.8);
-        }
-
-        ?>@media (max-width: 640px) {
-            font-size: <?php if (isset($alt_heading_size)) echo $alt_heading_size . 'px';
-            ?>;
-        }
+    if ($bottom_padding) {
+        echo 'padding-bottom: '. $bottom_padding . 'px;';
+        echo '@media (max-width: 1440px) {padding-bottom: '. $bottom_padding * 0.8 . 'px;}';
+        echo '@media (max-width: 1024px) {padding-bottom: '. $bottom_padding * 0.7 . 'px;}';
+        echo '@media (max-width: 768px) {padding-bottom: '. $bottom_padding * 0.55 . 'px;}';
     }
 
-    p.service-blurb {
-        font-size: <?php echo $alt_copy_size . 'px';
-        ?>;
-
-        <?php if (isset($alt_copy_size) && $alt_copy_size > 25) {
-            $alt_copy_size=round($alt_copy_size * 0.85);
-        }
-
-        ?>@media (max-width: 1024px) {
-            font-size: <?php if (isset($alt_copy_size)) echo $alt_copy_size . 'px';
-            ?>;
-        }
-
-        <?php if (isset($alt_copy_size) && $alt_copy_size > 25) {
-            $alt_copy_size=round($alt_copy_size * 0.85);
-        }
-
-        ?>@media (max-width: 640px) {
-            font-size: <?php if (isset($alt_copy_size)) echo $alt_copy_size . 'px';
-            ?>;
-        }
+    if ($top_margin) {
+        echo 'margin-top: '. $top_margin . 'px;';
+        echo '@media (max-width: 1440px) {margin-top: '. $top_margin * 0.8 . 'px;}';
+        echo '@media (max-width: 1024px) {margin-top: '. $top_margin * 0.7 . 'px;}';
+        echo '@media (max-width: 768px) {margin-top: '. $top_margin * 0.55 . 'px;}';
     }
 
-    <?php endif;
-    ?>
+    if ($bottom_margin) {
+        echo 'margin-bottom: '. $bottom_margin . 'px;';
+        echo '@media (max-width: 1440px) {margin-bottom: '. $bottom_margin * 0.8 . 'px;}';
+        echo '@media (max-width: 1024px) {margin-bottom: '. $bottom_margin * 0.7 . 'px;}';
+        echo '@media (max-width: 768px) {margin-bottom: '. $bottom_margin * 0.55 . 'px;}';
+    }
+
+    ?>.inside.alternating .service-item .copy-container {
+
+        <?php if (isset($alternating_styles)) : ?>h3.service-title,
+        p.service-blurb {
+            color: <?php echo $alt_color;
+            ?>;
+        }
+
+        h3.service-title {
+            font-size: <?php echo $alt_heading_size . 'px';
+            ?>;
+
+            <?php if (isset($alt_heading_size) && $alt_heading_size > 40) {
+                $alt_heading_size=round($alt_heading_size * 0.85);
+            }
+
+            ?>@media (max-width: 1024px) {
+                font-size: <?php if (isset($alt_heading_size)) echo $alt_heading_size . 'px';
+                ?>;
+            }
+
+            <?php if (isset($alt_heading_size) && $alt_heading_size > 40) {
+                $alt_heading_size=round($alt_heading_size * 0.8);
+            }
+
+            ?>@media (max-width: 640px) {
+                font-size: <?php if (isset($alt_heading_size)) echo $alt_heading_size . 'px';
+                ?>;
+            }
+        }
+
+        p.service-blurb {
+            font-size: <?php echo $alt_copy_size . 'px';
+            ?>;
+
+            <?php if (isset($alt_copy_size) && $alt_copy_size > 25) {
+                $alt_copy_size=round($alt_copy_size * 0.85);
+            }
+
+            ?>@media (max-width: 1024px) {
+                font-size: <?php if (isset($alt_copy_size)) echo $alt_copy_size . 'px';
+                ?>;
+            }
+
+            <?php if (isset($alt_copy_size) && $alt_copy_size > 25) {
+                $alt_copy_size=round($alt_copy_size * 0.85);
+            }
+
+            ?>@media (max-width: 640px) {
+                font-size: <?php if (isset($alt_copy_size)) echo $alt_copy_size . 'px';
+                ?>;
+            }
+        }
+
+        <?php endif;
+        ?>
+    }
 }
 </style>
 
