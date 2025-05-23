@@ -20,7 +20,6 @@
             <?php if ( has_nav_menu('off-canvas-menu') ) : ?>
             <nav class="off-canvas-menu off-canvas-menu-large">
                 <?php wp_nav_menu(array(
-                    'menu' => 'Off Canvas Menu',
                     'container' => '',
                     'menu_class' => 'off-canvas-menu',
                     'theme_location' => 'off-canvas-menu',
@@ -33,7 +32,6 @@
             <?php if ( has_nav_menu('off-canvas-bottom-menu') ) : ?>
             <nav class="off-canvas-menu off-canvas-menu-small">
                 <?php wp_nav_menu(array(
-                    'menu' => 'Off Canvas Bottom Menu',
                     'container' => '',
                     'menu_class' => 'off-canvas-bottom-menu',
                     'theme_location' => 'off-canvas-bottom-menu',
