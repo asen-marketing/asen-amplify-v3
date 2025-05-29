@@ -39,7 +39,9 @@ if (is_array($cta_styles)) {
 ?>
 
 
-<section class="asen-copy-image asen-copy-image-<?php echo $block['id']; echo $className; ?>">
+<section
+    class="asen-copy-image asen-copy-image-<?php echo $block['id']; echo $className; if (get_field('alignment_options')) echo ' ' . get_field('alignment_options'); ?>"
+    id="<?php echo $block['anchor']; ?>">
     <div class="inside" style="<?php echo 'max-width: ' . get_field('block_max_width') . 'px;'; ?>">
         <?php if ($rows) : ?>
         <?php foreach( $rows as $row ) : ?>
@@ -74,8 +76,8 @@ if (is_array($cta_styles)) {
 </section>
 
 <?php
-$heading_size = get_field('heading_size');
-$copy_size = get_field('copy_size');
+$heading_size = get_field('heading_font_size');
+$copy_size = get_field('copy_font_size');
 ?>
 
 <style>

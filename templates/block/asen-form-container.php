@@ -25,7 +25,8 @@ $button_hover_bg = $button_colors[0]['background_hover_color'];
 $button_hover_text = $button_colors[0]['text_hover_color'];
 ?>
 
-<section class="asen-form-container asen-form-container-<?php echo $block['id']; echo $className; ?>">
+<section class="asen-form-container asen-form-container-<?php echo $block['id']; echo $className; ?>"
+    id="<?php echo $block['anchor']; ?>">
     <div class="inside" style="<?php echo 'max-width: ' . get_field('block_max_width') . 'px;'; ?>">
         <div class="heading-container">
             <?php if ($heading) : ?>

@@ -38,7 +38,8 @@ $background_image = get_field('background_image');
 ?>
 
 <section
-    class="asen-mailing-list asen-mailing-list-<?php echo $block['id']; echo $className; ?><?php echo ' background-' . $background_options; ?>">
+    class="asen-mailing-list asen-mailing-list-<?php echo $block['id']; echo $className; ?><?php echo ' background-' . $background_options; ?>"
+    id="<?php echo $block['anchor']; ?>">
     <div class="inside" style="<?php echo 'max-width: ' . get_field('block_max_width') . 'px;'; ?>">
         <div class="heading-container">
             <?php if ($icon) echo $icon; ?>

@@ -16,7 +16,8 @@ if( !empty($block['className']) ) {
 
 ?>
 <section
-    class="asen-location-map asen-location-map-<?php echo $block['id']; echo $className; ?><?php echo get_field('full_width') ? ' full-width' : ' fixed-width'; ?>">
+    class="asen-location-map asen-location-map-<?php echo $block['id']; echo $className; ?><?php echo get_field('full_width') ? ' full-width' : ' fixed-width'; ?>"
+    id="<?php echo $block['anchor']; ?>">
     <div class="inside"
         style="<?php if (!get_field('full_width')) echo 'max-width: ' . get_field('block_max_width') . 'px;'; ?>">
         <div class="heading-container">

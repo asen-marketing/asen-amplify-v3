@@ -198,8 +198,12 @@ if ( get_field('text_align') ) {
         ?>
 <style>
 .asen-front-page-banner {
-    <?php if (get_field('subtitle_size')==='custom'&& get_field('subtitle_custom_size')):
-        $subtitle_size=get_field('subtitle_custom_size');
+    <?php if (get_field('fixed_width')) {
+        echo 'max-width: '. get_field('site_max_width', 'option') . 'px;';
+        echo 'margin: 0 auto;';
+    }
+
+    ?><?php if (get_field('subtitle_size')==='custom'&& get_field('subtitle_custom_size')): $subtitle_size=get_field('subtitle_custom_size');
 
     ?>h2.custom {
         font-size: <?php echo get_field('subtitle_custom_size') . 'px';
@@ -226,33 +230,60 @@ if ( get_field('text_align') ) {
 
     <?php endif;
 
+    ?><?php if (get_field('title_size')==='custom'&& get_field('title_custom_size')): $title_size=get_field('title_custom_size');
+
+    ?>h2.custom {
+        font-size: <?php echo get_field('title_custom_size') . 'px';
+        ?>;
+
+        <?php if (isset($title_size) && $title_size > 25) {
+            $title_size=round($title_size * 0.85);
+        }
+
+        ?>@media (max-width: 1024px) {
+            font-size: <?php if (isset($title_size)) echo $title_size . 'px';
+            ?>;
+        }
+
+        <?php if (isset($title_size) && $title_size > 25) {
+            $title_size=round($title_size * 0.85);
+        }
+
+        ?>@media (max-width: 640px) {
+            font-size: <?php if (isset($title_size)) echo $title_size . 'px';
+            ?>;
+        }
+    }
+
+    <?php endif;
+
     ?>.buttons {
         a {
-            color: <?php echo $button_text;
+            color: <?php if (isset($button_text)) echo $button_text;
             ?>;
             font-size: <?php echo $link_font_size . 'px';
             ?>;
 
             i {
-                font-size: <?php echo ($link_font_size * 0.8) . 'px';
+                font-size: <?php echo $link_font_size . 'px';
                 ?>;
             }
         }
 
         a:hover {
-            color: <?php echo $button_text_hover;
+            color: <?php if (isset($button_text_hover)) echo $button_text_hover;
             ?>;
             font-size: <?php echo $link_font_size . 'px';
             ?>;
         }
 
         a.button {
-            background-color: <?php echo $button_background;
+            background-color: <?php if (isset($button_background)) echo $button_background;
             ?>;
         }
 
         a.button:hover {
-            background-color: <?php echo $button_background_hover;
+            background-color: <?php if (isset($button_background_hover)) echo $button_background_hover;
             ?>;
         }
     }

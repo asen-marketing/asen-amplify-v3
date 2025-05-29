@@ -43,7 +43,9 @@ footer.site-footer {
         ?>;
 
         p,
-        a {
+        a,
+        p.copyright,
+        p.copright a {
             font-size: <?php echo get_field('footer_bottom_font_size', 'option') . 'px';
             ?>;
             color: <?php the_field('footer_bottom_text_color', 'option');

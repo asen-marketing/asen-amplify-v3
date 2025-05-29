@@ -27,7 +27,8 @@ $blog_posts = new WP_Query([
 <pre><?php print_r(get_fields()); ?></pre>
 
 <?php else : ?>
-<section class="asen-featured-blogs asen-featured-blogs-<?php echo $block['id']; echo $className; ?>">
+<section class="asen-featured-blogs asen-featured-blogs-<?php echo $block['id']; echo $className; ?>"
+    id="<?php echo $block['anchor']; ?>">
     <div class="inside">
         <div class="posts-grid">
             <article class="asen-blog-single-teaser cta-teaser">

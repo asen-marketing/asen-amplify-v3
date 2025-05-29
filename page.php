@@ -19,17 +19,4 @@
     <?php endif; ?>
 </main>
 
-<?php if (get_the_ID() === 1101) : ?>
-<script defer>
-(function($) {
-    var checkbox = $('.check'),
-        submit = $('input[type="submit"]')
-
-    submit.on('click', function() {
-        $(checkbox).addClass('checked');
-    });
-})(jQuery);
-</script>
-<?php endif; ?>
-
 <?php get_footer(); ?>

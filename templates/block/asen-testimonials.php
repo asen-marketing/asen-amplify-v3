@@ -25,7 +25,8 @@ if (is_array($grid_colors)) {
 ?>
 
 <section
-    class="asen-testimonials asen-testimonials-<?php echo $block['id']; echo $className; ?><?php echo $carousel ? ' carousel' : ' grid'; ?><?php if (get_field('full_width')) echo ' full-width'; ?><?php if (get_field('background_color')) echo ' has-background'; ?><?php echo ' ' . $nav_options; ?>">
+    class="asen-testimonials asen-testimonials-<?php echo $block['id']; echo $className; ?><?php echo $carousel ? ' carousel' : ' grid'; ?><?php if (get_field('full_width')) echo ' full-width'; ?><?php if (get_field('background_color')) echo ' has-background'; ?><?php echo ' ' . $nav_options; ?>"
+    id="<?php echo $block['anchor']; ?>">
     <?php if ($carousel) : ?>
     <div class="width-container<?php echo get_field('full_width') ? ' full' : ''; ?>">
         <?php endif; ?>

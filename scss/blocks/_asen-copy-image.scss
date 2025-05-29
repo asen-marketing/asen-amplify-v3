@@ -6,6 +6,16 @@
   @include site-overall-gutter-small;
   @include site-vertical-padding-dynamic();
 
+  &.right {
+    .inside .item {
+      flex-direction: row-reverse;
+
+      @media (max-width: $breakpoint-tablet-small) {
+        flex-direction: column-reverse;
+      }
+    }
+  }
+
   .inside {
     max-width: $site-overall-max-width;
     width: 100%;
@@ -22,7 +32,6 @@
 
       @media (max-width: $breakpoint-tablet-small) {
         flex-direction: column;
-        max-height: 100%;
       }
 
       .copy-container {

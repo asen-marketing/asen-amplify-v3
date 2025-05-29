@@ -26,7 +26,8 @@ $nav_color = $nav_rows[0]['nav_arrow_color'];
 ?>
 
 <section
-    class="asen-team-hub asen-team-hub-<?php echo $block['id']; echo $className; ?><?php echo $carousel ? ' carousel' : ' grid'; ?>">
+    class="asen-team-hub asen-team-hub-<?php echo $block['id']; echo $className; ?><?php echo $carousel ? ' carousel' : ' grid'; ?>"
+    id="<?php echo $block['anchor']; ?>">
     <div class="inside<?php echo $carousel ? ' carousel' : ' grid'; ?>"
         style="<?php echo 'max-width: ' . get_field('block_max_width') . 'px;'; ?>">
         <?php if ($team_members) : ?>

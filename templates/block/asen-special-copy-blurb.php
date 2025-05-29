@@ -41,7 +41,8 @@ $background_color = $link_colors[0]['button_background_color'];
 $background_hover_color = $link_colors[0]['button_background_hover_color'];
 ?>
 <section
-    class="asen-special-copy-blurb asen-special-copy-blurb-<?php echo $block['id']; echo $className; ?><?php echo get_field('full_width') ? ' full-width' : ' fixed-width'; ?><?php if ($align_center) echo ' align-center'; ?>">
+    class="asen-special-copy-blurb asen-special-copy-blurb-<?php echo $block['id']; echo $className; ?><?php echo get_field('full_width') ? ' full-width' : ' fixed-width'; ?><?php if ($align_center) echo ' align-center'; ?>"
+    id="<?php echo $block['anchor']; ?>">
     <div class="inside" style="<?php echo 'max-width: ' . get_field('block_max_width') . 'px;'; ?>">
         <?php if( $icon ) : ?>
         <div class="icon-container">

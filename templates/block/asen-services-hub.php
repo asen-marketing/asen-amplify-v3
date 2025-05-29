@@ -74,7 +74,8 @@ if (isset($alternating_styles) && is_array($alternating_styles)) {
 ?>
 
 <section
-    class="asen-services-hub asen-services-hub-<?php echo $block['id']; echo $className; ?><?php if (get_field('has_background')) echo ' has-background'; ?><?php echo ' ' . $image_icon; ?><?php if ($alternating) echo ' alternating'; ?><?php if ($carousel) echo ' carousel'; if (!$carousel && !$alternating) echo ' grid' ?>">
+    class="asen-services-hub asen-services-hub-<?php echo $block['id']; echo $className; ?><?php if (get_field('has_background')) echo ' has-background'; ?><?php echo ' ' . $image_icon; ?><?php if ($alternating) echo ' alternating'; ?><?php if ($carousel) echo ' carousel'; if (!$carousel && !$alternating) echo ' grid' ?>"
+    id="<?php echo $block['anchor']; ?>">
     <?php if (get_field('has_background')) : ?>
     <div class="heading-container"
         style="<?php if (get_field('block_max_width')) echo 'max-width: ' . (get_field('block_max_width') - 200) . 'px;'; ?>">

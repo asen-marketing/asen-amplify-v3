@@ -26,7 +26,8 @@ $heading_size = get_field('heading_size');
 ?>
 <?php if ( have_rows('copy_text_blocks') ) : ?>
 <section
-    class="asen-icon-copy-grid asen-icon-copy-grid-<?php echo $block['id']; echo $className; ?><?php echo ' link-' . $link_type; ?><?php echo ' bg-style-' . get_field('background_options'); ?><?php if (get_field('rounded_corners')) echo ' rounded'; ?><?php if (get_field('alignment_options')) echo ' align-center'; ?>">
+    class="asen-icon-copy-grid asen-icon-copy-grid-<?php echo $block['id']; echo $className; ?><?php echo ' link-' . $link_type; ?><?php echo ' bg-style-' . get_field('background_options'); ?><?php if (get_field('rounded_corners')) echo ' rounded'; ?><?php if (get_field('alignment_options')) echo ' align-center'; ?>"
+    id="<?php echo $block['anchor']; ?>">
     <div class="inside" style="<?php echo 'max-width: ' . get_field('block_max_width') . 'px;'; ?>">
         <div class="items">
             <?php while ( have_rows('copy_text_blocks') ) : the_row(); ?>
@@ -78,7 +79,40 @@ $heading_size = get_field('heading_size');
 .asen-icon-copy-grid-<?php echo $block['id'];
 
 ?> {
-    .inside {
+    <?php $top_padding=get_field('top_padding');
+    $bottom_padding=get_field('bottom_padding');
+    $top_margin=get_field('top_margin');
+    $bottom_margin=get_field('bottom_margin');
+
+    if ($top_padding) {
+        echo 'padding-top: '. $top_padding . 'px;';
+        echo '@media (max-width: 1440px) {padding-top: '. $top_padding * 0.8 . 'px;}';
+        echo '@media (max-width: 1024px) {padding-top: '. $top_padding * 0.7 . 'px;}';
+        echo '@media (max-width: 768px) {padding-top: '. $top_padding * 0.55 . 'px;}';
+    }
+
+    if ($bottom_padding) {
+        echo 'padding-bottom: '. $bottom_padding . 'px;';
+        echo '@media (max-width: 1440px) {padding-bottom: '. $bottom_padding * 0.8 . 'px;}';
+        echo '@media (max-width: 1024px) {padding-bottom: '. $bottom_padding * 0.7 . 'px;}';
+        echo '@media (max-width: 768px) {padding-bottom: '. $bottom_padding * 0.55 . 'px;}';
+    }
+
+    if ($top_margin) {
+        echo 'margin-top: '. $top_margin . 'px;';
+        echo '@media (max-width: 1440px) {margin-top: '. $top_margin * 0.8 . 'px;}';
+        echo '@media (max-width: 1024px) {margin-top: '. $top_margin * 0.7 . 'px;}';
+        echo '@media (max-width: 768px) {margin-top: '. $top_margin * 0.55 . 'px;}';
+    }
+
+    if ($bottom_margin) {
+        echo 'margin-bottom: '. $bottom_margin . 'px;';
+        echo '@media (max-width: 1440px) {margin-bottom: '. $bottom_margin * 0.8 . 'px;}';
+        echo '@media (max-width: 1024px) {margin-bottom: '. $bottom_margin * 0.7 . 'px;}';
+        echo '@media (max-width: 768px) {margin-bottom: '. $bottom_margin * 0.55 . 'px;}';
+    }
+
+    ?>.inside {
         .items {
 
             .item.rounded {

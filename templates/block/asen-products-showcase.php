@@ -44,7 +44,8 @@ if (is_array($colors)) {
 ?>
 
 <section
-    class="asen-products-showcase asen-products-showcase-<?php echo $block['id']; echo $className; ?><?php if (get_field('has_background')) echo ' has-background'; ?><?php if ($alternating) echo ' alternating'; ?><?php if ($carousel) echo ' carousel'; if (!$carousel && !$alternating) echo ' grid' ?><?php if (get_field('align_center')) echo ' align-center'; ?>">
+    class="asen-products-showcase asen-products-showcase-<?php echo $block['id']; echo $className; ?><?php if (get_field('has_background')) echo ' has-background'; ?><?php if ($alternating) echo ' alternating'; ?><?php if ($carousel) echo ' carousel'; if (!$carousel && !$alternating) echo ' grid' ?><?php if (get_field('align_center')) echo ' align-center'; ?>"
+    id="<?php echo $block['anchor']; ?>">
     <?php if (get_field('has_background')) : ?>
     <div class="heading-container<?php if (get_field('heading_align_center')) echo ' align-center'; ?>"
         style="<?php if (get_field('block_max_width')) echo 'max-width: ' . (get_field('block_max_width') - 200) . 'px;'; ?>">
