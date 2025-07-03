@@ -10,17 +10,17 @@ function asen_curate_menu_list() {
     $current_user = wp_get_current_user();
     $current_user_email_domain = explode('@', $current_user->user_email);
     $current_user_roles = $current_user->roles;
-    remove_menu_page( 'edit.php' );
     remove_menu_page( 'edit-comments.php' );
-    
+
+    if (!get_field('site_blog_enabled', 'option')) {
+        remove_menu_page( 'edit.php' );
+    }
     if (
         $current_user_email_domain[1] != 'asenmarketing.com' || 
         in_array( 'administrator', $current_user_roles ) == false
     ) {
         remove_menu_page( 'kadence-blocks' );
     }
-
-
     if (!get_field('site_faqs_enabled', 'option')) {
         remove_menu_page( 'edit.php?post_type=faq' );
     }

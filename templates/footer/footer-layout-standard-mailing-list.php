@@ -16,43 +16,41 @@
                     <?php endif; ?>
                 </a>
                 <?php if ( get_field('site_address_1', 'option') || get_field('site_email_address', 'option') || get_field('site_phone_number', 'option')) : ?>
-                    <div class="footer-contact-info">
-                        <?php 
+                <div class="footer-contact-info">
+                    <?php 
                             if ( get_field('site_address_1', 'option') && get_field('site_city', 'option') && get_field('site_state', 'option') && get_field('site_zip', 'option') ) :
                             $footer_site_address_string = get_field('site_address_1', 'option') . ', ' . get_field('site_city', 'option') . ', ' . get_field('site_state', 'option') . ' ' . get_field('site_zip', 'option');
                         ?>
-                            <p>
-                                <a 
-                                    <?php if (get_field('google_maps_link', 'option')) : ?>
-                                        href="<?php the_field('google_maps_link', 'option'); ?>" 
-                                    <?php else : ?>
-                                        href="https://www.google.com/maps/place/<?php echo urlencode($footer_site_address_string); ?>" 
-                                    <?php endif; ?>
-                                    title="Locate <?php echo $site_name; ?>" 
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <?php the_field('site_address_1', 'option');
+                    <p>
+                        <a <?php if (get_field('google_maps_link', 'option')) : ?>
+                            href="<?php the_field('google_maps_link', 'option'); ?>" <?php else : ?>
+                            href="https://www.google.com/maps/place/<?php echo urlencode($footer_site_address_string); ?>"
+                            <?php endif; ?> title="Locate <?php echo $site_name; ?>" target="_blank"
+                            rel="noopener noreferrer">
+                            <?php the_field('site_address_1', 'option');
                                         if ( get_field('site_address_2', 'option') ) : echo ', ' . get_field('site_address_2', 'option'); endif; ?><br />
-                                    <?php the_field('site_city', 'option'); ?>, <?php the_field('site_state', 'option'); ?> <?php the_field('site_zip', 'option'); ?>
-                                </a>
-                            </p>
-                        <?php endif; ?>
-                        <?php if ( get_field('site_email_address', 'option') ) : ?>
-                            <p>
-                                <a href="mailto:<?php echo esc_html( antispambot(get_field('site_email_address', 'option')) ); ?>" title="Email <?php echo $site_name; ?> about questions.">
-                                    <?php echo esc_html( antispambot(get_field('site_email_address', 'option')) ); ?>
-                                </a>
-                            </p>
-                        <?php endif; ?>                   
-                        <?php if ( get_field('site_phone_number', 'option') ) : ?>
-                            <p>
-                                <a href="tel:<?php echo asen_clean_phone_number(get_field('site_phone_number', 'option')); ?>" title="Call <?php echo $site_name; ?>.">
-                                    <?php the_field('site_phone_number', 'option'); ?>
-                                </a>
-                            </p>
-                        <?php endif; ?>
-                    </div>
+                            <?php the_field('site_city', 'option'); ?>, <?php the_field('site_state', 'option'); ?>
+                            <?php the_field('site_zip', 'option'); ?>
+                        </a>
+                    </p>
+                    <?php endif; ?>
+                    <?php if ( get_field('site_email_address', 'option') ) : ?>
+                    <p>
+                        <a href="mailto:<?php echo esc_html( antispambot(get_field('site_email_address', 'option')) ); ?>"
+                            title="Email <?php echo $site_name; ?> about questions.">
+                            <?php echo esc_html( antispambot(get_field('site_email_address', 'option')) ); ?>
+                        </a>
+                    </p>
+                    <?php endif; ?>
+                    <?php if ( get_field('site_phone_number', 'option') ) : ?>
+                    <p>
+                        <a href="tel:<?php echo asen_clean_phone_number(get_field('site_phone_number', 'option')); ?>"
+                            title="Call <?php echo $site_name; ?>.">
+                            <?php the_field('site_phone_number', 'option'); ?>
+                        </a>
+                    </p>
+                    <?php endif; ?>
+                </div>
                 <?php endif; ?>
             </div>
             <div class="column column-2">
@@ -98,7 +96,7 @@
     <div class="bottom">
         <div class="inside">
             <p class="copyright">
-                &copy; Copyright <?php echo date('Y'); ?> <?php echo $site_name; ?>
+                &copy; <?php echo date('Y'); ?> <?php echo $site_name; ?>
                 <?php the_field('font_awesome_separator_character', 'option'); ?>
                 <a class="privacy-link" href="/privacy/">Privacy Policy</a>
             </p>

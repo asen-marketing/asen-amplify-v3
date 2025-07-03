@@ -37,7 +37,7 @@
             </div>
             <div class="column column-2">
                 <p class="copyright">
-                    &copy; Copyright <?php echo date('Y'); ?> <?php echo $site_name; ?>
+                    &copy; <?php echo date('Y'); ?> <?php echo $site_name; ?>
                     <?php the_field('font_awesome_separator_character', 'option'); ?>
                     <a class="privacy-link" href="/privacy/">Privacy Policy</a>
                 </p>
