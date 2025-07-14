@@ -10,7 +10,6 @@
 
 // Gutenberg blocks folder.
 // Block files can be added by importing them into /blocks/index.scss
-@import "blocks";
 
 // Styling is ordered symantically.
 // Don't put stuff at the top that is not often seen.
@@ -37,4 +36,5 @@
 @import "search";
 @import "404";
 @import "privacy";
+@import "blocks";
 @import "custom";

@@ -31,6 +31,7 @@ if ($categories) {
 $args = array(
     'post_type' => 'faq',
     'posts_per_page' => -1,
+    'order' => 'ASC',
     'tax_query' => array(
         array(
             'taxonomy' => 'faq-category',
@@ -80,9 +81,9 @@ $all_faqs = get_posts($args);
                 <div class="question trigger-<?php echo trim($className); ?>" data-faq="<?php echo $index; ?>">
                     <h6 class="copy"><?php echo ( $title ); ?></h6>
                 </div>
-                <p class="answer faq-answer-<?php echo trim($className); ?>" data-faq="<?php echo $index; ?>">
+                <span class="answer faq-answer-<?php echo trim($className); ?>" data-faq="<?php echo $index; ?>">
                     <?php echo ( $faq_answer ); ?>
-                </p>
+                </span>
             </div>
             <?php endforeach; ?>
         </div>
@@ -121,28 +122,29 @@ if ($split_styles) {
     $top_margin=get_field('top_margin');
     $bottom_margin=get_field('bottom_margin');
 
-    if ($top_padding) {
+
+    if ($top_padding || $top_padding==0) {
         echo 'padding-top: '. $top_padding . 'px;';
         echo '@media (max-width: 1440px) {padding-top: '. $top_padding * 0.8 . 'px;}';
         echo '@media (max-width: 1024px) {padding-top: '. $top_padding * 0.7 . 'px;}';
         echo '@media (max-width: 768px) {padding-top: '. $top_padding * 0.55 . 'px;}';
     }
 
-    if ($bottom_padding) {
+    if ($bottom_padding || $bottom_padding==0) {
         echo 'padding-bottom: '. $bottom_padding . 'px;';
         echo '@media (max-width: 1440px) {padding-bottom: '. $bottom_padding * 0.8 . 'px;}';
         echo '@media (max-width: 1024px) {padding-bottom: '. $bottom_padding * 0.7 . 'px;}';
         echo '@media (max-width: 768px) {padding-bottom: '. $bottom_padding * 0.55 . 'px;}';
     }
 
-    if ($top_margin) {
+    if ($top_margin || $top_margin==0) {
         echo 'margin-top: '. $top_margin . 'px;';
         echo '@media (max-width: 1440px) {margin-top: '. $top_margin * 0.8 . 'px;}';
         echo '@media (max-width: 1024px) {margin-top: '. $top_margin * 0.7 . 'px;}';
         echo '@media (max-width: 768px) {margin-top: '. $top_margin * 0.55 . 'px;}';
     }
 
-    if ($bottom_margin) {
+    if ($bottom_margin || $bottom_margin==0) {
         echo 'margin-bottom: '. $bottom_margin . 'px;';
         echo '@media (max-width: 1440px) {margin-bottom: '. $bottom_margin * 0.8 . 'px;}';
         echo '@media (max-width: 1024px) {margin-bottom: '. $bottom_margin * 0.7 . 'px;}';

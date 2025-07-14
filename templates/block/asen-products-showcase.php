@@ -180,6 +180,46 @@ $alt_description_size = get_field('description_size');
 
 .asen-products-showcase-<?php echo $block['id'] . ' ';
 
+?> {
+    <?php $top_padding=get_field('top_padding');
+    $bottom_padding=get_field('bottom_padding');
+    $top_margin=get_field('top_margin');
+    $bottom_margin=get_field('bottom_margin');
+
+
+    if ($top_padding || $top_padding==0) {
+        echo 'padding-top: '. $top_padding . 'px;';
+        echo '@media (max-width: 1440px) {padding-top: '. $top_padding * 0.8 . 'px;}';
+        echo '@media (max-width: 1024px) {padding-top: '. $top_padding * 0.7 . 'px;}';
+        echo '@media (max-width: 768px) {padding-top: '. $top_padding * 0.55 . 'px;}';
+    }
+
+    if ($bottom_padding || $bottom_padding==0) {
+        echo 'padding-bottom: '. $bottom_padding . 'px;';
+        echo '@media (max-width: 1440px) {padding-bottom: '. $bottom_padding * 0.8 . 'px;}';
+        echo '@media (max-width: 1024px) {padding-bottom: '. $bottom_padding * 0.7 . 'px;}';
+        echo '@media (max-width: 768px) {padding-bottom: '. $bottom_padding * 0.55 . 'px;}';
+    }
+
+    if ($top_margin || $top_margin==0) {
+        echo 'margin-top: '. $top_margin . 'px;';
+        echo '@media (max-width: 1440px) {margin-top: '. $top_margin * 0.8 . 'px;}';
+        echo '@media (max-width: 1024px) {margin-top: '. $top_margin * 0.7 . 'px;}';
+        echo '@media (max-width: 768px) {margin-top: '. $top_margin * 0.55 . 'px;}';
+    }
+
+    if ($bottom_margin || $bottom_margin==0) {
+        echo 'margin-bottom: '. $bottom_margin . 'px;';
+        echo '@media (max-width: 1440px) {margin-bottom: '. $bottom_margin * 0.8 . 'px;}';
+        echo '@media (max-width: 1024px) {margin-bottom: '. $bottom_margin * 0.7 . 'px;}';
+        echo '@media (max-width: 768px) {margin-bottom: '. $bottom_margin * 0.55 . 'px;}';
+    }
+
+    ?>
+}
+
+.asen-products-showcase-<?php echo $block['id'] . ' ';
+
 ?>.controls button {
     i {
         color: <?php if (isset($nav_color)) echo $nav_color;
