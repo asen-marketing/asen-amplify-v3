@@ -1,9 +1,9 @@
 <?php
 function asen_global_scss() {
 
-    $file = 'wp-content/themes/amplify2020/scss/_global-variables.scss';
+    $file = 'wp-content/themes/amplifylite/scss/_global-variables.scss';
     
-    $file_lines = file('wp-content/themes/amplify2020/scss/_global-variables.scss');
+    $file_lines = file('wp-content/themes/amplifylite/scss/_global-variables.scss');
     
     if (get_field('primary_site_color', 'option')) {
         $file_lines[0] = '$site-primary-color:' . get_field('site_primary_color', 'option') . ';';
@@ -32,9 +32,9 @@ function asen_global_scss() {
     // $h5 = get_field('h5', 'option');
     // $h6 = get_field('h6', 'option');
 
-    // $file = 'wp-content/themes/amplify2020/scss/_global-variables.scss';
+    // $file = 'wp-content/themes/amplifylite/scss/_global-variables.scss';
     
-    // $file_lines = file('wp-content/themes/amplify2020/scss/_global-variables.scss');
+    // $file_lines = file('wp-content/themes/amplifylite/scss/_global-variables.scss');
     
     // print_r($site_colors);
     // if (have_rows($site_colors)) {
