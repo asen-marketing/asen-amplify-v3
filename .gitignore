@@ -17,6 +17,9 @@
 /wp-*.php
 /xmlrpc.php
 css/
+/node_modules/
+npm-debug.log
+package-lock.json
 
 # Configuration
 wp-config.php

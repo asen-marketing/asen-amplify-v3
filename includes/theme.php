@@ -9,6 +9,7 @@ function site_enqueue_theme_scripts() {
 	wp_enqueue_style('main', get_template_directory_uri() . '/css/index.css', [], $cache_buster_css);
     wp_enqueue_script('main', get_template_directory_uri() . '/js/main.js', [ 'jquery' ], $cache_buster_js, true);
 	wp_enqueue_script( 'jquery-modal', get_template_directory_uri() . '/js/vendor/jquery.modal.min.js', null, '0.9.2', true );
+	wp_enqueue_script('yt-player-api', 'https://www.youtube.com/iframe_api', [], false, true);
 
 }
 add_action('wp_enqueue_scripts', 'site_enqueue_theme_scripts');

@@ -34,7 +34,7 @@ $link_hover_colors = [];
 $button_colors = [];
 $button_hover_colors = [];
 $service_icon_colors = [];
-$total_colors = 1;
+$total_colors = 0;
 
 if (is_array($colors)) {
     foreach ($colors as $index => $color_row) {
@@ -105,8 +105,7 @@ if (isset($alternating_styles) && is_array($alternating_styles)) {
                 $icon = get_field('icon_code', $service->ID);
                 $blurb = get_field('service_blurb', $service->ID);
                 $link = get_permalink($service->ID);
-                $color = ($index + 1) % $total_colors;
-                if ($color === 0) $color = 1;
+                $color = ($index % $total_colors) + 1;
                 
                     ?>
                     <li class="<?php echo $carousel ? 'glide__slide ' : ''; ?> service-item<?php echo ($index == 1 ? ' is-active' : ''); ?><?php if ($image_icon === 'image' && $image) echo ' has-image'; ?><?php echo ' color-' . $color;?><?php if ($alternating && $index % 2 === 1) echo ' reverse'; ?>"

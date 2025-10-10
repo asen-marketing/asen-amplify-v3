@@ -310,6 +310,32 @@ function site_acf_init() {
 			'supports'          => array( 'align' => false, 'anchor' => true ),
 		));
 
+		// Asen Tabbed Content
+		acf_register_block(array(
+			'name'				=> 'asen-tabbed-content',
+			'title'				=> __('Asen Tabbed Content'),
+			'description'		=> __('Tabbed content selector'),
+			'mode'              => 'edit',
+			'render_callback'	=> 'site_acf_block_callback',
+			'category'			=> 'asen-blocks',
+			'icon'				=> 'table-row-after',
+			'keywords'			=> array( 'asen', 'tabbed', 'content' ),
+			'supports'          => array( 'align' => false, 'anchor' => true ),
+		));
+
+		// Asen Dynamic Color SVG
+		acf_register_block(array(
+			'name'				=> 'asen-dynamic-color-svg',
+			'title'				=> __('Asen Dynamic Color SVG'),
+			'description'		=> __('Dynamic SVG with color options'),
+			'mode'              => 'edit',
+			'render_callback'	=> 'site_acf_block_callback',
+			'category'			=> 'asen-blocks',
+			'icon'				=> 'format-image',
+			'keywords'			=> array( 'asen', 'dynamic', 'color', 'svg' ),
+			'supports'          => array( 'align' => false, 'anchor' => true ),
+		));
+
 	}
 }
 add_action('acf/init', 'site_acf_init');
