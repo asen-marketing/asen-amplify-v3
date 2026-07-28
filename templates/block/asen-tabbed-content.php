@@ -154,7 +154,7 @@ $selector_type = get_field('tab_selector_options');
             }
         }
 
-        .single-tab {
+        .tab-content {
             background-color: <?php the_field('tab_content_background');
             ?>;
             color: <?php the_field('tab_content_text_color');

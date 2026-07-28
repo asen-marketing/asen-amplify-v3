@@ -150,7 +150,7 @@ $subheading_size = get_field('subheading_size');
 
     .gform_body {
 
-        label,
+        label:not(.gform-field-label--type-sub),
         legend {
             color: <?php echo get_field('label_color');
             ?>;

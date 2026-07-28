@@ -22,8 +22,579 @@
             "esc_html": 0
         },
         {
-            "key": "field_6814f1e872191",
-            "label": "General",
+            "key": "field_6823a805b1efe",
+            "label": "Block Options",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "placement": "top",
+            "endpoint": 0,
+            "no_preference": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6823a812b1eff",
+            "label": "Block Max Width",
+            "name": "block_max_width",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "",
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "px"
+        },
+        {
+            "key": "field_6810ee560b13a",
+            "label": "Layout Options",
+            "name": "use_carousel",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "choices": [
+                "Grid",
+                "Carousel"
+            ],
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "allow_in_bindings": 1,
+            "layout": "horizontal",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_68235ccef5eab",
+            "label": "Display Options",
+            "name": "display_options",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "Icons and images are set in the Services CPT.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "choices": {
+                "image": "Image",
+                "icon": "Icon"
+            },
+            "default_value": "image",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "allow_in_bindings": 1,
+            "layout": "horizontal",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_681b8479679f6",
+            "label": "Grid Type",
+            "name": "alternating_grid",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6810ee560b13a",
+                        "operator": "!=",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_68235ccef5eab",
+                        "operator": "!=",
+                        "value": "icon"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "choices": [
+                "Standard",
+                "Alternating"
+            ],
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "allow_in_bindings": 1,
+            "layout": "horizontal",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_6810ee560b178",
+            "label": "Number of Columns",
+            "name": "number_of_columns",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_681b8479679f6",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": 3,
+            "min": 1,
+            "max": 8,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6818b7a7ea877",
+            "label": "Link Style Options",
+            "name": "link_style",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "choices": {
+                "none": "None",
+                "button": "Button",
+                "text": "Text Only",
+                "icon": "Text + Icon"
+            },
+            "default_value": "none",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "allow_in_bindings": 1,
+            "layout": "horizontal",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_6818beb13b975",
+            "label": "Link Text",
+            "name": "link_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6818b7a7ea877",
+                        "operator": "!=",
+                        "value": "none"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "View Service",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6810f57d70127",
+            "label": "Link Icon Code",
+            "name": "link_icon_code",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "FA code for adding an arrow or other icon after all service links",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6818b7a7ea877",
+                        "operator": "==",
+                        "value": "icon"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_681506408dd2f",
+            "label": "Nav Arrow Icons",
+            "name": "nav_arrow_icons",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Font Awesome codes for previous and next buttons",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6810ee560b13a",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "acfe_repeater_stylised_button": 1,
+            "layout": "table",
+            "pagination": 0,
+            "min": 1,
+            "max": 1,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_681506798dd30",
+                    "label": "Custom Previous Button Icon",
+                    "name": "previous_button_icon",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_681506408dd2f"
+                },
+                {
+                    "key": "field_681506898dd31",
+                    "label": "Custom Next Button Icon",
+                    "name": "next_button_icon",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_681506408dd2f"
+                },
+                {
+                    "key": "field_681506178dd2e",
+                    "label": "Nav Arrow Color",
+                    "name": "nav_arrow_color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "",
+                    "enable_opacity": 0,
+                    "return_format": "string",
+                    "display": "default",
+                    "button_label": "Select Color",
+                    "color_picker": 1,
+                    "absolute": 0,
+                    "input": 1,
+                    "allow_null": 1,
+                    "theme_colors": 0,
+                    "colors": [],
+                    "allow_in_bindings": 1,
+                    "parent_repeater": "field_681506408dd2f"
+                }
+            ]
+        },
+        {
+            "key": "field_6814f012904d6",
+            "label": "Background Options",
+            "name": "has_background",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6810ee560b13a",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "choices": [
+                "Transparent",
+                "Full Width Color"
+            ],
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "allow_in_bindings": 1,
+            "layout": "horizontal",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_6815020d494e0",
+            "label": "Block Heading",
+            "name": "services_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6814f012904d6",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6815024a494e1",
+            "label": "Block Subheading",
+            "name": "services_subheading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6814f012904d6",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6814f059904d7",
+            "label": "Block Background Color",
+            "name": "background_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6814f012904d6",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 1,
+            "theme_colors": 0,
+            "colors": [],
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_681505e38dd2c",
+            "label": "Block Heading Color",
+            "name": "services_heading_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6814f012904d6",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 1,
+            "theme_colors": 0,
+            "colors": [],
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_681505ef8dd2d",
+            "label": "Block Subheading Color",
+            "name": "services_subheading_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6814f012904d6",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 1,
+            "theme_colors": 0,
+            "colors": [],
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_6814f072904d8",
+            "label": "Single Service Settings",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -77,530 +648,8 @@
             "max": ""
         },
         {
-            "key": "field_6810ee560b13a",
-            "label": "Grid or Carousel?",
-            "name": "use_carousel",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "message": "",
-            "default_value": 0,
-            "allow_in_bindings": 0,
-            "ui_on_text": "Carousel",
-            "ui_off_text": "Grid",
-            "ui": 1,
-            "style": ""
-        },
-        {
-            "key": "field_681b8479679f6",
-            "label": "Alternating Grid?",
-            "name": "alternating_grid",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "Split image + text layout, alternating positions for each service. Images need to be added to the selected services in the CPT. Square images work best.",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6810ee560b13a",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "message": "",
-            "default_value": 0,
-            "allow_in_bindings": 0,
-            "ui_on_text": "Yes",
-            "ui_off_text": "No",
-            "ui": 1,
-            "style": ""
-        },
-        {
-            "key": "field_681506408dd2f",
-            "label": "Nav Arrow Icons",
-            "name": "nav_arrow_icons",
-            "aria-label": "",
-            "type": "repeater",
-            "instructions": "Font Awesome codes for previous and next buttons",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6810ee560b13a",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "acfe_repeater_stylised_button": 1,
-            "layout": "table",
-            "pagination": 0,
-            "min": 1,
-            "max": 1,
-            "collapsed": "",
-            "button_label": "Add Row",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_681506798dd30",
-                    "label": "Previous Button Icon",
-                    "name": "previous_button_icon",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "relevanssi_exclude": 0,
-                    "default_value": "<i class=\"fa-light fa-angle-left\"><\/i>",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_681506408dd2f"
-                },
-                {
-                    "key": "field_681506898dd31",
-                    "label": "Next Button Icon",
-                    "name": "next_button_icon",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "relevanssi_exclude": 0,
-                    "default_value": "<i class=\"fa-regular fa-angle-right\"><\/i>",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_681506408dd2f"
-                },
-                {
-                    "key": "field_681506178dd2e",
-                    "label": "Nav Arrow Color",
-                    "name": "nav_arrow_color",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "relevanssi_exclude": 0,
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string",
-                    "display": "default",
-                    "button_label": "Select Color",
-                    "color_picker": 1,
-                    "absolute": 0,
-                    "input": 1,
-                    "allow_null": 1,
-                    "theme_colors": 0,
-                    "colors": [],
-                    "allow_in_bindings": 1,
-                    "parent_repeater": "field_681506408dd2f"
-                }
-            ]
-        },
-        {
-            "key": "field_6810ee560b178",
-            "label": "Number of Columns",
-            "name": "number_of_columns",
-            "aria-label": "",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_681b8479679f6",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": 3,
-            "min": 1,
-            "max": 8,
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "step": 1,
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_6818b7a7ea877",
-            "label": "Link Style",
-            "name": "link_style",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "choices": {
-                "none": "None",
-                "button": "Button",
-                "text": "Text Only",
-                "icon": "Text + Icon"
-            },
-            "default_value": "none",
-            "return_format": "value",
-            "multiple": 0,
-            "max": "",
-            "allow_custom": 0,
-            "search_placeholder": "",
-            "prepend": "",
-            "append": "",
-            "allow_null": 0,
-            "allow_in_bindings": 0,
-            "ui": 1,
-            "ajax": 0,
-            "placeholder": "",
-            "min": ""
-        },
-        {
-            "key": "field_6818beb13b975",
-            "label": "Link Text",
-            "name": "link_text",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6818b7a7ea877",
-                        "operator": "!=",
-                        "value": "none"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "View Service",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_6810f57d70127",
-            "label": "Link Icon Code",
-            "name": "link_icon_code",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "FA code for adding an arrow or other icon after all service links",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6818b7a7ea877",
-                        "operator": "==",
-                        "value": "icon"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_681505b88dd2a",
-            "label": "Background and Heading",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "placement": "top",
-            "endpoint": 0,
-            "no_preference": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_6814f012904d6",
-            "label": "Full Width Background Color?",
-            "name": "has_background",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "message": "",
-            "default_value": 0,
-            "allow_in_bindings": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1,
-            "style": ""
-        },
-        {
-            "key": "field_6814f059904d7",
-            "label": "Background Color",
-            "name": "background_color",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6814f012904d6",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "#999999",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "display": "default",
-            "button_label": "Select Color",
-            "color_picker": 1,
-            "absolute": 0,
-            "input": 1,
-            "allow_null": 1,
-            "theme_colors": 0,
-            "colors": [],
-            "allow_in_bindings": 0
-        },
-        {
-            "key": "field_6815020d494e0",
-            "label": "Block Heading",
-            "name": "services_heading",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6814f012904d6",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_681505e38dd2c",
-            "label": "Block Heading Color",
-            "name": "services_heading_color",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6814f012904d6",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "display": "default",
-            "button_label": "Select Color",
-            "color_picker": 1,
-            "absolute": 0,
-            "input": 1,
-            "allow_null": 1,
-            "theme_colors": 0,
-            "colors": [],
-            "allow_in_bindings": 0
-        },
-        {
-            "key": "field_6815024a494e1",
-            "label": "Block Subheading",
-            "name": "services_subheading",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6814f012904d6",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_681505ef8dd2d",
-            "label": "Block Subheading Color",
-            "name": "services_subheading_color",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6814f012904d6",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "display": "default",
-            "button_label": "Select Color",
-            "color_picker": 1,
-            "absolute": 0,
-            "input": 1,
-            "allow_null": 1,
-            "theme_colors": 0,
-            "colors": [],
-            "allow_in_bindings": 0
-        },
-        {
-            "key": "field_6814f072904d8",
-            "label": "Styling",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "placement": "top",
-            "endpoint": 0,
-            "no_preference": 0,
-            "selected": 0
-        },
-        {
             "key": "field_6810f6b370beb",
-            "label": "Individual Services Colors",
+            "label": "Single Services Colors",
             "name": "service_colors",
             "aria-label": "",
             "type": "repeater",
@@ -979,6 +1028,34 @@
                     "parent_repeater": "field_681b87d0fdcea"
                 }
             ]
+        },
+        {
+            "key": "field_682f2051d54c1",
+            "label": "Sizing",
+            "name": "sizing",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "clone": [
+                "group_682e37115c332"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0,
+            "acfe_seamless_style": 0,
+            "acfe_clone_modal": 0,
+            "acfe_clone_modal_close": 0,
+            "acfe_clone_modal_button": "",
+            "acfe_clone_modal_size": "large"
         }
     ],
     "location": [
@@ -1006,5 +1083,8 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1746641972
+    "modified": 1747947057,
+    "acfe_categories": {
+        "block-fields": "Asen Core Blocks"
+    }
 }

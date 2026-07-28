@@ -7,6 +7,7 @@
 @import "measurements";
 @import "colors";
 @import "utility";
+@import "tokens";
 
 // Styling is ordered symantically.
 // Don't put stuff at the top that is not often seen.
@@ -38,5 +39,6 @@
 // Gutenberg blocks folder.
 // Block files can be added by importing them into /blocks/index.scss
 @import "blocks";
+@import "block-globals";
 
 @import "custom";

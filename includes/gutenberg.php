@@ -336,6 +336,50 @@ function site_acf_init() {
 			'supports'          => array( 'align' => false, 'anchor' => true ),
 		));
 
+		// Asen Dropdown Links
+		acf_register_block(array(
+			'name'				=> 'asen-dropdown-links',
+			'title'				=> __('Asen Dropdown Links'),
+			'description'		=> __('Links displayed in a dropdown selector.'),
+			'mode'              => 'auto',
+			'render_callback'	=> 'site_acf_block_callback',
+			'category'			=> 'asen-blocks',
+			'icon'				=> 'arrow-down-alt2',
+			'keywords'			=> array( 'select', 'links', 'dropdown', 'asen' ),
+			'supports'          => array( 'align' => false, 'anchor' => true ),
+		));
+
+		// Asen Testimonial Carousel
+		acf_register_block(array(
+			'name'				=> 'asen-testimonial-carousel',
+			'title'				=> __('Asen Testimonial Carousel'),
+			'description'		=> __('Rotating carousel for displaying testimonials.'),
+			'mode'              => 'edit',
+			'enqueue_assets' => function() {
+				if ( !is_admin() ) {
+					asen_enqueue_glide_js();
+				}
+			},
+			'render_callback'	=> 'site_acf_block_callback',
+			'category'			=> 'asen-blocks',
+			'icon'				=> 'slides',
+			'keywords'			=> array( 'select', 'links', 'dropdown', 'asen' ),
+			'supports'          => array( 'align' => false, 'anchor' => true ),
+		));
+
+		// Asen Video Popup
+		acf_register_block(array(
+			'name'				=> 'asen-video-popup',
+			'title'				=> __('Asen Video Popup'),
+			'description'		=> __('Looping video teaser with popup YouTube player.'),
+			'mode'              => 'edit',
+			'render_callback'	=> 'site_acf_block_callback',
+			'category'			=> 'asen-blocks',
+			'icon'				=> 'video-alt3',
+			'keywords'			=> array( 'video', 'player', 'youtube', 'asen' ),
+			'supports'          => array( 'align' => false, 'anchor' => true ),
+		));
+
 	}
 }
 add_action('acf/init', 'site_acf_init');

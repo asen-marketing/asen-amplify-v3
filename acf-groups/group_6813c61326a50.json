@@ -56,7 +56,9 @@
             "placeholder": "",
             "allow_custom": 0,
             "search_placeholder": "",
-            "min": ""
+            "min": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_5e8b7e24937e4",
@@ -85,30 +87,6 @@
             "uploader": "",
             "acfe_thumbnail": 0,
             "upload_folder": ""
-        },
-        {
-            "key": "field_681b750f04f8b",
-            "label": "Footer Logo Height",
-            "name": "footer_logo_height",
-            "aria-label": "",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": 50,
-            "min": "",
-            "max": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "step": "",
-            "prepend": "",
-            "append": "px"
         },
         {
             "key": "field_681b7ebe72101",
@@ -159,6 +137,30 @@
             "endpoint": 0,
             "no_preference": 0,
             "selected": 0
+        },
+        {
+            "key": "field_681b750f04f8b",
+            "label": "Footer Logo Height",
+            "name": "footer_logo_height",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": 50,
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "px"
         },
         {
             "key": "field_6813d34e08f1c",
@@ -281,7 +283,7 @@
                     {
                         "field": "field_5e8cb8bbaf0e0",
                         "operator": "!=",
-                        "value": "2"
+                        "value": "simple"
                     }
                 ]
             ],
@@ -317,7 +319,7 @@
                     {
                         "field": "field_5e8cb8bbaf0e0",
                         "operator": "!=",
-                        "value": "2"
+                        "value": "simple"
                     }
                 ]
             ],
@@ -353,7 +355,7 @@
                     {
                         "field": "field_5e8cb8bbaf0e0",
                         "operator": "!=",
-                        "value": "2"
+                        "value": "simple"
                     }
                 ]
             ],
@@ -389,7 +391,7 @@
                     {
                         "field": "field_5e8cb8bbaf0e0",
                         "operator": "!=",
-                        "value": "2"
+                        "value": "simple"
                     }
                 ]
             ],
@@ -400,30 +402,6 @@
             },
             "relevanssi_exclude": 0,
             "default_value": 18,
-            "min": "",
-            "max": "",
-            "allow_in_bindings": 1,
-            "placeholder": "",
-            "step": "",
-            "prepend": "",
-            "append": "pixels"
-        },
-        {
-            "key": "field_6813e0841d785",
-            "label": "Footer Social Links Size",
-            "name": "footer_social_links_size",
-            "aria-label": "",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "33",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": 22,
             "min": "",
             "max": "",
             "allow_in_bindings": 1,
@@ -491,7 +469,9 @@
             "relevanssi_exclude": 0,
             "choices": {
                 "1": "Mailing List",
-                "2": "General Contact"
+                "2": "General Contact",
+                "3": "Test form",
+                "4": "Checkbox"
             },
             "default_value": false,
             "return_format": "value",
@@ -506,7 +486,9 @@
             "ajax": 0,
             "allow_custom": 0,
             "search_placeholder": "",
-            "min": ""
+            "min": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_680a5cc58ec7d",
@@ -660,6 +642,135 @@
             "theme_colors": 0,
             "colors": [],
             "allow_in_bindings": 1
+        },
+        {
+            "key": "field_682dfde61af47",
+            "label": "Social Media",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "placement": "top",
+            "endpoint": 0,
+            "no_preference": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_5e8f5f50f7eb8",
+            "label": "Social Media Selection",
+            "name": "site_social_media_selection",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Add Social Network",
+            "rows_per_page": 20,
+            "acfe_repeater_stylised_button": 0,
+            "sub_fields": [
+                {
+                    "key": "field_5e8f5f61f7eb9",
+                    "label": "Social Media Network",
+                    "name": "social_media_network",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "choices": {
+                        "facebook": "Facebook",
+                        "linkedin": "LinkedIn",
+                        "instagram": "Instagram",
+                        "youtube": "YouTube",
+                        "twitter": "Twitter",
+                        "google": "Google",
+                        "pinterest": "Pinterest",
+                        "yelp": "Yelp",
+                        "tiktok": "TikTok"
+                    },
+                    "default_value": false,
+                    "return_format": "array",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0,
+                    "allow_custom": 0,
+                    "search_placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": "",
+                    "max": "",
+                    "parent_repeater": "field_5e8f5f50f7eb8"
+                },
+                {
+                    "key": "field_5e8f61ecf7eba",
+                    "label": "URL",
+                    "name": "url",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_5e8f5f50f7eb8"
+                }
+            ]
+        },
+        {
+            "key": "field_6813e0841d785",
+            "label": "Footer Social Links Size",
+            "name": "footer_social_links_size",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": 22,
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "pixels"
         }
     ],
     "location": [
@@ -687,5 +798,8 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1746645931
+    "modified": 1753188556,
+    "acfe_categories": {
+        "site-option-fields": "Site Option Fields"
+    }
 }

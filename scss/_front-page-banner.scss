@@ -49,6 +49,44 @@
       }
     }
   }
+
+  .selectors {
+    position: absolute;
+    left: 50%;
+    bottom: 120px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 50;
+
+    @media (max-width: 1024px) {
+      bottom: 70px;
+    }
+    @media (max-width: 640px) {
+      bottom: 50px;
+    }
+
+    .selector {
+      width: 15px;
+      height: 15px;
+      font-size: 0;
+      line-height: 0;
+      border: 2px solid #fff;
+      border-radius: 999px;
+      background-color: transparent;
+      transition:
+        background-color 250ms ease-in-out,
+        opacity 250ms ease-in-out;
+      opacity: 0.5;
+      padding: 0;
+
+      &.active {
+        background-color: #fff;
+        opacity: 1;
+      }
+    }
+  }
+
   .image {
     position: absolute;
     top: 0;

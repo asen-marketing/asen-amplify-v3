@@ -22,7 +22,8 @@
             "allow_in_bindings": 1,
             "rows": 4,
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "",
+            "acfe_textarea_code": 0
         },
         {
             "key": "field_680fc297d5e56",
@@ -74,7 +75,7 @@
             "name": "testimonial_image",
             "aria-label": "",
             "type": "image",
-            "instructions": "",
+            "instructions": "Can be used for headshot image in Asen Testimonial Carousel block, or as logo image in Asen Testimonials block.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -83,8 +84,11 @@
                 "id": ""
             },
             "relevanssi_exclude": 0,
+            "uploader": "",
             "return_format": "id",
             "library": "all",
+            "upload_folder": "",
+            "acfe_thumbnail": 0,
             "min_width": "",
             "min_height": "",
             "min_size": "",
@@ -114,5 +118,16 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1746019700
+    "display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1760471967,
+    "acfe_categories": {
+        "cpt-fields": "CPT Fields"
+    }
 }

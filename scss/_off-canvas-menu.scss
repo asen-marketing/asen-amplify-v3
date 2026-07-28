@@ -31,7 +31,9 @@ $site-menu-max-width-mobile: 250px;
   right: 0;
   bottom: 0;
   transform: translate(100vw, 0);
-  transition: transform 600ms ease, opacity 0ms linear 600ms;
+  transition:
+    transform 600ms ease,
+    opacity 0ms linear 600ms;
   display: flex;
   justify-content: center;
   backface-visibility: hidden;
@@ -49,7 +51,9 @@ $site-menu-max-width-mobile: 250px;
   &.is-active {
     transform: translate(0, 0);
     opacity: 1;
-    transition: transform 600ms ease, opacity 0ms linear 0ms;
+    transition:
+      transform 600ms ease,
+      opacity 0ms linear 0ms;
     .inside {
       opacity: 1;
     }
@@ -164,7 +168,8 @@ $site-menu-max-width-mobile: 250px;
       gap: 0.5rem;
 
       &::after {
-        font-family: "Font Awesome 6 Pro";
+        font-family: "Font Awesome 7 Pro";
+        font-weight: 900;
         content: "\f105";
         display: inline-block;
         position: absolute;

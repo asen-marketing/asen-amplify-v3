@@ -54,14 +54,17 @@
       &::after {
         font-weight: 700;
         text-transform: none;
-        font-family: "Font Awesome 6 Pro";
-        content: "\2b";
+        font-family: "Font Awesome 7 Pro";
+        font: var(--fa-font-solid);
+        content: "\f067";
+        font-weight: 900;
         display: block;
         position: absolute;
         right: 1rem;
         top: 50%;
         transform: translateY(-50%);
         font-size: 21px;
+        font-style: normal;
       }
 
       &:hover {

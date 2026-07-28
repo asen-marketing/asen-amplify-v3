@@ -158,3 +158,24 @@ $site-overall-gutter-small: 7%;
     }
   }
 }
+
+@mixin responsive-border-radius($radius: 40px) {
+  border-radius: $radius;
+
+  @media (max-width: $breakpoint-screen-small) {
+    border-radius: $radius * 0.8;
+  }
+  @media (max-width: $breakpoint-tablet-large) {
+    border-radius: $radius * 0.7;
+  }
+  @media (max-width: $breakpoint-tablet-small) {
+    border-radius: $radius * 0.6;
+  }
+  @media (max-width: $breakpoint-small) {
+    @if ($radius * 0.5 > 35px) {
+      border-radius: 35px;
+    } @else {
+      border-radius: $radius * 0.5;
+    }
+  }
+}

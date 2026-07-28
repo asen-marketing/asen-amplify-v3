@@ -22,7 +22,44 @@
             "allow_in_bindings": 0,
             "ui": 0,
             "ui_on_text": "",
-            "ui_off_text": ""
+            "ui_off_text": "",
+            "style": ""
+        },
+        {
+            "key": "field_682e35646975f",
+            "label": "Header Background Color",
+            "name": "single_header_background_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "Allows header background color addition if overlapping is disabled.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_680fb3ec9231d",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 1,
+            "theme_colors": 0,
+            "colors": [],
+            "allow_in_bindings": 0
         },
         {
             "key": "field_5e3acf77b12d4",
@@ -134,7 +171,9 @@
             },
             "choices": {
                 "1": "Mailing List",
-                "2": "General Contact"
+                "2": "General Contact",
+                "3": "Test form",
+                "4": "Checkbox"
             },
             "default_value": false,
             "allow_null": 1,
@@ -142,7 +181,15 @@
             "ui": 0,
             "return_format": "value",
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0,
+            "allow_custom": 0,
+            "search_placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": ""
         }
     ],
     "location": [
@@ -163,5 +210,15 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1745860543
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1747947357,
+    "acfe_categories": {
+        "page-option-fields": "Page Option Fields"
+    }
 }

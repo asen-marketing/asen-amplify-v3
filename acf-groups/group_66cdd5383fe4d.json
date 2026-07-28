@@ -1,6 +1,6 @@
 {
     "key": "group_66cdd5383fe4d",
-    "title": "Post Options",
+    "title": "Post Banner",
     "fields": [
         {
             "key": "field_66cdd538d1e91",
@@ -26,7 +26,10 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
-            "preview_size": "medium"
+            "preview_size": "medium",
+            "uploader": "",
+            "acfe_thumbnail": 0,
+            "upload_folder": ""
         }
     ],
     "location": [
@@ -39,7 +42,7 @@
         ]
     ],
     "menu_order": 0,
-    "position": "side",
+    "position": "normal",
     "style": "seamless",
     "label_placement": "top",
     "instruction_placement": "label",
@@ -47,5 +50,12 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724765543
+    "display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1765382933
 }

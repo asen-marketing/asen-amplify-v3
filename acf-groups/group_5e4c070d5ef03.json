@@ -6,6 +6,7 @@
             "key": "field_5e4c070d6afa3",
             "label": "Buttons",
             "name": "buttons",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -22,106 +23,11 @@
             "button_label": "Add Button",
             "sub_fields": [
                 {
-                    "key": "field_5e4c070d72d39",
-                    "label": "Text",
-                    "name": "text",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                },
-                {
-                    "key": "field_5e4c070d72d7f",
+                    "key": "field_682df054ff343",
                     "label": "Link",
-                    "name": "wp_link",
-                    "type": "post_object",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_5e4c070d72e01",
-                                "operator": "!=",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "page",
-                        "services",
-                        "case_studies",
-                        "team",
-                        "post"
-                    ],
-                    "taxonomy": "",
-                    "allow_null": 0,
-                    "multiple": 0,
-                    "return_format": "id",
-                    "ui": 1
-                },
-                {
-                    "key": "field_5e4c070d72dc5",
-                    "label": "Link",
-                    "name": "text_link",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_5e4c070d72e01",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_5e4c070d72e01",
-                    "label": "Use Custom URL",
-                    "name": "use_custom_url",
-                    "type": "true_false",
-                    "instructions": "For linking outside of the site, you can enter a custom URL.",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "Use custom URL",
-                    "default_value": 0,
-                    "ui": 0,
-                    "ui_on_text": "",
-                    "ui_off_text": ""
-                },
-                {
-                    "key": "field_5e4c070d72e3e",
-                    "label": "Target",
-                    "name": "target",
-                    "type": "true_false",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -130,16 +36,16 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "Open in new tab",
-                    "default_value": 0,
-                    "ui": 0,
-                    "ui_on_text": "",
-                    "ui_off_text": ""
+                    "relevanssi_exclude": 0,
+                    "return_format": "array",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_5e4c070d6afa3"
                 },
                 {
                     "key": "field_5e4c070d72e79",
                     "label": "Custom Classes",
                     "name": "custom_classes",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "Space separated!",
                     "required": 0,
@@ -153,9 +59,12 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_5e4c070d6afa3"
                 }
-            ]
+            ],
+            "rows_per_page": 20,
+            "acfe_repeater_stylised_button": 0
         }
     ],
     "location": [
@@ -175,5 +84,13 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1602691089
+    "show_in_rest": 0,
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1747841123
 }

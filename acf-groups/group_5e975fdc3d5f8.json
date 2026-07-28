@@ -6,6 +6,7 @@
             "key": "field_5e976013218fa",
             "label": "PDF Download",
             "name": "pdf_download",
+            "aria-label": "",
             "type": "file",
             "instructions": "",
             "required": 0,
@@ -19,12 +20,23 @@
             "library": "all",
             "min_size": "",
             "max_size": "",
-            "mime_types": "pdf"
+            "mime_types": "pdf",
+            "uploader": "",
+            "preview_style": "default",
+            "placeholder": "Select",
+            "upload_folder": "",
+            "button_label": "Add File",
+            "stylised_button": 0,
+            "file_count": 0,
+            "multiple": 0,
+            "min": "",
+            "max": ""
         },
         {
             "key": "field_5e97603c218fb",
             "label": "PDF Download Text",
             "name": "pdf_download_text",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -63,7 +75,18 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 0,
+    "active": false,
     "description": "",
-    "modified": 1586979063
+    "show_in_rest": 0,
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1747947203,
+    "acfe_categories": {
+        "reusable": "Reusable"
+    }
 }

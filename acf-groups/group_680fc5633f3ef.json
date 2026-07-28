@@ -22,34 +22,8 @@
             "allow_in_bindings": 1,
             "rows": 4,
             "placeholder": "",
-            "new_lines": ""
-        },
-        {
-            "key": "field_68122693afc52",
-            "label": "Media Options",
-            "name": "media_options",
-            "aria-label": "",
-            "type": "radio",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "choices": {
-                "icon": "Icon",
-                "image": "Image"
-            },
-            "default_value": "",
-            "return_format": "value",
-            "allow_null": 0,
-            "other_choice": 0,
-            "allow_in_bindings": 0,
-            "layout": "horizontal",
-            "save_other_choice": 0
+            "new_lines": "",
+            "acfe_textarea_code": 0
         },
         {
             "key": "field_680fc5fdfecb1",
@@ -59,15 +33,7 @@
             "type": "text",
             "instructions": "Drop in FontAwesome code here",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_68122693afc52",
-                        "operator": "==",
-                        "value": "icon"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -89,23 +55,18 @@
             "type": "image",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_68122693afc52",
-                        "operator": "==",
-                        "value": "image"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
             "relevanssi_exclude": 0,
+            "uploader": "",
             "return_format": "id",
             "library": "all",
+            "upload_folder": "",
+            "acfe_thumbnail": 0,
             "min_width": "",
             "min_height": "",
             "min_size": "",
@@ -135,5 +96,15 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1746020292
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1747947114,
+    "acfe_categories": {
+        "cpt-fields": "CPT Fields"
+    }
 }

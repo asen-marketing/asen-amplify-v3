@@ -3,6 +3,26 @@
     "title": "Asen Header Options",
     "fields": [
         {
+            "key": "field_682cd50567f8f",
+            "label": "Layout",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "placement": "top",
+            "endpoint": 0,
+            "no_preference": 0,
+            "selected": 0
+        },
+        {
             "key": "field_5e8cb8a2af0df",
             "label": "Header Layout",
             "name": "site_header_layout",
@@ -31,6 +51,8 @@
             "ui": 0,
             "ajax": 0,
             "placeholder": "",
+            "create_options": 0,
+            "save_options": 0,
             "allow_custom": 0,
             "search_placeholder": "",
             "prepend": "",
@@ -65,133 +87,6 @@
             "uploader": "",
             "acfe_thumbnail": 0,
             "upload_folder": ""
-        },
-        {
-            "key": "field_680fb1018b825",
-            "label": "Overlapping Header",
-            "name": "overlapping_header",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "Sets whether header menu overlaps banners (global setting, can be disabled per page)",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "message": "",
-            "default_value": 0,
-            "allow_in_bindings": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1,
-            "style": ""
-        },
-        {
-            "key": "field_5e97547ed012c",
-            "label": "Header Height",
-            "name": "site_header_height",
-            "aria-label": "",
-            "type": "number",
-            "instructions": "This height in pixels will determine the desktop height and be used to calculate heights on smaller devices.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": 76,
-            "min": 50,
-            "max": "",
-            "allow_in_bindings": 1,
-            "placeholder": "",
-            "step": 1,
-            "prepend": "",
-            "append": "pixels"
-        },
-        {
-            "key": "field_68123034c5104",
-            "label": "Header Menu Link Color",
-            "name": "header_menu_color",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "#000000",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "allow_in_bindings": 0,
-            "display": "default",
-            "button_label": "Select Color",
-            "color_picker": true,
-            "absolute": false,
-            "input": true,
-            "allow_null": true,
-            "theme_colors": false,
-            "colors": []
-        },
-        {
-            "key": "field_5e975cdba93f6",
-            "label": "Header Logo Height",
-            "name": "site_header_logo_height",
-            "aria-label": "",
-            "type": "number",
-            "instructions": "This will set the height of the logo. If you select a height higher than the header height, the logo will be positioned from the top (for overhang below).",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": 90,
-            "min": 50,
-            "max": "",
-            "allow_in_bindings": 1,
-            "placeholder": "",
-            "step": 1,
-            "prepend": "",
-            "append": "pixels"
-        },
-        {
-            "key": "field_68123055c5105",
-            "label": "Header Menu Hover Color",
-            "name": "header_menu_hover_color",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "#999999",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "allow_in_bindings": 0,
-            "display": "default",
-            "button_label": "Select Color",
-            "color_picker": true,
-            "absolute": false,
-            "input": true,
-            "allow_null": true,
-            "theme_colors": false,
-            "colors": []
         },
         {
             "key": "field_680b900760af3",
@@ -275,12 +170,79 @@
             "ui": 0,
             "ajax": 0,
             "placeholder": "",
+            "create_options": 0,
+            "save_options": 0,
             "allow_custom": 0,
             "search_placeholder": "",
             "prepend": "",
             "append": "",
             "min": "",
             "max": ""
+        },
+        {
+            "key": "field_680fb1018b825",
+            "label": "Overlapping Header",
+            "name": "overlapping_header",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Sets whether header menu overlaps banners (global setting, can be disabled per page)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1,
+            "style": ""
+        },
+        {
+            "key": "field_682dd0f2671b5",
+            "label": "Header Menu Alignment",
+            "name": "header_menu_align_left",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5e8cb8a2af0df",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5e8cb8a2af0df",
+                        "operator": "==",
+                        "value": "4"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "choices": {
+                "left": "Left",
+                "0": "Right"
+            },
+            "default_value": 0,
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "allow_in_bindings": 1,
+            "layout": "horizontal",
+            "save_other_choice": 0
         },
         {
             "key": "field_5e8e28b6228ba",
@@ -326,6 +288,8 @@
             "ui": 0,
             "ajax": 0,
             "placeholder": "",
+            "create_options": 0,
+            "save_options": 0,
             "allow_custom": 0,
             "search_placeholder": "",
             "prepend": "",
@@ -368,12 +332,248 @@
             "ui": 0,
             "ajax": 0,
             "placeholder": "",
+            "create_options": 0,
+            "save_options": 0,
             "allow_custom": 0,
             "search_placeholder": "",
             "prepend": "",
             "append": "",
             "min": "",
             "max": ""
+        },
+        {
+            "key": "field_680fa21278a44",
+            "label": "Sticky Hamburger Position",
+            "name": "sticky_hamburger",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Sets whether hamburger button position is fixed on screen.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1,
+            "style": ""
+        },
+        {
+            "key": "field_682cd50f67f90",
+            "label": "Styling",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "placement": "top",
+            "endpoint": 0,
+            "no_preference": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_5e97547ed012c",
+            "label": "Header Height",
+            "name": "site_header_height",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "This height in pixels will determine the desktop height and be used to calculate heights on smaller devices.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": 76,
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "pixels"
+        },
+        {
+            "key": "field_5e975cdba93f6",
+            "label": "Header Logo Height",
+            "name": "site_header_logo_height",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "This will set the height of the logo. If you select a height higher than the header height, the logo will be positioned from the top (for overhang below).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": 90,
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "pixels"
+        },
+        {
+            "key": "field_682cd10ac698a",
+            "label": "Header Bottom Border",
+            "name": "header_bottom_border",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_680fb1018b825",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "choices": {
+                "0": "None",
+                "shadow": "Drop-shadow"
+            },
+            "default_value": 0,
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "allow_in_bindings": 0,
+            "layout": "horizontal",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_68123034c5104",
+            "label": "Header Menu Link Color",
+            "name": "header_menu_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5e8cb8a2af0df",
+                        "operator": "!=",
+                        "value": "3"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "#000000",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 1,
+            "theme_colors": 0,
+            "colors": [],
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_68123055c5105",
+            "label": "Header Menu Hover Color",
+            "name": "header_menu_hover_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5e8cb8a2af0df",
+                        "operator": "!=",
+                        "value": "3"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "#999999",
+            "enable_opacity": 0,
+            "return_format": "string",
+            "display": "default",
+            "button_label": "Select Color",
+            "color_picker": 1,
+            "absolute": 0,
+            "input": 1,
+            "allow_null": 1,
+            "theme_colors": 0,
+            "colors": [],
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_682cdca0da85a",
+            "label": "Header Menu Text Transform",
+            "name": "header_menu_text_transform",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5e8cb8a2af0df",
+                        "operator": "!=",
+                        "value": "3"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "choices": {
+                "0": "None",
+                "uppercase": "Uppercase",
+                "lowercase": "Lowercase"
+            },
+            "default_value": 0,
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "allow_in_bindings": 0,
+            "layout": "horizontal",
+            "save_other_choice": 0
         },
         {
             "key": "field_680b95729676c",
@@ -495,29 +695,6 @@
             "colors": []
         },
         {
-            "key": "field_680fa21278a44",
-            "label": "Sticky Hamburger Position",
-            "name": "sticky_hamburger",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "Sets whether hamburger button position is fixed on screen.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "message": "",
-            "default_value": 0,
-            "allow_in_bindings": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1,
-            "style": ""
-        },
-        {
             "key": "field_5e8e27c27438a",
             "label": "Hamburger Menu Animation",
             "name": "site_hamburger_menu_animation",
@@ -571,6 +748,8 @@
             "return_format": "value",
             "ajax": 0,
             "placeholder": "",
+            "create_options": 0,
+            "save_options": 0,
             "allow_custom": 0,
             "search_placeholder": "",
             "prepend": "",
@@ -604,5 +783,8 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1746128031
+    "modified": 1753188514,
+    "acfe_categories": {
+        "site-option-fields": "Site Option Fields"
+    }
 }

@@ -18,11 +18,12 @@
             },
             "relevanssi_exclude": 0,
             "default_value": "",
+            "acfe_textarea_code": 0,
             "maxlength": "",
             "allow_in_bindings": 1,
             "rows": 4,
             "placeholder": "",
-            "new_lines": ""
+            "new_lines": "wpautop"
         }
     ],
     "location": [
@@ -43,5 +44,15 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1746019614
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1752160277,
+    "acfe_categories": {
+        "cpt-fields": "CPT Fields"
+    }
 }

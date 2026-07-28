@@ -51,7 +51,7 @@
             "label": "Close Button Position",
             "name": "off_canvas_close_position",
             "aria-label": "",
-            "type": "true_false",
+            "type": "radio",
             "instructions": "Sets the position of X button for closing the menu.",
             "required": 0,
             "conditional_logic": 0,
@@ -61,21 +61,25 @@
                 "id": ""
             },
             "relevanssi_exclude": 0,
-            "message": "",
+            "choices": [
+                "Center",
+                "Right Align"
+            ],
             "default_value": 0,
-            "allow_in_bindings": 0,
-            "ui_on_text": "Right",
-            "ui_off_text": "Center",
-            "ui": 1,
-            "style": ""
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "allow_in_bindings": 1,
+            "layout": "horizontal",
+            "save_other_choice": 0
         },
         {
             "key": "field_68139ebad6067",
-            "label": "Two Column",
+            "label": "Layout Options",
             "name": "off_canvas_two_column",
             "aria-label": "",
-            "type": "true_false",
-            "instructions": "Splits Off-Canvas Menu and Bottom Off-Canvas Menu into separate columns.",
+            "type": "radio",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -84,13 +88,17 @@
                 "id": ""
             },
             "relevanssi_exclude": 0,
-            "message": "",
-            "default_value": 0,
-            "allow_in_bindings": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1,
-            "style": ""
+            "choices": [
+                "One column",
+                "Two column"
+            ],
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "allow_in_bindings": 1,
+            "layout": "horizontal",
+            "save_other_choice": 0
         },
         {
             "key": "field_68139e84d6065",
@@ -424,12 +432,162 @@
             "style": ""
         },
         {
+            "key": "field_6823453071978",
+            "label": "CTA Button Styles",
+            "name": "off_canvas_button_options",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6813a01495156",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "acfe_repeater_stylised_button": 0,
+            "layout": "table",
+            "pagination": 0,
+            "min": 1,
+            "max": 1,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_6823470671979",
+                    "label": "Button Background Color",
+                    "name": "button_background_color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "",
+                    "enable_opacity": 0,
+                    "return_format": "string",
+                    "display": "default",
+                    "button_label": "Select Color",
+                    "color_picker": 1,
+                    "absolute": 0,
+                    "input": 1,
+                    "allow_null": 1,
+                    "theme_colors": 0,
+                    "colors": [],
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6823453071978"
+                },
+                {
+                    "key": "field_682347367197a",
+                    "label": "Button Text Color",
+                    "name": "button_text_color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "",
+                    "enable_opacity": 0,
+                    "return_format": "string",
+                    "display": "default",
+                    "button_label": "Select Color",
+                    "color_picker": 1,
+                    "absolute": 0,
+                    "input": 1,
+                    "allow_null": 1,
+                    "theme_colors": 0,
+                    "colors": [],
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6823453071978"
+                },
+                {
+                    "key": "field_6823473e7197b",
+                    "label": "Button Background Hover Color",
+                    "name": "button_background_hover_color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "",
+                    "enable_opacity": 0,
+                    "return_format": "string",
+                    "display": "default",
+                    "button_label": "Select Color",
+                    "color_picker": 1,
+                    "absolute": 0,
+                    "input": 1,
+                    "allow_null": 1,
+                    "theme_colors": 0,
+                    "colors": [],
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6823453071978"
+                },
+                {
+                    "key": "field_682347577197d",
+                    "label": "Button Text Hover Color",
+                    "name": "button_text_hover_color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "",
+                    "enable_opacity": 0,
+                    "return_format": "string",
+                    "display": "default",
+                    "button_label": "Select Color",
+                    "color_picker": 1,
+                    "absolute": 0,
+                    "input": 1,
+                    "allow_null": 1,
+                    "theme_colors": 0,
+                    "colors": [],
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6823453071978"
+                }
+            ]
+        },
+        {
             "key": "field_6813a05b95157",
             "label": "Show Social Links",
             "name": "off_canvas_show_social_links",
             "aria-label": "",
             "type": "true_false",
-            "instructions": "Social Media settings are located in Site Options.",
+            "instructions": "Social Media links can be set in Footer Options.",
             "required": 0,
             "conditional_logic": [
                 [
@@ -441,7 +599,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "33",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -472,7 +630,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "33",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -579,5 +737,8 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1746125951
+    "modified": 1747946893,
+    "acfe_categories": {
+        "site-option-fields": "Site Option Fields"
+    }
 }

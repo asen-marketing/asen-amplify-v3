@@ -6,11 +6,14 @@
 
     <article id="post-<?php the_ID(); ?>">
         <?php
-                    if ( is_front_page() ) :
-                        get_template_part('templates/front-page-banner');
-                    else :
+                    if ( is_front_page() ) {
+						if (!get_field('disable_front_page_banner')) {
+                        	get_template_part('templates/front-page-banner');
+						}
+					}
+                    else  {
                         get_template_part('templates/interior-banner');
-                    endif;
+					}
                 ?>
         <?php the_content(); ?>
     </article><!-- #post-<?php the_ID(); ?> -->

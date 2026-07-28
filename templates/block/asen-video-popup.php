@@ -36,8 +36,13 @@ if( get_field('has_gray_background') === true ) {
                 </path>
             </svg>
         </div>
-        <div class="teaser-video">
+
+        <div class="teaser">
+            <?php if (get_field('teaser_options') == 'image' && get_field('teaser_image')) : ?>
+            <?php echo wp_get_attachment_image(get_field('teaser_image'), 'full'); ?>
+            <?php elseif (get_field('teaser_options') == 'video' && get_field('teaser_video')) : ?>
             <video src="<?php echo get_field('teaser_video'); ?>" muted autoplay loop></video>
+            <?php endif; ?>
         </div>
 
         <div class="modal homepage asen-video-modal youtube-video-modal">
@@ -63,14 +68,20 @@ if( get_field('has_gray_background') === true ) {
             activeVideoModal,
             activeVideoID = '',
             youTubePlayer,
-            loopingVideo = $('.asen-video-teaser-popup .teaser-video video');
+            loopingVideo = $('.asen-video-teaser-popup .teaser video');
 
         openVideoModalButton.on("click", function(event) {
-            loopingVideo[0].pause();
+
+            if (loopingVideo.length) {
+                loopingVideo[0].pause();
+            }
+
             activeVideoID = '';
             let clickedButton = $(this),
                 clickedVideoID =
                 '<?php echo get_field('youtube_video_id'); ?>';
+
+            console.log('Clicked Video ID:', clickedVideoID);
             if (clickedVideoID == '') {
                 console.error('Video ID is not available.');
                 alert(
@@ -101,7 +112,10 @@ if( get_field('has_gray_background') === true ) {
 
         videoModal.on($.modal.BEFORE_CLOSE, function(event, modal) {
             youTubePlayer.destroy();
-            loopingVideo[0].play();
+
+            if (loopingVideo.length) {
+                loopingVideo[0].play();
+            }
         });
 
         function loadPlayer() {

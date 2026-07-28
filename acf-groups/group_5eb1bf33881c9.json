@@ -6,6 +6,7 @@
             "key": "field_5eb1bf4c77951",
             "label": "Top",
             "name": "top",
+            "aria-label": "",
             "type": "number",
             "instructions": "",
             "required": 0,
@@ -27,6 +28,7 @@
             "key": "field_5eb1bf5c77952",
             "label": "Top Unit Type",
             "name": "top_unit_type",
+            "aria-label": "",
             "type": "radio",
             "instructions": "",
             "required": 0,
@@ -51,6 +53,7 @@
             "key": "field_5eb1bfdfab0c7",
             "label": "Right",
             "name": "right",
+            "aria-label": "",
             "type": "number",
             "instructions": "",
             "required": 0,
@@ -72,6 +75,7 @@
             "key": "field_5eb1bfb9ab0c4",
             "label": "Right Unit Type",
             "name": "right_unit_type",
+            "aria-label": "",
             "type": "radio",
             "instructions": "",
             "required": 0,
@@ -96,6 +100,7 @@
             "key": "field_5eb1bfe8ab0c8",
             "label": "Bottom",
             "name": "bottom",
+            "aria-label": "",
             "type": "number",
             "instructions": "",
             "required": 0,
@@ -117,6 +122,7 @@
             "key": "field_5eb1bfc0ab0c5",
             "label": "Bottom Unit Type",
             "name": "bottom_unit_type",
+            "aria-label": "",
             "type": "radio",
             "instructions": "",
             "required": 0,
@@ -141,6 +147,7 @@
             "key": "field_5eb1bfd1ab0c6",
             "label": "Left",
             "name": "left",
+            "aria-label": "",
             "type": "number",
             "instructions": "",
             "required": 0,
@@ -162,6 +169,7 @@
             "key": "field_5eb1bfa2ab0c3",
             "label": "Left Unit Type",
             "name": "left_unit_type",
+            "aria-label": "",
             "type": "radio",
             "instructions": "",
             "required": 0,
@@ -200,5 +208,16 @@
     "hide_on_screen": "",
     "active": false,
     "description": "",
-    "modified": 1598972930
+    "show_in_rest": 0,
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1747947213,
+    "acfe_categories": {
+        "reusable": "Reusable"
+    }
 }
