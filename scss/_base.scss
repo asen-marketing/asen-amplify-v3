@@ -27,10 +27,57 @@ a {
   }
 }
 
+// The header is fixed, so the page starts below it. The theme handles the admin-bar offset itself
+// (site_remove_admin_login_header() drops core's bump), hence the 32px / 46px.
+body {
+  padding-top: var(--header-height);
+}
+body.admin-bar {
+  padding-top: calc(var(--header-height) + 32px);
+
+  @media screen and (max-width: 782px) {
+    padding-top: calc(var(--header-height) + 46px);
+  }
+}
+
 .site-container {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  min-height: calc(100vh - var(--header-height));
+
+  body.admin-bar & {
+    min-height: calc(100vh - var(--header-height) - 32px);
+
+    @media screen and (max-width: 782px) {
+      min-height: calc(100vh - var(--header-height) - 46px);
+    }
+  }
+}
+
+// Header Position: Static (body class from includes/body-class-mods.php).
+body.has-static-header {
+  padding-top: 0;
+
+  .site-container {
+    min-height: 100vh;
+  }
+
+  &.admin-bar {
+    padding-top: 32px;
+
+    .site-container {
+      min-height: calc(100vh - 32px);
+    }
+
+    @media screen and (max-width: 782px) {
+      padding-top: 46px;
+
+      .site-container {
+        min-height: calc(100vh - 46px);
+      }
+    }
+  }
 }
 
 // Force main body to fill space and send footer to the bottom of the page.
@@ -42,10 +89,15 @@ a {
   }
 }
 
+// Page Options → padding overrides; pages with a banner start flush under it.
 body.page {
   main {
-    padding-top: 4%;
-    padding-bottom: 6%;
+    padding-top: var(--page-padding-top, 4%);
+    padding-bottom: var(--page-padding-bottom, 6%);
+  }
+
+  &.has-page-banner main {
+    padding-top: var(--page-padding-top, 0);
   }
 }
 

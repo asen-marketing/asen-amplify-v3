@@ -1,5 +1,6 @@
 .off-canvas-menu-hamburger {
   position: relative;
+  height: var(--header-height);
   z-index: 100;
   top: 0;
   right: 0;
@@ -53,7 +54,7 @@ button.hamburger {
     }
     svg {
       width: 30px;
-      fill: #fff;
+      fill: var(--off-canvas-color);
     }
   }
 
@@ -66,4 +67,19 @@ button.hamburger {
       }
     }
   }
+}
+
+// Site Options → Sticky Hamburger / Close Button Position (body classes from includes/body-class-mods.php).
+.has-sticky-hamburger .off-canvas-menu-hamburger {
+  position: fixed;
+}
+.admin-bar.has-sticky-hamburger header.site-header .off-canvas-menu-hamburger {
+  top: 32px;
+
+  @media screen and (max-width: 782px) {
+    top: 46px;
+  }
+}
+.off-canvas-close-right .off-canvas-menu-container .close-container {
+  right: 50px;
 }

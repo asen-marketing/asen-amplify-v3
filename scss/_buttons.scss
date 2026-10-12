@@ -5,7 +5,7 @@
   border-radius: 0;
   display: inline-block;
   font-weight: 500;
-  color: $color-white;
+  color: var(--button-color);
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -13,16 +13,16 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  background-color: $gray-800;
-  padding: 0.7em 1.3em; // Scales with font-size.
-  font-size: $font-size-lg;
+  background-color: var(--button-bg);
+  padding: var(--button-padding-y) var(--button-padding-x); // em, so it scales with font-size.
+  font-size: var(--button-font-size);
   line-height: 1;
 
   transition: background-color 150ms ease, color 150ms ease;
 
   &:hover {
-    color: $color-white;
-    background-color: $gray-700;
+    color: var(--button-color-hover);
+    background-color: var(--button-bg-hover);
   }
 
   &.button-wide {
@@ -30,8 +30,8 @@
   }
 
   &.button-small {
-    padding: 0.6em 1em;
-    font-size: $font-size-sm;
+    padding: var(--button-small-padding-y) var(--button-small-padding-x);
+    font-size: var(--button-small-font-size);
   }
 
   &.button-no-background {
@@ -39,11 +39,11 @@
   }
 
   &.button-knockout {
-    background-color: #fff;
+    background-color: $color-white;
     color: $gray-700;
     &:hover {
       background-color: $gray-700;
-      color: #fff;
+      color: $color-white;
     }
   }
 }
@@ -58,7 +58,7 @@ input[type="submit"] {
     border: none;
     display: inline-block;
     font-weight: 400;
-    color: #fff;
+    color: var(--button-color);
     text-align: center;
     vertical-align: middle;
     cursor: pointer;
@@ -66,8 +66,8 @@ input[type="submit"] {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-color: $gray-800;
-    padding: 0.7em 1.3em; // Adjust padding to font-size;
+    background-color: var(--button-bg);
+    padding: var(--button-padding-y) var(--button-padding-x);
     font-size: 23px !important;
     line-height: 1 !important;
 
@@ -78,8 +78,8 @@ input[type="submit"] {
     }
 
     &:hover {
-      color: #fff;
-      background-color: $gray-700;
+      color: var(--button-color-hover);
+      background-color: var(--button-bg-hover);
     }
   }
 }

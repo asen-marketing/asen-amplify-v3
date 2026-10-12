@@ -1,4 +1,5 @@
 .asen-page-banner {
+  background-color: var(--banner-bg);
   padding: 10% $site-overall-gutter;
   margin-bottom: 5%;
   position: relative;
@@ -23,6 +24,7 @@
     right: 0;
     bottom: 0;
     pointer-events: none;
+    mix-blend-mode: var(--banner-image-blend);
 
     img {
       object-fit: cover;
@@ -53,6 +55,8 @@
     right: 0;
     bottom: 0;
     pointer-events: none;
+    background-color: var(--banner-overlay-bg);
+    opacity: var(--banner-overlay-opacity);
   }
   .inside {
     max-width: $site-overall-max-width;
@@ -81,8 +85,20 @@
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 4px;
+    color: var(--banner-eyebrow-color);
+    text-transform: var(--banner-eyebrow-transform);
+    text-align: var(--banner-text-align);
+  }
+  h1 {
+    color: var(--banner-title-color);
+    text-transform: var(--banner-title-transform);
+    text-align: var(--banner-text-align);
   }
   p.subtitle {
+    color: var(--banner-subtitle-color);
+    text-transform: var(--banner-subtitle-transform);
+    text-align: var(--banner-text-align);
+
     &.default {
       @include responsive-paragraph(26px);
     }

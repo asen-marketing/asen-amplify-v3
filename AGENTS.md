@@ -28,10 +28,11 @@ includes/
   theme-json.php           editor styles + preset-only editor settings for non-Asen users (asen_user_is_builder())
   core-blocks/{slug}/      block.json (+ view.js / view.asset.php) for every block, auto-loaded by asen_register_acf_blocks()
   acf-customizations.php   ACF JSON paths, options pages, "asen_domain" location rule, GF form dropdown populator
-  head-mods.php            <head> output: font snippets, script snippets, inline CSS generated from option fields
+  head-mods.php            <head> output: font/script snippets, and asen_option_css() — Site Options as :root CSS variables + the off-canvas @media block
   backend-mods.php         admin menu curation, editor hiding for custom templates, admin CSS
   helpers.php              asen_acf_image_url(), asen_clean_phone_number(), asen_geocode_address() (cached Nominatim), primary-category helpers
-  menus.php, footer-mods.php, woocommerce.php, yoast.php, body-class-mods.php, cmp-gravity-patch.php
+  body-class-mods.php      Site Options toggles as body classes (has-static-header, has-overlapping-header, has-sticky-hamburger, …)
+  menus.php, woocommerce.php, yoast.php, cmp-gravity-patch.php
   css/backend-styles.css   admin-only styles
 templates/
   block/{slug}.php         block render templates (one per includes/core-blocks/{slug})
@@ -43,6 +44,7 @@ scss/
   index.scss               import order matters: vendor → variables/mixins → semantic partials → blocks → custom
   _tokens.scss             aliases of theme.json spacing/font-size presets and custom vars (do not edit values here)
   _colors.scss             aliases of the theme.json palette ($color-primary, $gray-700…)
+  _component-vars.scss     :root defaults for every variable Site Options can override (--header-height, --button-bg, --footer-bg…)
   editor.scss              block-editor stylesheet entry (tokens, type, buttons, blocks)
   _measurements.scss       breakpoints, gutters, responsive mixins
   _utility.scss            helper classes + shared mixins
@@ -145,7 +147,7 @@ $classes = [ 'asen-example', 'asen-example-' . $block['id'], $block['className']
 
 `Site Options` (slug `custom-options`), `Header Options`, `Off-Canvas Options`, `Footer Options`, `Blog → Archive Options`. There is **one header layout and one footer layout** (the v2 layout selectors were removed in v3); the footer mailing-list column is a toggle in Footer Options. A design that needs something else overrides `templates/header/header.php` / `templates/footer/footer.php` in the child theme. The **"Asen Builders Only"** group is only shown to users with an `@asenmarketing.com` email (custom `asen_domain` location rule in `acf-customizations.php`); same rule hides the ACF admin and the Kadence menu from clients. Put anything a client shouldn't touch there.
 
-**Builders Only color fields are overrides, not the source.** Links & Buttons, Page Banners, header/off-canvas and floating CTA colors stay as option fields; defaults come from `theme.json` (Phase 1) and SCSS, and an option value only wins when set. Output them as `:root` custom props with a token fallback in the SCSS — never print a rule for an empty field.
+**Site Options are overrides, not the source.** Every option-driven value (header, off-canvas, footer, links & buttons, page banner, floating CTA, per-page padding) is a CSS variable whose default lives in `scss/_component-vars.scss` (built from theme tokens). `asen_option_css()` prints only the options that are set, as one unlayered `:root{…}` after the theme stylesheet, so they win without specificity. On/off options are body classes (`body-class-mods.php`). To add an option-driven value: default in `_component-vars.scss`, `var(--name)` in the partial, one line in `asen_option_css()`. Media queries can't read variables, so the off-canvas breakpoint is the only generated rule set. No PHP prints CSS except that and the two page banners (pending).
 
 **Removed in v3:** the `site_colors` repeater and `site_max_width` fields. Colors are the theme.json palette (`_colors.scss` aliases it); max width is theme.json `layout.wideSize`. The `includes/scss-mods.php` + `_global-variables.scss` approach seen in older client forks (options → rewrite an SCSS file on `wp_head`) is dead and must not be copied forward.
 
@@ -169,7 +171,7 @@ Decided Oct 2026: client sites move to a **child theme** once the Phase 5 scaffo
 ## Known issues (fix opportunistically, track in MODERNIZATION.md)
 
 - The Dynamic Color SVG block inlines the file's markup. When no text color is set it keeps the file's own `<style>` rules (Illustrator exports colors that way), and those rules apply page-wide — two SVGs sharing `.cls-1` will fight. Setting a text color strips them.
-- `head-mods.php` still prints option values as a large inline `<style>`; Phase 1 leftover (→ `:root` custom props with token fallbacks).
+- The front-page and interior page banners (`templates/front-page-banner.php`, `templates/interior-banner.php`) still print per-page `<style>` / `<script>` from per-page field groups full of colors, pixel sizes and transforms — the old block anti-pattern in template form. Next candidate for conversion.
 - The YouTube API is enqueued only when `has_block()` finds the Video Popup block in post content (a block rendered from a page template won't trigger it); goes away when that block converts to a `viewScript`.
 - Template output is largely unescaped.
 
@@ -178,7 +180,7 @@ Decided Oct 2026: client sites move to a **child theme** once the Phase 5 scaffo
 See [MODERNIZATION.md](MODERNIZATION.md). Update this line as phases land.
 
 - Phase 0 (hygiene + deprecated field removal): done
-- Phase 1 (`theme.json` tokens, editor styles, head-mods → custom props): done except `head-mods.php` → custom props
+- Phase 1 (`theme.json` tokens, editor styles, head-mods → custom props): done
 - Phase 2 (ACF blocks → `block.json` + native supports, structure-only SCSS): done — 17 blocks, all `block.json`, no inline `<style>` or `<script>` in any template, no jQuery in block JS
 - Phase 3 (client-safe editing: role-gated inserter, patterns, section styles, bindings): not started
 - Phase 4 (block library rationalization): mostly done — overlap and dead blocks deleted, two replacement patterns (copy + image, pricing tiers), Glide gone, Video Popup rebuilt on `<dialog>` (the Kadence video-popup replacement). Left: jquery-modal / jQuery in `main.js`

@@ -187,3 +187,20 @@
     }
   }
 }
+
+// Full Screen option: fill the viewport below the admin bar.
+.asen-front-page-banner.is-full-screen {
+  min-height: 96vh;
+
+  @media (max-width: 782px) {
+    min-height: 88vh;
+  }
+
+  .admin-bar & {
+    min-height: calc(96vh - 32px);
+
+    @media (max-width: 782px) {
+      min-height: calc(88vh - 46px);
+    }
+  }
+}

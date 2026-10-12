@@ -1,0 +1,78 @@
+// Defaults for the component variables Site Options can override. includes/head-mods.php prints each option that is
+// set as an unlayered :root rule after the theme stylesheet, so it wins over these without specificity games.
+// Values come from the theme tokens; edit theme.json for palette/scale changes, these only for component defaults.
+:root {
+  // Header
+  --header-height: #{$header-height-desktop};
+  --header-max-width: #{$site-overall-max-width};
+  --header-logo-height: auto;
+  --header-bg: #{$color-white};
+  --header-menu-color: currentColor;
+  --header-menu-hover-color: var(--link-hover-color);
+  --header-cta-bg: var(--button-bg);
+  --header-cta-color: var(--button-color);
+
+  // Links & buttons
+  --link-color: #{$color-primary};
+  --link-hover-color: color-mix(in srgb, var(--link-color) 75%, black);
+  --button-bg: #{$gray-800};
+  --button-bg-hover: #{$gray-700};
+  --button-color: #{$color-white};
+  --button-color-hover: #{$color-white};
+  --button-font-size: #{$font-size-lg};
+  --button-padding-y: 0.7em;
+  --button-padding-x: 1.3em;
+  --button-small-font-size: #{$font-size-sm};
+  --button-small-padding-y: 0.6em;
+  --button-small-padding-x: 1em;
+
+  // Off-canvas menu
+  --off-canvas-bg: #{$color-primary};
+  --off-canvas-color: #{$color-white};
+  --off-canvas-hover-color: #{$color-white};
+  --off-canvas-font-size: 45px;
+  --off-canvas-font-size-mobile: 38px;
+  --off-canvas-text-transform: none;
+  --off-canvas-indicator-closed: "\f105";
+  --off-canvas-indicator-open: var(--off-canvas-indicator-closed);
+  --off-canvas-indicator-open-transform: rotate(90deg);
+  --off-canvas-copyright-color: var(--off-canvas-color);
+  --off-canvas-copyright-font-size: 16px;
+  --off-canvas-button-bg: #{$color-white};
+  --off-canvas-button-color: #{$color-black};
+  --off-canvas-button-bg-hover: #{$gray-800};
+  --off-canvas-button-color-hover: #{$color-white};
+
+  // Footer
+  --footer-bg: #{$gray-900};
+  --footer-color: #{$color-white};
+  --footer-hover-color: #{$color-primary};
+  --footer-font-size: 19px;
+  --footer-logo-height: auto;
+  --footer-bottom-bg: #{$color-black};
+  --footer-bottom-color: #{$color-white};
+  --footer-bottom-hover-color: #{$color-primary};
+  --footer-bottom-font-size: 15px;
+  --footer-social-size: 23px;
+  --footer-mailing-title-color: var(--footer-color);
+  --footer-mailing-title-size: #{$heading-h6};
+  --footer-mailing-subtitle-color: var(--footer-color);
+  --footer-mailing-subtitle-size: var(--footer-font-size);
+
+  // Interior page banner (Builders Only → Page Banners)
+  --banner-bg: transparent;
+  --banner-image-blend: normal;
+  --banner-overlay-bg: transparent;
+  --banner-overlay-opacity: 1;
+  --banner-text-align: start;
+  --banner-eyebrow-color: currentColor;
+  --banner-eyebrow-transform: none;
+  --banner-title-color: currentColor;
+  --banner-title-transform: none;
+  --banner-subtitle-color: currentColor;
+  --banner-subtitle-transform: none;
+
+  // Floating contact CTA
+  --floating-cta-bg: #{$color-white};
+  --floating-cta-color: #{$color-primary};
+}

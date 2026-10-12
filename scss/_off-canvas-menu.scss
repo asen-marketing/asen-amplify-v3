@@ -24,7 +24,8 @@ $site-menu-max-width-mobile: 250px;
 }
 
 .off-canvas-menu-container {
-  background-color: $color-primary;
+  background-color: var(--off-canvas-bg);
+  padding-top: var(--header-height);
   position: fixed;
   z-index: 100;
   top: 0;
@@ -44,6 +45,14 @@ $site-menu-max-width-mobile: 250px;
     transform: translate(100vw, 0);
   }
 
+  body.admin-bar & {
+    padding-top: calc(var(--header-height) + 32px);
+
+    @media (max-width: 782px) {
+      padding-top: calc(var(--header-height) + 46px);
+    }
+  }
+
   &.is-active {
     transform: translate(0, 0);
     opacity: 1;
@@ -57,6 +66,7 @@ $site-menu-max-width-mobile: 250px;
 
   .inside {
     width: 100vw;
+    margin-top: calc(-1 * var(--header-height));
     padding: 28px $header-gutter-desktop $header-gutter-desktop 28px;
     display: flex;
     flex-direction: column;
@@ -121,11 +131,11 @@ $site-menu-max-width-mobile: 250px;
   p {
     font-size: 23px;
     line-height: 1;
-    color: #fff;
+    color: var(--off-canvas-color);
     margin-bottom: 10px;
 
     a {
-      color: #fff;
+      color: var(--off-canvas-color);
       transition: color 100ms ease;
 
       &:hover {
@@ -155,13 +165,14 @@ $site-menu-max-width-mobile: 250px;
       }
       a {
         display: inline-block;
-        color: #fff;
+        color: var(--off-canvas-color);
         line-height: 1;
         padding: 8px 0;
+        text-transform: var(--off-canvas-text-transform);
         transition: color 100ms ease;
 
         &:hover {
-          color: #fff;
+          color: var(--off-canvas-hover-color);
         }
       }
     }
@@ -185,20 +196,21 @@ $site-menu-max-width-mobile: 250px;
       &::after {
         font-family: "Font Awesome 7 Pro";
         font-weight: 900;
-        content: "\f105";
+        content: var(--off-canvas-indicator-closed);
         display: inline-block;
         position: absolute;
         right: -10px;
-        font-size: 30px;
+        font-size: calc(var(--off-canvas-font-size) * 0.66);
         transition: transform 200ms ease-in-out;
 
         @media (max-width: $breakpoint-small) {
-          font-size: 25px;
+          font-size: calc(var(--off-canvas-font-size-mobile) * 0.66);
         }
       }
     }
     &.is-active > a::after {
-      transform: rotate(90deg);
+      content: var(--off-canvas-indicator-open);
+      transform: var(--off-canvas-indicator-open-transform);
     }
 
     &:hover {
@@ -209,10 +221,10 @@ $site-menu-max-width-mobile: 250px;
   &.off-canvas-menu-large {
     ul {
       > li {
-        font-size: 45px;
+        font-size: var(--off-canvas-font-size);
 
         @media (max-width: $breakpoint-small) {
-          font-size: 38px;
+          font-size: var(--off-canvas-font-size-mobile);
         }
 
         ul.sub-menu {
@@ -227,10 +239,10 @@ $site-menu-max-width-mobile: 250px;
   &.off-canvas-menu-small {
     ul {
       > li {
-        font-size: 30px;
+        font-size: calc(var(--off-canvas-font-size) * 0.66);
 
         @media (max-width: $breakpoint-small) {
-          font-size: 25px;
+          font-size: calc(var(--off-canvas-font-size-mobile) * 0.66);
         }
 
         a {
@@ -283,8 +295,8 @@ ul.sub-menu {
   }
 
   .button {
-    background-color: #fff;
-    color: #0a0101;
+    background-color: var(--off-canvas-button-bg);
+    color: var(--off-canvas-button-color);
     transition: color 100ms ease;
     display: none;
 
@@ -293,8 +305,8 @@ ul.sub-menu {
     }
 
     &:hover {
-      background-color: #343a40;
-      color: #fff;
+      background-color: var(--off-canvas-button-bg-hover);
+      color: var(--off-canvas-button-color-hover);
     }
   }
 
@@ -313,9 +325,10 @@ ul.sub-menu {
         padding: 0 10px;
         display: flex;
         align-items: center;
-        color: #fff;
+        color: var(--off-canvas-color);
 
         &:hover {
+          color: var(--off-canvas-hover-color);
           opacity: 0.75;
         }
       }
@@ -323,11 +336,11 @@ ul.sub-menu {
   }
 
   p.copyright {
-    font-size: 16px;
-    color: #fff;
+    font-size: var(--off-canvas-copyright-font-size);
+    color: var(--off-canvas-copyright-color);
 
     a {
-      color: #fff;
+      color: inherit;
       transition: color 100ms ease;
 
       &:hover {

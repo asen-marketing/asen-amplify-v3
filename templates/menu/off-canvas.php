@@ -97,28 +97,3 @@
         <?php endif; ?>
     </div>
 </div>
-
-<?php if (have_rows('off_canvas_button_options', 'option')) :
-    $button_options = get_field('off_canvas_button_options', 'option');
-    $button_bg = $button_options[0]['button_background_color'];
-    $button_bg_hover = $button_options[0]['button_background_hover_color'];
-    $button_color = $button_options[0]['button_text_color'];
-    $button_color_hover = $button_options[0]['button_text_hover_color'];
-?>
-
-    <style>
-        .off-canvas-menu-container .off-canvas-footer .button.button-small {
-            background-color: <?php echo $button_bg;
-                                ?>;
-            color: <?php echo $button_color;
-                    ?>;
-        }
-
-        .off-canvas-menu-container .off-canvas-footer .button.button-small:hover {
-            background-color: <?php echo $button_bg_hover;
-                                ?>;
-            color: <?php echo $button_color_hover;
-                    ?>;
-        }
-    </style>
-<?php endif; ?>

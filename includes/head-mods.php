@@ -16,18 +16,6 @@
 
     add_action( 'wp_head', 'asen_top_head', 1 );
 
-    function asen_add_acf_as_css_var( $field, $css_var_name, $unit_type = '' ) {
-    if ( class_exists( 'ACF' ) === false || get_field( $field, 'option' ) === null ) {
-        return;
-    }
-
-    $field_value = get_field( $field, 'option' );
-
-    if ( $field_value ) {
-        echo '<style>:root{--' . $css_var_name . ':' . $field_value . $unit_type . ';}</style>';
-    }
-    }
-
     function asen_head_code() {
 
     if ( class_exists( 'ACF' ) ):
@@ -64,539 +52,123 @@
 
     add_action( 'wp_footer', 'asen_body_close_code' );
 
-    function asen_custom_css_head() {
-    if ( class_exists( 'ACF' ) === false ) {
+// Site Options as CSS variables. Only fields that are set are printed, as an unlayered :root rule right after the theme
+// stylesheet, so they override the defaults in scss/_component-vars.scss. Toggles are body classes (body-class-mods.php).
+function asen_option_css() {
+    if ( ! class_exists( 'ACF' ) ) {
         return;
     }
 
-    $styles = '';
+    $opt     = fn( $name ) => get_field( $name, 'option' );
+    $px      = fn( $value ) => is_numeric( $value ) ? (float) $value . 'px' : null;
+    $row     = fn( $name ) => is_array( $opt( $name ) ) ? ( $opt( $name )[0] ?? array() ) : array();
+    $icon    = fn( $code ) => is_string( $code ) && preg_match( '/^[0-9a-f]{2,6}$/i', $code ) ? '"\\' . $code . '"' : null;
+    $page_id = is_singular() ? get_queried_object_id() : 0;
 
-    if ( get_field( 'page_padding_top', get_the_ID() ) || get_field( 'page_padding_top', get_the_ID() ) != '' ) {
-        $styles .= 'padding-top: ' . get_field( 'page_padding_top', get_the_ID() ) . get_field( 'page_padding_top_unit_type', get_the_ID() ) . ';';
-    }
+    $off_canvas_button = $row( 'off_canvas_button_options' );
+    $floating_cta      = $row( 'cta_styling' );
 
-    if ( get_field( 'page_padding_bottom', get_the_ID() ) || get_field( 'page_padding_bottom', get_the_ID() ) != '' ) {
-        $styles .= 'padding-bottom: ' . get_field( 'page_padding_bottom', get_the_ID() ) . get_field( 'page_padding_bottom_unit_type', get_the_ID() ) . ';';
-    }
+    $vars = array(
+        // Header
+        '--header-height'           => $px( $opt( 'site_header_height' ) ),
+        '--header-logo-height'      => $px( $opt( 'site_header_logo_height' ) ),
+        '--header-max-width'        => $opt( 'full_width_header' ) ? '100%' : $px( $opt( 'header_max_width' ) ),
+        '--header-menu-color'       => $opt( 'header_menu_color' ),
+        '--header-menu-hover-color' => $opt( 'header_menu_hover_color' ),
+        '--header-cta-bg'           => $opt( 'site_header_cta_color' ),
+        '--header-cta-color'        => $opt( 'site_header_cta_text_color' ),
+        '--header-bg'               => $page_id && get_field( 'disable_overlapping_header', $page_id ) ? get_field( 'single_header_background_color', $page_id ) : null,
 
-    $header_height        = get_field( 'site_header_height', 'option' );
-    $header_height_pixels = get_field( 'site_header_height', 'option' ) . 'px';
-    $header_width_px      = get_field( 'header_max_width', 'option' ) ? ( get_field( 'header_max_width', 'option' ) . 'px' ) : '1400px';
-    $off_canvas_px        = get_field( 'off_canvas_breakpoint', 'option' ) ? ( get_field( 'off_canvas_breakpoint', 'option' ) . 'px' ) : '1024px';
+        // Links & buttons
+        '--link-color'              => $opt( 'link_color' ),
+        '--link-hover-color'        => $opt( 'link_hover_color' ),
+        '--button-bg'               => $opt( 'button_background_color' ),
+        '--button-bg-hover'         => $opt( 'button_background_hover_color' ),
+        '--button-color'            => $opt( 'button_text_color' ),
+        '--button-color-hover'      => $opt( 'button_text_hover_color' ),
+        '--button-font-size'        => $px( $opt( 'regular_button_font_size' ) ),
+        '--button-padding-y'        => $px( $opt( 'regular_button_vertical_padding' ) ),
+        '--button-padding-x'        => $px( $opt( 'regular_button_horizontal_padding' ) ),
+        '--button-small-font-size'  => $px( $opt( 'small_button_font_size' ) ),
+        '--button-small-padding-y'  => $px( $opt( 'small_button_vertical_padding' ) ),
+        '--button-small-padding-x'  => $px( $opt( 'small_button_horizontal_padding' ) ),
 
-    if (
-        is_page() && get_field( 'banner_disable' ) != true ||
-        get_post_type() == 'product' && get_field( 'products_archive_use_page_banner_styles', 'option' ) ||
-        get_post_type() == 'service' && get_field( 'services_archive_use_page_banner_styles', 'option' ) ||
-        get_post_type() == 'team' && get_field( 'team_archive_use_page_banner_styles', 'option' )
-    ) {
-        $page_banner_styles                    = '';
-        $page_banner_background_image_styles   = '';
-        $page_banner_background_overlay_styles = '';
-        $page_banner_eyebrow_styles            = '';
-        $page_banner_title_styles              = '';
-        $page_banner_subtitle_styles           = '';
+        // Off-canvas menu
+        '--off-canvas-bg'                 => $opt( 'off_canvas_background_color' ),
+        '--off-canvas-color'              => $opt( 'off_canvas_text_color' ),
+        '--off-canvas-hover-color'        => $opt( 'off_canvas_hover_color' ),
+        '--off-canvas-font-size'          => $px( $opt( 'off_canvas_font_size' ) ),
+        '--off-canvas-font-size-mobile'   => $px( $opt( 'off_canvas_mobile_font_size' ) ),
+        '--off-canvas-text-transform'     => $opt( 'off_canvas_uppercase' ) ? 'uppercase' : null,
+        '--off-canvas-indicator-closed'   => $icon( $opt( 'sub-menu_indicator_closed' ) ),
+        '--off-canvas-indicator-open'     => $icon( $opt( 'sub-menu_indicator_open' ) ),
+        '--off-canvas-indicator-open-transform' => $icon( $opt( 'sub-menu_indicator_open' ) ) ? 'none' : null,
+        '--off-canvas-copyright-color'    => $opt( 'off_canvas_copyright_color' ),
+        '--off-canvas-copyright-font-size' => $px( $opt( 'off_canvas_copyright_font_size' ) ),
+        '--off-canvas-button-bg'          => $off_canvas_button['button_background_color'] ?? null,
+        '--off-canvas-button-color'       => $off_canvas_button['button_text_color'] ?? null,
+        '--off-canvas-button-bg-hover'    => $off_canvas_button['button_background_hover_color'] ?? null,
+        '--off-canvas-button-color-hover' => $off_canvas_button['button_text_hover_color'] ?? null,
 
-        if ( get_field( 'page_banner_text_align', 'option' ) ) {
-            $page_banner_eyebrow_styles  .= 'text-align: ' . get_field( 'page_banner_text_align', 'option' ) . ';';
-            $page_banner_title_styles    .= 'text-align: ' . get_field( 'page_banner_text_align', 'option' ) . ';';
-            $page_banner_subtitle_styles .= 'text-align: ' . get_field( 'page_banner_text_align', 'option' ) . ';';
+        // Footer
+        '--footer-bg'                     => $opt( 'footer_background_color' ),
+        '--footer-color'                  => $opt( 'footer_text_color' ),
+        '--footer-hover-color'            => $opt( 'footer_text_hover_color' ),
+        '--footer-font-size'              => $px( $opt( 'footer_font_size' ) ),
+        '--footer-logo-height'            => $px( $opt( 'footer_logo_height' ) ),
+        '--footer-bottom-bg'              => $opt( 'footer_bottom_background_color' ),
+        '--footer-bottom-color'           => $opt( 'footer_bottom_text_color' ),
+        '--footer-bottom-hover-color'     => $opt( 'footer_bottom_text_hover_color' ),
+        '--footer-bottom-font-size'       => $px( $opt( 'footer_bottom_font_size' ) ),
+        '--footer-social-size'            => $px( $opt( 'footer_social_links_size' ) ),
+        '--footer-mailing-title-color'    => $opt( 'footer_mailing_list_title_color' ),
+        '--footer-mailing-title-size'     => $px( $opt( 'footer_mailing_list_title_size' ) ),
+        '--footer-mailing-subtitle-color' => $opt( 'footer_mailing_list_subtitle_color' ),
+        '--footer-mailing-subtitle-size'  => $px( $opt( 'footer_mailing_list_subtitle_size' ) ),
+
+        // Interior page banner
+        '--banner-bg'                  => $opt( 'page_banner_background_color' ),
+        '--banner-image-blend'         => $opt( 'page_banner_background_blend_mode' ),
+        '--banner-overlay-bg'          => $opt( 'page_banner_background_overlay_color' ),
+        '--banner-overlay-opacity'     => $opt( 'page_banner_background_overlay_opacity' ),
+        '--banner-text-align'          => $opt( 'page_banner_text_align' ),
+        '--banner-eyebrow-color'       => $opt( 'page_banner_eyebrow_color' ),
+        '--banner-eyebrow-transform'   => $opt( 'page_banner_eyebrow_transform' ),
+        '--banner-title-color'         => $opt( 'page_banner_title_color' ),
+        '--banner-title-transform'     => $opt( 'page_banner_title_transform' ),
+        '--banner-subtitle-color'      => $opt( 'page_banner_subtitle_color' ),
+        '--banner-subtitle-transform'  => $opt( 'page_banner_subtitle_transform' ),
+
+        // Floating contact CTA
+        '--floating-cta-bg'    => $floating_cta['background_color'] ?? null,
+        '--floating-cta-color' => $floating_cta['text_color'] ?? null,
+
+        // This page (Page Options)
+        '--page-padding-top'    => $page_id && is_numeric( get_field( 'page_padding_top', $page_id ) ) ? get_field( 'page_padding_top', $page_id ) . ( get_field( 'page_padding_top_unit_type', $page_id ) ?: '%' ) : null,
+        '--page-padding-bottom' => $page_id && is_numeric( get_field( 'page_padding_bottom', $page_id ) ) ? get_field( 'page_padding_bottom', $page_id ) . ( get_field( 'page_padding_bottom_unit_type', $page_id ) ?: '%' ) : null,
+    );
+
+    $css = '';
+    foreach ( $vars as $name => $value ) {
+        // Radios store "0" for "none"; anything that could break out of the declaration is stripped.
+        if ( null === $value || false === $value || '' === $value || '0' === $value || is_array( $value ) ) {
+            continue;
         }
-
-        if ( get_field( 'page_banner_eyebrow_color', 'option' ) ) {
-            $page_banner_eyebrow_styles .= 'color: ' . get_field( 'page_banner_eyebrow_color', 'option' ) . ';';
-        }
-
-        if ( get_field( 'page_banner_eyebrow_transform', 'option' ) ) {
-            $page_banner_eyebrow_styles .= 'text-transform: ' . get_field( 'page_banner_eyebrow_transform', 'option' ) . ';';
-        }
-
-        if ( get_field( 'page_banner_title_color', 'option' ) ) {
-            $page_banner_title_styles .= 'color: ' . get_field( 'page_banner_title_color', 'option' ) . ';';
-        }
-
-        if ( get_field( 'page_banner_title_transform', 'option' ) ) {
-            $page_banner_title_styles .= 'text-transform: ' . get_field( 'page_banner_title_transform', 'option' ) . ';';
-        }
-
-        if ( get_field( 'page_banner_subtitle_color', 'option' ) ) {
-            $page_banner_subtitle_styles .= 'color: ' . get_field( 'page_banner_subtitle_color', 'option' ) . ';';
-        }
-
-        if ( get_field( 'page_banner_subtitle_transform', 'option' ) ) {
-            $page_banner_subtitle_styles .= 'text-transform: ' . get_field( 'page_banner_subtitle_transform', 'option' ) . ';';
-        }
-
-        if ( get_field( 'page_banner_background_color', 'option' ) ) {
-            $page_banner_styles .= 'background-color: ' . get_field( 'page_banner_background_color', 'option' ) . ';';
-        }
-
-        if ( get_field( 'page_banner_background_blend_mode', 'option' ) && get_field( 'page_banner_background_blend_mode', 'option' ) != 'normal' ) {
-            $page_banner_background_image_styles .= 'mix-blend-mode: ' . get_field( 'page_banner_background_blend_mode', 'option' ) . ';';
-        }
-
-        if ( get_field( 'page_banner_background_overlay_color', 'option' ) ) {
-            $page_banner_background_overlay_styles .= 'background-color: ' . get_field( 'page_banner_background_overlay_color', 'option' ) . ';';
-        }
-
-        if ( get_field( 'page_banner_background_overlay_opacity', 'option' ) ) {
-            $page_banner_background_overlay_styles .= 'opacity: ' . get_field( 'page_banner_background_overlay_opacity', 'option' ) . ';';
-        }
+        $css .= $name . ':' . trim( str_replace( array( ';', '{', '}', '<', '>' ), '', (string) $value ) ) . ';';
+    }
+    if ( $css ) {
+        wp_add_inline_style( 'main', ':root{' . $css . '}' );
     }
 
-    ?>
-
-<style>
-<?php echo('' !=$styles ? 'body.page main {'. $styles . '}' : '');
-
-?><?php if (get_field('site_header_position', 'option')=='static'): ?>header.site-header {
-    position: static;
+    // Media queries can't read CSS variables, so the off-canvas breakpoint is the one rule set still generated here.
+    $breakpoint = (int) $opt( 'off_canvas_breakpoint' ) ?: 1024;
+    wp_add_inline_style( 'main', '@layer components{@media (max-width:' . $breakpoint . 'px){'
+        . 'header.site-header .inside.align-left{justify-content:space-between}'
+        . 'header.site-header .inside.align-left .navigation,header.site-header .inside.align-left .header-menu{width:fit-content}'
+        . '.off-canvas-menu-backing-overlay,.off-canvas-menu-container{display:flex}'
+        . '.off-canvas-menu-hamburger{display:block}'
+        . 'header.site-header nav.header-menu{display:none}'
+        . '.has-sticky-hamburger .navigation .button{margin-right:3rem}'
+        . '}}' );
 }
-
-<?php endif;
-
-?>body {
-    <?php if (get_field('site_header_position', 'option')=='static'): ?> padding-top: 0;
-    <?php else: ?> padding-top: <?php echo $header_height_pixels;
-    ?>;
-    <?php endif;
-    ?>
-}
-
-body.admin-bar {
-    <?php if (get_field('site_header_position', 'option')=='static'): ?> padding-top: 32px;
-    <?php else: ?> padding-top: <?php echo 32 + $header_height . 'px';
-    ?>;
-    <?php endif;
-    ?>
-}
-
-@media screen and (max-width: 782px) {
-    body.admin-bar {
-        <?php if (get_field('site_header_position', 'option')=='static'): ?> padding-top: 46px;
-        <?php else: ?> padding-top: <?php echo 46 + $header_height . 'px';
-        ?>;
-        <?php endif;
-        ?>
-    }
-}
-
-.site-container {
-    <?php if (get_field('site_header_position', 'option')=='static'): ?> min-height: 100vh;
-    <?php else: ?> min-height: calc(100vh - <?php echo $header_height_pixels; ?>);
-    <?php endif;
-    ?>
-}
-
-body.admin-bar .site-container {
-    <?php if (get_field('site_header_position', 'option')=='static'): ?> min-height: calc(100vh - 32px);
-    <?php else: ?> min-height: calc(100vh - <?php echo 32 + $header_height . 'px'; ?>);
-    <?php endif;
-    ?>
-}
-
-@media screen and (max-width: 782px) {
-    body.admin-bar .site-container {
-        <?php if (get_field('site_header_position', 'option')=='static'): ?> min-height: calc(100vh - 46px);
-        <?php else: ?> min-height: calc(100vh - <?php echo 46 + $header_height . 'px'; ?>);
-        <?php endif;
-        ?>
-    }
-}
-
-header.site-header {
-    <?php if (get_field('overlapping_header', 'option') && ! get_field('disable_overlapping_header', get_the_ID())): ?> position: absolute;
-    background: transparent;
-    box-shadow: none;
-    <?php endif;
-    ?><?php if (get_field('disable_overlapping_header', get_the_ID()) && get_field('single_header_background_color', get_the_ID())): ?> background: <?php the_field('single_header_background_color', get_the_ID());
-    ?>;
-    <?php endif;
-    ?>
-}
-
-header.site-header .inside {
-    max-width: <?php echo get_field('full_width_header', 'option')==false ? $header_width_px: '100%';
-    ?>;
-}
-
-header.site-header .inside,
-.off-canvas-menu-hamburger {
-    height: <?php echo $header_height_pixels;
-    ?>;
-}
-
-.off-canvas-menu-hamburger {
-    position: <?php echo get_field('sticky_hamburger', 'option') ? 'fixed': 'relative';
-    ?>;
-}
-
-body.admin-bar header.site-header .off-canvas-menu-hamburger {
-    top: <?php echo get_field('sticky_hamburger', 'option') ? '32px': '0';
-    ?>;
-}
-
-@media screen and (max-width: 782px) {
-    body.admin-bar header.site-header .off-canvas-menu-hamburger {
-        top: <?php echo get_field('sticky_hamburger', 'option') ? '46px': '0';
-        ?>;
-    }
-}
-
-.button.header-cta {
-    background-color: <?php the_field('site_header_cta_color', 'option');
-    ?>;
-    color: <?php the_field('site_header_cta_text_color', 'option');
-    ?>;
-}
-
-.button.header-cta:hover {
-    background-color: <?php the_field('site_header_cta_text_color', 'option');
-    ?>;
-    color: <?php the_field('site_header_cta_color', 'option');
-    ?>;
-}
-
-nav.header-menu ul li a {
-    color: <?php the_field('header_menu_color', 'option');
-    ?>;
-}
-
-nav.header-menu ul li a:hover {
-    color: <?php the_field('header_menu_hover_color', 'option');
-    ?>;
-}
-
-.off-canvas-menu-container {
-    background-color: <?php the_field('off_canvas_background_color', 'option');
-    ?>
-}
-
-.off-canvas-menu-container .close-container {
-    <?php if (get_field('off_canvas_close_position', 'option')): ?> right: 50px;
-    <?php endif;
-    ?>
-}
-
-.off-canvas-menu ul li a {
-    font-size: <?php echo get_field('off_canvas_font_size', 'option') . 'px';
-    ?>;
-    color: <?php the_field('off_canvas_text_color', 'option')?>;
-}
-
-.off-canvas-menu ul li>a {
-    <?php if (get_field('off_canvas_uppercase', 'option')): ?> text-transform: uppercase;
-    <?php endif;
-    ?>
-}
-
-<?php $off_canvas_font_size_smaller=get_field('off_canvas_font_size', 'option') ? (get_field('off_canvas_font_size', 'option') * 0.66) : '';
-$off_canvas_mobile_font_size_smaller=get_field('off_canvas_mobile_font_size', 'option') ? (get_field('off_canvas_mobile_font_size', 'option') * 0.66) : '';
-
-?>.off-canvas-bottom-menu ul li a {
-    font-size: <?php echo $off_canvas_font_size_smaller . 'px';
-    ?>;
-    color: <?php the_field('off_canvas_text_color', 'option')?>;
-}
-
-.off-canvas-menu ul li.menu-item-has-children>a::after {
-    font-size: <?php echo $off_canvas_font_size_smaller . 'px';
-    ?>;
-    content: "<?php echo '\\' . get_field( 'sub-menu_indicator_closed', 'option' );
-?>";
-
-}
-
-.off-canvas-menu ul li.menu-item-has-children.is-active>a::after {
-    content: "<?php echo '\\' . get_field( 'sub-menu_indicator_open', 'option' );
-?>";
-<?php if (get_field('sub-menu_indicator_open', 'option')): ?> transform: none;
-    <?php endif;
-    ?>
-}
-
-@media (hover: hover) and (pointer: fine) {
-    .off-canvas-menu ul li a:hover {
-        color: <?php the_field('off_canvas_hover_color', 'option');
-        ?>;
-    }
-}
-
-.off-canvas-footer {
-
-    .site-social.links a {
-        color: <?php the_field('off_canvas_text_color', 'option');
-        ?>;
-    }
-
-    .site-social.links a:hover {
-        color: <?php the_field('off_canvas_hover_color', 'option');
-        ?>;
-    }
-
-    p.copyright {
-        color: <?php the_field('off_canvas_copyright_color', 'option');
-        ?>;
-        font-size: <?php echo get_field('off_canvas_copyright_font_size', 'option') . 'px';
-        ?>;
-    }
-}
-
-@media (max-width: 640px) {
-    .off-canvas-menu ul li a {
-        font-size: <?php echo get_field('off_canvas_mobile_font_size', 'option') . 'px';
-        ?>;
-    }
-
-    .off-canvas-bottom-menu ul li a {
-        font-size: <?php echo $off_canvas_mobile_font_size_smaller . 'px';
-        ?>;
-    }
-
-    .off-canvas-menu ul li.menu-item-has-children>a::after {
-        font-size: <?php echo $off_canvas_mobile_font_size_smaller . 'px';
-        ?>;
-
-    }
-}
-
-@media (max-width: <?php echo $off_canvas_px; ?>) {
-
-    header.site-header .inside.align-left {
-        justify-content: space-between;
-
-        .navigation {
-            width: fit-content;
-        }
-
-        .header-menu {
-            width: fit-content;
-        }
-    }
-
-    .off-canvas-menu-backing-overlay,
-    .off-canvas-menu-container {
-        display: flex;
-    }
-
-    .off-canvas-menu-hamburger {
-        display: block;
-    }
-
-    header.site-header nav.header-menu {
-        display: none;
-    }
-
-    <?php if (get_field('sticky_hamburger', 'option')): ?>.navigation .button {
-        margin-right: 3rem;
-    }
-
-    <?php endif;
-    ?>
-}
-
-header.site-header div.logo a {
-    height: <?php the_field('site_header_logo_height', 'option');
-    ?>px;
-}
-
-.off-canvas-menu-container {
-    padding-top: <?php echo $header_height_pixels;
-    ?>;
-}
-
-.off-canvas-menu-container .inside {
-    margin-top: <?php echo '-'. $header_height_pixels;
-    ?>;
-}
-
-body.admin-bar .off-canvas-menu-container {
-    padding-top: <?php echo 32 + $header_height . 'px';
-    ?>;
-}
-
-@media (max-width: 782px) {
-    body.admin-bar .off-canvas-menu-container {
-        padding-top: <?php echo 46 + $header_height . 'px';
-        ?>;
-    }
-}
-
-.asen-front-page-banner.is-full-screen {
-    min-height: calc(96vh);
-}
-
-@media (max-width: 782px) {
-    .asen-front-page-banner.is-full-screen {
-        min-height: calc(88vh);
-    }
-}
-
-body.admin-bar .asen-front-page-banner.is-full-screen {
-    min-height: calc(96vh - <?php echo 32 . 'px'; ?>);
-}
-
-@media (max-width: 782px) {
-    body.admin-bar .asen-front-page-banner.is-full-screen {
-        min-height: calc(88vh - <?php echo 46 . 'px'; ?>);
-    }
-}
-
-<?php
-
-/* Banner styling from Site Options fields */
-?><?php if (is_page() && get_field('banner_disable') !=true): ?><?php if ('' !=$page_banner_styles): ?>.asen-page-banner {
-    <?php echo $page_banner_styles;
-    ?>
-}
-
-<?php endif;
-
-?><?php if ('' !=$page_banner_background_image_styles): ?>.asen-page-banner .background-image {
-    <?php echo $page_banner_background_image_styles;
-    ?>
-}
-
-<?php endif;
-
-?><?php if ('' !=$page_banner_background_overlay_styles): ?>.asen-page-banner .background-overlay {
-    <?php echo $page_banner_background_overlay_styles;
-    ?>
-}
-
-<?php endif;
-
-?><?php if ('' !=$page_banner_eyebrow_styles): ?>.asen-page-banner p.eyebrow {
-    <?php echo $page_banner_eyebrow_styles;
-    ?>
-}
-
-<?php endif;
-
-?><?php if ('' !=$page_banner_title_styles): ?>.asen-page-banner h1 {
-    <?php echo $page_banner_title_styles;
-    ?>
-}
-
-<?php endif;
-
-?><?php if ('' !=$page_banner_subtitle_styles): ?>.asen-page-banner p.subtitle {
-    <?php echo $page_banner_subtitle_styles;
-    ?>
-}
-
-<?php endif;
-?><?php endif;
-
-?><?php if (get_field('banner_disable') !=true): ?>body.page main {
-    padding-top: 0;
-}
-
-<?php endif;
-?>
-/* Button and Link styling from Site Options fields */
-
-<?php if (get_field('link_color', 'option')): ?>a {
-    color: <?php the_field('link_color', 'option');
-    ?>;
-}
-
-<?php endif;
-
-?><?php if (get_field('link_hover_color', 'option')): ?>a:hover {
-    color: <?php the_field('link_hover_color', 'option');
-    ?>;
-}
-
-<?php endif;
-
-?><?php if (get_field('button_background_color', 'option')): ?>.button {
-    background-color: <?php the_field('button_background_color', 'option');
-    ?>;
-}
-
-<?php endif;
-
-?><?php if (get_field('button_text_color', 'option')): ?>.button {
-    color: <?php the_field('button_text_color', 'option');
-    ?>;
-}
-
-<?php endif;
-
-?><?php if (get_field('button_background_hover_color', 'option')): ?>.button:hover {
-    background-color: <?php the_field('button_background_hover_color', 'option');
-    ?>;
-}
-
-<?php endif;
-
-?><?php if (get_field('button_text_hover_color', 'option')): ?>.button:hover {
-    color: <?php the_field('button_text_hover_color', 'option');
-    ?>;
-}
-
-<?php endif;
-
-?><?php if (get_field('small_button_font_size', 'option')): ?>.button.button-small {
-    font-size: <?php the_field('small_button_font_size', 'option');
-    ?>px;
-}
-
-<?php endif;
-
-?><?php if (get_field('small_button_vertical_padding', 'option')): ?>.button.button-small {
-    padding-top: <?php the_field('small_button_vertical_padding', 'option');
-    ?>px;
-    padding-bottom: <?php the_field('small_button_vertical_padding', 'option');
-    ?>px;
-}
-
-<?php endif;
-
-?><?php if (get_field('small_button_horizontal_padding', 'option')): ?>.button.button-small {
-    padding-left: <?php the_field('small_button_horizontal_padding', 'option');
-    ?>px;
-    padding-right: <?php the_field('small_button_horizontal_padding', 'option');
-    ?>px;
-}
-
-<?php endif;
-
-?><?php if (get_field('regular_button_font_size', 'option')): ?>.button {
-    font-size: <?php the_field('regular_button_font_size', 'option');
-    ?>px;
-
-    @media (max-width: 768px) {
-        font-size: <?php echo round(get_field('regular_button_font_size', 'option') * 0.8);
-        ?>px;
-
-    }
-}
-
-<?php endif;
-
-?><?php if (get_field('regular_button_vertical_padding', 'option')): ?>.button {
-    padding-top: <?php the_field('regular_button_vertical_padding', 'option');
-    ?>px;
-    padding-bottom: <?php the_field('regular_button_vertical_padding', 'option');
-    ?>px;
-}
-
-<?php endif;
-
-?><?php if (get_field('regular_button_horizontal_padding', 'option')): ?>.button {
-    padding-left: <?php the_field('regular_button_horizontal_padding', 'option');
-    ?>px;
-    padding-right: <?php the_field('regular_button_horizontal_padding', 'option');
-    ?>px;
-}
-
-<?php endif;
-?>
-</style>
-
-<?php
-    }
-
-add_action( 'wp_head', 'asen_custom_css_head', 100 );
+add_action( 'wp_enqueue_scripts', 'asen_option_css', 20 );

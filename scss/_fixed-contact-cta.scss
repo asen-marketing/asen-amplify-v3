@@ -3,7 +3,7 @@
   z-index: 10;
   right: 25px;
   bottom: 25px;
-  background-color: #fff;
+  background-color: var(--floating-cta-bg);
   width: 73px;
   height: 73px;
   border: 0;
@@ -18,10 +18,9 @@
   border-radius: 13px 13px 0 13px;
   align-items: center;
 
-  color: #fff;
+  color: var(--floating-cta-bg);
   font-size: 19px;
   line-height: 1;
-  font-family: "runda", sans-serif;
 
   @media (max-width: 1680px) {
     right: 20px;
@@ -43,7 +42,7 @@
   .icon-container {
     width: 73px;
     height: 73px;
-    color: #e81771;
+    color: var(--floating-cta-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,8 +55,7 @@
     left: 0;
     width: 212px;
     padding-left: 18px;
-    color: #fff;
-    font-family: "runda", sans-serif;
+    color: var(--floating-cta-bg);
     transition: opacity 100ms ease;
     opacity: 0;
     pointer-events: none;
@@ -78,14 +76,14 @@
     width: 280px;
     transition: width 200ms ease, background-color 200ms ease,
       opacity 200ms ease;
-    background-color: #e81771;
+    background-color: var(--floating-cta-color);
 
     @media (max-width: 450px) {
       width: auto;
     }
 
     .icon-container {
-      color: #fff;
+      color: var(--floating-cta-bg);
       transition: color 200ms ease;
     }
 
@@ -98,14 +96,14 @@
 
   @media (hover: none) {
     width: 280px;
-    background-color: #e81771;
+    background-color: var(--floating-cta-color);
 
     @media (max-width: $breakpoint-small) {
       width: auto;
     }
 
     .icon-container {
-      color: #fff;
+      color: var(--floating-cta-bg);
     }
 
     .hover-intent-layer {

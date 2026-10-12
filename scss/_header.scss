@@ -6,9 +6,7 @@ header.site-header {
   padding: 0 $header-gutter-desktop;
   display: flex;
   justify-content: center;
-  // Height for this is set by ACF fields displayed as CSS in the <head>.
-
-  background-color: #fff;
+  background-color: var(--header-bg);
 
   &.has-border {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
@@ -19,6 +17,8 @@ header.site-header {
   .inside {
     display: flex;
     width: 100%;
+    max-width: var(--header-max-width);
+    height: var(--header-height);
     justify-content: space-between;
     align-items: center;
 
@@ -42,7 +42,8 @@ header.site-header {
     display: flex;
     align-items: center;
     a {
-      // Height for this is set by ACF fields displayed as CSS in the <head>.
+      height: var(--header-logo-height);
+
       img {
         height: 100%;
         width: auto;
@@ -84,12 +85,7 @@ header.site-header {
         display: flex;
         align-items: center;
         font-size: 24px;
-        color: red;
         transition: color 150ms ease;
-
-        &:hover {
-          color: blue;
-        }
       }
     }
   }
@@ -124,10 +120,12 @@ nav.header-menu {
         padding: 10px;
         font-size: 20px;
         font-weight: 500;
+        color: var(--header-menu-color);
         transition: color 150ms ease;
 
-        // &:hover {
-        // }
+        &:hover {
+          color: var(--header-menu-hover-color);
+        }
       }
       &:hover {
         ul {
@@ -162,5 +160,26 @@ nav.header-menu {
         }
       }
     }
+  }
+}
+
+// Site Options → Header Position / Overlapping Header (body classes from includes/body-class-mods.php).
+.has-static-header header.site-header {
+  position: static;
+}
+.has-overlapping-header header.site-header {
+  position: absolute;
+  background: transparent;
+  box-shadow: none;
+}
+
+// Header CTA button colors; hover swaps them.
+.button.header-cta {
+  background-color: var(--header-cta-bg);
+  color: var(--header-cta-color);
+
+  &:hover {
+    background-color: var(--header-cta-color);
+    color: var(--header-cta-bg);
   }
 }
