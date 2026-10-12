@@ -70,19 +70,6 @@ function site_acf_init() {
 			'supports'          => array( 'align' => false ),
 		));
 
-		// Asen Icon Grid
-		acf_register_block(array(
-			'name'				=> 'asen-icon-grid',
-			'title'				=> __('Asen Icon Grid'),
-			'description'		=> __('A CTA grid made especially for icons.'),
-			'mode'              => 'auto',
-			'render_callback'	=> 'site_acf_block_callback',
-			'category'			=> 'asen-blocks',
-			'icon'				=> 'grid-view',
-			'keywords'			=> array( 'anchor', 'asen' ),
-			'supports'          => array( 'align' => false ),
-		));
-
 		// Asen Button
 		acf_register_block(array(
 			'name'				=> 'asen-button',
@@ -237,45 +224,6 @@ function site_acf_init() {
 			'category'			=> 'asen-blocks',
 			'icon'				=> 'admin-site-alt3',
 			'keywords'			=> array( 'location', 'map', 'Google Maps', 'address' ),
-			'supports'          => array( 'align' => false, 'anchor' => true ),
-		));
-
-		// Asen Mailing List
-		acf_register_block(array(
-			'name'				=> 'asen-mailing-list',
-			'title'				=> __('Asen Mailing List'),
-			'description'		=> __('Displays mailing list form with heading and background.'),
-			'mode'              => 'edit',
-			'render_callback'	=> 'site_acf_block_callback',
-			'category'			=> 'asen-blocks',
-			'icon'				=> 'email-alt',
-			'keywords'			=> array( 'mailing', 'list', 'subscribe', 'newsletter', 'form' ),
-			'supports'          => array( 'align' => false, 'anchor' => true ),
-		));
-
-		// Asen Special Copy Blurb
-		acf_register_block(array(
-			'name'				=> 'asen-special-copy-blurb',
-			'title'				=> __('Asen Special Copy Blurb'),
-			'description'		=> __('Blurb with styled copy and icon.'),
-			'mode'              => 'edit',
-			'render_callback'	=> 'site_acf_block_callback',
-			'category'			=> 'asen-blocks',
-			'icon'				=> 'editor-paragraph',
-			'keywords'			=> array( 'blurb', 'copy', 'icon' ),
-			'supports'          => array( 'align' => false, 'anchor' => true ),
-		));
-
-		// Asen Form Container
-		acf_register_block(array(
-			'name'				=> 'asen-form-container',
-			'title'				=> __('Asen Form Container'),
-			'description'		=> __('Container for displaying a GF form with heading.'),
-			'mode'              => 'edit',
-			'render_callback'	=> 'site_acf_block_callback',
-			'category'			=> 'asen-blocks',
-			'icon'				=> 'feedback',
-			'keywords'			=> array( 'form', 'container', 'contact', 'heading' ),
 			'supports'          => array( 'align' => false, 'anchor' => true ),
 		));
 

@@ -5,102 +5,62 @@
   padding-left: $site-overall-gutter;
   padding-right: $site-overall-gutter;
   @include site-overall-gutter-small;
-  @include site-vertical-padding-dynamic();
-  @include site-vertical-margin-dynamic();
-
-  &.background-color {
-    background-color: #ebebeb;
-  }
-
-  &.none {
-    margin: 0;
-  }
 
   .inside {
-    width: 100%;
-    max-width: 1000px;
     position: relative;
     z-index: 1;
+    width: 100%;
+    max-width: $site-overall-max-width;
   }
 
   .heading-container {
     text-align: center;
+    margin-bottom: $gap-size-lg;
+
+    i {
+      font-size: 2em;
+      margin-bottom: $gap-size-sm;
+    }
 
     h2 {
-      margin-bottom: 5px;
+      margin-bottom: $gap-size-xs;
     }
+  }
 
-    h2,
-    p {
-      &.uppercase {
-        text-transform: uppercase;
-      }
-      &.lowercase {
-        text-transform: lowercase;
+  // Gravity Form laid out as one row (inline) or stacked.
+  .form-container {
+    .gform_wrapper form {
+      display: flex;
+      gap: $gap-size-sm;
+    }
+    .gform_body {
+      width: 100%;
+    }
+    .gform_footer {
+      margin: 0;
+      padding: 0;
+
+      .button {
+        margin: 0;
+        width: 100%;
       }
     }
-    i {
-      font-size: 45px;
+    &.stacked .gform_wrapper form {
+      flex-direction: column;
+    }
+    &.inline .gform_wrapper form {
+      flex-direction: row;
 
       @media (max-width: $breakpoint-small) {
-        font-size: 35px;
-      }
-    }
-  }
-
-  .form-container {
-    .gform_wrapper {
-      form {
-        display: flex;
-      }
-
-      div.gform_body {
-        width: 100%;
-
-        input.large {
-          height: 60px;
-
-          @media (max-width: $breakpoint-tablet-small) {
-            height: 50px;
-          }
-        }
-      }
-
-      .gform_footer {
-        margin: 0;
-        padding: 0;
-
-        .button {
-          margin: 0;
-          height: 60px;
-          width: 100%;
-
-          @media (max-width: $breakpoint-tablet-small) {
-            height: 50px;
-          }
-        }
-      }
-    }
-
-    &.stacked {
-      .gform_wrapper form {
         flex-direction: column;
-        gap: 0.5rem;
-      }
-    }
-    &.inline {
-      .gform_wrapper form {
-        flex-direction: row;
       }
     }
   }
 
+  // Full-bleed background image or tiled pattern behind the content.
   .background-container {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     z-index: 0;
 
     img {
@@ -108,5 +68,8 @@
       height: 100%;
       object-fit: cover;
     }
+  }
+  &.background-pattern .background-container {
+    background-repeat: repeat;
   }
 }

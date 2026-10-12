@@ -184,6 +184,7 @@ add_filter('acf/load_field/name=single_product_cta_form', 'asen_populate_gform_d
 add_filter('acf/load_field/name=single_service_cta_form', 'asen_populate_gform_dropdown');
 add_filter('acf/load_field/name=single_team_member_cta_form', 'asen_populate_gform_dropdown');
 add_filter('acf/load_field/name=contact_form', 'asen_populate_gform_dropdown');
+add_filter('acf/load_field/name=mailing_list_form', 'asen_populate_gform_dropdown');
 
 function asen_acf_admin_panel_permission($show) {
     $current_user              = wp_get_current_user();

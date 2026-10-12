@@ -1,0 +1,63 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "acf/asen-mailing-list",
+  "title": "Asen - Mailing List",
+  "description": "Mailing list signup with heading and optional background image.",
+  "category": "asen-blocks",
+  "icon": "email-alt",
+  "keywords": [
+    "mailing",
+    "newsletter",
+    "subscribe",
+    "form"
+  ],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "/templates/block/core-blocks/asen-mailing-list.php"
+  },
+  "attributes": {
+    "style": {
+      "type": "object",
+      "default": {
+        "spacing": {
+          "padding": {
+            "top": "var:preset|spacing|lg",
+            "bottom": "var:preset|spacing|lg"
+          }
+        }
+      }
+    }
+  },
+  "supports": {
+    "align": false,
+    "anchor": true,
+    "spacing": {
+      "padding": [
+        "top",
+        "bottom"
+      ],
+      "margin": [
+        "top",
+        "bottom"
+      ]
+    },
+    "color": {
+      "background": true,
+      "text": true,
+      "link": false
+    }
+  },
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "icon_code": "<i class=\"fa-regular fa-envelope\"></i>",
+        "heading": "Stay in the loop",
+        "subheading": "Monthly, no spam.",
+        "button_alignment": "inline",
+        "__container_width": "md"
+      }
+    }
+  }
+}

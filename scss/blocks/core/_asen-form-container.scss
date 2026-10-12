@@ -4,30 +4,22 @@
   padding-left: $site-overall-gutter;
   padding-right: $site-overall-gutter;
   @include site-overall-gutter-small;
-  @include site-vertical-padding-dynamic();
 
   .inside {
-    max-width: $site-overall-max-width;
     width: 100%;
+    max-width: $site-overall-max-width;
   }
 
-  h2,
-  p {
-    &.uppercase {
-      text-transform: uppercase;
-    }
-    &.lowercase {
-      text-transform: lowercase;
-    }
+  .heading-container {
+    margin-bottom: $gap-size-lg;
   }
 
-  .gform_wrapper {
-    .gform_body {
-      input,
-      textarea,
-      select {
-        border: 1px solid $gray-300 !important;
-      }
-    }
+  // Submit button alignment (block option).
+  &.button-align-center .gform_footer .gform_button {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &.button-align-full .gform_footer .gform_button {
+    width: 100%;
   }
 }

@@ -63,14 +63,26 @@ Living document. Check items off as they ship and keep the "Roadmap status" line
 - [ ] `head-mods.php`: emit option values as `:root` custom props (`--header-height`, `--header-max-width`, `--off-canvas-breakpoint`, `--logo-height`…) and move the static rules into SCSS. Guard every `the_field()` echo so empty fields don't print `color: ;`.
 - [x] ~~Verify Kadence color pickers show the theme palette.~~ Kadence retired for new builds.
 
+## Phase 1.5 — CSS cascade layers (done, Oct 2026)
+
+- [x] `scss/index.scss` declares `@layer vendor, reset, base, components, blocks, utilities` and imports each partial group inside its layer; `_custom.scss` stays unlayered so client overrides win.
+- [x] `includes/css-layers.php`: `style_loader_tag` turns third-party `<link>`s into `@import url() layer(vendor)`; inline styles (global-styles presets, per-block core CSS, plugin variables) get wrapped in `@layer vendor{}` right before printing. `main` and `core-block-supports` are excluded (`asen/unlayered_style_handles`).
+- [x] Verified in a browser: core button resolves to the theme's `_buttons.scss`; theme sets `border-radius: 0` explicitly since core's pill radius now lives in `vendor` with nothing above it.
+- [ ] Editor parity for layers: `css/editor.css` is loaded unlayered into the editor iframe, where core's editor CSS is also unlayered — specificity decides there. Revisit if editor previews diverge.
+- Known cosmetic: WP prints the inlined block-library CSS across two `<style>` tags, so the vendor wrap's closing brace lands in a stray second tag (parse error, ignored). Harmless.
+
 ## Phase 2 — ACF blocks → `block.json` + native supports (3–5 days, one block at a time)
+
+**Conversion recipe (settled with the first batch):** `block.json` with `apiVersion` 3, `supports.spacing` (top/bottom padding + margin) + `supports.color`, default `lg` padding in `attributes.style.default`, `example` data; template moves to `templates/block/core-blocks/` and uses `get_block_wrapper_attributes()`, escapes output, drops every `<style>`; field group loses max-width, color pickers, font sizes/weights/transforms, the Margin & Padding clone, gains `block_width` (clone of `__container_width`) and, where there's a text scale, `text_size` (clone of `__font_size`); group title becomes `Core - …`; SCSS moves to `scss/blocks/core/` as structure only; `acf_register_block()` call removed. Keep JS-facing class names.
+
+- [x] Batch 1: special copy blurb, icon grid, form container, mailing list (mailing list now has its own form select, falling back to the Footer Options form; its background color is native).
 
 - [ ] Per block: create `includes/core-blocks/{slug}/block.json` with `apiVersion: 3`, same `name` (`acf/{slug}`), `acf.renderTemplate`, `supports: { color: {background,text}, spacing: {padding,margin}, typography: {fontSize}, align: false, anchor: true }`, `example` for inserter preview, `viewScript`/`style` where the block has assets.
 - [ ] Per template: `get_block_wrapper_attributes()` on the `<section>`; delete the per-instance `<style>`; delete padding/margin/font-size/color fields from the field group. Keep `__container_width`, `__gap`, `__heading_size`, `__border_radius` as ACF selects (no native equivalent).
 - [ ] Keep legacy field keys registered-but-hidden for one release so existing values still render through a fallback; optional one-shot migration mapping old px → nearest spacing preset into the block's `style` attribute.
 - [ ] Remove the matching `acf_register_block()` call from `gutenberg.php` once each block is on `block.json`.
 - [x] `asen-intro-block` converted: `apiVersion` 3, `supports.spacing` (top/bottom padding + margin) and `supports.color`, default `lg` padding in `attributes.style.default`, `get_block_wrapper_attributes()`, token font sizes without the responsive mixins, padding clones removed from its field group, `__spacing` removed from the shared token group.
-- [ ] Next: the 13 inline-style blocks, then the rest.
+- [ ] Next: FAQs, icon + copy grid, location map (plus moving its inline script to a `viewScript`), products showcase, services hub, tabbed content, team hub, testimonial carousel, testimonials; then the blocks without inline styles.
 - [ ] Move the theme's admin `<style>` hacks into editor styles so the iframed (apiVersion 3) editor still looks right.
 
 ## Phase 3 — Client-safe editing (2–3 days)

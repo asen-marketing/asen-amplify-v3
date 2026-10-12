@@ -1,0 +1,60 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "acf/asen-form-container",
+  "title": "Asen - Form Container",
+  "description": "Heading, subheading, and a Gravity Form.",
+  "category": "asen-blocks",
+  "icon": "feedback",
+  "keywords": [
+    "form",
+    "contact",
+    "gravity"
+  ],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "/templates/block/core-blocks/asen-form-container.php"
+  },
+  "attributes": {
+    "style": {
+      "type": "object",
+      "default": {
+        "spacing": {
+          "padding": {
+            "top": "var:preset|spacing|lg",
+            "bottom": "var:preset|spacing|lg"
+          }
+        }
+      }
+    }
+  },
+  "supports": {
+    "align": false,
+    "anchor": true,
+    "spacing": {
+      "padding": [
+        "top",
+        "bottom"
+      ],
+      "margin": [
+        "top",
+        "bottom"
+      ]
+    },
+    "color": {
+      "background": true,
+      "text": true,
+      "link": false
+    }
+  },
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "heading": "Get in touch",
+        "subheading": "We usually reply within a day.",
+        "__container_width": "md"
+      }
+    }
+  }
+}

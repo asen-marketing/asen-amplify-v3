@@ -1,6 +1,6 @@
 {
     "key": "group_682493fe43253",
-    "title": "Gutenberg - Asen Mailing List",
+    "title": "Core - Asen Mailing List",
     "fields": [
         {
             "key": "field_682493fe60d83",
@@ -22,28 +22,31 @@
             "esc_html": 0
         },
         {
-            "key": "field_6824944060d84",
-            "label": "Block Max Width",
-            "name": "block_max_width",
+            "key": "field_69eb4c04a0001",
+            "label": "Block Width",
+            "name": "block_width",
             "aria-label": "",
-            "type": "number",
+            "type": "clone",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "25",
+                "width": "",
                 "class": "",
                 "id": ""
             },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "min": "",
-            "max": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "step": "",
-            "prepend": "",
-            "append": "px"
+            "clone": [
+                "field_69d7d8de453bf"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0,
+            "acfe_seamless_style": 0,
+            "acfe_clone_modal": 0,
+            "acfe_clone_modal_close": 0,
+            "acfe_clone_modal_button": "",
+            "acfe_clone_modal_size": "large"
         },
         {
             "key": "field_6824951460d85",
@@ -132,6 +135,31 @@
             "append": ""
         },
         {
+            "key": "field_69eb4c04a0002",
+            "label": "Form",
+            "name": "mailing_list_form",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Leave empty to use the mailing list form from Footer Options.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "choices": {},
+            "default_value": "",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_6824957360d89",
             "label": "Button Alignment Options",
             "name": "button_alignment",
@@ -184,7 +212,7 @@
             "name": "background_options",
             "aria-label": "",
             "type": "radio",
-            "instructions": "",
+            "instructions": "Background color comes from the block's Color settings.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -194,10 +222,9 @@
             },
             "relevanssi_exclude": 0,
             "choices": {
-                "none": "Transparent",
-                "color": "Color",
+                "none": "None",
                 "image": "Image",
-                "pattern": "Pattern"
+                "pattern": "Tiled pattern"
             },
             "default_value": "none",
             "return_format": "value",
@@ -206,49 +233,6 @@
             "allow_in_bindings": 0,
             "layout": "horizontal",
             "save_other_choice": 0
-        },
-        {
-            "key": "field_682496a760d92",
-            "label": "Background Color",
-            "name": "background_color",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_682495bc60d8a",
-                        "operator": "==",
-                        "value": "color"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_682495bc60d8a",
-                        "operator": "==",
-                        "value": "pattern"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "display": "default",
-            "button_label": "Select Color",
-            "color_picker": 1,
-            "absolute": 0,
-            "input": 1,
-            "allow_null": 1,
-            "theme_colors": 0,
-            "colors": [],
-            "allow_in_bindings": 0
         },
         {
             "key": "field_682496dd60d93",
@@ -294,423 +278,6 @@
             "mime_types": "",
             "allow_in_bindings": 1,
             "preview_size": "medium"
-        },
-        {
-            "key": "field_6824c5f2988f2",
-            "label": "Icon Size",
-            "name": "icon_size",
-            "aria-label": "",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6824952d60d86",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "min": "",
-            "max": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "step": "",
-            "prepend": "",
-            "append": "px"
-        },
-        {
-            "key": "field_6824c60a988f3",
-            "label": "Icon Color",
-            "name": "icon_color",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6824952d60d86",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "display": "default",
-            "button_label": "Select Color",
-            "color_picker": 1,
-            "absolute": 0,
-            "input": 1,
-            "allow_null": 1,
-            "theme_colors": 0,
-            "colors": [],
-            "allow_in_bindings": 0
-        },
-        {
-            "key": "field_6824c4a75dc5a",
-            "label": "Heading Size",
-            "name": "heading_size",
-            "aria-label": "",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "33",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "min": "",
-            "max": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "step": "",
-            "prepend": "",
-            "append": "px"
-        },
-        {
-            "key": "field_6824986a60d98",
-            "label": "Heading Color",
-            "name": "heading_color",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "33",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "display": "default",
-            "button_label": "Select Color",
-            "color_picker": 1,
-            "absolute": 0,
-            "input": 1,
-            "allow_null": 1,
-            "theme_colors": 0,
-            "colors": [],
-            "allow_in_bindings": 0
-        },
-        {
-            "key": "field_6824cf89a0669",
-            "label": "Heading Text Transform",
-            "name": "heading_text_transform",
-            "aria-label": "",
-            "type": "radio",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "33",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "choices": {
-                "0": "None",
-                "uppercase": "Uppercase",
-                "lowercase": "Lowercase"
-            },
-            "default_value": "",
-            "return_format": "value",
-            "allow_null": 0,
-            "other_choice": 0,
-            "allow_in_bindings": 1,
-            "layout": "horizontal",
-            "save_other_choice": 0
-        },
-        {
-            "key": "field_6824c4ce5dc5b",
-            "label": "Subheading Size",
-            "name": "subheading_size",
-            "aria-label": "",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6824955e60d88",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "33",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "min": "",
-            "max": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "step": "",
-            "prepend": "",
-            "append": "px"
-        },
-        {
-            "key": "field_6824987760d99",
-            "label": "Subheading Color",
-            "name": "subheading_color",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6824955e60d88",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "33",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "display": "default",
-            "button_label": "Select Color",
-            "color_picker": 1,
-            "absolute": 0,
-            "input": 1,
-            "allow_null": 1,
-            "theme_colors": 0,
-            "colors": [],
-            "allow_in_bindings": 0
-        },
-        {
-            "key": "field_6824cfc1a066a",
-            "label": "Subheading Text Transform",
-            "name": "subheading_text_transform",
-            "aria-label": "",
-            "type": "radio",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6824955e60d88",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "33",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "choices": {
-                "0": "None",
-                "uppercase": "Uppercase",
-                "lowercase": "Lowercase"
-            },
-            "default_value": "",
-            "return_format": "value",
-            "allow_null": 0,
-            "other_choice": 0,
-            "allow_in_bindings": 1,
-            "layout": "horizontal",
-            "save_other_choice": 0
-        },
-        {
-            "key": "field_6824961f60d8c",
-            "label": "Button Colors",
-            "name": "button_colors",
-            "aria-label": "",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "acfe_repeater_stylised_button": 0,
-            "layout": "table",
-            "pagination": 0,
-            "min": 1,
-            "max": 1,
-            "collapsed": "",
-            "button_label": "Add Row",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_6824966960d8e",
-                    "label": "Text Color",
-                    "name": "text_color",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "relevanssi_exclude": 0,
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string",
-                    "display": "default",
-                    "button_label": "Select Color",
-                    "color_picker": 1,
-                    "absolute": 0,
-                    "input": 1,
-                    "allow_null": 1,
-                    "theme_colors": 0,
-                    "colors": [],
-                    "allow_in_bindings": 0,
-                    "parent_repeater": "field_6824961f60d8c"
-                },
-                {
-                    "key": "field_6824967a60d90",
-                    "label": "Text Hover Color",
-                    "name": "text_hover_color",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "relevanssi_exclude": 0,
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string",
-                    "display": "default",
-                    "button_label": "Select Color",
-                    "color_picker": 1,
-                    "absolute": 0,
-                    "input": 1,
-                    "allow_null": 1,
-                    "theme_colors": 0,
-                    "colors": [],
-                    "allow_in_bindings": 0,
-                    "parent_repeater": "field_6824961f60d8c"
-                },
-                {
-                    "key": "field_6824964d60d8d",
-                    "label": "Background Color",
-                    "name": "background_color",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "relevanssi_exclude": 0,
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string",
-                    "display": "default",
-                    "button_label": "Select Color",
-                    "color_picker": 1,
-                    "absolute": 0,
-                    "input": 1,
-                    "allow_null": 1,
-                    "theme_colors": 0,
-                    "colors": [],
-                    "allow_in_bindings": 0,
-                    "parent_repeater": "field_6824961f60d8c"
-                },
-                {
-                    "key": "field_6824967160d8f",
-                    "label": "Background Hover Color",
-                    "name": "background_hover_color",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "relevanssi_exclude": 0,
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string",
-                    "display": "default",
-                    "button_label": "Select Color",
-                    "color_picker": 1,
-                    "absolute": 0,
-                    "input": 1,
-                    "allow_null": 1,
-                    "theme_colors": 0,
-                    "colors": [],
-                    "allow_in_bindings": 0,
-                    "parent_repeater": "field_6824961f60d8c"
-                }
-            ]
-        },
-        {
-            "key": "field_682f1f53440b1",
-            "label": "Sizing",
-            "name": "sizing",
-            "aria-label": "",
-            "type": "clone",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "clone": [
-                "group_682e37115c332"
-            ],
-            "display": "seamless",
-            "layout": "block",
-            "prefix_label": 0,
-            "prefix_name": 0,
-            "acfe_seamless_style": 0,
-            "acfe_clone_modal": 0,
-            "acfe_clone_modal_close": 0,
-            "acfe_clone_modal_button": "",
-            "acfe_clone_modal_size": "large"
         }
     ],
     "location": [
@@ -738,7 +305,7 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1747947038,
+    "modified": 1791830000,
     "acfe_categories": {
         "block-fields": "Asen Core Blocks"
     }

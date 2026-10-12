@@ -1,70 +1,52 @@
 .asen-special-copy-blurb {
-  position: relative;
   display: flex;
   justify-content: center;
   padding-left: $site-overall-gutter;
   padding-right: $site-overall-gutter;
-  @include site-vertical-padding-dynamic();
   @include site-overall-gutter-small;
 
   &.align-center {
     text-align: center;
+
+    .link-container {
+      justify-content: center;
+    }
   }
 
   .inside {
     width: 100%;
     max-width: $site-overall-max-width;
-    position: relative;
   }
 
   .icon-container {
-    padding-bottom: 1.5rem;
-
-    i {
-      color: #e81771;
-      font-size: 50px;
-
-      @media (max-width: $breakpoint-small) {
-        font-size: 40px;
-      }
-    }
-  }
-
-  .blurb-container {
-    p {
-      color: #313d47;
-      font-size: 40px;
-
-      @media (max-width: $breakpoint-tablet-large) {
-        font-size: 32px;
-      }
-      @media (max-width: $breakpoint-small) {
-        font-size: 27px;
-      }
-    }
+    margin-bottom: $gap-size-md;
   }
 
   .link-container {
-    a {
-      color: #e81771;
-      font-size: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: $gap-size-sm;
 
-      @media (max-width: $breakpoint-small) {
-        font-size: 22px;
-      }
-
-      &.button {
-        color: #fff;
-
-        @media (max-width: $breakpoint-small) {
-          width: 100%;
-          margin-bottom: 0.5rem;
-        }
-      }
-
-      i {
-        padding-left: 8px;
-      }
+    i {
+      margin-left: 0.5em;
     }
+  }
+
+  // Text scale (block's Text Size select). Presets are fluid, so no responsive mixins.
+  &--text-sm {
+    .blurb { font-size: $font-size-md; }
+    .icon-container { font-size: $font-size-xl; }
+  }
+  &--text-md {
+    .blurb { font-size: $font-size-lg; }
+    .icon-container { font-size: $font-size-xxl; }
+  }
+  &--text-lg {
+    .blurb { font-size: $font-size-xl; }
+    .icon-container { font-size: $heading-h5; }
+  }
+  &--text-xl {
+    .blurb { font-size: $font-size-xxl; }
+    .icon-container { font-size: $heading-h4; }
   }
 }

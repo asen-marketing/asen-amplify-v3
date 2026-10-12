@@ -1,48 +1,47 @@
 .asen-icon-grid {
-  padding: 8% $site-overall-gutter 3%;
+  display: flex;
+  justify-content: center;
+  padding-left: $site-overall-gutter;
+  padding-right: $site-overall-gutter;
   @include site-overall-gutter-small;
 
   .inside {
-    max-width: 1600px;
-    margin: 0 auto;
-    @media (max-width: $breakpoint-tablet-large) {
-      max-width: 800px;
-    }
+    width: 100%;
+    max-width: $site-overall-max-width;
   }
+
   .items {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: $gap-size-xl $gap-size-md;
   }
+
   .item {
-    width: 18%;
-    margin: 0 1% 8%;
-    position: relative;
+    width: calc(20% - #{$gap-size-md});
 
     @media (max-width: $breakpoint-laptop-small) {
-      width: 23%;
+      width: calc(25% - #{$gap-size-md});
     }
     @media (max-width: $breakpoint-tablet-large) {
-      width: 48%;
+      width: calc(50% - #{$gap-size-md});
     }
     @media (max-width: $breakpoint-small) {
       width: 100%;
-      margin: 0 0 8%;
     }
 
-    // This has to be set for the item and <a> if it exists.
-    a,
-    & {
+    // The item and its link (when present) share the same column layout.
+    &,
+    > a {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
       text-align: center;
+      gap: $gap-size-sm;
     }
 
-    img {
-      margin-bottom: 20px;
+    .text {
+      margin-bottom: 0;
     }
   }
 }
