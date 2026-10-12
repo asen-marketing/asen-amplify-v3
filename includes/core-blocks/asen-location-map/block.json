@@ -1,0 +1,64 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "acf/asen-location-map",
+  "title": "Asen - Location Map",
+  "description": "OpenStreetMap of an address with a marker, popup, and directions link.",
+  "category": "asen-blocks",
+  "icon": "admin-site-alt3",
+  "keywords": [
+    "map",
+    "location",
+    "address",
+    "directions"
+  ],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "/templates/block/core-blocks/asen-location-map.php"
+  },
+  "attributes": {
+    "style": {
+      "type": "object",
+      "default": {
+        "spacing": {
+          "padding": {
+            "top": "var:preset|spacing|lg",
+            "bottom": "var:preset|spacing|lg"
+          }
+        }
+      }
+    }
+  },
+  "supports": {
+    "align": false,
+    "anchor": true,
+    "spacing": {
+      "padding": [
+        "top",
+        "bottom"
+      ],
+      "margin": [
+        "top",
+        "bottom"
+      ]
+    },
+    "color": {
+      "background": true,
+      "text": true,
+      "link": false
+    }
+  },
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "heading": "Find us",
+        "address": "1600 Pennsylvania Avenue NW, Washington, DC",
+        "popup_content": "Head office",
+        "__container_width": "xxl"
+      }
+    }
+  },
+  "viewScript": "file:./view.js",
+  "viewStyle": "leaflet"
+}

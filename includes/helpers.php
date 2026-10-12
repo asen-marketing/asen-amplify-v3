@@ -142,3 +142,25 @@ function twentytwenty_unique_id( $prefix = '' ) {
 	}
 	return $prefix . (string) ++$id_counter;
 }
+
+// Geocode an address with Nominatim once and cache it (30 days; a miss is cached for a day).
+function asen_geocode_address( $address ) {
+    $key    = 'asen_geocode_' . md5( $address );
+    $cached = get_transient( $key );
+    if ( false !== $cached ) {
+        return $cached ?: null;
+    }
+    $response = wp_remote_get( 'https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' . rawurlencode( $address ), array(
+        'timeout'    => 8,
+        'user-agent' => 'AsenAmplify/3 (' . home_url() . ')',
+    ) );
+    $hit = is_wp_error( $response ) ? null : ( json_decode( wp_remote_retrieve_body( $response ), true )[0] ?? null );
+    if ( empty( $hit['lat'] ) ) {
+        set_transient( $key, 0, DAY_IN_SECONDS );
+        return null;
+    }
+    $coords = array( 'lat' => (float) $hit['lat'], 'lon' => (float) $hit['lon'] );
+    set_transient( $key, $coords, 30 * DAY_IN_SECONDS );
+    return $coords;
+}
+

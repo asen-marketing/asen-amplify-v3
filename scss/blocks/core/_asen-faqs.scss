@@ -1,0 +1,81 @@
+.asen-faqs {
+  display: flex;
+  justify-content: center;
+  padding-left: $site-overall-gutter;
+  padding-right: $site-overall-gutter;
+  @include site-overall-gutter-small;
+
+  .inside {
+    width: 100%;
+    max-width: $site-overall-max-width;
+  }
+
+  .faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-size-sm;
+  }
+
+  // The question is a real button, reset to text.
+  .question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $gap-size-sm;
+    width: 100%;
+    padding: $gap-size-sm 0;
+    background: none;
+    border: 0;
+    font: inherit;
+    font-size: $font-size-md; // Same scale as the answer copy.
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+
+    &::after {
+      font: var(--fa-font-solid);
+      content: "\f067";
+      flex-shrink: 0;
+    }
+    &[aria-expanded="true"]::after {
+      content: "\f068";
+    }
+  }
+
+  // Answer slides open via grid rows.
+  .answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 300ms ease;
+
+    .answer-inner {
+      overflow: hidden;
+    }
+  }
+  .faq.is-open .answer {
+    grid-template-rows: 1fr;
+  }
+  .answer-inner > :last-child {
+    margin-bottom: $gap-size-sm;
+  }
+
+  .disclaimer {
+    margin-top: $gap-size-xl;
+    text-align: center;
+  }
+
+  &.split-layout {
+    .inside {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: $gap-size-xl;
+
+      @media (max-width: $breakpoint-screen-small) {
+        grid-template-columns: 1fr;
+      }
+    }
+    .disclaimer {
+      text-align: left;
+    }
+  }
+}

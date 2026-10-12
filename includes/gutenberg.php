@@ -134,50 +134,6 @@ function site_acf_init() {
 			'supports'          => array( 'align' => false, 'anchor' => true ),
 		));
 
-		// Asen Icon + Copy Grid
-		acf_register_block(array(
-			'name'				=> 'asen-icon-copy-grid',
-			'title'				=> __('Asen Icon + Copy Grid'),
-			'description'		=> __('A CTA grid made up of icons with headings and copy.'),
-			'mode'              => 'edit',
-			'render_callback'	=> 'site_acf_block_callback',
-			'category'			=> 'asen-blocks',
-			'icon'				=> 'screenoptions',
-			'keywords'			=> array( 'icon', 'asen', 'copy', 'grid', 'cta' ),
-			'supports'          => array( 'align' => false, 'anchor' => true ),
-		));
-
-		// Asen FAQs
-		acf_register_block(array(
-			'name'				=> 'asen-faqs',
-			'title'				=> __('Asen FAQs'),
-			'description'		=> __('Displays dropdowns for FAQs based on selected categories.'),
-			'mode'              => 'edit',
-			'render_callback'	=> 'site_acf_block_callback',
-			'category'			=> 'asen-blocks',
-			'icon'				=> 'info-outline',
-			'keywords'			=> array( 'frequently', 'asked', 'question', 'answer', 'dropwdown' ),
-			'supports'          => array( 'align' => false, 'anchor' => true ),
-		));
-		
-		// Asen Team Hub
-		acf_register_block(array(
-			'name'				=> 'asen-team-hub',
-			'title'				=> __('Asen Team Hub'),
-			'description'		=> __('Displays team CPT as a grid or carousel.'),
-			'mode'              => 'edit',
-			'enqueue_assets' => function() {
-				if ( !is_admin() ) {
-					asen_enqueue_glide_js();
-				}
-			},
-			'render_callback'	=> 'site_acf_block_callback',
-			'category'			=> 'asen-blocks',
-			'icon'				=> 'admin-users',
-			'keywords'			=> array( 'team', 'grid', 'carousel', 'hub', 'member' ),
-			'supports'          => array( 'align' => false, 'anchor' => true ),
-		));
-
 		// Asen Services Hub
 		acf_register_block(array(
 			'name'				=> 'asen-services-hub',
@@ -214,19 +170,6 @@ function site_acf_init() {
 			'supports'          => array( 'align' => false, 'anchor' => true ),
 		));
 
-		// Asen Location Map
-		acf_register_block(array(
-			'name'				=> 'asen-location-map',
-			'title'				=> __('Asen Location Map'),
-			'description'		=> __('Google Map block for marking and linking a location.'),
-			'mode'              => 'edit',
-			'render_callback'	=> 'site_acf_block_callback',
-			'category'			=> 'asen-blocks',
-			'icon'				=> 'admin-site-alt3',
-			'keywords'			=> array( 'location', 'map', 'Google Maps', 'address' ),
-			'supports'          => array( 'align' => false, 'anchor' => true ),
-		));
-
 		// Asen Products Showcase
 		acf_register_block(array(
 			'name'				=> 'asen-products-showcase',
@@ -242,19 +185,6 @@ function site_acf_init() {
 			'category'			=> 'asen-blocks',
 			'icon'				=> 'products',
 			'keywords'			=> array( 'products', 'showcase', 'hub' ),
-			'supports'          => array( 'align' => false, 'anchor' => true ),
-		));
-
-		// Asen Tabbed Content
-		acf_register_block(array(
-			'name'				=> 'asen-tabbed-content',
-			'title'				=> __('Asen Tabbed Content'),
-			'description'		=> __('Tabbed content selector'),
-			'mode'              => 'edit',
-			'render_callback'	=> 'site_acf_block_callback',
-			'category'			=> 'asen-blocks',
-			'icon'				=> 'table-row-after',
-			'keywords'			=> array( 'asen', 'tabbed', 'content' ),
 			'supports'          => array( 'align' => false, 'anchor' => true ),
 		));
 

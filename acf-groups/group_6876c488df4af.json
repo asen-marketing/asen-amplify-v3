@@ -1,6 +1,6 @@
 {
     "key": "group_6876c488df4af",
-    "title": "Gutenberg - Asen Tabbed Content",
+    "title": "Core - Asen Tabbed Content",
     "fields": [
         {
             "key": "field_6876c48915554",
@@ -22,11 +22,11 @@
             "esc_html": 0
         },
         {
-            "key": "field_68d4268ebdc3d",
-            "label": "Block Max Width",
-            "name": "block_max_width",
+            "key": "field_69eb5d03a0001",
+            "label": "Block Width",
+            "name": "block_width",
             "aria-label": "",
-            "type": "number",
+            "type": "clone",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -35,15 +35,18 @@
                 "class": "",
                 "id": ""
             },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "min": "",
-            "max": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "step": "",
-            "prepend": "",
-            "append": "px"
+            "clone": [
+                "field_69d7d8de453bf"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0,
+            "acfe_seamless_style": 0,
+            "acfe_clone_modal": 0,
+            "acfe_clone_modal_close": 0,
+            "acfe_clone_modal_button": "",
+            "acfe_clone_modal_size": "large"
         },
         {
             "key": "field_68d426a8bdc3e",
@@ -201,325 +204,6 @@
                     "parent_repeater": "field_68825df2063cb"
                 }
             ]
-        },
-        {
-            "key": "field_68d426c2bdc3f",
-            "label": "Styling",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "placement": "top",
-            "endpoint": 0,
-            "no_preference": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_68d438b65aaf3",
-            "label": "Tab Button Background",
-            "name": "tab_button_background",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_68d43d900211a",
-                        "operator": "==",
-                        "value": "buttons"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "display": "default",
-            "button_label": "Select Color",
-            "color_picker": 1,
-            "absolute": 0,
-            "input": 1,
-            "allow_null": 1,
-            "theme_colors": 0,
-            "colors": [],
-            "allow_in_bindings": 0
-        },
-        {
-            "key": "field_68d439085aaf4",
-            "label": "Tab Button Text Color",
-            "name": "tab_button_text_color",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_68d43d900211a",
-                        "operator": "==",
-                        "value": "buttons"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "display": "default",
-            "button_label": "Select Color",
-            "color_picker": 1,
-            "absolute": 0,
-            "input": 1,
-            "allow_null": 1,
-            "theme_colors": 0,
-            "colors": [],
-            "allow_in_bindings": 0
-        },
-        {
-            "key": "field_68d439375aaf5",
-            "label": "Tab Button Active Background",
-            "name": "tab_button_active_background",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_68d43d900211a",
-                        "operator": "==",
-                        "value": "buttons"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "display": "default",
-            "button_label": "Select Color",
-            "color_picker": 1,
-            "absolute": 0,
-            "input": 1,
-            "allow_null": 1,
-            "theme_colors": 0,
-            "colors": [],
-            "allow_in_bindings": 0
-        },
-        {
-            "key": "field_68d439525aaf6",
-            "label": "Tab Button Active Text Color",
-            "name": "tab_button_active_text_color",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_68d43d900211a",
-                        "operator": "==",
-                        "value": "buttons"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "display": "default",
-            "button_label": "Select Color",
-            "color_picker": 1,
-            "absolute": 0,
-            "input": 1,
-            "allow_null": 1,
-            "theme_colors": 0,
-            "colors": [],
-            "allow_in_bindings": 0
-        },
-        {
-            "key": "field_68d4447638257",
-            "label": "Dropdown Background Color",
-            "name": "dropdown_background_color",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_68d43d900211a",
-                        "operator": "==",
-                        "value": "dropdown"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "display": "default",
-            "button_label": "Select Color",
-            "color_picker": 1,
-            "absolute": 0,
-            "input": 1,
-            "allow_null": 1,
-            "theme_colors": 0,
-            "colors": [],
-            "allow_in_bindings": 0
-        },
-        {
-            "key": "field_68d4448d38258",
-            "label": "Dropdown Text Color",
-            "name": "dropdown_text_color",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_68d43d900211a",
-                        "operator": "==",
-                        "value": "dropdown"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "display": "default",
-            "button_label": "Select Color",
-            "color_picker": 1,
-            "absolute": 0,
-            "input": 1,
-            "allow_null": 1,
-            "theme_colors": 0,
-            "colors": [],
-            "allow_in_bindings": 0
-        },
-        {
-            "key": "field_68d444c238259",
-            "label": "Tab Content Background",
-            "name": "tab_content_background",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "display": "default",
-            "button_label": "Select Color",
-            "color_picker": 1,
-            "absolute": 0,
-            "input": 1,
-            "allow_null": 1,
-            "theme_colors": 0,
-            "colors": [],
-            "allow_in_bindings": 0
-        },
-        {
-            "key": "field_68d444dc3825a",
-            "label": "Tab Content Text Color",
-            "name": "tab_content_text_color",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "display": "default",
-            "button_label": "Select Color",
-            "color_picker": 1,
-            "absolute": 0,
-            "input": 1,
-            "allow_null": 1,
-            "theme_colors": 0,
-            "colors": [],
-            "allow_in_bindings": 0
-        },
-        {
-            "key": "field_68d42668bdc3c",
-            "label": "Sizing",
-            "name": "sizing",
-            "aria-label": "",
-            "type": "clone",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "clone": [
-                "group_682e37115c332"
-            ],
-            "display": "seamless",
-            "layout": "block",
-            "prefix_label": 0,
-            "prefix_name": 0,
-            "acfe_seamless_style": 0,
-            "acfe_clone_modal": 0,
-            "acfe_clone_modal_close": 0,
-            "acfe_clone_modal_button": "",
-            "acfe_clone_modal_size": "large"
         }
     ],
     "location": [
@@ -547,7 +231,7 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1758745523,
+    "modified": 1791840000,
     "acfe_categories": {
         "block-fields": "Asen Core Blocks"
     }

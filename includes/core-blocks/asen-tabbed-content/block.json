@@ -1,0 +1,65 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "acf/asen-tabbed-content",
+  "title": "Asen - Tabbed Content",
+  "description": "Content panels switched by buttons or a dropdown; tabs are deep-linkable with ?tab=.",
+  "category": "asen-blocks",
+  "icon": "table-row-after",
+  "keywords": [
+    "tabs",
+    "tabbed",
+    "panels"
+  ],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "/templates/block/core-blocks/asen-tabbed-content.php"
+  },
+  "attributes": {
+    "style": {
+      "type": "object",
+      "default": {
+        "spacing": {
+          "padding": {
+            "top": "var:preset|spacing|lg",
+            "bottom": "var:preset|spacing|lg"
+          }
+        }
+      }
+    }
+  },
+  "supports": {
+    "align": false,
+    "anchor": true,
+    "spacing": {
+      "padding": [
+        "top",
+        "bottom"
+      ],
+      "margin": [
+        "top",
+        "bottom"
+      ]
+    },
+    "color": {
+      "background": true,
+      "text": true,
+      "link": false
+    }
+  },
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "tab_selector_options": "buttons",
+        "tabs": "2",
+        "tabs_0_tab_name": "Overview",
+        "tabs_0_tab_content": "<p>First panel.</p>",
+        "tabs_1_tab_name": "Details",
+        "tabs_1_tab_content": "<p>Second panel.</p>",
+        "__container_width": "sm"
+      }
+    }
+  },
+  "viewScript": "file:./view.js"
+}

@@ -1,6 +1,6 @@
 {
     "key": "group_682244552a3fe",
-    "title": "Gutenberg - Asen Location Map",
+    "title": "Core - Asen Location Map",
     "fields": [
         {
             "key": "field_682245001ba40",
@@ -22,36 +22,31 @@
             "esc_html": 0
         },
         {
-            "key": "field_6823b0595f9d3",
-            "label": "Block Max Width",
-            "name": "block_max_width",
+            "key": "field_69eb5d04a0001",
+            "label": "Block Width",
+            "name": "block_width",
             "aria-label": "",
-            "type": "number",
+            "type": "clone",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_68237fa60c806",
-                        "operator": "==",
-                        "value": "0"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
-                "width": "25",
+                "width": "",
                 "class": "",
                 "id": ""
             },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "min": "",
-            "max": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "step": "",
-            "prepend": "",
-            "append": "px"
+            "clone": [
+                "field_69d7d8de453bf"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0,
+            "acfe_seamless_style": 0,
+            "acfe_clone_modal": 0,
+            "acfe_clone_modal_close": 0,
+            "acfe_clone_modal_button": "",
+            "acfe_clone_modal_size": "large"
         },
         {
             "key": "field_68237fe8b618a",
@@ -72,63 +67,6 @@
             "endpoint": 0,
             "no_preference": 0,
             "selected": 0
-        },
-        {
-            "key": "field_6823853fb1de7",
-            "label": "Map Type",
-            "name": "google_maps",
-            "aria-label": "",
-            "type": "radio",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "choices": [
-                "OpenStreetMap",
-                "Google Maps"
-            ],
-            "default_value": 0,
-            "return_format": "value",
-            "allow_null": 0,
-            "other_choice": 0,
-            "allow_in_bindings": 0,
-            "layout": "horizontal",
-            "save_other_choice": 0
-        },
-        {
-            "key": "field_682385a2b1de8",
-            "label": "Google Maps API Key",
-            "name": "gm_api_key",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6823853fb1de7",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
         },
         {
             "key": "field_68237fa60c806",
@@ -244,7 +182,7 @@
         },
         {
             "key": "field_68237ffab618b",
-            "label": "Styling",
+            "label": "Marker",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -291,170 +229,6 @@
             "mime_types": "",
             "allow_in_bindings": 0,
             "preview_size": "medium"
-        },
-        {
-            "key": "field_682379f2ec58c",
-            "label": "Heading Font Size",
-            "name": "heading_font_size",
-            "aria-label": "",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "33",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": 75,
-            "min": "",
-            "max": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "step": "",
-            "prepend": "",
-            "append": "px"
-        },
-        {
-            "key": "field_6823794efe994",
-            "label": "Heading Text Transform",
-            "name": "heading_text_transform",
-            "aria-label": "",
-            "type": "radio",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "33",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "choices": {
-                "none": "None",
-                "uppercase": "Uppercase",
-                "lowercase": "Lowercase"
-            },
-            "default_value": "none",
-            "return_format": "value",
-            "allow_null": 0,
-            "other_choice": 0,
-            "allow_in_bindings": 0,
-            "layout": "horizontal",
-            "save_other_choice": 0
-        },
-        {
-            "key": "field_6823793dfe993",
-            "label": "Heading Color",
-            "name": "heading_color",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "33",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "display": "default",
-            "button_label": "Select Color",
-            "color_picker": 1,
-            "absolute": 0,
-            "input": 1,
-            "allow_null": 1,
-            "theme_colors": 0,
-            "colors": [],
-            "allow_in_bindings": 0
-        },
-        {
-            "key": "field_68238afac75b7",
-            "label": "'Get Directions' Link Color",
-            "name": "link_color",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "display": "default",
-            "button_label": "Select Color",
-            "color_picker": 1,
-            "absolute": 0,
-            "input": 1,
-            "allow_null": 1,
-            "theme_colors": 0,
-            "colors": [],
-            "allow_in_bindings": 0
-        },
-        {
-            "key": "field_68238ba75f488",
-            "label": "'Get Directions' Link Hover Color",
-            "name": "link_hover_color",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "display": "default",
-            "button_label": "Select Color",
-            "color_picker": 1,
-            "absolute": 0,
-            "input": 1,
-            "allow_null": 1,
-            "theme_colors": 0,
-            "colors": [],
-            "allow_in_bindings": 0
-        },
-        {
-            "key": "field_682f1ec669787",
-            "label": "Sizing",
-            "name": "sizing",
-            "aria-label": "",
-            "type": "clone",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "clone": [
-                "group_682e37115c332"
-            ],
-            "display": "seamless",
-            "layout": "block",
-            "prefix_label": 0,
-            "prefix_name": 0,
-            "acfe_seamless_style": 0,
-            "acfe_clone_modal": 0,
-            "acfe_clone_modal_close": 0,
-            "acfe_clone_modal_button": "",
-            "acfe_clone_modal_size": "large"
         }
     ],
     "location": [
@@ -482,7 +256,7 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1747947025,
+    "modified": 1791840000,
     "acfe_categories": {
         "block-fields": "Asen Core Blocks"
     }

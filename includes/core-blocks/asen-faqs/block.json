@@ -1,0 +1,63 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "acf/asen-faqs",
+  "title": "Asen - FAQs",
+  "description": "Accordion of FAQ posts, hand-picked or by category, with an optional side column.",
+  "category": "asen-blocks",
+  "icon": "info-outline",
+  "keywords": [
+    "faq",
+    "accordion",
+    "questions"
+  ],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "/templates/block/core-blocks/asen-faqs.php"
+  },
+  "attributes": {
+    "style": {
+      "type": "object",
+      "default": {
+        "spacing": {
+          "padding": {
+            "top": "var:preset|spacing|lg",
+            "bottom": "var:preset|spacing|lg"
+          }
+        }
+      }
+    }
+  },
+  "supports": {
+    "align": false,
+    "anchor": true,
+    "spacing": {
+      "padding": [
+        "top",
+        "bottom"
+      ],
+      "margin": [
+        "top",
+        "bottom"
+      ]
+    },
+    "color": {
+      "background": true,
+      "text": true,
+      "link": false
+    }
+  },
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "faq_categories": "1",
+        "split_layout": "1",
+        "heading": "Common questions",
+        "copy": "Everything people ask us before they get in touch.",
+        "__container_width": "lg"
+      }
+    }
+  },
+  "viewScript": "file:./view.js"
+}

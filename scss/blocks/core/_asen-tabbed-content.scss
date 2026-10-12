@@ -1,0 +1,43 @@
+.asen-tabbed-content {
+  display: flex;
+  justify-content: center;
+  padding-left: $site-overall-gutter;
+  padding-right: $site-overall-gutter;
+  @include site-overall-gutter-small;
+
+  .inside {
+    width: 100%;
+    max-width: $site-overall-max-width;
+  }
+
+  .tab-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $gap-size-xs;
+
+    .tab {
+      flex: 1 1 auto;
+    }
+    .tab[aria-selected="true"] {
+      background-color: $gray-700;
+    }
+
+    @media (max-width: $breakpoint-small) {
+      flex-direction: column;
+    }
+  }
+
+  .tab-dropdown {
+    display: flex;
+    justify-content: center;
+  }
+
+  .tab-panels {
+    margin-top: $gap-size-lg;
+  }
+
+  .tab-panel[hidden] {
+    display: none;
+  }
+}

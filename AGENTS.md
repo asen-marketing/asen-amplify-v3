@@ -30,7 +30,7 @@ includes/
   acf-customizations.php   ACF JSON paths, options pages, "asen_domain" location rule, GF form dropdown populator
   head-mods.php            <head> output: font snippets, script snippets, inline CSS generated from option fields
   backend-mods.php         admin menu curation, editor hiding for custom templates, admin CSS
-  helpers.php              asen_acf_image_url(), asen_clean_phone_number(), primary-category helpers
+  helpers.php              asen_acf_image_url(), asen_clean_phone_number(), asen_geocode_address() (cached Nominatim), primary-category helpers
   menus.php, footer-mods.php, woocommerce.php, yoast.php, body-class-mods.php, cmp-gravity-patch.php
   css/backend-styles.css   admin-only styles
 templates/
@@ -97,7 +97,8 @@ $classes = [ 'asen-example', 'asen-example-' . $block['id'], $block['className']
 - `<section>` wrapper with the slug as the base class; `.inside` is the max-width container. Horizontal gutters come from `$site-overall-gutter` + `@include site-overall-gutter-small`; the width comes from `block-width-{sm|md|lg|xl|xxl|full}` (`_block-globals.scss`, driven by the `__container_width` select) — the template always emits one, with a sensible fallback (`?: 'lg'`).
 - **Block partials are structure only.** Layout, gaps, widths, alignment, positioning, token-driven modifiers (text scale, container width). No colors, backgrounds, font weights/styles/families, text transforms, line heights, borders, shadows, hover decoration, or hard-coded pixel sizes by default — type comes from base typography and the tokens, color from native supports or modifier classes, everything else from the child theme. Flat selectors (`.asen-x .item`, never `section.asen-x .inside .items .item a`). If a block needs an opinion to function (an overlay's position, a carousel slide width, an icon at `2em`), that's structure; if it's taste, it's out.
 - **Padding, margin, background and text color are native block supports** (`block.json` `supports.spacing` / `supports.color`), rendered by `get_block_wrapper_attributes()` on the `<section>`; the editor offers the theme.json presets. Set sensible defaults in `block.json` `attributes.style.default`. The **"Reusable - Asen Tokens"** clone group covers what core has no preset control for: `__container_width`, `__gap`, `__heading_size`, `__line_height`, `__border_radius`, and `__font_size` (a text *scale* for multi-element blocks). Clone seamlessly; read as `get_field('text_spacing')['__gap']`. Never add pixel inputs or per-instance `<style>` blocks. `asen-intro-block` is the reference implementation.
-- **New blocks are registered with `block.json`** in `includes/core-blocks/{slug}/`, not with `acf_register_block()` in `gutenberg.php`. Set `acf.renderTemplate`, `category`, `supports.anchor: true`, `supports.align: false`. Per-block assets go through `enqueue_assets` (legacy) or `block.json` `viewScript`/`style`.
+- **New blocks are registered with `block.json`** in `includes/core-blocks/{slug}/`, not with `acf_register_block()` in `gutenberg.php`. Set `acf.renderTemplate`, `category`, `supports.anchor: true`, `supports.align: false`.
+- **Block JS is a `viewScript`:** `includes/core-blocks/{slug}/view.js` (vanilla, no jQuery, scoped with `document.querySelectorAll('.{slug}')`) plus `view.asset.php` for dependencies and version. WordPress enqueues it only when the block renders, front end only. Third-party libraries are *registered* in `theme.php` (`asen_register_block_dependencies()`) and referenced as dependencies / `viewStyle` handles — never enqueued globally. No inline `<script>` in templates; pass data to JS through `data-` attributes. Anything that needs the network at render time (geocoding) happens in PHP with a transient, not in every visitor's browser.
 - Block names are `acf/{slug}`; the render callback resolves `templates/block/{slug}.php`. Never rename a block slug that has shipped — content in client databases references it.
 - Adding a field to a shipped block: ACF does **not** apply `default_value` to keys missing from a block's saved data, so existing instances read the new field as `null`. Make the absent state the old behavior — name toggles `hide_x` (default off) rather than `show_x` (default on), and `?:` a sensible default for selects.
 - If a block's layout is reused by a page template, keep the block template thin and put the markup in a shared template part called with `get_template_part( 'templates/…', null, $args )`. See the Ewart footer CTA pattern.
@@ -166,9 +167,9 @@ Decided Oct 2026: client sites move to a **child theme** once the Phase 5 scaffo
 
 ## Known issues (fix opportunistically, track in MODERNIZATION.md)
 
-- 9 of 28 block templates emit per-instance `<style>` tags with pixel values from "Reusable - Margin & Padding" / "Reusable - Spacing" fields. Legacy; Phase 2 replaces them with native block supports (see `asen-intro-block`).
+- 5 of 28 block templates emit per-instance `<style>` tags with pixel values from "Reusable - Margin & Padding" / "Reusable - Spacing" fields. Legacy; Phase 2 replaces them with native block supports (see `asen-intro-block`).
 - `head-mods.php` still prints option values as a large inline `<style>`; Phase 1 leftover (→ `:root` custom props with token fallbacks).
-- Leaflet and the YouTube API are enqueued only when `has_block()` finds their block in the post content; a block rendered from a page template (not post content) won't trigger it.
+- The YouTube API is enqueued only when `has_block()` finds the Video Popup block in post content (a block rendered from a page template won't trigger it); goes away when that block converts to a `viewScript`.
 - Both Glide and Splide ship. New work uses Splide.
 - Template output is largely unescaped.
 
@@ -178,7 +179,7 @@ See [MODERNIZATION.md](MODERNIZATION.md). Update this line as phases land.
 
 - Phase 0 (hygiene + deprecated field removal): done
 - Phase 1 (`theme.json` tokens, editor styles, head-mods → custom props): done except `head-mods.php` → custom props
-- Phase 2 (ACF blocks → `block.json` + native supports, structure-only SCSS): 5/28 — intro block, special copy blurb, icon grid, form container, mailing list
+- Phase 2 (ACF blocks → `block.json` + native supports, structure-only SCSS): 9/28 — intro block, special copy blurb, icon grid, form container, mailing list, icon + copy grid, FAQs, tabbed content, location map
 - Phase 3 (client-safe editing: role-gated inserter, patterns, section styles, bindings): not started
 - Phase 4 (block library rationalization): in progress — Copy + Image retired behind a pattern; Featured Blogs reworked (3 recent or hand-picked posts, optional CTA tile)
 - Phase 5 (distribution model): decided — parent/child with a self-updating parent via GitHub releases; not built yet

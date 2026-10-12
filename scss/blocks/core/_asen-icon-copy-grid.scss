@@ -1,0 +1,74 @@
+.asen-icon-copy-grid {
+  display: flex;
+  justify-content: center;
+  padding-left: $site-overall-gutter;
+  padding-right: $site-overall-gutter;
+  @include site-overall-gutter-small;
+
+  .inside {
+    width: 100%;
+    max-width: $site-overall-max-width;
+  }
+
+  .items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $gap-size-xl $gap-size-lg;
+
+    @media (max-width: $breakpoint-tablet-large) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: $breakpoint-tablet-small) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-size-md;
+  }
+
+  .icon {
+    font-size: $heading-h5;
+  }
+
+  .copy {
+    h4 {
+      margin-bottom: $gap-size-xs;
+    }
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  // Links sit at the bottom of equal-height items.
+  .asen-text-link,
+  .button {
+    margin-top: auto;
+    align-self: flex-start;
+
+    i {
+      margin-left: 0.4em;
+    }
+  }
+
+  &.align-center {
+    text-align: center;
+
+    .item {
+      align-items: center;
+    }
+    .asen-text-link,
+    .button {
+      align-self: center;
+    }
+  }
+
+  // Heading scale (block's Heading Size select).
+  @each $name, $size in $heading-scale {
+    &--heading-#{$name} .copy h4 {
+      font-size: $size;
+    }
+  }
+}

@@ -13,17 +13,16 @@ function site_enqueue_theme_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'site_enqueue_theme_scripts' );
 
-// Third-party libraries only on pages that use the block needing them.
+// Leaflet is registered (not enqueued): the Location Map block pulls it in through its viewScript/viewStyle only when rendered.
+function asen_register_block_dependencies() {
+    wp_register_style( 'leaflet', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', array(), '1.9.4' );
+    wp_register_script( 'leaflet', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js', array(), '1.9.4', true );
+}
+add_action( 'wp_enqueue_scripts', 'asen_register_block_dependencies', 5 );
+
+// Until the Video Popup block converts, the YouTube API loads when its block is in the content.
 function asen_enqueue_block_dependencies() {
-    if ( ! is_singular() ) {
-        return;
-    }
-    if ( has_block( 'acf/asen-location-map' ) ) {
-        // Head, not footer: the map block's inline script expects L to exist when it runs.
-        wp_enqueue_style( 'leaflet', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', array(), '1.9.4' );
-        wp_enqueue_script( 'leaflet', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js', array(), '1.9.4', false );
-    }
-    if ( has_block( 'acf/asen-video-popup' ) ) {
+    if ( is_singular() && has_block( 'acf/asen-video-popup' ) ) {
         wp_enqueue_script( 'yt-player-api', 'https://www.youtube.com/iframe_api', array(), null, true );
     }
 }

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "acf/asen-icon-copy-grid",
+  "title": "Asen - Icon + Copy Grid",
+  "description": "A grid of icon, heading and copy items with optional links.",
+  "category": "asen-blocks",
+  "icon": "screenoptions",
+  "keywords": [
+    "icon",
+    "copy",
+    "grid",
+    "features",
+    "cta"
+  ],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "/templates/block/core-blocks/asen-icon-copy-grid.php"
+  },
+  "attributes": {
+    "style": {
+      "type": "object",
+      "default": {
+        "spacing": {
+          "padding": {
+            "top": "var:preset|spacing|lg",
+            "bottom": "var:preset|spacing|lg"
+          }
+        }
+      }
+    }
+  },
+  "supports": {
+    "align": false,
+    "anchor": true,
+    "spacing": {
+      "padding": [
+        "top",
+        "bottom"
+      ],
+      "margin": [
+        "top",
+        "bottom"
+      ]
+    },
+    "color": {
+      "background": true,
+      "text": true,
+      "link": false
+    }
+  },
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "link_type_options": "text-link",
+        "copy_text_blocks": "2",
+        "copy_text_blocks_0_icon": "<i class=\"fa-regular fa-star\"></i>",
+        "copy_text_blocks_0_heading": "First feature",
+        "copy_text_blocks_0_copy": "A sentence about it.",
+        "copy_text_blocks_1_icon": "<i class=\"fa-regular fa-heart\"></i>",
+        "copy_text_blocks_1_heading": "Second feature",
+        "copy_text_blocks_1_copy": "Another sentence.",
+        "__container_width": "xl",
+        "__heading_size": "h5"
+      }
+    }
+  }
+}
