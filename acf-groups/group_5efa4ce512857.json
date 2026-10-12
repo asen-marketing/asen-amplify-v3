@@ -77,5 +77,8 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1593462739
+    "modified": 1593462739,
+    "acfe_autosync": [
+        "json"
+    ]
 }

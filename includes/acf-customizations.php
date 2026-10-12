@@ -20,6 +20,19 @@ function asen_acf_json_load_point($paths) {
 
 add_filter('acf/settings/load_json', 'asen_acf_json_load_point');
 
+// ACF Extended deletes a field group's JSON file whenever the group is saved or synced without its "Auto Sync: JSON"
+// setting, and groups imported via Sync don't get that setting by default. Force it on for every group so acf-groups/ stays the source of truth.
+function asen_acf_force_json_autosync($field_group) {
+    if (function_exists('acfe_has_json_sync') && function_exists('acfe_set') && ! acfe_has_json_sync($field_group)) {
+        $sync   = (array) acfe_get($field_group, 'acfe.autosync', []);
+        $sync[] = 'json';
+        acfe_set($field_group, 'acfe.autosync', array_values(array_unique($sync)));
+    }
+    return $field_group;
+}
+
+add_filter('acf/validate_field_group', 'asen_acf_force_json_autosync', 30);
+
 // Option Pages
 function asen_setup_acf_option_pages() {
 

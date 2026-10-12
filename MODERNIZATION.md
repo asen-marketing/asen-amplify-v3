@@ -91,9 +91,10 @@ Living document. Check items off as they ship and keep the "Roadmap status" line
   - Dynamic Color SVG: inlined + sanitized (`asen_inline_svg()`: kses allowlist, scripts removed, camelCase restored) instead of an `<object>` recolored by JS; color comes from the block's native text color.
   - Featured Blogs: on the collection partial (new `lead` arg renders the CTA tile first), post cards from `templates/block/partials/post-item.php`.
   - Link Wrapper: `block.json` with jsx InnerBlocks; ACF's front-end inner container disabled for it (`acf/blocks/wrap_frontend_innerblocks`).
-- [x] Native `typography.textAlign` retrofitted onto intro block, special copy blurb, icon + copy grid (their alignment fields are gone).
+- [x] Native `typography.textAlign` retrofitted onto intro block and icon + copy grid (their alignment fields are gone).
+- [x] Special Copy Blurb deleted (Oct 2026, Eric): Intro Block covers it.
 - Verified in the live editor: both patterns parse with no invalid blocks; the editor offers only the theme palette and the Asen spacing presets.
-- Upstream note: commit `a5dad98` deleted the Icon Grid field group JSON while the group was still active in the DB (most likely ACF Extended's sync removing the file, committed by GitHub Desktop's auto-message). Restored from history in batch 4.
+- Root-caused (Oct 2026): ACF Extended Pro's AutoSync (`autosync-json.php`, `pre_update_field_group`) deletes a group's JSON on every save/sync unless the group has `acfe.autosync` containing `json`, and groups imported via Sync never get it. That removed Icon Grid's (`a5dad98`) and Link Wrapper's JSON. Fixed with `asen_acf_force_json_autosync()` (forces the setting for all groups on `acf/validate_field_group`) plus the setting written into the 7 files that lacked it; verified with a throwaway group that survives both import and save.
 - [ ] Move the theme's admin `<style>` hacks into editor styles so the iframed (apiVersion 3) editor still looks right.
 
 ## Phase 3 — Client-safe editing (2–3 days)

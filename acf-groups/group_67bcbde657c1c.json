@@ -217,5 +217,8 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1791860000
+    "modified": 1791860000,
+    "acfe_autosync": [
+        "json"
+    ]
 }

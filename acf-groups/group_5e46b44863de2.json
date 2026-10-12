@@ -68,5 +68,8 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1588253215
+    "modified": 1588253215,
+    "acfe_autosync": [
+        "json"
+    ]
 }
