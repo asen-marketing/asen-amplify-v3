@@ -1,9 +1,9 @@
 <?php $site_name = get_bloginfo('name', 'display'); ?>
 
 <div class="off-canvas-menu-backing-overlay"></div>
-<div class="off-canvas-menu-container header-layout-<?php the_field('site_header_layout', 'option'); ?>">
+<div class="off-canvas-menu-container">
     <div class="close-container">
-        <div class="off-canvas-menu-hamburger header-layout-<?php the_field('site_header_layout', 'option'); ?>">
+        <div class="off-canvas-menu-hamburger">
             <button class="hamburger hamburger--<?php the_field('site_hamburger_menu_animation', 'option'); ?>"
                 type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">

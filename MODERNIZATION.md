@@ -1,4 +1,4 @@
-# Amplify Lite Modernization Plan
+# Amplify v3 Modernization Plan
 
 Living document. Check items off as they ship and keep the "Roadmap status" lines in [AGENTS.md](AGENTS.md) in sync.
 
@@ -8,6 +8,11 @@ Living document. Check items off as they ship and keep the "Roadmap status" line
 2. Make the editor **safe for clients**: palette/preset-only controls, curated inserter, content-only editing of layouts.
 3. Stop generating CSS in PHP (`head-mods.php`, per-block `<style>` tags).
 4. Give the theme an upgrade path between upstream and client forks.
+
+## Repos
+
+- `asen-marketing/amplify-lite` — v2, frozen. Existing client forks keep using it; only security fixes go there. Its `.gitignore` excludes `/index.php`, so a fresh clone is a theme WordPress refuses to activate — fix that there if anyone clones it again.
+- `asen-marketing/amplify` — v3, this repo. Cloned from amplify-lite with history, theme directory `amplify`, `Theme Name: Asen Amplify`, version 3.0.0.
 
 ## Starting point (Oct 2026)
 
@@ -25,18 +30,20 @@ Living document. Check items off as they ship and keep the "Roadmap status" line
 - [x] **Kadence → core only for new builds.** Group/Columns/Grid/Media & Text are the layout containers. Kadence stays installed on older sites and ages out. Its one remaining use (video popup) is covered by the Asen Video Popup block or a `<dialog>`-based replacement in Phase 4.
 - [x] **Minimum versions → WP 6.7, PHP 8.1.** Goes in `style.css` in Phase 0.
 - [x] **Retire overlap blocks → yes, per the table in the Oct 2026 discussion.** Button, Buttons Group, Anchor, WYSIWYG, CTA, Copy + Image retire behind patterns/core; Featured Blogs stays (reworked: 3 recent or 3 hand-picked); Link Wrapper and all CPT-driven blocks stay.
-- [ ] **Header/footer layout selector → proposed: remove.** Keep header layout 1 and the standard footer as the only built-ins; mailing list becomes a toggle; layouts 2–4 and the simple footers come out of upstream. "Custom from scratch" becomes a child-theme override of the header/footer template parts. Drops `site_header_layout` / `site_footer_layout` and their conditionals in `head-mods.php`, `acf-customizations.php`, `off-canvas.php`, `footer.php`.
+- [x] **Header/footer layout selector → removed (Oct 2026).** Keep header layout 1 and the standard footer as the only built-ins; mailing list becomes a toggle; layouts 2–4 and the simple footers come out of upstream. "Custom from scratch" becomes a child-theme override of the header/footer template parts. Drops `site_header_layout` / `site_footer_layout` and their conditionals in `head-mods.php`, `acf-customizations.php`, `off-canvas.php`, `footer.php`.
 
 ## Phase 0 — Groundwork & hygiene (1–2 days)
 
-- [ ] `block_categories` → `block_categories_all`; register `asen-core-blocks` (or point the intro block at `asen-blocks`).
+- [x] `block_categories` → `block_categories_all`; intro block moved to the `asen-blocks` category.
 - [ ] Remove `site_colors` + `site_max_width` from `acf-groups/group_5e221e162fc69.json`; delete the echo in `includes/head-mods.php:40-52`; fix `templates/front-page-banner.php:224`; drop the stale comment in `_custom.scss`.
 - [ ] Fix `_block-globals.scss` spacing class names to `sm/md/lg` (keep `s/m/l` as aliases for one release); remove the duplicate declarations from `scss/blocks/core/_asen-intro-block.scss`.
 - [ ] Fix CPT template filenames: `single-product.php`, `single-service.php`; remove or wire up the `archive-*.php` files; fix the `'products'` / `'services'` checks in `head-mods.php`.
 - [ ] Move Leaflet (header.php) to the Location Map block; YouTube iframe API to the Video Popup block.
 - [ ] Move `wp68_admin_editor_fix_styles()` / `acfe_modal_width()` CSS into `includes/css/backend-styles.css`.
-- [ ] Delete `css/index_safe_save_*`; replace `.gitignore` with a theme-scoped one; fill `README.md`; add `Requires at least`, `Requires PHP`, `Text Domain` to `style.css`.
-- [ ] `style.css`: `Requires at least: 6.7`, `Requires PHP: 8.1`.
+- [x] Delete `css/index_safe_save_*`; untrack `css/`; theme-scoped `.gitignore`; `README.md`; `style.css` headers.
+- [x] `style.css`: `Requires at least: 6.7`, `Requires PHP: 8.1`.
+
+- [x] Header/footer: one `templates/header/header.php` (was layout 1) and one `templates/footer/footer.php` (was standard, mailing-list column behind `site_footer_mailing_list_enabled`). Layout selects, layout-2 logo injection in `menus.php`, dead `site_cta_button` filter, `.layout-*` / `.header-layout-*` / `.simple` CSS all removed.
 
 ## Phase 1 — `theme.json` as token layer (2–3 days)
 
@@ -85,12 +92,12 @@ Living document. Check items off as they ship and keep the "Roadmap status" line
 
 Client repo contains **only the child theme**. The parent is installed once from a GitHub release and updates itself through WordPress's normal theme-update path, so WP Engine sites pick up releases without per-site deploys.
 
-- [ ] Parent self-update: vendor `yahnis-elsts/plugin-update-checker` into `includes/vendor/`, point it at the GitHub repo with release assets enabled, add `Update URI:` to `style.css`, and `add_filter( 'auto_update_theme', … )` → true for `amplifylite` only. Private repo → GitHub token read from a `wp-config.php` constant set per site (never committed).
-- [ ] Release workflow (GitHub Action on tag): zip the theme with `amplifylite/` as the top-level folder, attach to the release, write the CHANGELOG entry. Sites see "Update available" in Appearance → Themes within ~12h via WP cron and auto-apply; "Update now" for immediate.
-- [ ] Staging soak (GitHub Action on push to `main`): `wpengine/github-action-wpe-site-deploy` rsyncs the theme to one WPE staging environment (`REMOTE_PATH: wp-content/themes/amplifylite/`). Tag only after it's been checked there.
+- [ ] Parent self-update: vendor `yahnis-elsts/plugin-update-checker` into `includes/vendor/`, point it at the GitHub repo with release assets enabled, add `Update URI:` to `style.css`, and `add_filter( 'auto_update_theme', … )` → true for `amplify` only. Private repo → GitHub token read from a `wp-config.php` constant set per site (never committed).
+- [ ] Release workflow (GitHub Action on tag): zip the theme with `amplify/` as the top-level folder, attach to the release, write the CHANGELOG entry. Sites see "Update available" in Appearance → Themes within ~12h via WP cron and auto-apply; "Update now" for immediate.
+- [ ] Staging soak (GitHub Action on push to `main`): `wpengine/github-action-wpe-site-deploy` rsyncs the theme to one WPE staging environment (`REMOTE_PATH: wp-content/themes/amplify/`). Tag only after it's been checked there.
 - [ ] Emergency push-to-all: the same deploy Action with a `matrix` of WPE environment names, run manually. Needs the agency SSH Gateway key as a repo secret.
-- [ ] Parent code changes: enqueue CSS/JS from `get_stylesheet_directory_uri()`; ACF `load_json` includes parent **and** child `acf-groups/`; block.json loader scans both `core-blocks/` dirs; WP-SCSS compiles from the child (`@import "../../amplifylite/scss/index"` then client partials).
-- [ ] Child scaffold repo (`amplifylite-child-starter`): `style.css` (`Template: amplifylite`), `theme.json`, `functions.php`, `includes/`, `scss/index.scss` + `_custom.scss`, `acf-groups/`, `patterns/`, `templates/` for overrides.
+- [ ] Parent code changes: enqueue CSS/JS from `get_stylesheet_directory_uri()`; ACF `load_json` includes parent **and** child `acf-groups/`; block.json loader scans both `core-blocks/` dirs; WP-SCSS compiles from the child (`@import "../../amplify/scss/index"` then client partials).
+- [ ] Child scaffold repo (`amplify-child-starter`): `style.css` (`Template: amplify`), `theme.json`, `functions.php`, `includes/`, `scss/index.scss` + `_custom.scss`, `acf-groups/`, `patterns/`, `templates/` for overrides.
 - [ ] `CHANGELOG.md` + semver tags. Renamed mixins/classes/field names/template parts = major bump + migration note.
 - [ ] Verify on one WPE site: theme auto-update runs under WPE's cron; ACF renders from the updated local JSON without a manual Sync; the child's compiled CSS survives a parent update.
 

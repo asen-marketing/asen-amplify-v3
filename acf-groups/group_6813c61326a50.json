@@ -23,44 +23,6 @@
             "selected": 0
         },
         {
-            "key": "field_5e8cb8bbaf0e0",
-            "label": "Footer Layout",
-            "name": "site_footer_layout",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "choices": {
-                "standard": "Standard Footer",
-                "standard-mailing-list": "Standard + Mailing List",
-                "simple": "Simple Footer",
-                "simple-mailing-list": "Simple + Mailing List"
-            },
-            "default_value": "standard",
-            "return_format": "value",
-            "multiple": 0,
-            "max": "",
-            "prepend": "",
-            "append": "",
-            "allow_null": 0,
-            "allow_in_bindings": 1,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "allow_custom": 0,
-            "search_placeholder": "",
-            "min": "",
-            "create_options": 0,
-            "save_options": 0
-        },
-        {
             "key": "field_5e8b7e24937e4",
             "label": "Footer Logo Image",
             "name": "site_footer_logo_image",
@@ -278,15 +240,7 @@
             "type": "color_picker",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5e8cb8bbaf0e0",
-                        "operator": "!=",
-                        "value": "simple"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -314,15 +268,7 @@
             "type": "color_picker",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5e8cb8bbaf0e0",
-                        "operator": "!=",
-                        "value": "simple"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "33",
                 "class": "",
@@ -350,15 +296,7 @@
             "type": "color_picker",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5e8cb8bbaf0e0",
-                        "operator": "!=",
-                        "value": "simple"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "33",
                 "class": "",
@@ -386,15 +324,7 @@
             "type": "number",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5e8cb8bbaf0e0",
-                        "operator": "!=",
-                        "value": "simple"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "33",
                 "class": "",
@@ -431,6 +361,28 @@
             "selected": 0
         },
         {
+            "key": "field_69eb2b3c0f010",
+            "label": "Show Mailing List Column",
+            "name": "site_footer_mailing_list_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Adds a third footer column with the heading, sub heading, and Gravity Form below.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
             "key": "field_680a5c9d38e48",
             "label": "Site Footer Mailing List Heading",
             "name": "site_footer_mailing_list_heading",
@@ -438,7 +390,15 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_69eb2b3c0f010",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -460,7 +420,15 @@
             "type": "select",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_69eb2b3c0f010",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -498,7 +466,15 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_69eb2b3c0f010",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -520,7 +496,15 @@
             "type": "radio",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_69eb2b3c0f010",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -547,7 +531,15 @@
             "type": "number",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_69eb2b3c0f010",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -571,7 +563,15 @@
             "type": "number",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_69eb2b3c0f010",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -595,7 +595,15 @@
             "type": "color_picker",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_69eb2b3c0f010",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -623,7 +631,15 @@
             "type": "color_picker",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_69eb2b3c0f010",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -798,7 +814,7 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1753188556,
+    "modified": 1791810000,
     "acfe_categories": {
         "site-option-fields": "Site Option Fields"
     }

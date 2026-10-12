@@ -1,4 +1,4 @@
-<?php if ( get_field('site_header_cta_option', 'option') == 'button' && get_field('site_header_layout', 'option') != '4') : ?>
+<?php if ( get_field('site_header_cta_option', 'option') == 'button') : ?>
 <?php 
     $link = get_field('site_header_cta_link', 'option');
     if ( $link ) : 

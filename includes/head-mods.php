@@ -377,8 +377,7 @@ $off_canvas_mobile_font_size_smaller=get_field('off_canvas_mobile_font_size', 'o
 
 @media (max-width: <?php echo $off_canvas_px; ?>) {
 
-    header.site-header.layout-1 .inside.align-left,
-    header.site-header.layout-4 .inside.align-left {
+    header.site-header .inside.align-left {
         justify-content: space-between;
 
         .navigation {
@@ -391,20 +390,15 @@ $off_canvas_mobile_font_size_smaller=get_field('off_canvas_mobile_font_size', 'o
     }
 
     .off-canvas-menu-backing-overlay,
-    .off-canvas-menu-container.header-layout-1,
-    .off-canvas-menu-container.header-layout-2 {
+    .off-canvas-menu-container {
         display: flex;
     }
 
-    .off-canvas-menu-hamburger.header-layout-1,
-    .off-canvas-menu-hamburger.header-layout-2 {
+    .off-canvas-menu-hamburger {
         display: block;
     }
 
-    header.site-header.layout-1 nav.header-menu,
-    header.site-header.layout-2 nav.header-menu li:not(.layout-2-logo),
-    header.site-header.layout-3 nav.header-menu,
-    header.site-header.layout-4 ul.primary-menu {
+    header.site-header nav.header-menu {
         display: none;
     }
 
@@ -416,8 +410,7 @@ $off_canvas_mobile_font_size_smaller=get_field('off_canvas_mobile_font_size', 'o
     ?>
 }
 
-header.site-header div.logo a,
-nav.header-menu li.layout-2-logo img {
+header.site-header div.logo a {
     height: <?php the_field('site_header_logo_height', 'option');
     ?>px;
 }

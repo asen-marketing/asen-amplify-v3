@@ -34,16 +34,12 @@ $site-menu-max-width-mobile: 250px;
   transition:
     transform 600ms ease,
     opacity 0ms linear 600ms;
-  display: flex;
+  display: none; // Shown at the off-canvas breakpoint in head-mods.php.
   justify-content: center;
   backface-visibility: hidden;
   opacity: 0;
   overflow: auto;
 
-  &.header-layout-1,
-  &.header-layout-2 {
-    display: none;
-  }
   @media (max-width: $breakpoint-small) {
     transform: translate(100vw, 0);
   }

@@ -68,31 +68,6 @@ header.site-header {
     }
   }
 
-  &.layout-2 {
-    .inside {
-      justify-content: center;
-      @media (max-width: $breakpoint-tablet-large) {
-        justify-content: space-between;
-      }
-    }
-  }
-
-  &.layout-4 {
-    nav.header-menu {
-      display: flex;
-      align-items: center;
-    }
-    .inside.align-left {
-      .navigation {
-        width: 100%;
-      }
-      .header-menu {
-        width: 100%;
-        justify-content: space-between;
-      }
-    }
-  }
-
   ul.site-social {
     height: 100%;
     list-style: none;
@@ -185,26 +160,6 @@ nav.header-menu {
             justify-content: center;
           }
         }
-      }
-    }
-  }
-  .layout-2 & {
-    ul > li > a {
-      padding: 10px 1.5rem;
-    }
-
-    li.layout-2-logo {
-      padding: 0 2rem;
-      margin: 0;
-      @media (max-width: $breakpoint-tablet-large) {
-        display: inline-block;
-      }
-      a {
-        padding: 0;
-      }
-      img {
-        width: auto;
-        // max-height: 47px;
       }
     }
   }

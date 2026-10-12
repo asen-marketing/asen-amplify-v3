@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Asen - Copy + Image
- * Slug: amplifylite/asen-copy-image
+ * Slug: amplify/asen-copy-image
  * Categories: asen
  * Description: Alternating image and copy rows on core Media & Text. Replaces the retired Asen Copy + Image block.
  * Keywords: copy, image, split, media text, alternating

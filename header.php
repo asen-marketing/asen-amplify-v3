@@ -10,22 +10,10 @@
 </head>
 
 <body <?php body_class(); ?>>
-    <?php if ( function_exists('wp_body_open') ) :
-            wp_body_open();
-        endif; ?>
+    <?php wp_body_open(); ?>
     <div class="site-container">
-        <?php 
-                if ( class_exists('ACF') ) :
-                    if (
-                        is_page_template('custom-blank.php') == false && 
-                        get_field('site_header_layout', 'option')
-                    ) : 
-                        get_template_part(
-                            'templates/header/header-layout',
-                            get_field('site_header_layout', 'option')
-                        );
-                    endif;
-                endif;
-            ?>
+        <?php if ( class_exists( 'ACF' ) && ! is_page_template( 'custom-blank.php' ) ) {
+            get_template_part( 'templates/header/header' );
+        } ?>
         <div id="top" class="main-content">
             <?php // Banners are located in the page.php or custom templates for proper HTML layout.

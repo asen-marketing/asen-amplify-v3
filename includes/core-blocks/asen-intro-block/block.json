@@ -2,7 +2,7 @@
   "name": "acf/asen-intro-block",
   "title": "Asen Intro Block",
   "description": "Heading and subheading with blurb and optional CTA.",
-  "category": "asen-core-blocks",
+  "category": "asen-blocks",
   "icon": "editor-textcolor",
   "acf": {
     "mode": "auto",

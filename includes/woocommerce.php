@@ -4,7 +4,7 @@ function asen_register_woocommerce_sidebar() {
 	if ( class_exists( 'woocommerce' ) ) {
 		register_sidebar(
 			array(
-				'name' => __( 'Woo Sidebar', 'amplifylite' ),
+				'name' => __( 'Woo Sidebar', 'amplify' ),
 				'id' => 'woo-sidebar',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
         		'after_widget'  => "</div>\n",

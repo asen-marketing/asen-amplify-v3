@@ -153,24 +153,6 @@ function asen_acf_permit_team_match($match, $rule, $options, $field_group) {
 
 add_filter('acf/location/rule_match/asen_domain', 'asen_acf_permit_team_match', 10, 4);
 
-// Limit CTA button options based on Asen Team member settings.
-function asen_conditional_cta_button_options($field) {
-    $cta_button_friendly_header_layouts = [1, 3];
-
-    if (
-        get_field('site_header_cta_option', 'option') != 'button' ||
-        ! in_array(
-            get_field('site_header_layout', 'option'),
-            $cta_button_friendly_header_layouts
-        )
-    ) {
-        return false;
-    }
-
-    return $field;
-}
-
-add_filter('acf/prepare_field/name=site_cta_button', 'asen_conditional_cta_button_options');
 
 function asen_populate_gform_dropdown($field) {
 

@@ -23,44 +23,6 @@
             "selected": 0
         },
         {
-            "key": "field_5e8cb8a2af0df",
-            "label": "Header Layout",
-            "name": "site_header_layout",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "When choosing  Layout 2 (centered logo), you'll need to add a menu item for the \"Home\" page into your Primary Navigation and add a class named \"layout-2-logo\".",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "choices": {
-                "1": "1. Logo on left, menu on right",
-                "2": "2. Logo centered, menu centered around it",
-                "3": "3. Logo on left, hamburger button on right",
-                "4": "4. Logo on left, menu and hamburger button on right"
-            },
-            "default_value": 1,
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "allow_in_bindings": 1,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "create_options": 0,
-            "save_options": 0,
-            "allow_custom": 0,
-            "search_placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": ""
-        },
-        {
             "key": "field_5e8b7a8bf1bd5",
             "label": "Header Logo Image",
             "name": "site_header_logo_image",
@@ -210,22 +172,7 @@
             "type": "radio",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5e8cb8a2af0df",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_5e8cb8a2af0df",
-                        "operator": "==",
-                        "value": "4"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -252,22 +199,7 @@
             "type": "select",
             "instructions": "These options are available for Header Layouts 1 (in header) & 3 (in off-canvas). Update settings for these to fully take effect.",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5e8cb8a2af0df",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_5e8cb8a2af0df",
-                        "operator": "==",
-                        "value": "3"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -279,50 +211,6 @@
                 "button": "Button",
                 "phone": "Phone",
                 "social": "Social Media"
-            },
-            "default_value": "none",
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "allow_in_bindings": 1,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "create_options": 0,
-            "save_options": 0,
-            "allow_custom": 0,
-            "search_placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": ""
-        },
-        {
-            "key": "field_680b8b6538795",
-            "label": "Header CTA Option",
-            "name": "site_header_4_cta",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "Option to include a button between menu and off-canvas.",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5e8cb8a2af0df",
-                        "operator": "==",
-                        "value": "4"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "choices": {
-                "none": "None",
-                "button": "Button"
             },
             "default_value": "none",
             "return_format": "value",
@@ -475,15 +363,7 @@
             "type": "color_picker",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5e8cb8a2af0df",
-                        "operator": "!=",
-                        "value": "3"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "33",
                 "class": "",
@@ -511,15 +391,7 @@
             "type": "color_picker",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5e8cb8a2af0df",
-                        "operator": "!=",
-                        "value": "3"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "33",
                 "class": "",
@@ -547,15 +419,7 @@
             "type": "radio",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5e8cb8a2af0df",
-                        "operator": "!=",
-                        "value": "3"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "33",
                 "class": "",
@@ -586,13 +450,6 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_680b8b6538795",
-                        "operator": "==",
-                        "value": "button"
-                    }
-                ],
-                [
-                    {
                         "field": "field_5e8e28b6228ba",
                         "operator": "==",
                         "value": "button"
@@ -620,13 +477,6 @@
                 [
                     {
                         "field": "field_5e8e28b6228ba",
-                        "operator": "==",
-                        "value": "button"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_680b8b6538795",
                         "operator": "==",
                         "value": "button"
                     }
@@ -663,13 +513,6 @@
                 [
                     {
                         "field": "field_5e8e28b6228ba",
-                        "operator": "==",
-                        "value": "button"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_680b8b6538795",
                         "operator": "==",
                         "value": "button"
                     }
@@ -783,7 +626,7 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1753188514,
+    "modified": 1791810000,
     "acfe_categories": {
         "site-option-fields": "Site Option Fields"
     }

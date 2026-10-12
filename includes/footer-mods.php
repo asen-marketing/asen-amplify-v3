@@ -84,32 +84,6 @@ footer.site-footer {
         ?>;
     }
 }
-
-footer.site-footer.layout-2 {
-    .bottom {
-        background-color: <?php the_field('footer_background_color', 'option');
-        ?>;
-
-        p {
-            font-size: <?php echo get_field('footer_font_size', 'option') . 'px';
-            ?>;
-            color: <?php the_field('footer_text_color', 'option');
-            ?>;
-        }
-
-        a {
-            font-size: <?php echo get_field('footer_font_size', 'option') . 'px';
-            ?>;
-            color: <?php the_field('footer_text_color', 'option');
-            ?>;
-        }
-
-        a:hover {
-            color: <?php the_field('footer_text_hover_color', 'option');
-            ?>;
-        }
-    }
-}
 </style>
 
 <?php

@@ -11,7 +11,7 @@ function asen_include_block_category( $categories, $post ) {
 		)
 	);
 }
-add_filter( 'block_categories', 'asen_include_block_category', 10, 2);
+add_filter( 'block_categories_all', 'asen_include_block_category', 10, 2 );
 
 function site_acf_init() {
 	

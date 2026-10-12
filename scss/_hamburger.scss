@@ -3,24 +3,13 @@
   z-index: 100;
   top: 0;
   right: 0;
-  display: flex;
+  display: none; // Shown at the off-canvas breakpoint in head-mods.php.
   opacity: 1;
   transition: opacity 100ms ease 400ms;
 
-  &.header-layout-1.is-active,
-  &.header-layout-2.is-active,
-  &.header-layout-3.is-active {
+  &.is-active {
     z-index: 0;
     opacity: 0;
-  }
-
-  &.header-layout-1,
-  &.header-layout-2 {
-    display: none;
-
-    // @media (max-width: $breakpoint-tablet-large) {
-    //   display: block;
-    // }
   }
 }
 
