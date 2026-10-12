@@ -98,7 +98,7 @@ $classes = [ 'asen-example', 'asen-example-' . $block['id'], $block['className']
 - If a block's layout is reused by a page template, keep the block template thin and put the markup in a shared template part called with `get_template_part( 'templates/…', null, $args )`. See the Ewart footer CTA pattern.
 - Blocks that render a CPT (Team Hub, Services Hub, Testimonials, FAQs, Products Showcase) are gated by the content-type toggles in Site Options → Builders Only.
 - **Patterns** live in `patterns/{prefix}-{slug}.php` with headers `Title: {Prefix} - {Name}`, `Slug: amplify/{prefix}-{slug}`, `Categories: asen`. Core blocks only. Give the outer Group the retired block's class (e.g. `asen-copy-image`) and keep the pattern's rules in that block's SCSS partial, scoped to `.{slug}.wp-block-group`.
-- **Retired blocks** stay registered with `'inserter' => false` so existing content renders. Never delete a retired block's template, fields, or SCSS. Retired so far: Asen Copy + Image (→ `patterns/asen-copy-image.php`).
+- **Retiring blocks.** v3 has no shipped client sites yet, so a block retired before the first v3 release is **deleted outright** — registration, template, field group JSON, legacy SCSS. Once the first v3 client ships, retiring a shipped block means `'inserter' => false` and keeping everything so existing content renders. Deleted so far: Asen Copy + Image (replacement: `patterns/asen-copy-image.php`, styled in `scss/blocks/_asen-copy-image.scss`).
 
 ## Adding a block (checklist)
 

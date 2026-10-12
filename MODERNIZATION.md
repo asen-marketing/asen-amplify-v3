@@ -82,9 +82,9 @@ Living document. Check items off as they ship and keep the "Roadmap status" line
 
 ## Phase 4 — Rationalize the block library (ongoing)
 
-- [x] Copy + Image: `inserter: false`; replaced by `patterns/asen-copy-image.php` (Group + two Media & Text rows). Pattern SCSS lives in the same partial as the legacy block.
+- [x] Copy + Image: block, template, and field group deleted; replaced by `patterns/asen-copy-image.php` (Group + two Media & Text rows), styled in `scss/blocks/_asen-copy-image.scss`.
 - [x] Featured Blogs: reworked to 3 posts, "most recent" or "hand-picked" (relationship field, max 3, falls back to recent), optional CTA tile (default on; makes the row 4-up via `.has-cta-tile`).
-- [ ] `inserter: false` + replacement pattern/block style for: Button, Buttons Group (→ `core/buttons` + variant block styles), Anchor (→ HTML anchor field), WYSIWYG (→ core text blocks), CTA (→ pattern).
+- [ ] Delete + replacement for: Button, Buttons Group (→ `core/buttons` + variant block styles), Anchor (→ HTML anchor field), WYSIWYG (→ core text blocks), CTA (→ pattern). Delete outright while no v3 site has shipped; `inserter: false` only after that.
 - [ ] Video popup: confirm the Asen Video Popup block covers what Kadence's was used for; otherwise a `<dialog>`-based replacement.
 - [ ] Drop Glide; drop jquery-modal in favor of `<dialog>`; evaluate removing jQuery from `main.js`.
 

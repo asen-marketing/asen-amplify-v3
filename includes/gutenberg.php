@@ -266,20 +266,6 @@ function site_acf_init() {
 			'supports'          => array( 'align' => false, 'anchor' => true ),
 		));
 
-		// Asen Copy + Image
-		acf_register_block(array(
-			'name'				=> 'asen-copy-image',
-			'title'				=> __('Asen Copy + Image'),
-			'description'		=> __('Split block with copy on one side and image on the other.'),
-			'mode'              => 'edit',
-			'render_callback'	=> 'site_acf_block_callback',
-			'category'			=> 'asen-blocks',
-			'icon'				=> 'format-image',
-			'keywords'			=> array( 'copy', 'image', 'split' ),
-			// Retired: use the "Asen - Copy + Image" pattern. Still registered so existing content renders.
-			'supports'          => array( 'align' => false, 'anchor' => true, 'inserter' => false ),
-		));
-
 		// Asen Form Container
 		acf_register_block(array(
 			'name'				=> 'asen-form-container',
