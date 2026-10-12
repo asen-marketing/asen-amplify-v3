@@ -13,7 +13,7 @@ button {
 }
 
 body {
-  color: #313d47;
+  color: $color-text;
   line-height: 1.4;
 }
 
@@ -23,7 +23,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #313d47;
+  color: $color-text;
 }
 
 .white-text h1,
@@ -37,33 +37,32 @@ h6 {
 
 %h1 {
   line-height: 1.05;
-  @include responsive-heading(100px);
+  font-size: $heading-h1;
 }
 
 %h2 {
   line-height: 1.05;
-  @include responsive-heading(75px);
+  font-size: $heading-h2;
 }
 
 %h3 {
   line-height: 1.1;
-  @include responsive-heading(65px);
+  font-size: $heading-h3;
 }
 
 %h4 {
   line-height: 1.15;
-  @include responsive-heading(50px);
+  font-size: $heading-h4;
 }
 
 %h5 {
   line-height: 1.2;
-  font-size: 44px;
-  @include responsive-heading(44px);
+  font-size: $heading-h5;
 }
 
 %h6 {
   line-height: 1.2;
-  @include responsive-heading(32px);
+  font-size: $heading-h6;
 }
 
 h1,
@@ -100,13 +99,9 @@ h6,
 }
 
 p {
-  font-size: 22px;
+  font-size: $font-size-md;
   line-height: 1.3;
   margin-bottom: 1.8rem;
-
-  @media (max-width: $breakpoint-tablet-small) {
-    font-size: 21px;
-  }
 }
 
 a {

@@ -27,7 +27,7 @@
     .heading-container {
       position: relative;
       z-index: 1;
-      max-width: #{$site-overall-max-width - 200px};
+      max-width: calc(#{$site-overall-max-width} - 200px);
       width: calc(100% - 200px);
 
       @media (max-width: $breakpoint-tablet-large) {

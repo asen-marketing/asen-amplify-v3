@@ -9,10 +9,33 @@ function site_enqueue_theme_scripts() {
     wp_enqueue_style( 'main', get_template_directory_uri() . '/css/index.css', array(), $cache_buster_css );
     wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), $cache_buster_js, true );
     wp_enqueue_script( 'jquery-modal', get_template_directory_uri() . '/js/vendor/jquery.modal.min.js', null, '0.9.2', true );
-    wp_enqueue_script( 'yt-player-api', 'https://www.youtube.com/iframe_api', array(), false, true );
 }
 
 add_action( 'wp_enqueue_scripts', 'site_enqueue_theme_scripts' );
+
+// Third-party libraries only on pages that use the block needing them.
+function asen_enqueue_block_dependencies() {
+    if ( ! is_singular() ) {
+        return;
+    }
+    if ( has_block( 'acf/asen-location-map' ) ) {
+        // Head, not footer: the map block's inline script expects L to exist when it runs.
+        wp_enqueue_style( 'leaflet', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', array(), '1.9.4' );
+        wp_enqueue_script( 'leaflet', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js', array(), '1.9.4', false );
+    }
+    if ( has_block( 'acf/asen-video-popup' ) ) {
+        wp_enqueue_script( 'yt-player-api', 'https://www.youtube.com/iframe_api', array(), null, true );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'asen_enqueue_block_dependencies' );
+
+// Subresource integrity for the CDN-loaded Leaflet assets.
+add_filter( 'script_loader_tag', function ( $tag, $handle ) {
+    return 'leaflet' === $handle ? str_replace( ' src=', ' integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" src=', $tag ) : $tag;
+}, 10, 2 );
+add_filter( 'style_loader_tag', function ( $tag, $handle ) {
+    return 'leaflet' === $handle ? str_replace( ' href=', ' integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" href=', $tag ) : $tag;
+}, 10, 2 );
 
 // Enable native WordPress Featured Image
 // Typically shouldn't be enabled unless importing old posts with Featured Images (ACF better option)

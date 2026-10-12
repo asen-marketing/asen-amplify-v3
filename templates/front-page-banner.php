@@ -221,7 +221,7 @@
 <style>
 .asen-front-page-banner {
     <?php if (get_field('fixed_width')) {
-            echo 'max-width: ' . get_field('site_max_width', 'option') . 'px;';
+            echo 'max-width: var(--wp--style--global--wide-size);';
             echo 'margin: 0 auto;';
         }
 

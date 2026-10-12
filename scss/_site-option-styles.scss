@@ -1,1 +1,2 @@
-$site-overall-max-width: 1400px;
+// Site max width is theme.json settings.layout.wideSize (no longer a Site Options field).
+$site-overall-max-width: var(--wp--style--global--wide-size);

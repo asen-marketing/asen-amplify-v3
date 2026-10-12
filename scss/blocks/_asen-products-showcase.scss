@@ -33,7 +33,7 @@
     .heading-container {
       position: relative;
       z-index: 1;
-      width: #{$site-overall-max-width - 200px};
+      width: calc(#{$site-overall-max-width} - 200px);
 
       &.align-center {
         text-align: center;

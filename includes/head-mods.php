@@ -37,21 +37,6 @@
         endif;
     endif;
 
-    $max_width = get_field( 'site_max_width', 'option' );
-
-    if ( $max_width ) {
-        echo '<style>:root{--site-max-width:' . intval( $max_width ) . 'px;}</style>';
-    }
-
-    $colors = get_field( 'site_colors', 'option' );
-
-    if ( $colors ) {
-        foreach ( $colors as $color ) {
-            if ( isset( $color[ 'variable_name' ] ) && isset( $color[ 'color' ] ) ) {
-                echo '<style>:root{--' . sanitize_title( $color[ 'variable_name' ] ) . ':' . $color[ 'color' ] . ';}</style>';
-            }
-        }
-    }
     }
 
     add_action( 'wp_head', 'asen_head_code' );
@@ -101,8 +86,8 @@
 
     if (
         is_page() && get_field( 'banner_disable' ) != true ||
-        get_post_type() == 'products' && get_field( 'products_archive_use_page_banner_styles', 'option' ) ||
-        get_post_type() == 'services' && get_field( 'services_archive_use_page_banner_styles', 'option' ) ||
+        get_post_type() == 'product' && get_field( 'products_archive_use_page_banner_styles', 'option' ) ||
+        get_post_type() == 'service' && get_field( 'services_archive_use_page_banner_styles', 'option' ) ||
         get_post_type() == 'team' && get_field( 'team_archive_use_page_banner_styles', 'option' )
     ) {
         $page_banner_styles                    = '';

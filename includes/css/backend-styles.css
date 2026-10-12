@@ -14,6 +14,23 @@
 }
 
 /* Gutenberg related modifications */
+/* Disable the split meta-box layout introduced in WP 6.8. */
+.editor-visual-editor {
+  overflow: visible;
+}
+.interface-navigable-region.components-resizable-box__container.edit-post-meta-boxes-main.is-resizable {
+  max-height: none !important;
+  height: auto !important;
+}
+/* Wider ACF Extended modals in the block editor. */
+body.block-editor-page .edit-post-layout .acfe-modal.-open > .acfe-modal-wrapper {
+  width: 75%;
+}
+body.block-editor-page .edit-post-layout .acfe-modal.-open > .acfe-modal-wrapper ul.acf-radio-list {
+  display: flex;
+  gap: 1rem;
+}
+
 .wp-block {
   max-width: 100% !important;
 }

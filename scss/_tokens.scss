@@ -1,51 +1,55 @@
-// Spacing
-$spacing-xs: 25px;
-$spacing-sm: 40px;
-$spacing-md: 60px;
-$spacing-lg: 100px;
-$spacing-xl: 150px;
+// Every value here comes from theme.json. Edit theme.json, not this file.
+// These are CSS custom properties, so no SCSS math or color functions on them: use calc() / color-mix().
 
-// Fonts
-$font-size-xs: 14px;
-$font-size-sm: 18px;
-$font-size-md: 22px;
-$font-size-lg: 26px;
-$font-size-xl: 32px;
-$font-size-xxl: 40px;
+// Spacing presets (fluid; also the block editor's padding/margin presets)
+$spacing-xs: var(--wp--preset--spacing--xs);
+$spacing-sm: var(--wp--preset--spacing--sm);
+$spacing-md: var(--wp--preset--spacing--md);
+$spacing-lg: var(--wp--preset--spacing--lg);
+$spacing-xl: var(--wp--preset--spacing--xl);
 
-$heading-h1: 100px;
-$heading-h2: 75px;
-$heading-h3: 65px;
-$heading-h4: 50px;
-$heading-h5: 44px;
-$heading-h6: 32px;
+// Font size presets (fluid where theme.json says so)
+$font-size-xs: var(--wp--preset--font-size--xs);
+$font-size-sm: var(--wp--preset--font-size--sm);
+$font-size-md: var(--wp--preset--font-size--md);
+$font-size-lg: var(--wp--preset--font-size--lg);
+$font-size-xl: var(--wp--preset--font-size--xl);
+$font-size-xxl: var(--wp--preset--font-size--xxl);
+
+// Heading scale (fluid clamp() values from settings.custom.heading; WP kebab-cases "h1" to "h-1")
+$heading-h1: var(--wp--custom--heading--h-1);
+$heading-h2: var(--wp--custom--heading--h-2);
+$heading-h3: var(--wp--custom--heading--h-3);
+$heading-h4: var(--wp--custom--heading--h-4);
+$heading-h5: var(--wp--custom--heading--h-5);
+$heading-h6: var(--wp--custom--heading--h-6);
 
 // Line height
-$line-height-xs: 0.9;
-$line-height-sm: 1;
-$line-height-md: 1.1;
-$line-height-lg: 1.2;
-$line-height-xl: 1.3;
+$line-height-xs: var(--wp--custom--line-height--xs);
+$line-height-sm: var(--wp--custom--line-height--sm);
+$line-height-md: var(--wp--custom--line-height--md);
+$line-height-lg: var(--wp--custom--line-height--lg);
+$line-height-xl: var(--wp--custom--line-height--xl);
 
-// Container widths
-$container-width-sm: 740px;
-$container-width-md: 1000px;
-$container-width-lg: 1100px;
-$container-width-xl: 1270px;
-$container-width-xxl: 1440px;
+// Container widths (layout.contentSize = lg, layout.wideSize = site max width)
+$container-width-sm: var(--wp--custom--container-width--sm);
+$container-width-md: var(--wp--custom--container-width--md);
+$container-width-lg: var(--wp--custom--container-width--lg);
+$container-width-xl: var(--wp--custom--container-width--xl);
+$container-width-xxl: var(--wp--custom--container-width--xxl);
 
 // Gaps
-$gap-size-xs: 0.5rem;
-$gap-size-sm: 1rem;
-$gap-size-md: 1.5rem;
-$gap-size-lg: 2rem;
-$gap-size-xl: 3rem;
-$gap-size-xxl: 4rem;
+$gap-size-xs: var(--wp--custom--gap--xs);
+$gap-size-sm: var(--wp--custom--gap--sm);
+$gap-size-md: var(--wp--custom--gap--md);
+$gap-size-lg: var(--wp--custom--gap--lg);
+$gap-size-xl: var(--wp--custom--gap--xl);
+$gap-size-xxl: var(--wp--custom--gap--xxl);
 
 // Border radius
-$border-radius-xs: 8px;
-$border-radius-sm: 12px;
-$border-radius-md: 20px;
-$border-radius-lg: 25px;
-$border-radius-xl: 30px;
-$border-radius-xxl: 40px;
+$border-radius-xs: var(--wp--custom--border-radius--xs);
+$border-radius-sm: var(--wp--custom--border-radius--sm);
+$border-radius-md: var(--wp--custom--border-radius--md);
+$border-radius-lg: var(--wp--custom--border-radius--lg);
+$border-radius-xl: var(--wp--custom--border-radius--xl);
+$border-radius-xxl: var(--wp--custom--border-radius--xxl);
