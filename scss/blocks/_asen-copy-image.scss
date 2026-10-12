@@ -1,0 +1,40 @@
+// "Asen - Copy + Image" pattern: core Group + Media & Text rows.
+// Inner-container selector is for classic rendering; the direct rules cover theme.json rendering.
+.asen-copy-image.wp-block-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding-left: $site-overall-gutter;
+  padding-right: $site-overall-gutter;
+  @include site-overall-gutter-small;
+  @include site-vertical-padding-dynamic();
+
+  > .wp-block-group__inner-container {
+    width: 100%;
+    max-width: $site-overall-max-width;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .wp-block-media-text {
+    width: 100%;
+    max-width: $site-overall-max-width;
+    gap: 2rem;
+
+    .wp-block-media-text__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .wp-block-media-text__content {
+      padding: 0;
+    }
+
+    .wp-block-buttons {
+      margin-top: 1rem;
+    }
+  }
+}

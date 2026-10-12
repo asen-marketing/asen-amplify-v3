@@ -1,0 +1,116 @@
+.fixed-contact-cta-button {
+  position: fixed;
+  z-index: 10;
+  right: 25px;
+  bottom: 25px;
+  background-color: #fff;
+  width: 73px;
+  height: 73px;
+  border: 0;
+  padding: 3px 0 0;
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  transition: width 100ms ease 100ms, background-color 100ms ease 100ms,
+    opacity 200ms ease;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+  pointer-events: all;
+  border-radius: 13px 13px 0 13px;
+  align-items: center;
+
+  color: #fff;
+  font-size: 19px;
+  line-height: 1;
+  font-family: "runda", sans-serif;
+
+  @media (max-width: 1680px) {
+    right: 20px;
+  }
+
+  @media (max-width: $breakpoint-small) {
+    left: 10px;
+    right: 10px;
+    bottom: 20px;
+  }
+
+  &.is-hidden {
+    opacity: 0;
+  }
+  body.page-template-custom-lp & {
+    display: none;
+  }
+
+  .icon-container {
+    width: 73px;
+    height: 73px;
+    color: #e81771;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 33px;
+    transition: color 100ms ease 100ms;
+  }
+
+  .hover-intent-layer {
+    position: absolute;
+    left: 0;
+    width: 212px;
+    padding-left: 18px;
+    color: #fff;
+    font-family: "runda", sans-serif;
+    transition: opacity 100ms ease;
+    opacity: 0;
+    pointer-events: none;
+    padding-bottom: 0.2em;
+
+    span {
+      display: block;
+      line-height: 1.1;
+    }
+
+    .small-text {
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+
+  &:hover {
+    width: 280px;
+    transition: width 200ms ease, background-color 200ms ease,
+      opacity 200ms ease;
+    background-color: #e81771;
+
+    @media (max-width: 450px) {
+      width: auto;
+    }
+
+    .icon-container {
+      color: #fff;
+      transition: color 200ms ease;
+    }
+
+    .hover-intent-layer {
+      pointer-events: all;
+      opacity: 1;
+      transition: opacity 100ms ease 250ms;
+    }
+  }
+
+  @media (hover: none) {
+    width: 280px;
+    background-color: #e81771;
+
+    @media (max-width: $breakpoint-small) {
+      width: auto;
+    }
+
+    .icon-container {
+      color: #fff;
+    }
+
+    .hover-intent-layer {
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+}

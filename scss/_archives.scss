@@ -1,0 +1,147 @@
+.asen-archive {
+  .items {
+    padding: 0 $site-overall-gutter 4%;
+    @include site-overall-gutter-small;
+    .inside {
+      position: relative;
+      max-width: 1600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+}
+
+.asen-archive-item {
+  width: 100%;
+
+  .grid-layout-three-columns & {
+    width: 32%;
+    display: flex;
+    margin: 0 2% 3% 0;
+
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+
+  .grid-layout-two-columns & {
+    width: 48%;
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+    &,
+    &:nth-child(3n) {
+      margin-right: 4%;
+    }
+  }
+
+  &,
+  .grid-layout-three-columns &,
+  .grid-layout-two-columns & {
+    @media (max-width: $breakpoint-tablet-large) {
+      width: 48%;
+      &,
+      &:nth-child(3n) {
+        margin-right: 4%;
+      }
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+    }
+    @media (max-width: $breakpoint-small) {
+      width: 100%;
+      &,
+      &:nth-child(2n),
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+    }
+  }
+
+  a {
+    width: 100%;
+    &:hover {
+      .headshot {
+        box-shadow: 0 0 30px 0 rgba(#000, 0.4);
+      }
+      .overlay {
+        opacity: 1;
+      }
+    }
+  }
+  .thumb {
+    position: relative;
+    display: block;
+    height: 0;
+    padding-top: 100%;
+    overflow: hidden;
+    background-color: $asen-placeholder-background-color;
+    transition: box-shadow 600ms ease;
+    box-shadow: 0 0 30px 0 transparent;
+    backface-visibility: hidden;
+
+    img {
+      display: block;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10%;
+    margin: 0;
+    transition: opacity 400ms ease;
+  }
+  .copy {
+    padding: 7% 3% 8%;
+    display: block;
+    h3 {
+      color: $gray-700;
+      text-align: center;
+      font-size: 33px;
+      line-height: 1.1;
+      @media (max-width: $breakpoint-tablet-large) {
+        font-size: 28px;
+      }
+    }
+    p {
+      color: $gray-600;
+      text-align: center;
+      font-size: 23px;
+      line-height: 1.1;
+      margin: 0;
+      @media (max-width: $breakpoint-tablet-large) {
+        font-size: 19px;
+      }
+    }
+  }
+}
+
+.asen-archive-form {
+  padding: 0 $site-overall-gutter 5%;
+  @include site-overall-gutter-small;
+
+  .inside {
+    position: relative;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+}

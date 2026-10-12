@@ -1,0 +1,58 @@
+{
+    "key": "group_5f4fa849043a6",
+    "title": "Gutenberg - Asen Link Wrapper",
+    "fields": [
+        {
+            "key": "field_5f4fa8549c575",
+            "label": "Link",
+            "name": "link_object",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_5f5002a30bc80",
+            "label": "Link Anchor",
+            "name": "link_anchor",
+            "type": "text",
+            "instructions": "<span style=\"color:red;\">Note:<\/span> Add an anchor name here without the # character.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/asen-link-wrapper"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1625076318
+}

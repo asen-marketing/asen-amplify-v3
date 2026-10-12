@@ -1,0 +1,109 @@
+.asen-page-banner {
+  padding: 10% $site-overall-gutter;
+  margin-bottom: 5%;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  @include site-gutter-breakpoint-chonky;
+
+  @media (max-width: $breakpoint-small) {
+    padding: 50px $site-overall-gutter;
+    @include site-overall-gutter-small;
+  }
+
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+
+    img {
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+  }
+  .inside {
+    max-width: $site-overall-max-width;
+    position: relative;
+    width: 100%;
+
+    &.align-center {
+      text-align: center;
+    }
+  }
+
+  .copy {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // .h1 {
+  //   font-size: 105px;
+  // }
+
+  p.eyebrow,
+  p.subtitle {
+    line-height: 1.5;
+  }
+  p.eyebrow {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  p.subtitle {
+    &.default {
+      @include responsive-paragraph(26px);
+    }
+  }
+
+  .button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .button {
+      @media (max-width: 450px) {
+        width: 100%;
+      }
+    }
+
+    &.align-center {
+      justify-content: center;
+    }
+    &.right {
+      justify-content: flex-end;
+    }
+  }
+}

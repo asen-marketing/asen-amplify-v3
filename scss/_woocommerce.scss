@@ -1,0 +1,81 @@
+// Shop Page
+
+body.woocommerce.archive .main-content,
+body.asen-is-woo-archive .main-content,
+body.single-product .main-content {
+  max-width: 1400px;
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  padding: 100px 0;
+
+  // Without this, the max-width trick above does not behave with javascript.
+  // Example: product images.
+  > .content-area {
+    width: 100%;
+  }
+
+  @media (max-width: 1024px) {
+    width: 90%;
+  }
+  @media (max-width: 590px) {
+    padding: 50px 0;
+  }
+  @media (max-width: 590px) {
+    width: 85%;
+  }
+}
+
+body.woocommerce main {
+  width: 100%;
+
+  &.has-sidebar {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+
+    .woo-content {
+      width: 80%;
+    }
+    .woo-sidebar {
+      width: 18%;
+    }
+    @media (max-width: 1280px) {
+      flex-direction: column;
+      .woo-content {
+        width: 100%;
+      }
+      .woo-sidebar {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.woo-sidebar {
+  .widget {
+    margin-bottom: 30px;
+  }
+  .widget_product_search {
+    input,
+    button {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 1280px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .widget {
+      width: 45%;
+    }
+  }
+
+  @media (max-width: 580px) {
+    flex-direction: column;
+    .widget {
+      width: 100%;
+    }
+  }
+}

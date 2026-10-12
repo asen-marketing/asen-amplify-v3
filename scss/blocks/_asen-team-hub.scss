@@ -1,0 +1,91 @@
+.asen-team-hub {
+  display: flex;
+  justify-content: center;
+  padding-left: $site-overall-gutter;
+  padding-right: $site-overall-gutter;
+  @include site-vertical-padding-dynamic();
+  @include site-overall-gutter-small;
+
+  .inside {
+    max-width: $site-overall-max-width;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    position: relative;
+  }
+
+  .team-item {
+    img {
+      padding-bottom: 1rem;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    h3.team-member-name {
+      text-align: center;
+      font-size: 25px;
+      margin-bottom: 5px;
+      font-weight: 600;
+
+      &.uppercase {
+        text-transform: uppercase;
+      }
+      &.lowercase {
+        text-transform: lowercase;
+      }
+    }
+
+    h4.team-member-position {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 300;
+
+      &.uppercase {
+        text-transform: uppercase;
+      }
+      &.lowercase {
+        text-transform: lowercase;
+      }
+    }
+  }
+
+  ul,
+  li {
+    list-style: none;
+  }
+
+  .glide {
+    width: calc(100% - 200px);
+
+    @media (max-width: $breakpoint-tablet-large) {
+      width: calc(100% - 150px);
+    }
+    @media (max-width: 500px) {
+      width: calc(100% - 100px);
+    }
+  }
+
+  .controls {
+    position: absolute;
+    top: 33%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    button {
+      border-radius: 50%;
+      border: none;
+      background-color: transparent;
+      font-size: 30px;
+
+      i {
+        font-weight: 500;
+      }
+    }
+  }
+}

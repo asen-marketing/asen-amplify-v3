@@ -1,0 +1,338 @@
+// TODO: For mobile devices, create horiztonal layout.
+
+$site-menu-max-width: 426px;
+$site-menu-max-width-mobile: 250px;
+
+.off-canvas-menu-backing-overlay {
+  pointer-events: none;
+  opacity: 0;
+  background-color: #25252d;
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: opacity 600ms ease;
+
+  &.is-active {
+    opacity: 0.9;
+    pointer-events: all;
+  }
+
+  display: none;
+}
+
+.off-canvas-menu-container {
+  background-color: #e81771;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  transform: translate(100vw, 0);
+  transition:
+    transform 600ms ease,
+    opacity 0ms linear 600ms;
+  display: none; // Shown at the off-canvas breakpoint in head-mods.php.
+  justify-content: center;
+  backface-visibility: hidden;
+  opacity: 0;
+  overflow: auto;
+
+  @media (max-width: $breakpoint-small) {
+    transform: translate(100vw, 0);
+  }
+
+  &.is-active {
+    transform: translate(0, 0);
+    opacity: 1;
+    transition:
+      transform 600ms ease,
+      opacity 0ms linear 0ms;
+    .inside {
+      opacity: 1;
+    }
+  }
+
+  .inside {
+    width: 100vw;
+    padding: 28px $header-gutter-desktop $header-gutter-desktop 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 600ms ease;
+    backface-visibility: hidden;
+    position: relative;
+
+    // Min-heights instead of fixed grid rows so open submenus push the footer down
+    &.has-footer {
+      justify-content: flex-start;
+
+      .column-container {
+        flex-shrink: 0;
+        align-self: stretch;
+        justify-content: flex-end;
+        min-height: 70%;
+        padding-top: 1rem;
+      }
+
+      .off-canvas-footer {
+        flex-shrink: 0;
+        align-self: center;
+        justify-content: flex-end;
+        min-height: 25%;
+      }
+    }
+
+    // Set by JS so open submenus expand downward instead of pushing the menu up
+    &.is-pinned {
+      justify-content: flex-start;
+
+      .column-container {
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  .column-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+
+    &.two-column {
+      flex-direction: row;
+      gap: 6rem;
+
+      ul li {
+        text-align: left;
+      }
+
+      ul.sub-menu > li {
+        padding-left: 1rem;
+      }
+    }
+  }
+
+  p {
+    font-size: 23px;
+    line-height: 1;
+    color: #fff;
+    margin-bottom: 10px;
+
+    a {
+      color: #fff;
+      transition: color 100ms ease;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+}
+
+.off-canvas-menu {
+  margin: 0 0 26px;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 10px 0;
+      text-align: center;
+
+      @media (max-height: 1000px) {
+        padding: 2px 0;
+      }
+      @media (max-width: $breakpoint-small) {
+        padding: 2px 0;
+      }
+      a {
+        display: inline-block;
+        color: #fff;
+        line-height: 1;
+        padding: 8px 0;
+        transition: color 100ms ease;
+
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  li:not(.menu-item-has-children) {
+    i {
+      display: none;
+    }
+  }
+
+  .menu-item-has-children {
+    > a {
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+
+      &::after {
+        font-family: "Font Awesome 7 Pro";
+        font-weight: 900;
+        content: "\f105";
+        display: inline-block;
+        position: absolute;
+        right: -10px;
+        font-size: 30px;
+        transition: transform 200ms ease-in-out;
+
+        @media (max-width: $breakpoint-small) {
+          font-size: 25px;
+        }
+      }
+    }
+    &.is-active > a::after {
+      transform: rotate(90deg);
+    }
+
+    &:hover {
+      color: #e81771;
+    }
+  }
+
+  &.off-canvas-menu-large {
+    ul {
+      > li {
+        font-size: 45px;
+
+        @media (max-width: $breakpoint-small) {
+          font-size: 38px;
+        }
+
+        ul.sub-menu {
+          > li {
+            font-size: 25px;
+          }
+        }
+      }
+    }
+  }
+
+  &.off-canvas-menu-small {
+    ul {
+      > li {
+        font-size: 30px;
+
+        @media (max-width: $breakpoint-small) {
+          font-size: 25px;
+        }
+
+        a {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+ul.sub-menu {
+  display: none;
+  width: 100%;
+  height: auto;
+
+  .expand {
+    display: none;
+  }
+
+  li.menu-item a {
+    font-size: 25px;
+    margin-right: 0;
+    padding: 5px 0;
+    text-transform: none;
+
+    @media (max-width: $breakpoint-small) {
+      font-size: 20px;
+    }
+  }
+}
+
+// Off Canvas Footer
+
+.off-canvas-footer {
+  align-self: flex-end;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+  img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+
+    @media (max-width: 450px) {
+      max-width: 250px;
+    }
+  }
+
+  .button {
+    background-color: #fff;
+    color: #0a0101;
+    transition: color 100ms ease;
+    display: none;
+
+    @media (max-width: 639px) {
+      display: block;
+    }
+
+    &:hover {
+      background-color: #343a40;
+      color: #fff;
+    }
+  }
+
+  ul.site-social {
+    list-style: none;
+    padding: 10px 0 10px;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+
+    li {
+      display: inline-block;
+      a {
+        display: block;
+        height: 30px;
+        padding: 0 10px;
+        display: flex;
+        align-items: center;
+        color: #fff;
+
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+
+  p.copyright {
+    font-size: 16px;
+    color: #fff;
+
+    a {
+      color: #fff;
+      transition: color 100ms ease;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+}

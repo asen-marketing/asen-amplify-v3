@@ -1,0 +1,15 @@
+{
+  "name": "acf/asen-intro-block",
+  "title": "Asen Intro Block",
+  "description": "Heading and subheading with blurb and optional CTA.",
+  "category": "asen-blocks",
+  "icon": "editor-textcolor",
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "/templates/block/core-blocks/asen-intro-block.php"
+  },
+  "supports": {
+    "align": false,
+    "anchor": true
+  }
+}

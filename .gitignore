@@ -1,0 +1,8 @@
+# Compiled by WP-SCSS on the server; never commit.
+css/*
+!css/.gitkeep
+
+node_modules/
+*.log
+*.map
+.DS_Store

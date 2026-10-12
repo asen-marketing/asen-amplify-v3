@@ -1,0 +1,56 @@
+.scroll-down-cta-container {
+  position: fixed;
+  z-index: 10;
+  right: 20px;
+  bottom: 50%;
+  transform: rotate(90deg);
+  transform-origin: top right;
+  mix-blend-mode: luminosity;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms ease;
+
+  @media (min-aspect-ratio: #{'16/12'}) {
+    bottom: 60px;
+  }
+  @media (max-width: $breakpoint-tablet-small) {
+    right: 4px;
+    bottom: 4px;
+  }
+
+  button {
+    border: 0;
+    background: transparent;
+    color: #d8d8d8;
+    font-size: 20px;
+    line-height: 1;
+    text-transform: lowercase;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    transform: translateX(-20px);
+    transition: transform 150ms ease;
+
+    span {
+      margin-right: 10px;
+    }
+
+    svg {
+      width: 100px;
+      margin-top: 5px;
+
+      * {
+        fill: #d8d8d8;
+      }
+    }
+  }
+
+  &.is-active {
+    opacity: 1;
+    pointer-events: all;
+
+    button {
+      transform: translateX(0px);
+    }
+  }
+}

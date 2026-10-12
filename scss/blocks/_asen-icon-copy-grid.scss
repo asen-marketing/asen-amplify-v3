@@ -1,0 +1,200 @@
+// Icon + Copy Grid
+.asen-icon-copy-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: $site-overall-gutter;
+  padding-right: $site-overall-gutter;
+  @include site-overall-gutter-small;
+
+  //@include site-overall-gutter-large;
+  @include site-vertical-padding-dynamic($top: 150px, $bottom: 160px);
+
+  @media (max-width: $breakpoint-screen-small) {
+    padding-top: 82px;
+    padding-bottom: 65px;
+  }
+
+  @media (max-width: $breakpoint-tablet-small) {
+    padding-top: 50px;
+    padding-bottom: 30px;
+  }
+
+  &.bg-style-color {
+    .item {
+      background-color: #ececec;
+
+      @media (max-width: 900px) {
+        width: 100%;
+      }
+    }
+  }
+
+  &.bg-style-none {
+    .item {
+      padding: 0 0 2rem;
+    }
+  }
+
+  .inside {
+    width: 100%;
+    max-width: 1592px;
+
+    @media (max-width: #{$breakpoint-tablet-large - 1px}) {
+      max-width: 980px;
+    }
+  }
+
+  .items {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 50px;
+    width: 100%;
+
+    @media (max-width: $breakpoint-laptop-small) {
+      gap: 30px;
+    }
+
+    &.button-link {
+    }
+    &.text-link {
+    }
+    &.invisible-link {
+    }
+  }
+
+  .item {
+    padding: 2rem;
+    width: calc(33.33% - 33.33px);
+    display: grid;
+
+    @media (max-width: $breakpoint-laptop-small) {
+      width: calc(33.33% - 20px);
+    }
+    @media (max-width: $breakpoint-tablet-large) {
+      padding: 1.5rem;
+    }
+
+    @media (max-width: $breakpoint-tablet-small) {
+      width: 100%;
+    }
+
+    &.rounded {
+      &-small {
+        border-radius: 15px;
+      }
+      &-medium {
+        border-radius: 25px;
+      }
+      &-large {
+        border-radius: 35px;
+      }
+    }
+    &.align-center {
+      text-align: center;
+    }
+  }
+
+  i {
+    color: #e81771;
+    font-size: 40px;
+    padding-bottom: 2rem;
+
+    @media (max-width: $breakpoint-screen-small) {
+      font-size: 35px;
+    }
+    @media (max-width: $breakpoint-tablet-small) {
+      font-size: 30px;
+    }
+    @media (max-width: #{$breakpoint-small - 1px}) {
+      font-size: 35px;
+    }
+  }
+
+  a.asen-text-link,
+  a.button {
+    align-self: flex-end;
+  }
+
+  a.button {
+    width: fit-content;
+
+    i {
+      font-size: inherit;
+      padding-left: 10px;
+      color: inherit;
+      transition: none;
+      padding-bottom: 0;
+
+      @media (max-width: ($breakpoint-small - 1px)) {
+        font-size: 22px;
+      }
+    }
+  }
+
+  a.asen-text-link {
+    color: #e81771;
+    font-size: 25px;
+    font-weight: 500;
+
+    @media (max-width: $breakpoint-small) {
+      font-size: 23px;
+    }
+
+    i {
+      font-size: inherit;
+      padding-left: 7px;
+      color: inherit;
+      transition: none;
+      padding-bottom: 0;
+
+      @media (max-width: ($breakpoint-small - 1px)) {
+        font-size: 22px;
+      }
+    }
+
+    &:hover {
+      color: #b71259;
+    }
+  }
+
+  .copy {
+    h4 {
+      &.small {
+        font-size: 24px;
+
+        @media (max-width: $breakpoint-small) {
+          font-size: 22px;
+        }
+      }
+      &.medium {
+        font-size: 28px;
+
+        @media (max-width: $breakpoint-small) {
+          font-size: 25px;
+        }
+      }
+      &.large {
+        font-size: 32px;
+
+        @media (max-width: $breakpoint-small) {
+          font-size: 27px;
+        }
+      }
+      font-size: 28px;
+      margin-bottom: 1rem;
+      font-weight: 900;
+
+      @media (max-width: $breakpoint-small) {
+        font-size: 25px;
+      }
+    }
+
+    p {
+      font-weight: 500;
+    }
+  }
+}

@@ -1,0 +1,181 @@
+$header-height-desktop: 76px;
+$header-height-desktop-landing-page: 105px;
+
+$breakpoint-large: 2560px; // Rarely used, but when it's needed... oh, boy.
+$breakpoint-laptop-large: 1920px;
+$breakpoint-laptop-small: 1440px;
+$breakpoint-screen-medium: 1380px;
+$breakpoint-screen-small: 1200px;
+$breakpoint-tablet-large: 1024px;
+$breakpoint-tablet-small: 768px;
+$breakpoint-small: 640px;
+$breakpoint-insultingly-small: 390px;
+
+// Footer specific.
+$breakpoint-footer-laptop-small: 1500px;
+$breakpoint-footer-tablet-large: 1100px;
+$breakpoint-footer-tablet-small: 1024px;
+
+$site-overall-gutter: 50px;
+$header-gutter-desktop: 30px;
+$site-overall-gutter-small: 7%;
+
+@mixin site-overall-gutter-small {
+  @media (max-width: $breakpoint-tablet-small) {
+    padding-left: $site-overall-gutter-small;
+    padding-right: $site-overall-gutter-small;
+  }
+}
+
+@mixin site-gutter-breakpoint-chonky {
+  @media (max-width: $breakpoint-tablet-small) {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+
+@mixin site-vertical-padding-dynamic($top: 100px, $bottom: 100px) {
+  padding-top: $top;
+  padding-bottom: $bottom;
+  @media (max-width: $breakpoint-laptop-small) {
+    @if ($top != null) {
+      padding-top: $top * 0.8;
+    }
+    @if ($bottom != null) {
+      padding-bottom: $bottom * 0.8;
+    }
+  }
+  @media (max-width: $breakpoint-tablet-large) {
+    @if ($top != null) {
+      padding-top: $top * 0.7;
+    }
+    @if ($bottom != null) {
+      padding-bottom: $bottom * 0.7;
+    }
+  }
+  @media (max-width: $breakpoint-tablet-small) {
+    @if ($top != null) {
+      padding-top: $top * 0.55;
+    }
+    @if ($bottom != null) {
+      padding-bottom: $bottom * 0.55;
+    }
+  }
+}
+
+@mixin site-horizontal-padding-dynamic($left: 100px, $right: 100px) {
+  padding-left: $left;
+  padding-right: $right;
+  @media (max-width: $breakpoint-laptop-small) {
+    @if ($left != null) {
+      padding-left: $left * 0.8;
+    }
+    @if ($right != null) {
+      padding-right: $right * 0.8;
+    }
+  }
+  @media (max-width: $breakpoint-tablet-large) {
+    @if ($left != null) {
+      padding-left: $left * 0.7;
+    }
+    @if ($right != null) {
+      padding-right: $right * 0.7;
+    }
+  }
+  @media (max-width: $breakpoint-tablet-small) {
+    @if ($left != null) {
+      padding-left: $left * 0.55;
+    }
+    @if ($right != null) {
+      padding-right: $right * 0.55;
+    }
+  }
+}
+
+@mixin site-vertical-margin-dynamic($top: 100px, $bottom: 100px) {
+  margin-top: $top;
+  margin-bottom: $bottom;
+  @media (max-width: $breakpoint-laptop-small) {
+    @if ($top != null) {
+      margin-top: $top * 0.8;
+    }
+    @if ($bottom != null) {
+      margin-bottom: $bottom * 0.8;
+    }
+  }
+  @media (max-width: $breakpoint-tablet-large) {
+    @if ($top != null) {
+      margin-top: $top * 0.7;
+    }
+    @if ($bottom != null) {
+      margin-bottom: $bottom * 0.7;
+    }
+  }
+  @media (max-width: $breakpoint-tablet-small) {
+    @if ($top != null) {
+      margin-top: $top * 0.55;
+    }
+    @if ($bottom != null) {
+      margin-bottom: $bottom * 0.55;
+    }
+  }
+}
+
+@mixin responsive-heading($font-size: 60px) {
+  font-size: $font-size;
+
+  @media (max-width: $breakpoint-tablet-large) {
+    @if ($font-size > 85px) {
+      font-size: $font-size * 0.7;
+    } @else if ($font-size > 40px) {
+      font-size: $font-size * 0.8;
+    } @else {
+      font-size: $font-size * 0.9;
+    }
+  }
+  @media (max-width: $breakpoint-small) {
+    @if ($font-size > 85px) {
+      font-size: $font-size * 0.55;
+    } @else if ($font-size > 40px) {
+      font-size: $font-size * 0.7;
+    } @else {
+      font-size: $font-size * 0.85;
+    }
+  }
+}
+
+@mixin responsive-paragraph($font-size: 25px) {
+  font-size: $font-size;
+
+  @media (max-width: $breakpoint-tablet-large) {
+    @if ($font-size > 22px) {
+      font-size: $font-size * 0.9;
+    }
+  }
+  @media (max-width: $breakpoint-small) {
+    @if ($font-size > 28px) {
+      font-size: $font-size * 0.8;
+    }
+  }
+}
+
+@mixin responsive-border-radius($radius: 40px) {
+  border-radius: $radius;
+
+  @media (max-width: $breakpoint-screen-small) {
+    border-radius: $radius * 0.8;
+  }
+  @media (max-width: $breakpoint-tablet-large) {
+    border-radius: $radius * 0.7;
+  }
+  @media (max-width: $breakpoint-tablet-small) {
+    border-radius: $radius * 0.6;
+  }
+  @media (max-width: $breakpoint-small) {
+    @if ($radius * 0.5 > 35px) {
+      border-radius: 35px;
+    } @else {
+      border-radius: $radius * 0.5;
+    }
+  }
+}

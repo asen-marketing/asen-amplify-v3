@@ -1,0 +1,81 @@
+{
+    "key": "group_5efa4ce512857",
+    "title": "Evergreen Files Options",
+    "fields": [
+        {
+            "key": "field_5efa4cf42b2f0",
+            "label": "Custom Plural Name",
+            "name": "asen_evergreen_files_plural_name",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": 16
+        },
+        {
+            "key": "field_5efa4d082b2f1",
+            "label": "Custom Singular Name",
+            "name": "asen_evergreen_files_singular_name",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": 16
+        },
+        {
+            "key": "field_5efa4d142b2f2",
+            "label": "Custom Description",
+            "name": "asen_evergreen_files_description",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": 280,
+            "rows": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "options"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1593462739
+}

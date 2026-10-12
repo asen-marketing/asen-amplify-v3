@@ -1,0 +1,128 @@
+.asen-product-service-tiers {
+  padding: 40px $site-overall-gutter 36px;
+  @include site-overall-gutter-small;
+
+  .inside {
+    max-width: 1580px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: $breakpoint-screen-small) {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    @media (max-width: $breakpoint-tablet-small) {
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    &.total-4 {
+      .item {
+        width: 24%;
+
+        @media (max-width: $breakpoint-screen-small) {
+          width: 100%;
+          max-width: 390px;
+          margin: 0 7px 13px;
+          &:nth-child(1),
+          &:nth-child(2) {
+            align-self: flex-end;
+          }
+          &:nth-child(3),
+          &:nth-child(4) {
+            align-self: flex-start;
+          }
+        }
+        @media (max-width: $breakpoint-tablet-small) {
+          &:nth-child(1),
+          &:nth-child(2),
+          &:nth-child(3),
+          &:nth-child(4) {
+            align-self: auto;
+          }
+        }
+      }
+    }
+  }
+
+  .item {
+    border: 4px solid #424242;
+    header {
+      background-color: #424242;
+      color: #fff;
+      padding: 28px 6% 8px;
+
+      .label {
+        text-transform: uppercase;
+        margin: 0;
+        font-size: 22px;
+      }
+      .heading {
+        text-transform: uppercase;
+        font-size: 70px;
+        line-height: 1.15;
+        margin: 0 0 7px;
+
+        @media (max-width: 1580px) {
+          font-size: 50px;
+        }
+
+        @media (max-width: $breakpoint-small) {
+          font-size: 60px;
+        }
+      }
+      .subheading-copy {
+        p {
+          font-size: 20px;
+          line-height: 1.2;
+
+          @media (max-width: $breakpoint-small) {
+            font-size: 16px;
+          }
+          span {
+            font-size: 25px;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 4px;
+
+            @media (max-width: $breakpoint-small) {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+    .list-items {
+      padding: 10px 6% 28px;
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          padding: 6% 0;
+          border-bottom: 2px solid #d9d9d9;
+          &:last-child {
+            border-bottom: 0;
+          }
+          font-size: 20px;
+          line-height: 1.2;
+
+          @media (max-width: $breakpoint-small) {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    .action {
+      align-self: flex-end;
+      padding: 8px 6% 28px;
+    }
+  }
+}

@@ -1,0 +1,167 @@
+{
+    "key": "group_67bcbde657c1c",
+    "title": "Gutenberg - Asen Featured Blogs",
+    "fields": [
+        {
+            "key": "field_67bcbde6765e6",
+            "label": "Block Name",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "message": "<h3>Asen Featured Blogs<\/h3>",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_69eb1a2c0f001",
+            "label": "Post Source",
+            "name": "post_source",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "choices": {
+                "recent": "3 most recent posts",
+                "handpicked": "3 hand-picked posts"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "recent",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_69eb1a2c0f002",
+            "label": "Hand-Picked Posts",
+            "name": "handpicked_posts",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Up to 3. Order here is display order. Falls back to the most recent posts when empty.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_69eb1a2c0f001",
+                        "operator": "==",
+                        "value": "handpicked"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "post_type": [
+                "post"
+            ],
+            "post_status": "",
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "taxonomy"
+            ],
+            "return_format": "id",
+            "acfe_add_post": 0,
+            "acfe_edit_post": 0,
+            "acfe_bidirectional": {
+                "acfe_bidirectional_enabled": "0"
+            },
+            "min": 0,
+            "max": 3,
+            "allow_in_bindings": 0,
+            "elements": "",
+            "bidirectional": 0,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_69eb1a2c0f003",
+            "label": "Hide CTA Tile",
+            "name": "hide_cta_tile",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "The \"See All Posts\" tile uses this page's featured image and makes the row 4 tiles wide. Hide it for a plain 3-up row.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_67bcbe45765e7",
+            "label": "CTA Heading",
+            "name": "blog_archive_cta_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_69eb1a2c0f003",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/asen-featured-blogs"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1791800000
+}
