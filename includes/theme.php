@@ -4,9 +4,12 @@
  */
 
 function site_enqueue_theme_scripts() {
-    $cache_buster_css = date( "YmdHi", filemtime( get_template_directory() . '/css/index.css' ) );
+    // WP-SCSS compiles the active theme's scss/, so on a client site the stylesheet is the child's css/index.css
+    // (which imports the parent's SCSS); get_theme_file_*() picks the child's file and falls back to the parent's.
+    $css_path         = get_theme_file_path( 'css/index.css' );
+    $cache_buster_css = file_exists( $css_path ) ? filemtime( $css_path ) : null;
     $cache_buster_js  = date( "YmdHi", filemtime( get_template_directory() . '/js/main.js' ) );
-    wp_enqueue_style( 'main', get_template_directory_uri() . '/css/index.css', array(), $cache_buster_css );
+    wp_enqueue_style( 'main', get_theme_file_uri( 'css/index.css' ), array(), $cache_buster_css );
     wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), $cache_buster_js, true );
     wp_enqueue_script( 'jquery-modal', get_template_directory_uri() . '/js/vendor/jquery.modal.min.js', null, '0.9.2', true );
 
@@ -104,25 +107,16 @@ if ( ! isset( $content_width ) ) {
     $content_width = 1480;
 }
 
+// Every includes/core-blocks/{slug}/block.json in the parent, then the child; a child folder with the same name replaces the parent's block.
 function asen_register_acf_blocks() {
-    // Get the path to your blocks directory
-    $blocks_dir = get_template_directory() . "/includes/core-blocks";
-
-// Loop through each folder in the blocks directory
-    if ( is_dir( $blocks_dir ) ) {
-        $block_folders = new DirectoryIterator( $blocks_dir );
-
-        foreach ( $block_folders as $folder ) {
-// Check if it's a directory and contains a block.json file
-            if ( $folder->isDir() && ! $folder->isDot() ) {
-                $block_json = $folder->getPathname() . '/block.json';
-
-                if ( file_exists( $block_json ) ) {
-                    // Register the block using the path to the folder
-                    register_block_type( $folder->getPathname() );
-                }
-            }
+    $folders = array();
+    foreach ( array_unique( array( get_template_directory(), get_stylesheet_directory() ) ) as $theme_dir ) {
+        foreach ( glob( $theme_dir . '/includes/core-blocks/*/block.json' ) ?: array() as $block_json ) {
+            $folders[ basename( dirname( $block_json ) ) ] = dirname( $block_json );
         }
+    }
+    foreach ( $folders as $folder ) {
+        register_block_type( $folder );
     }
 }
 

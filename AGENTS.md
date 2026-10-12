@@ -24,6 +24,7 @@ includes/
   theme.php                enqueues, theme supports, image sizes, asen_enqueue_splide()/glide(), block.json loader
   gutenberg.php            the "Asen Blocks" inserter category + ACF block filters
   patterns.php             registers the "Asen" pattern category
+  updates.php              self-update from GitHub releases (plugin-update-checker in includes/vendor); off on git checkouts
   client-editing.php       client inserter allowlist, no block unlocking / code editor for clients, locked banner in new pages' block template
   css-layers.php           moves core/plugin stylesheets into the `vendor` cascade layer
   theme-json.php           editor styles + preset-only editor settings for non-Asen users (asen_user_is_builder())
@@ -160,9 +161,19 @@ Clients (anyone `asen_user_is_builder()` says isn't Asen staff) get: preset-only
 
 **Removed in v3:** the `site_colors` repeater and `site_max_width` fields. Colors are the theme.json palette (`_colors.scss` aliases it); max width is theme.json `layout.wideSize`. The `includes/scss-mods.php` + `_global-variables.scss` approach seen in older client forks (options → rewrite an SCSS file on `wp_head`) is dead and must not be copied forward.
 
-## Working in a client fork
+## Releases and child themes
 
-Decided Oct 2026: client sites move to a **child theme** once the Phase 5 scaffold exists. Until then, forks continue under these rules:
+This repo is the **parent** theme. Client sites run a child theme (`Template: asen-amplify-v3`) from their own repo, started from `asen-marketing/asen-amplify-child-starter`; the child's AGENTS.md covers client work.
+
+- **Release:** bump `Version:` in `style.css`, add a CHANGELOG entry, commit, push a tag `vX.Y.Z` matching the Version. `.github/workflows/release.yml` builds `asen-amplify-v3.zip` (top-level folder `asen-amplify-v3/`, `.gitattributes` export-ignore applies) and publishes the GitHub release. Every site finds it within ~12 hours and WP-Cron installs it (`includes/updates.php`); "Check again" under Dashboard → Updates is immediate.
+- **Semver matters:** anything a child theme may reference (block slugs, field names, template-part paths, SCSS variables/mixins, CSS custom properties, filters, function names) is API. Renaming or removing one is a major version with a migration note in CHANGELOG.md.
+- **Never auto-updated:** a checkout with `.git/` or `WP_DEVELOPMENT_MODE` `theme` (local dev). Per site: `ASEN_AMPLIFY_GITHUB_TOKEN` (needed while the repo is private), `ASEN_AMPLIFY_DISABLE_AUTO_UPDATE`.
+- **Staging / emergency deploys:** `.github/workflows/deploy-wpengine.yml` rsyncs the repo to WP Engine — every push to `main` goes to the `WPE_STAGING_ENV` repo variable; run it manually with a JSON list of environments to push a fix everywhere. Needs the `WPE_SSHG_KEY_PRIVATE` secret.
+- **Child-aware parent code:** CSS loads with `get_theme_file_uri()` (child's compiled file first); ACF JSON loads parent then child (child copy of a group shadows the parent's — so edit parent groups only here); the block loader scans both themes' `includes/core-blocks/` (same folder name in the child replaces the parent block); `locate_template` / `get_template_part` / patterns / theme.json already resolve child-first.
+
+## Working in an amplify-lite-era client fork
+
+Older client sites are forks of amplify-lite and stay that way. Rules for maintaining them:
 
 - Change the client prefix once; add to, don't rewrite, shared files. Shared partials (`_header.scss`, `_typography.scss`, `front-page-banner.php`, `off-canvas.php`…) do get client edits in practice, but every edit there is one more thing that can't be pulled from upstream. Prefer an override in `_custom.scss` or a new partial.
 - Keep the upstream ACF group JSON files; add client groups alongside with the prefixed titles.
@@ -192,4 +203,4 @@ See [MODERNIZATION.md](MODERNIZATION.md). Update this line as phases land.
 - Phase 2 (ACF blocks → `block.json` + native supports, structure-only SCSS): done — 17 blocks, all `block.json`, no inline `<style>` or `<script>` in any template, no jQuery in block JS
 - Phase 3 (client-safe editing: role-gated inserter, patterns, section styles, bindings): done except block bindings — allowlist, editor locks, banner block + locked page template, button/section styles, hero + 3 page-starter patterns
 - Phase 4 (block library rationalization): mostly done — overlap and dead blocks deleted, two replacement patterns (copy + image, pricing tiers), Glide gone, Video Popup rebuilt on `<dialog>` (the Kadence video-popup replacement). Left: jquery-modal / jQuery in `main.js`
-- Phase 5 (distribution model): decided — parent/child with a self-updating parent via GitHub releases; not built yet
+- Phase 5 (distribution): parent side done — self-updater, release + WP Engine workflows, child-aware loading, CHANGELOG. Child starter scaffolded locally; waiting on its GitHub repo.

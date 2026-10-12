@@ -1,21 +1,16 @@
 <?php
 
-// Save JSON files for GIT enabled versioning
+// ACF JSON saves to the active theme (the child on client sites) and loads from the parent, then the child, so a child's
+// copy of a group overrides the parent's. Edit parent groups only in the parent repo, or the child copy shadows every update.
 function asen_acf_json_save_point($path) {
-    // specify path to local ACF json for saving
-    $path = get_stylesheet_directory() . '/acf-groups';
-    return $path;
+    return get_stylesheet_directory() . '/acf-groups';
 }
 
 add_filter('acf/settings/save_json', 'asen_acf_json_save_point');
 
-// Enable syncing of JSON
-// Load up pulled or pushed field groups in current environment
 function asen_acf_json_load_point($paths) {
-                                                           // specify path to local ACF json for loading
-    unset($paths[0]);                                      // remove original path (optional)
-    $paths[] = get_stylesheet_directory() . '/acf-groups'; // append path
-    return $paths;
+    unset($paths[0]);
+    return array_merge($paths, array_unique([get_template_directory() . '/acf-groups', get_stylesheet_directory() . '/acf-groups']));
 }
 
 add_filter('acf/settings/load_json', 'asen_acf_json_load_point');
