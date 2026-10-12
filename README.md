@@ -6,4 +6,5 @@ v3 is a **parent theme**: each client site is a child theme in its own repo, and
 
 - Conventions and architecture: [AGENTS.md](AGENTS.md)
 - Roadmap and decisions: [MODERNIZATION.md](MODERNIZATION.md)
+- Theme directory and child-theme `Template:` slug: `asen-amplify-v3`
 - Requires WordPress 6.7+, PHP 8.1+, ACF Pro, ACF Extended, WP-SCSS.

@@ -12,7 +12,7 @@ Living document. Check items off as they ship and keep the "Roadmap status" line
 ## Repos
 
 - `asen-marketing/amplify-lite` — v2, frozen. Existing client forks keep using it; only security fixes go there. Its `.gitignore` excludes `/index.php`, so a fresh clone is a theme WordPress refuses to activate — fix that there if anyone clones it again.
-- `asen-marketing/amplify` — v3, this repo. Cloned from amplify-lite with history, theme directory `amplify`, `Theme Name: Asen Amplify`, version 3.0.0.
+- `asen-marketing/asen-amplify-v3` — v3, this repo. Cloned from amplify-lite with history, theme directory `asen-amplify-v3`, `Theme Name: Asen Amplify`, version 3.0.0.
 
 ## Starting point (Oct 2026)
 
@@ -92,12 +92,12 @@ Living document. Check items off as they ship and keep the "Roadmap status" line
 
 Client repo contains **only the child theme**. The parent is installed once from a GitHub release and updates itself through WordPress's normal theme-update path, so WP Engine sites pick up releases without per-site deploys.
 
-- [ ] Parent self-update: vendor `yahnis-elsts/plugin-update-checker` into `includes/vendor/`, point it at the GitHub repo with release assets enabled, add `Update URI:` to `style.css`, and `add_filter( 'auto_update_theme', … )` → true for `amplify` only. Private repo → GitHub token read from a `wp-config.php` constant set per site (never committed).
-- [ ] Release workflow (GitHub Action on tag): zip the theme with `amplify/` as the top-level folder, attach to the release, write the CHANGELOG entry. Sites see "Update available" in Appearance → Themes within ~12h via WP cron and auto-apply; "Update now" for immediate.
-- [ ] Staging soak (GitHub Action on push to `main`): `wpengine/github-action-wpe-site-deploy` rsyncs the theme to one WPE staging environment (`REMOTE_PATH: wp-content/themes/amplify/`). Tag only after it's been checked there.
+- [ ] Parent self-update: vendor `yahnis-elsts/plugin-update-checker` into `includes/vendor/`, point it at the GitHub repo with release assets enabled, add `Update URI:` to `style.css`, and `add_filter( 'auto_update_theme', … )` → true for `asen-amplify-v3` only. Private repo → GitHub token read from a `wp-config.php` constant set per site (never committed).
+- [ ] Release workflow (GitHub Action on tag): zip the theme with `asen-amplify-v3/` as the top-level folder, attach to the release, write the CHANGELOG entry. Sites see "Update available" in Appearance → Themes within ~12h via WP cron and auto-apply; "Update now" for immediate.
+- [ ] Staging soak (GitHub Action on push to `main`): `wpengine/github-action-wpe-site-deploy` rsyncs the theme to one WPE staging environment (`REMOTE_PATH: wp-content/themes/asen-amplify-v3/`). Tag only after it's been checked there.
 - [ ] Emergency push-to-all: the same deploy Action with a `matrix` of WPE environment names, run manually. Needs the agency SSH Gateway key as a repo secret.
-- [ ] Parent code changes: enqueue CSS/JS from `get_stylesheet_directory_uri()`; ACF `load_json` includes parent **and** child `acf-groups/`; block.json loader scans both `core-blocks/` dirs; WP-SCSS compiles from the child (`@import "../../amplify/scss/index"` then client partials).
-- [ ] Child scaffold repo (`amplify-child-starter`): `style.css` (`Template: amplify`), `theme.json`, `functions.php`, `includes/`, `scss/index.scss` + `_custom.scss`, `acf-groups/`, `patterns/`, `templates/` for overrides.
+- [ ] Parent code changes: enqueue CSS/JS from `get_stylesheet_directory_uri()`; ACF `load_json` includes parent **and** child `acf-groups/`; block.json loader scans both `core-blocks/` dirs; WP-SCSS compiles from the child (`@import "../../asen-amplify-v3/scss/index"` then client partials).
+- [ ] Child scaffold repo (`asen-amplify-child-starter`): `style.css` (`Template: asen-amplify-v3`), `theme.json`, `functions.php`, `includes/`, `scss/index.scss` + `_custom.scss`, `acf-groups/`, `patterns/`, `templates/` for overrides.
 - [ ] `CHANGELOG.md` + semver tags. Renamed mixins/classes/field names/template parts = major bump + migration note.
 - [ ] Verify on one WPE site: theme auto-update runs under WPE's cron; ACF renders from the updated local JSON without a manual Sync; the child's compiled CSS survives a parent update.
 

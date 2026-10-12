@@ -152,7 +152,7 @@ Decided Oct 2026: client sites move to a **child theme** once the Phase 5 scaffo
 
 ## Dev environment
 
-- Sites run in **Local** (`*.local`). Theme path: `app/public/wp-content/themes/amplify/`.
+- Sites run in **Local** (`*.local`). Theme path: `app/public/wp-content/themes/asen-amplify-v3/`.
 - WP-SCSS recompiles on each page load while `always_recompile` is on; compile errors show for logged-in users. Check `css/index.css` mtime if styles look stale.
 - Some locals expose a **Novamira MCP** server (REST-first WP control). It can run PHP/WP-CLI, read/write theme files, and inspect options — use it for "what is this option set to" questions instead of guessing. Native Gutenberg content writes through it require the Block Editor Queue admin page to be open in a browser.
 - Query Monitor is active locally; keep an eye on it after adding queries.
