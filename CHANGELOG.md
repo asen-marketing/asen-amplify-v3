@@ -11,4 +11,4 @@ First release of v3, split from amplify-lite (which stays frozen for existing si
 - All blocks are `block.json` with native spacing / color / alignment; structure-only SCSS; no inline styles or scripts. Overlapping and dead blocks removed; Asen - Banner replaces the page and front-page banner templates.
 - Site Options are CSS variable overrides; one header and one footer layout.
 - Client-safe editing: preset-only controls, inserter allowlist, locked page banner, section and button styles, page-starter patterns.
-- Parent/child distribution with self-updates from GitHub releases.
+- Parent/child distribution with self-updates from GitHub releases; a child's compiled CSS rebuilds automatically when the parent's SCSS changes.

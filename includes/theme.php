@@ -20,6 +20,25 @@ function site_enqueue_theme_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'site_enqueue_theme_scripts' );
 
+// WP-SCSS only watches the active theme's scss/, so a child's compiled CSS would stay stale after a parent update.
+function asen_scss_watch_parent( $needs_compiling ) {
+    if ( $needs_compiling || ! is_child_theme() ) {
+        return $needs_compiling;
+    }
+    $css = get_stylesheet_directory() . '/css/index.css';
+    if ( ! file_exists( $css ) ) {
+        return true;
+    }
+    $built = filemtime( $css );
+    foreach ( new RecursiveIteratorIterator( new RecursiveDirectoryIterator( get_template_directory() . '/scss', FilesystemIterator::SKIP_DOTS ) ) as $file ) {
+        if ( 'scss' === $file->getExtension() && $file->getMTime() > $built ) {
+            return true;
+        }
+    }
+    return false;
+}
+add_filter( 'wp_scss_needs_compiling', 'asen_scss_watch_parent' );
+
 // Libraries blocks depend on are registered, never enqueued globally: block viewScripts list them as dependencies,
 // and the collection partial enqueues the carousel only when a block renders in carousel layout.
 function asen_register_block_dependencies() {
