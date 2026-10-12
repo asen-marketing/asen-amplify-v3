@@ -14,7 +14,7 @@
   ],
   "acf": {
     "mode": "auto",
-    "renderTemplate": "/templates/block/core-blocks/asen-location-map.php"
+    "renderTemplate": "/templates/block/asen-location-map.php"
   },
   "attributes": {
     "style": {

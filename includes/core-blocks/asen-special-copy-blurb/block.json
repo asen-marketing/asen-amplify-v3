@@ -14,7 +14,7 @@
   ],
   "acf": {
     "mode": "auto",
-    "renderTemplate": "/templates/block/core-blocks/asen-special-copy-blurb.php"
+    "renderTemplate": "/templates/block/asen-special-copy-blurb.php"
   },
   "attributes": {
     "style": {

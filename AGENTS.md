@@ -26,7 +26,7 @@ includes/
   patterns.php             registers the "Asen" pattern category
   css-layers.php           moves core/plugin stylesheets into the `vendor` cascade layer
   theme-json.php           editor styles + preset-only editor settings for non-Asen users (asen_user_is_builder())
-  core-blocks/{slug}/block.json   new-style block registration (auto-loaded by asen_register_acf_blocks)
+  core-blocks/{slug}/      block.json (+ view.js / view.asset.php) for every block, auto-loaded by asen_register_acf_blocks()
   acf-customizations.php   ACF JSON paths, options pages, "asen_domain" location rule, GF form dropdown populator
   head-mods.php            <head> output: font snippets, script snippets, inline CSS generated from option fields
   backend-mods.php         admin menu curation, editor hiding for custom templates, admin CSS
@@ -34,7 +34,7 @@ includes/
   menus.php, footer-mods.php, woocommerce.php, yoast.php, body-class-mods.php, cmp-gravity-patch.php
   css/backend-styles.css   admin-only styles
 templates/
-  block/core-blocks/{slug}.php    render templates for block.json blocks
+  block/{slug}.php         block render templates (one per includes/core-blocks/{slug})
   block/partials/          collection.php (shared grid / alternating / Splide carousel for the CPT hubs) + one {type}-item.php per CPT
   header/header.php, footer/footer.php, menu/   the one header and footer; a child theme overrides these files for a custom build
   front-page-banner.php, interior-banner.php, blog/, archive/, social/
@@ -47,8 +47,7 @@ scss/
   _measurements.scss       breakpoints, gutters, responsive mixins
   _utility.scss            helper classes + shared mixins
   _block-globals.scss      .block-width-* and .spacing-top/bottom-* utility classes for block wrappers
-  blocks/_{slug}.scss      one partial per block, imported in blocks/index.scss
-  blocks/core/             partials for block.json blocks
+  blocks/_{slug}.scss      one partial per block (+ _collection.scss, pattern partials), imported in blocks/index.scss
   _custom.scss             client-specific overrides (last import)
 acf-groups/                ACF JSON sync folder (field groups, post types, taxonomies, options pages)
 page.php, single-*.php, archive-*.php, custom-*.php   template hierarchy + named page templates
@@ -60,8 +59,8 @@ page.php, single-*.php, archive-*.php, custom-*.php   template hierarchy + named
 |---|---|---|
 | Block slug | `asen-intro-block` | `ewart-footer-cta` |
 | Block title | `Asen - Intro Block` (new) / `Asen Intro Block` (existing) | `Ewart - Footer CTA` |
-| Render template | `templates/block/core-blocks/asen-intro-block.php` | `templates/block/ewart-footer-cta.php` |
-| SCSS partial | `scss/blocks/core/_asen-intro-block.scss` | `scss/blocks/_ewart-footer-cta.scss` |
+| Render template | `templates/block/asen-intro-block.php` | `templates/block/ewart-footer-cta.php` |
+| SCSS partial | `scss/blocks/_asen-intro-block.scss` | `scss/blocks/_ewart-footer-cta.scss` |
 | ACF group title | `Core - Asen Intro Block` / `Gutenberg - Asen CTA` | `Gutenberg - Ewart Footer CTA` |
 | CPT field group | `Single - Team` | `Ewart Single - Project` |
 | Options group | `Asen Header Options` | `Ewart Options - Projects Hub` |
@@ -103,7 +102,7 @@ $classes = [ 'asen-example', 'asen-example-' . $block['id'], $block['className']
 - Adding a field to a shipped block: ACF does **not** apply `default_value` to keys missing from a block's saved data, so existing instances read the new field as `null`. Make the absent state the old behavior — name toggles `hide_x` (default off) rather than `show_x` (default on), and `?:` a sensible default for selects.
 - If a block's layout is reused by a page template, keep the block template thin and put the markup in a shared template part called with `get_template_part( 'templates/…', null, $args )`. See the Ewart footer CTA pattern.
 - Blocks that render a CPT (Team Hub, Services Hub, Testimonials, FAQs, Products Showcase) are gated by the content-type toggles in Site Options → Builders Only.
-- **CPT hubs share one layout partial:** `get_template_part( 'templates/block/partials/collection', null, [ items, item_template, layout => grid|alternating|carousel, columns, label, splide, item_args ] )`. Item templates use the shared anatomy `.item-media` / `.item-copy` / `.item-title` / `.item-meta` / `.item-link`, so `scss/blocks/core/_collection.scss` lays out every hub; per-block partials only add the block shell and genuinely different bits (testimonials' masonry). Carousel layout enqueues `asen-carousel` + `splide` itself; Splide options go in `data-splide`. A new CPT hub is a block template + an item template, no new layout CSS.
+- **CPT hubs share one layout partial:** `get_template_part( 'templates/block/partials/collection', null, [ items, item_template, layout => grid|alternating|carousel, columns, label, splide, item_args ] )`. Item templates use the shared anatomy `.item-media` / `.item-copy` / `.item-title` / `.item-meta` / `.item-link`, so `scss/blocks/_collection.scss` lays out every hub; per-block partials only add the block shell and genuinely different bits (testimonials' masonry). Carousel layout enqueues `asen-carousel` + `splide` itself; Splide options go in `data-splide`. A new CPT hub is a block template + an item template, no new layout CSS.
 - **Alignment is native:** `supports.typography.textAlign` gives the toolbar alignment control and a `has-text-align-*` class. Use it instead of an ACF alignment radio. (Intro block, special copy blurb and icon + copy grid still carry their old `align_center` fields — retrofit pending.)
 - **Patterns** live in `patterns/{prefix}-{slug}.php` with headers `Title: {Prefix} - {Name}`, `Slug: amplify/{prefix}-{slug}`, `Categories: asen`. Core blocks only. Give the outer Group the retired block's class (e.g. `asen-copy-image`) and keep the pattern's rules in that block's SCSS partial, scoped to `.{slug}.wp-block-group`.
 - **Retiring blocks.** v3 has no shipped client sites yet, so a block retired before the first v3 release is **deleted outright** — registration, template, field group JSON, legacy SCSS. Once the first v3 client ships, retiring a shipped block means `supports.inserter: false` and keeping everything so existing content renders. Deleted so far: Copy + Image (→ `asen-copy-image` pattern), Product/Service Tiers (→ `asen-pricing-tiers` pattern), Testimonial Carousel (→ Testimonials carousel), Button, Buttons Group, Anchor, WYSIWYG, CTA, Split Fancy Copy (→ core blocks), and the never-registered Blockquote ×3 / Fancy List templates.
@@ -112,8 +111,8 @@ $classes = [ 'asen-example', 'asen-example-' . $block['id'], $block['className']
 
 1. Create the field group in ACF UI: title `Gutenberg - {Prefix} - {Name}`, location Block = `acf/{prefix}-{slug}`, clone "Reusable - Asen Tokens" fields for spacing/width/size. Confirm `acf-groups/group_*.json` was written.
 2. `includes/core-blocks/{prefix}-{slug}/block.json` (copy `asen-intro-block` as the starting point).
-3. `templates/block/core-blocks/{prefix}-{slug}.php` following the shape above. Escape everything that came from a field.
-4. `scss/blocks/core/_{prefix}-{slug}.scss`, imported from `scss/blocks/core/_index.scss`. Use tokens and the responsive mixins; no raw breakpoint pixel values when a mixin exists.
+3. `templates/block/{prefix}-{slug}.php` following the shape above. Escape everything that came from a field.
+4. `scss/blocks/_{prefix}-{slug}.scss`, imported from `scss/blocks/_index.scss`. Use tokens and the responsive mixins; no raw breakpoint pixel values when a mixin exists.
 5. If it needs JS: Splide, not Glide. Enqueue only for that block.
 6. Load a page with the block, confirm WP-SCSS compiled without errors (errors print for logged-in users), check the editor preview too.
 

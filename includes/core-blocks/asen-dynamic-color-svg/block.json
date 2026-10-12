@@ -14,7 +14,7 @@
   ],
   "acf": {
     "mode": "auto",
-    "renderTemplate": "/templates/block/core-blocks/asen-dynamic-color-svg.php"
+    "renderTemplate": "/templates/block/asen-dynamic-color-svg.php"
   },
   "supports": {
     "align": false,

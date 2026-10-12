@@ -14,7 +14,7 @@
   ],
   "acf": {
     "mode": "auto",
-    "renderTemplate": "/templates/block/core-blocks/asen-team-hub.php"
+    "renderTemplate": "/templates/block/asen-team-hub.php"
   },
   "attributes": {
     "style": {

@@ -14,7 +14,7 @@
   ],
   "acf": {
     "mode": "auto",
-    "renderTemplate": "/templates/block/core-blocks/asen-icon-grid.php"
+    "renderTemplate": "/templates/block/asen-icon-grid.php"
   },
   "attributes": {
     "style": {

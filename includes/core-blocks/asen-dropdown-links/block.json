@@ -14,7 +14,7 @@
   ],
   "acf": {
     "mode": "auto",
-    "renderTemplate": "/templates/block/core-blocks/asen-dropdown-links.php"
+    "renderTemplate": "/templates/block/asen-dropdown-links.php"
   },
   "supports": {
     "align": false,

@@ -14,7 +14,7 @@
   ],
   "acf": {
     "mode": "auto",
-    "renderTemplate": "/templates/block/core-blocks/asen-testimonials.php"
+    "renderTemplate": "/templates/block/asen-testimonials.php"
   },
   "attributes": {
     "style": {

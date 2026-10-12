@@ -13,7 +13,7 @@
   ],
   "acf": {
     "mode": "auto",
-    "renderTemplate": "/templates/block/core-blocks/asen-form-container.php"
+    "renderTemplate": "/templates/block/asen-form-container.php"
   },
   "attributes": {
     "style": {

@@ -14,7 +14,7 @@
   ],
   "acf": {
     "mode": "auto",
-    "renderTemplate": "/templates/block/core-blocks/asen-products-showcase.php"
+    "renderTemplate": "/templates/block/asen-products-showcase.php"
   },
   "attributes": {
     "style": {

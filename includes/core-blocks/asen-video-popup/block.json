@@ -14,7 +14,7 @@
   ],
   "acf": {
     "mode": "auto",
-    "renderTemplate": "/templates/block/core-blocks/asen-video-popup.php"
+    "renderTemplate": "/templates/block/asen-video-popup.php"
   },
   "attributes": {
     "style": {

@@ -14,7 +14,7 @@
   ],
   "acf": {
     "mode": "auto",
-    "renderTemplate": "/templates/block/core-blocks/asen-mailing-list.php"
+    "renderTemplate": "/templates/block/asen-mailing-list.php"
   },
   "attributes": {
     "style": {

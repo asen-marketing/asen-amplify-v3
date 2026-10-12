@@ -13,7 +13,7 @@
   ],
   "acf": {
     "mode": "preview",
-    "renderTemplate": "/templates/block/core-blocks/asen-link-wrapper.php"
+    "renderTemplate": "/templates/block/asen-link-wrapper.php"
   },
   "supports": {
     "align": false,
