@@ -8,7 +8,7 @@ function asen_body_class_mods( $classes ) {
         $classes[] = 'asen-is-woo-archive';
     }
 
-    // Site Options toggles the SCSS keys off (values are CSS variables; see asen_option_css()).
+    // Site Options toggles the SCSS keys off; has-page-banner lets content start flush under the banner (values are CSS variables; see asen_option_css()).
     if ( class_exists( 'ACF' ) ) {
         $page_id = is_singular() ? get_queried_object_id() : 0;
 
@@ -24,7 +24,7 @@ function asen_body_class_mods( $classes ) {
         if ( get_field( 'off_canvas_close_position', 'option' ) ) {
             $classes[] = 'off-canvas-close-right';
         }
-        if ( is_page() && ! get_field( 'banner_disable', $page_id ) ) {
+        if ( ( $page_id && has_block( 'acf/asen-banner', $page_id ) ) || is_page_template( 'custom-contact.php' ) ) {
             $classes[] = 'has-page-banner';
         }
     }

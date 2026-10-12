@@ -1,0 +1,71 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "acf/asen-banner",
+  "title": "Asen - Banner",
+  "description": "Page banner or hero: eyebrow, title (defaults to the page title), subtitle and buttons over a color, image, slideshow or video.",
+  "category": "asen-blocks",
+  "icon": "cover-image",
+  "keywords": [
+    "banner",
+    "hero",
+    "header",
+    "title"
+  ],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "/templates/block/asen-banner.php"
+  },
+  "attributes": {
+    "style": {
+      "type": "object",
+      "default": {
+        "spacing": {
+          "padding": {
+            "top": "var:preset|spacing|xl",
+            "bottom": "var:preset|spacing|xl"
+          }
+        }
+      }
+    }
+  },
+  "supports": {
+    "align": false,
+    "anchor": true,
+    "multiple": false,
+    "spacing": {
+      "padding": [
+        "top",
+        "bottom"
+      ],
+      "margin": [
+        "top",
+        "bottom"
+      ]
+    },
+    "color": {
+      "background": true,
+      "text": true,
+      "link": false
+    },
+    "typography": {
+      "textAlign": true
+    },
+    "dimensions": {
+      "minHeight": true
+    }
+  },
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "eyebrow": "Welcome",
+        "title": "A page banner",
+        "subtitle": "With a short supporting line.",
+        "background_type": "none",
+        "__container_width": "xl",
+        "__heading_size": "h1"
+      }
+    }
+  }
+}

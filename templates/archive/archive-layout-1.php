@@ -5,7 +5,10 @@
     $singular_title = $post_type->labels->singular_name;
 ?>
 <article class="asen-archive grid-layout-<?php the_field($slug . '_archive_items_layout', 'option'); ?>">
-    <?php get_template_part('templates/interior-banner'); ?>
+    <?php get_template_part( 'templates/block/partials/banner', null, asen_banner_defaults( array(
+        'title'    => get_field( $slug . '_archive_custom_title', 'option' ) ?: $title,
+        'subtitle' => get_field( $slug . '_archive_custom_subtitle', 'option' ),
+    ) ) ); ?>
     <div class="items">
         <div class="inside">
             <?php if ( get_field($slug . '_archive_list', 'option') ) : ?>

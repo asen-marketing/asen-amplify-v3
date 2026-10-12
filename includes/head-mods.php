@@ -126,18 +126,20 @@ function asen_option_css() {
         '--footer-mailing-subtitle-color' => $opt( 'footer_mailing_list_subtitle_color' ),
         '--footer-mailing-subtitle-size'  => $px( $opt( 'footer_mailing_list_subtitle_size' ) ),
 
-        // Interior page banner
+        // Asen - Banner defaults
         '--banner-bg'                  => $opt( 'page_banner_background_color' ),
         '--banner-image-blend'         => $opt( 'page_banner_background_blend_mode' ),
         '--banner-overlay-bg'          => $opt( 'page_banner_background_overlay_color' ),
-        '--banner-overlay-opacity'     => $opt( 'page_banner_background_overlay_opacity' ),
-        '--banner-text-align'          => $opt( 'page_banner_text_align' ),
         '--banner-eyebrow-color'       => $opt( 'page_banner_eyebrow_color' ),
         '--banner-eyebrow-transform'   => $opt( 'page_banner_eyebrow_transform' ),
         '--banner-title-color'         => $opt( 'page_banner_title_color' ),
         '--banner-title-transform'     => $opt( 'page_banner_title_transform' ),
         '--banner-subtitle-color'      => $opt( 'page_banner_subtitle_color' ),
         '--banner-subtitle-transform'  => $opt( 'page_banner_subtitle_transform' ),
+        '--banner-button-bg'           => $opt( 'banner_button_background_color' ),
+        '--banner-button-color'        => $opt( 'banner_button_text_color' ),
+        '--banner-button-bg-hover'     => $opt( 'banner_button_background_hover_color' ),
+        '--banner-button-color-hover'  => $opt( 'banner_button_text_hover_color' ),
 
         // Floating contact CTA
         '--floating-cta-bg'    => $floating_cta['background_color'] ?? null,

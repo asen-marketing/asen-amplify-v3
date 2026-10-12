@@ -1,0 +1,116 @@
+// Asen - Banner: content over an optional image / slideshow / video, with an optional tinted overlay.
+// Builders Only → Page Banners colors feed the --banner-* variables; the block's own color settings win over them.
+.asen-banner {
+  --button-bg: var(--banner-button-bg);
+  --button-color: var(--banner-button-color);
+  --button-bg-hover: var(--banner-button-bg-hover);
+  --button-color-hover: var(--banner-button-color-hover);
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: $site-overall-gutter;
+  padding-right: $site-overall-gutter;
+  background-color: var(--banner-bg);
+  @include site-overall-gutter-small;
+
+  // Used outside the block editor (Contact page, archives), where there is no padding support.
+  &:not(.wp-block-acf-asen-banner) {
+    padding-top: $spacing-xl;
+    padding-bottom: $spacing-xl;
+  }
+
+  .inside {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: $site-overall-max-width;
+  }
+
+  .eyebrow {
+    margin-bottom: $gap-size-xs;
+    font-size: $font-size-sm;
+    color: var(--banner-eyebrow-color);
+    text-transform: var(--banner-eyebrow-transform);
+  }
+
+  .title {
+    color: var(--banner-title-color);
+    text-transform: var(--banner-title-transform);
+  }
+
+  .subtitle {
+    font-size: $font-size-lg;
+    color: var(--banner-subtitle-color);
+    text-transform: var(--banner-subtitle-transform);
+  }
+
+  .banner-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $gap-size-sm;
+  }
+  &.has-text-align-center .banner-buttons {
+    justify-content: center;
+  }
+  &.has-text-align-right .banner-buttons {
+    justify-content: flex-end;
+  }
+
+  // Background layer, then the overlay, then the content.
+  .banner-media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    mix-blend-mode: var(--banner-image-blend);
+
+    img,
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .banner-slideshow {
+    .splide__track,
+    .splide__list,
+    .splide__slide {
+      height: 100%;
+    }
+    .splide__pagination {
+      bottom: $gap-size-md;
+    }
+  }
+
+  .banner-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-color: var(--banner-overlay-bg);
+    pointer-events: none;
+  }
+  &.has-background .banner-overlay {
+    background-color: inherit;
+  }
+  &.has-overlay-light .banner-overlay {
+    opacity: 0.25;
+  }
+  &.has-overlay-medium .banner-overlay {
+    opacity: 0.5;
+  }
+  &.has-overlay-heavy .banner-overlay {
+    opacity: 0.75;
+  }
+
+  // Title scale (block's Title Size select, or Builders Only default).
+  @each $name, $size in $heading-scale {
+    &.has-title-#{$name} .title {
+      font-size: $size;
+    }
+  }
+}

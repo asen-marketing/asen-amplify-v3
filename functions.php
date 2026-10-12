@@ -13,6 +13,7 @@ require_once get_template_directory() . '/includes/gutenberg.php';
 require_once get_template_directory() . '/includes/patterns.php';
 require_once get_template_directory() . '/includes/theme-json.php';
 require_once get_template_directory() . '/includes/css-layers.php';
+require_once get_template_directory() . '/includes/client-editing.php';
 require_once get_template_directory() . '/includes/woocommerce.php';
 require_once get_template_directory() . '/includes/yoast.php';
 require_once get_template_directory() . '/includes/cmp-gravity-patch.php';

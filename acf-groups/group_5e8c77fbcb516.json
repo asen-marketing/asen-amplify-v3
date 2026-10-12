@@ -328,7 +328,7 @@
             "name": "page_banner_text_align",
             "aria-label": "",
             "type": "radio",
-            "instructions": "",
+            "instructions": "Default alignment for banners whose own alignment is not set.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -546,7 +546,7 @@
             "name": "page_banner_background_overlay_color",
             "aria-label": "",
             "type": "color_picker",
-            "instructions": "<span style=\"color: red;\">NOTE: This color layer is not affected by the Background Blend Mode!<\/span>",
+            "instructions": "Default overlay tint for banners without their own background color.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -567,30 +567,6 @@
             "theme_colors": 0,
             "colors": [],
             "allow_in_bindings": 1
-        },
-        {
-            "key": "field_5eb316d2400fe",
-            "label": "Background Overlay Opacity",
-            "name": "page_banner_background_overlay_opacity",
-            "aria-label": "",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "0.8",
-            "min": "",
-            "max": "",
-            "allow_in_bindings": 1,
-            "placeholder": "",
-            "step": "",
-            "prepend": "",
-            "append": ""
         },
         {
             "key": "field_682f765fcd8a9",
@@ -1096,7 +1072,7 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1751556682,
+    "modified": 1791880000,
     "acfe_categories": {
         "site-option-fields": "Site Option Fields"
     }

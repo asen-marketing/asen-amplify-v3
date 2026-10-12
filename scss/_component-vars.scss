@@ -15,6 +15,7 @@
   // Links & buttons
   --link-color: #{$color-primary};
   --link-hover-color: color-mix(in srgb, var(--link-color) 75%, black);
+  --heading-color: #{$color-text};
   --button-bg: #{$gray-800};
   --button-bg-hover: #{$gray-700};
   --button-color: #{$color-white};
@@ -59,12 +60,14 @@
   --footer-mailing-subtitle-color: var(--footer-color);
   --footer-mailing-subtitle-size: var(--footer-font-size);
 
-  // Interior page banner (Builders Only → Page Banners)
+  // Asen - Banner defaults (Builders Only → Page Banners)
   --banner-bg: transparent;
   --banner-image-blend: normal;
-  --banner-overlay-bg: transparent;
-  --banner-overlay-opacity: 1;
-  --banner-text-align: start;
+  --banner-overlay-bg: #{$color-black};
+  --banner-button-bg: var(--button-bg);
+  --banner-button-color: var(--button-color);
+  --banner-button-bg-hover: var(--button-bg-hover);
+  --banner-button-color-hover: var(--button-color-hover);
   --banner-eyebrow-color: currentColor;
   --banner-eyebrow-transform: none;
   --banner-title-color: currentColor;

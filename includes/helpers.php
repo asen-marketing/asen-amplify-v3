@@ -195,3 +195,25 @@ function asen_youtube_id( $value ) {
     return preg_match( '/^[A-Za-z0-9_-]{11}$/', $value ) ? $value : '';
 }
 
+// Banner args with defaults filled in, including the classes. Site Options (Builders Only → Page Banners) supply the default
+// title size and text alignment; a block's own settings win over them.
+function asen_banner_defaults( $args ) {
+    $args = wp_parse_args( array_filter( $args, fn( $v ) => null !== $v && '' !== $v ), array(
+        'eyebrow' => '', 'title' => '', 'subtitle' => '', 'links' => array(), 'background' => 'none', 'image' => null, 'slides' => array(),
+        'video_desktop' => '', 'video_mobile' => '', 'overlay' => 'none', 'container_width' => 'xl', 'title_size' => '', 'has_text_align' => false,
+    ) );
+    $option_size  = function_exists( 'get_field' ) ? get_field( 'page_banner_title_size', 'option' ) : '';
+    $option_align = function_exists( 'get_field' ) ? get_field( 'page_banner_text_align', 'option' ) : '';
+    $title_size   = $args['title_size'] ?: ( preg_match( '/^h[1-6]$/', (string) $option_size ) ? $option_size : 'h1' );
+
+    $args['classes'] = array_filter( array(
+        'asen-banner',
+        'block-width-' . $args['container_width'],
+        'has-title-' . $title_size,
+        'none' !== $args['background'] ? 'has-media' : '',
+        'none' !== $args['overlay'] && 'none' !== $args['background'] ? 'has-overlay-' . $args['overlay'] : '',
+        ! $args['has_text_align'] && in_array( $option_align, array( 'left', 'center', 'right' ), true ) ? 'has-text-align-' . $option_align : '',
+    ) );
+    return $args;
+}
+

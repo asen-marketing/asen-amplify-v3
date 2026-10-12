@@ -99,11 +99,13 @@ Living document. Check items off as they ship and keep the "Roadmap status" line
 
 ## Phase 3 — Client-safe editing (2–3 days)
 
-- [ ] `allowed_block_types_all` by role/email domain: clients get Asen blocks + paragraph/heading/list/image/buttons/group/columns; builders get everything including Kadence.
-- [ ] `patterns/` directory: section patterns and page starters (`Block Types: core/post-content`, `Post Types: page`) so new pages open with a pattern picker. Core blocks only — never Kadence. Wrap sections in `templateLock: "contentOnly"`; `lock` structural blocks. (`patterns/asen-copy-image.php` and the `asen` category exist as the first example.)
-- [ ] Section styles via `register_block_style()` with `style_data` (light / dark / brand) on Group and Asen blocks; retire per-block `background_style` / `white-text` fields.
+- [x] `allowed_block_types_all` for clients: Asen blocks + core paragraph, heading, list, image, gallery, buttons, quote, separator, spacer, group, columns, media & text, cover, video, embed, table, synced patterns (`asen/client_allowed_blocks`). Clients also can't unlock blocks or use the code editor (`block_editor_settings_all`).
+- [x] Page banners → `Asen - Banner` block (one block covers interior banner and front-page hero: image / slideshow / video backgrounds, overlay, native min height). Both banner templates, their SCSS and the Page - Banner / Front Page - Banner field groups deleted; `page.php` renders only content; new pages start with the banner locked; Contact template and CPT archives use the shared partial. Builders Only page-banner colors/size/alignment remain as defaults (overlay opacity field removed — overlay strength is per banner).
+- [x] Patterns: `asen-hero`, page starters `page-standard`, `page-services`, `page-contact` (banner locked, CTA/copy sections `contentOnly`). All validated in the live editor.
+- [ ] (was) `patterns/` directory: section patterns and page starters (`Block Types: core/post-content`, `Post Types: page`) so new pages open with a pattern picker. Core blocks only — never Kadence. Wrap sections in `templateLock: "contentOnly"`; `lock` structural blocks. (`patterns/asen-copy-image.php` and the `asen` category exist as the first example.)
+- [x] Section styles on Group (Light / Dark / Brand) via `register_block_style()` + `_section-styles.scss` — deliberately *not* `style_data`: that CSS would land in the vendor layer, below the theme. They reset the component variables instead. Button styles Knockout / Small / Wide on core/button; core's Outline styled to match.
 - [ ] Block bindings: `asen/site-option` source for phone/email/address/hours; ACF `acf/field` source for CPT meta in patterns.
-- [ ] `inserter: false` on builder-only blocks.
+- [x] ~~`inserter: false` on builder-only blocks~~ — covered by the client allowlist.
 
 ## Phase 4 — Rationalize the block library (ongoing)
 

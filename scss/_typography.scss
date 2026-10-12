@@ -23,7 +23,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: $color-text;
+  color: var(--heading-color);
 }
 
 .white-text h1,

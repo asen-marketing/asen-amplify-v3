@@ -1,0 +1,37 @@
+// Block styles registered in includes/gutenberg.php. Section styles reset the component variables, so links, headings
+// and buttons inside adapt; the block's own color settings still win.
+// Default breathing room; a Group's own padding setting (inline style) still wins.
+.wp-block-group.is-style-section-light,
+.wp-block-group.is-style-section-dark,
+.wp-block-group.is-style-section-brand {
+  padding: $spacing-md $gap-size-lg;
+}
+
+.is-style-section-light {
+  background-color: $gray-100;
+  color: $color-text;
+}
+
+.is-style-section-dark {
+  --heading-color: currentColor;
+  --link-color: #{$color-white};
+  --link-hover-color: #{$gray-300};
+  --button-bg: #{$color-white};
+  --button-color: #{$gray-900};
+  --button-bg-hover: #{$gray-300};
+  --button-color-hover: #{$gray-900};
+  background-color: $gray-900;
+  color: $color-white;
+}
+
+.is-style-section-brand {
+  --heading-color: currentColor;
+  --link-color: #{$color-white};
+  --link-hover-color: #{$gray-200};
+  --button-bg: #{$color-white};
+  --button-color: #{$color-primary};
+  --button-bg-hover: #{$gray-100};
+  --button-color-hover: #{$color-primary};
+  background-color: $color-primary;
+  color: $color-white;
+}

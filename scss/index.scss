@@ -22,10 +22,9 @@
 @layer components {
   @import "vendor/hamburger";
   @import "buttons";
+  @import "section-styles";
   @import "forms";
   @import "header";
-  @import "front-page-banner";
-  @import "interior-banner";
   @import "hamburger";
   @import "off-canvas-menu";
   @import "fixed-contact-cta";

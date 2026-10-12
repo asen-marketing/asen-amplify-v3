@@ -8,7 +8,7 @@ $site_name = get_bloginfo( 'name', 'display' );
 <main role="main">
 
     <article class="asen-contact-page">
-        <?php get_template_part('templates/interior-banner'); ?>
+        <?php get_template_part( 'templates/block/partials/banner', null, asen_banner_defaults( array( 'title' => get_the_title() ) ) ); ?>
         <section class="primary-copy">
             <div class="columns">
                 <div class="left">

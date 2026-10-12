@@ -24,6 +24,7 @@ includes/
   theme.php                enqueues, theme supports, image sizes, asen_enqueue_splide()/glide(), block.json loader
   gutenberg.php            the "Asen Blocks" inserter category + ACF block filters
   patterns.php             registers the "Asen" pattern category
+  client-editing.php       client inserter allowlist, no block unlocking / code editor for clients, locked banner in new pages' block template
   css-layers.php           moves core/plugin stylesheets into the `vendor` cascade layer
   theme-json.php           editor styles + preset-only editor settings for non-Asen users (asen_user_is_builder())
   core-blocks/{slug}/      block.json (+ view.js / view.asset.php) for every block, auto-loaded by asen_register_acf_blocks()
@@ -36,15 +37,17 @@ includes/
   css/backend-styles.css   admin-only styles
 templates/
   block/{slug}.php         block render templates (one per includes/core-blocks/{slug})
-  block/partials/          collection.php (shared grid / alternating / Splide carousel for the CPT hubs) + one {type}-item.php per CPT
+  block/partials/          collection.php (shared grid / alternating / Splide carousel for the CPT hubs) + one {type}-item.php per CPT;
+                           banner.php (Asen - Banner markup, also used by the Contact template and CPT archives via asen_banner_defaults())
   header/header.php, footer/footer.php, menu/   the one header and footer; a child theme overrides these files for a custom build
   front-page-banner.php, interior-banner.php, blog/, archive/, social/
-patterns/{slug}.php        block patterns, auto-registered from file headers (category: asen)
+patterns/{slug}.php        block patterns, auto-registered from file headers (category: asen); page-*.php are new-page starters
 scss/
   index.scss               import order matters: vendor → variables/mixins → semantic partials → blocks → custom
   _tokens.scss             aliases of theme.json spacing/font-size presets and custom vars (do not edit values here)
   _colors.scss             aliases of the theme.json palette ($color-primary, $gray-700…)
   _component-vars.scss     :root defaults for every variable Site Options can override (--header-height, --button-bg, --footer-bg…)
+  _section-styles.scss     Group block styles (Light / Dark / Brand Section) that reset the component variables
   editor.scss              block-editor stylesheet entry (tokens, type, buttons, blocks)
   _measurements.scss       breakpoints, gutters, responsive mixins
   _utility.scss            helper classes + shared mixins
@@ -105,9 +108,14 @@ $classes = [ 'asen-example', 'asen-example-' . $block['id'], $block['className']
 - If a block's layout is reused by a page template, keep the block template thin and put the markup in a shared template part called with `get_template_part( 'templates/…', null, $args )`. See the Ewart footer CTA pattern.
 - Blocks that render a CPT (Team Hub, Services Hub, Testimonials, FAQs, Products Showcase) are gated by the content-type toggles in Site Options → Builders Only.
 - **CPT hubs share one layout partial:** `get_template_part( 'templates/block/partials/collection', null, [ items, item_template, layout => grid|alternating|carousel, columns, label, splide, item_args ] )`. Item templates use the shared anatomy `.item-media` / `.item-copy` / `.item-title` / `.item-meta` / `.item-link`, so `scss/blocks/_collection.scss` lays out every hub; per-block partials only add the block shell and genuinely different bits (testimonials' masonry). Carousel layout enqueues `asen-carousel` + `splide` itself; Splide options go in `data-splide`. A new CPT hub is a block template + an item template, no new layout CSS.
+- **Page banners are the `Asen - Banner` block** (eyebrow, title that falls back to the page title, subtitle, two buttons; background none / image / slideshow / video with a mobile file; light / medium / heavy overlay tinted by the block's background color; native color, spacing, min height and alignment). `page.php` renders only the content. New pages get it locked at the top via the page post type's block template; `supports.multiple: false`. Templates without the block editor (Contact, CPT archives) render the same markup with `get_template_part( 'templates/block/partials/banner', null, asen_banner_defaults( [ 'title' => … ] ) )`. Builders Only → Page Banners supply the default title size, alignment and colors; a banner's own settings win.
 - **Alignment is native:** `supports.typography.textAlign` gives the toolbar alignment control and a `has-text-align-*` class. Use it instead of an ACF alignment radio. 
 - **Patterns** live in `patterns/{prefix}-{slug}.php` with headers `Title: {Prefix} - {Name}`, `Slug: amplify/{prefix}-{slug}`, `Categories: asen`. Core blocks only. Give the outer Group the retired block's class (e.g. `asen-copy-image`) and keep the pattern's rules in that block's SCSS partial, scoped to `.{slug}.wp-block-group`.
 - **Retiring blocks.** v3 has no shipped client sites yet, so a block retired before the first v3 release is **deleted outright** — registration, template, field group JSON, legacy SCSS. Once the first v3 client ships, retiring a shipped block means `supports.inserter: false` and keeping everything so existing content renders. Deleted so far: Copy + Image (→ `asen-copy-image` pattern), Product/Service Tiers (→ `asen-pricing-tiers` pattern), Special Copy Blurb (→ Intro Block, which has icon / heading / subheading / blurb / CTAs), Testimonial Carousel (→ Testimonials carousel), Button, Buttons Group, Anchor, WYSIWYG, CTA, Split Fancy Copy (→ core blocks), and the never-registered Blockquote ×3 / Fancy List templates.
+
+## Client editing
+
+Clients (anyone `asen_user_is_builder()` says isn't Asen staff) get: preset-only color/spacing/font-size controls (`theme-json.php`); an inserter allowlist of Asen blocks plus core paragraph, heading, list, image, gallery, buttons, quote, separator, spacer, group, columns, media & text, cover, video, embed, table and synced patterns (`asen/client_allowed_blocks` to change it per site); no block unlocking and no code editor (`client-editing.php`). Builders see everything and can unlock. Layout safety comes from locking: the page banner is locked in place, and pattern sections use `templateLock: contentOnly` so clients edit text and images only. Styles panel options: Button → Knockout / Small / Wide (plus core's Outline, styled to match), Group → Light / Dark / Brand Section. Section styles work by resetting the component variables (`--link-color`, `--button-bg`, `--heading-color`…), so anything inside adapts; add new contexts the same way rather than with descendant color rules.
 
 ## Adding a block (checklist)
 
@@ -131,6 +139,7 @@ $classes = [ 'asen-example', 'asen-example-' . $block['id'], $block['className']
 - Values come from `_tokens.scss` / `_colors.scss` (theme.json aliases) and `_measurements.scss`. Token variables are `var()`s: no SCSS math or color functions on them (`calc()` / `color-mix()` instead), and never pass them to `responsive-heading()` / `responsive-paragraph()` — the presets are already fluid, so `font-size: $heading-h3;` is the whole job. The responsive mixins stay for one-off pixel values; `site-overall-gutter-small` is still the horizontal gutter.
 - Client-specific: brand colors go in `_colors.scss` under a prefixed name; page/section overrides go in `_custom.scss` or new `_{prefix}-*.scss` partials. **Do not bake client values into shared partials or mixin defaults** (a mixin whose default color is `$ewart-charcoal` is the anti-pattern — pass it as an argument).
 - Button variants are **classes in `_buttons.scss`** (`.button.red`, `.button-knockout`, `.button-small`, `.button-wide`), applied via the block's class field or "Additional CSS class". Don't add option fields or ACF color pickers for button variants. Variant colors reference palette slugs, not raw hex, once Phase 1 lands.
+- scssphp (WP-SCSS's compiler) warns "Array to string conversion" — shown on the front end to logged-in users only — on `:where()` / `:is()` wrapping an attribute selector, because of how it matches `@extend`s. Use a plain selector list instead. Check compiles with warnings captured, not just via an anonymous page load.
 - `!important` is a smell; it usually means a specificity fight with Kadence or `head-mods.php` inline CSS. Fix the selector or move the rule.
 - `$site-overall-max-width` is `var(--wp--style--global--wide-size)` — theme.json `settings.layout.wideSize`.
 
@@ -147,7 +156,7 @@ $classes = [ 'asen-example', 'asen-example-' . $block['id'], $block['className']
 
 `Site Options` (slug `custom-options`), `Header Options`, `Off-Canvas Options`, `Footer Options`, `Blog → Archive Options`. There is **one header layout and one footer layout** (the v2 layout selectors were removed in v3); the footer mailing-list column is a toggle in Footer Options. A design that needs something else overrides `templates/header/header.php` / `templates/footer/footer.php` in the child theme. The **"Asen Builders Only"** group is only shown to users with an `@asenmarketing.com` email (custom `asen_domain` location rule in `acf-customizations.php`); same rule hides the ACF admin and the Kadence menu from clients. Put anything a client shouldn't touch there.
 
-**Site Options are overrides, not the source.** Every option-driven value (header, off-canvas, footer, links & buttons, page banner, floating CTA, per-page padding) is a CSS variable whose default lives in `scss/_component-vars.scss` (built from theme tokens). `asen_option_css()` prints only the options that are set, as one unlayered `:root{…}` after the theme stylesheet, so they win without specificity. On/off options are body classes (`body-class-mods.php`). To add an option-driven value: default in `_component-vars.scss`, `var(--name)` in the partial, one line in `asen_option_css()`. Media queries can't read variables, so the off-canvas breakpoint is the only generated rule set. No PHP prints CSS except that and the two page banners (pending).
+**Site Options are overrides, not the source.** Every option-driven value (header, off-canvas, footer, links & buttons, page banner, floating CTA, per-page padding) is a CSS variable whose default lives in `scss/_component-vars.scss` (built from theme tokens). `asen_option_css()` prints only the options that are set, as one unlayered `:root{…}` after the theme stylesheet, so they win without specificity. On/off options are body classes (`body-class-mods.php`). To add an option-driven value: default in `_component-vars.scss`, `var(--name)` in the partial, one line in `asen_option_css()`. Media queries can't read variables, so the off-canvas breakpoint is the only generated rule set. No other PHP in the theme prints CSS.
 
 **Removed in v3:** the `site_colors` repeater and `site_max_width` fields. Colors are the theme.json palette (`_colors.scss` aliases it); max width is theme.json `layout.wideSize`. The `includes/scss-mods.php` + `_global-variables.scss` approach seen in older client forks (options → rewrite an SCSS file on `wp_head`) is dead and must not be copied forward.
 
@@ -171,7 +180,6 @@ Decided Oct 2026: client sites move to a **child theme** once the Phase 5 scaffo
 ## Known issues (fix opportunistically, track in MODERNIZATION.md)
 
 - The Dynamic Color SVG block inlines the file's markup. When no text color is set it keeps the file's own `<style>` rules (Illustrator exports colors that way), and those rules apply page-wide — two SVGs sharing `.cls-1` will fight. Setting a text color strips them.
-- The front-page and interior page banners (`templates/front-page-banner.php`, `templates/interior-banner.php`) still print per-page `<style>` / `<script>` from per-page field groups full of colors, pixel sizes and transforms — the old block anti-pattern in template form. Next candidate for conversion.
 - The YouTube API is enqueued only when `has_block()` finds the Video Popup block in post content (a block rendered from a page template won't trigger it); goes away when that block converts to a `viewScript`.
 - Template output is largely unescaped.
 
@@ -182,6 +190,6 @@ See [MODERNIZATION.md](MODERNIZATION.md). Update this line as phases land.
 - Phase 0 (hygiene + deprecated field removal): done
 - Phase 1 (`theme.json` tokens, editor styles, head-mods → custom props): done
 - Phase 2 (ACF blocks → `block.json` + native supports, structure-only SCSS): done — 17 blocks, all `block.json`, no inline `<style>` or `<script>` in any template, no jQuery in block JS
-- Phase 3 (client-safe editing: role-gated inserter, patterns, section styles, bindings): not started
+- Phase 3 (client-safe editing: role-gated inserter, patterns, section styles, bindings): done except block bindings — allowlist, editor locks, banner block + locked page template, button/section styles, hero + 3 page-starter patterns
 - Phase 4 (block library rationalization): mostly done — overlap and dead blocks deleted, two replacement patterns (copy + image, pricing tiers), Glide gone, Video Popup rebuilt on `<dialog>` (the Kadence video-popup replacement). Left: jquery-modal / jQuery in `main.js`
 - Phase 5 (distribution model): decided — parent/child with a self-updating parent via GitHub releases; not built yet
