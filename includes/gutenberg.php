@@ -276,7 +276,8 @@ function site_acf_init() {
 			'category'			=> 'asen-blocks',
 			'icon'				=> 'format-image',
 			'keywords'			=> array( 'copy', 'image', 'split' ),
-			'supports'          => array( 'align' => false, 'anchor' => true ),
+			// Retired: use the "Asen - Copy + Image" pattern. Still registered so existing content renders.
+			'supports'          => array( 'align' => false, 'anchor' => true, 'inserter' => false ),
 		));
 
 		// Asen Form Container

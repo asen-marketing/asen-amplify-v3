@@ -10,10 +10,15 @@
     navigationHamburgerContainer = $(".off-canvas-menu-hamburger"),
     navigationHamburger = navigationHamburgerContainer.find(".hamburger"),
     navigationOffCanvasMenu = $(".off-canvas-menu-container"),
-    navigationOffCanvasMenuLink = navigationOffCanvasMenu.find("a"),
+    navigationOffCanvasInside = navigationOffCanvasMenu.children(".inside"),
+    navigationOffCanvasColumn =
+      navigationOffCanvasInside.children(".column-container"),
     navigationOffCanvasParent = navigationOffCanvasMenu.find(
-      ".menu-item-has-children > a"
+      ".menu-item-has-children > a",
     ),
+    navigationOffCanvasMenuLink = navigationOffCanvasMenu
+      .find("a")
+      .not(navigationOffCanvasParent),
     navigationOffCanvasOverlay = $(".off-canvas-menu-backing-overlay");
 
   navigationHamburger.on("click", function () {
@@ -46,25 +51,47 @@
     }
   });
 
+  // Lock the menu's current top so submenus expand downward
+  function pinOffCanvasMenu() {
+    if (navigationOffCanvasInside.hasClass("is-pinned")) return;
+    let firstItem = navigationOffCanvasColumn.children().first(),
+      restingTop = firstItem.offset().top,
+      padding = parseFloat(navigationOffCanvasColumn.css("padding-top"));
+    navigationOffCanvasInside.addClass("is-pinned");
+    navigationOffCanvasColumn.css(
+      "padding-top",
+      padding + restingTop - firstItem.offset().top,
+    );
+  }
+
+  function onSubmenuAnimated() {
+    // Clear leftovers from interrupted animations
+    $(this).css({ height: "", padding: "", margin: "" });
+
+    if (
+      !navigationOffCanvasMenu.find(".menu-item-has-children.is-active").length
+    ) {
+      navigationOffCanvasInside.removeClass("is-pinned");
+      navigationOffCanvasColumn.css("padding-top", "");
+    }
+  }
+
   navigationOffCanvasParent.on("click", function (event) {
     event.preventDefault();
     let clickedParent = $(this).parent(),
       submenu = clickedParent.children("ul.sub-menu"),
-      submenuItems = submenu.children("li"),
-      submenuHeight = 0,
-      otherParents = clickedParent.siblings(),
+      otherParents = clickedParent.siblings(".is-active"),
       otherSubmenus = otherParents.children("ul.sub-menu");
-    $.each(submenuItems, function () {
-      submenuHeight = submenuHeight + $(this).outerHeight();
-    });
+
+    otherParents.removeClass("is-active");
+    otherSubmenus.stop(true).slideUp(400, onSubmenuAnimated);
+
+    clickedParent.toggleClass("is-active");
     if (clickedParent.hasClass("is-active")) {
-      clickedParent.removeClass("is-active");
-      submenu.css("height", "");
+      pinOffCanvasMenu();
+      submenu.stop(true).slideDown(400, onSubmenuAnimated);
     } else {
-      clickedParent.addClass("is-active");
-      otherParents.removeClass("is-active");
-      otherSubmenus.css("height", "");
-      submenu.css("height", submenuHeight);
+      submenu.stop(true).slideUp(400, onSubmenuAnimated);
     }
   });
 
@@ -110,13 +137,13 @@
         $input = $('<input type="text" class="file-upload-input" disabled />'),
         // Button that will be used in non-IE browsers
         $button = $(
-          '<button type="button" class="button file-upload-button">Select a File</button>'
+          '<button type="button" class="button file-upload-button">Select a File</button>',
         ),
         // Hack for IE
         $label = $(
           '<label class="file-upload-button" for="' +
             $file[0].id +
-            '">Select a File</label>'
+            '">Select a File</label>',
         );
 
       // Hide by shifting to the left so we
@@ -212,7 +239,7 @@
             uniqId +
             '" name="' +
             $this.attr("name") +
-            '"/>'
+            '"/>',
         );
 
       // 1ms timeout so it runs after all other events

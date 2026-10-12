@@ -31,4 +31,16 @@
   @media (max-width: $breakpoint-tablet-large) {
     gap: 20px;
   }
+
+  // 4 tiles when the CTA tile is on; teasers default to 32% (3-up) in _blog.scss.
+  &.has-cta-tile article.asen-blog-single-teaser {
+    width: 23.5%;
+
+    @media (max-width: $breakpoint-tablet-large) {
+      width: 49%;
+    }
+    @media (max-width: $breakpoint-small) {
+      width: 100%;
+    }
+  }
 }

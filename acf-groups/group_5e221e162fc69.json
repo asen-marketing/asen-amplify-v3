@@ -238,6 +238,10 @@
                     "theme_colors": 0,
                     "colors": [],
                     "allow_in_bindings": 0,
+                    "acfe_advanced": true,
+                    "custom_palette_source": "",
+                    "palette_colors": "",
+                    "show_color_wheel": true,
                     "parent_repeater": "field_682215262a389"
                 },
                 {
@@ -267,6 +271,10 @@
                     "theme_colors": 0,
                     "colors": [],
                     "allow_in_bindings": 0,
+                    "acfe_advanced": true,
+                    "custom_palette_source": "",
+                    "palette_colors": "",
+                    "show_color_wheel": true,
                     "parent_repeater": "field_682215262a389"
                 }
             ]
@@ -443,6 +451,109 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_6971582c8bdfa",
+            "label": "Site Colors",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "placement": "top",
+            "endpoint": 0,
+            "no_preference": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_697158388bdfb",
+            "label": "Site Colors",
+            "name": "site_colors",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "acfe_repeater_stylised_button": 0,
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_6971584c8bdfc",
+                    "label": "Variable Name",
+                    "name": "variable_name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "site-color-1",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_697158388bdfb"
+                },
+                {
+                    "key": "field_6971586a8bdfd",
+                    "label": "Color",
+                    "name": "color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "relevanssi_exclude": 0,
+                    "default_value": "",
+                    "enable_opacity": 0,
+                    "return_format": "string",
+                    "acfe_advanced": 0,
+                    "allow_in_bindings": 0,
+                    "show_custom_palette": 0,
+                    "show_color_wheel": 1,
+                    "custom_palette_source": "",
+                    "palette_colors": "",
+                    "display": "default",
+                    "button_label": "Select Color",
+                    "color_picker": true,
+                    "absolute": false,
+                    "input": true,
+                    "allow_null": true,
+                    "theme_colors": false,
+                    "colors": [],
+                    "parent_repeater": "field_697158388bdfb"
+                }
+            ]
         }
     ],
     "location": [
@@ -463,14 +574,16 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
     "acfe_autosync": [
         "json"
     ],
     "acfe_form": 0,
-    "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1747946902,
+    "modified": 1775680791,
     "acfe_categories": {
         "site-option-fields": "Site Option Fields"
     }

@@ -71,13 +71,32 @@ $site-menu-max-width-mobile: 250px;
     backface-visibility: hidden;
     position: relative;
 
+    // Min-heights instead of fixed grid rows so open submenus push the footer down
     &.has-footer {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-auto-rows: 3fr 1fr;
+      justify-content: flex-start;
 
       .column-container {
-        padding-top: 50px;
+        flex-shrink: 0;
+        align-self: stretch;
+        justify-content: flex-end;
+        min-height: 70%;
+        padding-top: 1rem;
+      }
+
+      .off-canvas-footer {
+        flex-shrink: 0;
+        align-self: center;
+        justify-content: flex-end;
+        min-height: 25%;
+      }
+    }
+
+    // Set by JS so open submenus expand downward instead of pushing the menu up
+    &.is-pinned {
+      justify-content: flex-start;
+
+      .column-container {
+        justify-content: flex-start;
       }
     }
   }
