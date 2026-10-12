@@ -1,0 +1,63 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "acf/asen-services-hub",
+  "title": "Asen - Services Hub",
+  "description": "Services as a grid, alternating rows, or carousel.",
+  "category": "asen-blocks",
+  "icon": "yes-alt",
+  "keywords": [
+    "services",
+    "grid",
+    "carousel"
+  ],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "/templates/block/core-blocks/asen-services-hub.php"
+  },
+  "attributes": {
+    "style": {
+      "type": "object",
+      "default": {
+        "spacing": {
+          "padding": {
+            "top": "var:preset|spacing|lg",
+            "bottom": "var:preset|spacing|lg"
+          }
+        }
+      }
+    }
+  },
+  "supports": {
+    "align": false,
+    "anchor": true,
+    "spacing": {
+      "padding": [
+        "top",
+        "bottom"
+      ],
+      "margin": [
+        "top",
+        "bottom"
+      ]
+    },
+    "color": {
+      "background": true,
+      "text": true,
+      "link": false
+    },
+    "typography": {
+      "textAlign": true
+    }
+  },
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "services_heading": "What we do",
+        "number_of_columns": 3,
+        "__container_width": "xl"
+      }
+    }
+  }
+}

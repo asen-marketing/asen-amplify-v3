@@ -134,60 +134,6 @@ function site_acf_init() {
 			'supports'          => array( 'align' => false, 'anchor' => true ),
 		));
 
-		// Asen Services Hub
-		acf_register_block(array(
-			'name'				=> 'asen-services-hub',
-			'title'				=> __('Asen Services Hub'),
-			'description'		=> __('Displays services CPT as a grid or carousel.'),
-			'mode'              => 'edit',
-			'enqueue_assets' => function() {
-				if ( !is_admin() ) {
-					asen_enqueue_glide_js();
-				}
-			},
-			'render_callback'	=> 'site_acf_block_callback',
-			'category'			=> 'asen-blocks',
-			'icon'				=> 'yes-alt',
-			'keywords'			=> array( 'service', 'grid', 'carousel', 'hub' ),
-			'supports'          => array( 'align' => false, 'anchor' => true ),
-		));
-
-		// Asen Testimonials
-		acf_register_block(array(
-			'name'				=> 'asen-testimonials',
-			'title'				=> __('Asen Testimonials'),
-			'description'		=> __('Displays testimonials CPT as a grid or carousel.'),
-			'mode'              => 'edit',
-			'enqueue_assets' => function() {
-				if ( !is_admin() ) {
-					asen_enqueue_glide_js();
-				}
-			},
-			'render_callback'	=> 'site_acf_block_callback',
-			'category'			=> 'asen-blocks',
-			'icon'				=> 'star-filled',
-			'keywords'			=> array( 'testimonials', 'quote', 'author' ),
-			'supports'          => array( 'align' => false, 'anchor' => true ),
-		));
-
-		// Asen Products Showcase
-		acf_register_block(array(
-			'name'				=> 'asen-products-showcase',
-			'title'				=> __('Asen Products Showcase'),
-			'description'		=> __('Block for displaying Products CPT.'),
-			'mode'              => 'edit',
-			'enqueue_assets' => function() {
-				if ( !is_admin() ) {
-					asen_enqueue_glide_js();
-				}
-			},
-			'render_callback'	=> 'site_acf_block_callback',
-			'category'			=> 'asen-blocks',
-			'icon'				=> 'products',
-			'keywords'			=> array( 'products', 'showcase', 'hub' ),
-			'supports'          => array( 'align' => false, 'anchor' => true ),
-		));
-
 		// Asen Dynamic Color SVG
 		acf_register_block(array(
 			'name'				=> 'asen-dynamic-color-svg',
@@ -210,24 +156,6 @@ function site_acf_init() {
 			'render_callback'	=> 'site_acf_block_callback',
 			'category'			=> 'asen-blocks',
 			'icon'				=> 'arrow-down-alt2',
-			'keywords'			=> array( 'select', 'links', 'dropdown', 'asen' ),
-			'supports'          => array( 'align' => false, 'anchor' => true ),
-		));
-
-		// Asen Testimonial Carousel
-		acf_register_block(array(
-			'name'				=> 'asen-testimonial-carousel',
-			'title'				=> __('Asen Testimonial Carousel'),
-			'description'		=> __('Rotating carousel for displaying testimonials.'),
-			'mode'              => 'edit',
-			'enqueue_assets' => function() {
-				if ( !is_admin() ) {
-					asen_enqueue_glide_js();
-				}
-			},
-			'render_callback'	=> 'site_acf_block_callback',
-			'category'			=> 'asen-blocks',
-			'icon'				=> 'slides',
 			'keywords'			=> array( 'select', 'links', 'dropdown', 'asen' ),
 			'supports'          => array( 'align' => false, 'anchor' => true ),
 		));

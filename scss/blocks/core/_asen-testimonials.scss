@@ -1,0 +1,54 @@
+// Layout lives in _collection.scss; the grid here is masonry (CSS columns) rather than rows.
+.asen-testimonials {
+  display: flex;
+  justify-content: center;
+  padding-left: $site-overall-gutter;
+  padding-right: $site-overall-gutter;
+  @include site-overall-gutter-small;
+
+  .inside {
+    width: 100%;
+    max-width: $site-overall-max-width;
+  }
+
+  .collection-grid {
+    display: block;
+    column-gap: $gap-size-lg;
+
+    @for $i from 1 through 6 {
+      &.has-columns-#{$i} {
+        columns: $i;
+
+        @media (max-width: $breakpoint-tablet-large) {
+          columns: ceil($i * 0.5);
+        }
+        @media (max-width: $breakpoint-small) {
+          columns: 1;
+        }
+      }
+    }
+
+    .collection-item {
+      break-inside: avoid;
+      margin-bottom: $gap-size-lg;
+    }
+  }
+
+  .testimonial-item {
+    margin: 0;
+  }
+
+  .item-media {
+    max-width: 8rem;
+  }
+
+  .quote {
+    margin: 0;
+  }
+
+  // Quote text scale (block's Text Size select).
+  &--text-sm .quote { font-size: $font-size-lg; }
+  &--text-md .quote { font-size: $font-size-xl; }
+  &--text-lg .quote { font-size: $font-size-xxl; }
+  &--text-xl .quote { font-size: $heading-h4; }
+}

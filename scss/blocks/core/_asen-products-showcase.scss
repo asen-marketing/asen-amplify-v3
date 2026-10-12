@@ -1,0 +1,17 @@
+// Layout lives in _collection.scss.
+.asen-products-showcase {
+  display: flex;
+  justify-content: center;
+  padding-left: $site-overall-gutter;
+  padding-right: $site-overall-gutter;
+  @include site-overall-gutter-small;
+
+  .inside {
+    width: 100%;
+    max-width: $site-overall-max-width;
+  }
+
+  .heading-container {
+    margin-bottom: $gap-size-xl;
+  }
+}

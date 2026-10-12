@@ -1,0 +1,117 @@
+// Shared layouts for templates/block/partials/collection.php (team, services, products, testimonials).
+.collection {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// Item anatomy shared by the item templates: .item-media, .item-copy, .item-title, .item-meta.
+.collection-item {
+  > * {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-size-sm;
+    height: 100%;
+  }
+
+  .item-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .item-media.is-icon {
+    font-size: $heading-h5;
+  }
+
+  .item-title {
+    margin-bottom: $gap-size-xs;
+  }
+
+  .item-copy > :last-child {
+    margin-bottom: 0;
+  }
+
+  .item-link {
+    align-self: flex-start;
+    margin-top: auto;
+
+    i {
+      margin-left: 0.4em;
+    }
+  }
+}
+
+// Grid, and the carousel's fallback before Splide mounts (editor preview, no JS).
+.collection-grid,
+.collection-carousel:not(.is-initialized) .splide__list {
+  display: grid;
+  gap: $gap-size-xl $gap-size-lg;
+}
+@for $i from 1 through 6 {
+  .collection-grid.has-columns-#{$i},
+  .collection-carousel.has-columns-#{$i}:not(.is-initialized) .splide__list {
+    grid-template-columns: repeat($i, minmax(0, 1fr));
+
+    @media (max-width: $breakpoint-tablet-large) {
+      grid-template-columns: repeat(ceil($i * 0.5), minmax(0, 1fr));
+    }
+    @media (max-width: $breakpoint-small) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+}
+
+// Alternating rows: media and copy side by side, swapping sides every other row.
+.collection-alternating {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-size-xl;
+
+  .collection-item > * {
+    flex-direction: row;
+    align-items: center;
+    gap: $gap-size-lg;
+  }
+  .collection-item:nth-child(even) > * {
+    flex-direction: row-reverse;
+  }
+  .item-media {
+    flex: 0 0 50%;
+  }
+  .item-copy {
+    flex: 1;
+  }
+
+  @media (max-width: $breakpoint-tablet-small) {
+    .collection-item > *,
+    .collection-item:nth-child(even) > * {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+}
+
+// Carousel: arrows sit outside the slides, pagination below them.
+.collection-carousel {
+  padding-left: 3rem;
+  padding-right: 3rem;
+
+  .splide__arrow--prev {
+    left: 0;
+  }
+  .splide__arrow--next {
+    right: 0;
+  }
+  .splide__pagination {
+    position: static;
+    margin-top: $gap-size-md;
+  }
+}
+
+// Item title scale (block's Heading Size select).
+@each $name, $size in $heading-scale {
+  .has-item-heading-#{$name} .item-title {
+    font-size: $size;
+  }
+}

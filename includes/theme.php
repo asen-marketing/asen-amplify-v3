@@ -13,12 +13,18 @@ function site_enqueue_theme_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'site_enqueue_theme_scripts' );
 
-// Leaflet is registered (not enqueued): the Location Map block pulls it in through its viewScript/viewStyle only when rendered.
+// Libraries blocks depend on are registered, never enqueued globally: block viewScripts list them as dependencies,
+// and the collection partial enqueues the carousel only when a block renders in carousel layout.
 function asen_register_block_dependencies() {
+    $uri = get_template_directory_uri();
     wp_register_style( 'leaflet', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', array(), '1.9.4' );
     wp_register_script( 'leaflet', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js', array(), '1.9.4', true );
+    wp_register_style( 'splide', $uri . '/js/vendor/splide/splide.min.css', array(), '4.1.4' );
+    wp_register_script( 'splide', $uri . '/js/vendor/splide/splide.min.js', array(), '4.1.4', true );
+    wp_register_script( 'splide-auto-scroll', $uri . '/js/vendor/splide/splide-extension-auto-scroll.min.js', array( 'splide' ), '0.5.3', true );
+    wp_register_script( 'asen-carousel', $uri . '/js/carousel.js', array( 'splide' ), filemtime( get_template_directory() . '/js/carousel.js' ), true );
 }
-add_action( 'wp_enqueue_scripts', 'asen_register_block_dependencies', 5 );
+add_action( 'init', 'asen_register_block_dependencies' );
 
 // Until the Video Popup block converts, the YouTube API loads when its block is in the content.
 function asen_enqueue_block_dependencies() {
@@ -84,19 +90,10 @@ function site_remove_admin_login_header() {
 
 add_action( 'get_header', 'site_remove_admin_login_header' );
 
-function asen_enqueue_glide_js() {
-
-// 3.4.1 was buggy. A performance with redraw issue of some sort.
-    // 3.3.0 was known to work well.
-    wp_enqueue_script( 'glide-js', get_template_directory_uri() . '/js/vendor/glide.min.js', null, '3.3.0', true );
-}
-
+// Splide plus the auto-scroll extension, for client blocks that build their own carousels (e.g. a logo marquee).
 function asen_enqueue_splide() {
-    wp_enqueue_script( 'splide-js', get_template_directory_uri() . '/js/vendor/splide/splide.min.js', null, '4.1.4', true );
-    wp_enqueue_style( 'splide-css', get_template_directory_uri() . '/js/vendor/splide/splide.min.css', null, '4.1.4' );
-
-    // Auto Scroll/marquee extension, check Ewart 2026 projects for example usage.
-    wp_enqueue_script( 'splide-extension-auto-scroll-js', get_template_directory_uri() . '/js/vendor/splide/splide-extension-auto-scroll.min.js', array( 'splide-js' ), '0.5.3', true );
+    wp_enqueue_style( 'splide' );
+    wp_enqueue_script( 'splide-auto-scroll' );
 }
 
 // Custom Image Sizes

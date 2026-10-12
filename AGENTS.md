@@ -12,7 +12,7 @@ Keep this file current. When you add a convention, fix a known issue, or ship a 
 - **Gravity Forms**, **Yoast**, **Relevanssi**, **SVG Support**, **WP-PageNavi**, **Broken Link Checker** are assumed present.
 - **CSS cascade layers.** `scss/index.scss` declares `@layer vendor, reset, base, components, blocks, utilities` and wraps each partial group; `includes/css-layers.php` pushes every WordPress and plugin stylesheet (links and inline) into `vendor`, so the theme always sits above core/plugin defaults. Unlayered CSS — `_custom.scss`, child-theme CSS, editor-set inline block styles, `core-block-supports` — beats all layers, which is the whole override story: no `!important`, no specificity wars. Handles that must stay unlayered go through the `asen/unlayered_style_handles` filter.
 - **WP-SCSS** compiles every non-partial in `scss/` on page load: `index.scss` → `css/index.css` (front end) and `editor.scss` → `css/editor.css` (block editor, via `add_editor_style`). Compressed, inline sourcemap. `css/` is gitignored. Never edit or commit compiled CSS, never run a compiler yourself. On production, `always_recompile` must be off.
-- **JS:** `js/main.js` (jQuery, off-canvas menu, modals, misc), `js/vendor/` has jquery-modal, Glide (legacy carousels), Splide (preferred carousel, with auto-scroll extension). No bundler; `node_modules/` is vestigial.
+- **JS:** `js/main.js` (jQuery, off-canvas menu, modals, misc), `js/carousel.js` (mounts Splide carousels from the collection partial), block `view.js` files, `js/vendor/` with jquery-modal and Splide (+ auto-scroll extension). Splide is the only carousel library. No bundler; `node_modules/` is vestigial.
 - **Fonts/icons:** Adobe Fonts + Font Awesome are injected via the "Font Snippets" field in Site Options → Builders Only.
 
 ## Directory map
@@ -36,6 +36,7 @@ includes/
 templates/
   block/{slug}.php         ACF block render templates (legacy location)
   block/core-blocks/{slug}.php    render templates for block.json blocks
+  block/partials/          collection.php (shared grid / alternating / Splide carousel for the CPT hubs) + one {type}-item.php per CPT
   header/header.php, footer/footer.php, menu/   the one header and footer; a child theme overrides these files for a custom build
   front-page-banner.php, interior-banner.php, blog/, archive/, social/
 patterns/{slug}.php        block patterns, auto-registered from file headers (category: asen)
@@ -103,6 +104,8 @@ $classes = [ 'asen-example', 'asen-example-' . $block['id'], $block['className']
 - Adding a field to a shipped block: ACF does **not** apply `default_value` to keys missing from a block's saved data, so existing instances read the new field as `null`. Make the absent state the old behavior — name toggles `hide_x` (default off) rather than `show_x` (default on), and `?:` a sensible default for selects.
 - If a block's layout is reused by a page template, keep the block template thin and put the markup in a shared template part called with `get_template_part( 'templates/…', null, $args )`. See the Ewart footer CTA pattern.
 - Blocks that render a CPT (Team Hub, Services Hub, Testimonials, FAQs, Products Showcase) are gated by the content-type toggles in Site Options → Builders Only.
+- **CPT hubs share one layout partial:** `get_template_part( 'templates/block/partials/collection', null, [ items, item_template, layout => grid|alternating|carousel, columns, label, splide, item_args ] )`. Item templates use the shared anatomy `.item-media` / `.item-copy` / `.item-title` / `.item-meta` / `.item-link`, so `scss/blocks/core/_collection.scss` lays out every hub; per-block partials only add the block shell and genuinely different bits (testimonials' masonry). Carousel layout enqueues `asen-carousel` + `splide` itself; Splide options go in `data-splide`. A new CPT hub is a block template + an item template, no new layout CSS.
+- **Alignment is native:** `supports.typography.textAlign` gives the toolbar alignment control and a `has-text-align-*` class. Use it instead of an ACF alignment radio. (Intro block, special copy blurb and icon + copy grid still carry their old `align_center` fields — retrofit pending.)
 - **Patterns** live in `patterns/{prefix}-{slug}.php` with headers `Title: {Prefix} - {Name}`, `Slug: amplify/{prefix}-{slug}`, `Categories: asen`. Core blocks only. Give the outer Group the retired block's class (e.g. `asen-copy-image`) and keep the pattern's rules in that block's SCSS partial, scoped to `.{slug}.wp-block-group`.
 - **Retiring blocks.** v3 has no shipped client sites yet, so a block retired before the first v3 release is **deleted outright** — registration, template, field group JSON, legacy SCSS. Once the first v3 client ships, retiring a shipped block means `'inserter' => false` and keeping everything so existing content renders. Deleted so far: Asen Copy + Image (replacement: `patterns/asen-copy-image.php`, styled in `scss/blocks/_asen-copy-image.scss`).
 
@@ -167,10 +170,9 @@ Decided Oct 2026: client sites move to a **child theme** once the Phase 5 scaffo
 
 ## Known issues (fix opportunistically, track in MODERNIZATION.md)
 
-- 5 of 28 block templates emit per-instance `<style>` tags with pixel values from "Reusable - Margin & Padding" / "Reusable - Spacing" fields. Legacy; Phase 2 replaces them with native block supports (see `asen-intro-block`).
+- `templates/block/` still holds four never-registered templates (`asen-blockquote`, `asen-blockquote-random`, `asen-blockquote-rotator` — which still references Glide — and `asen-fancy-list`) plus their SCSS/field groups. Dead code; delete in batch 4.
 - `head-mods.php` still prints option values as a large inline `<style>`; Phase 1 leftover (→ `:root` custom props with token fallbacks).
 - The YouTube API is enqueued only when `has_block()` finds the Video Popup block in post content (a block rendered from a page template won't trigger it); goes away when that block converts to a `viewScript`.
-- Both Glide and Splide ship. New work uses Splide.
 - Template output is largely unescaped.
 
 ## Roadmap status
@@ -179,7 +181,7 @@ See [MODERNIZATION.md](MODERNIZATION.md). Update this line as phases land.
 
 - Phase 0 (hygiene + deprecated field removal): done
 - Phase 1 (`theme.json` tokens, editor styles, head-mods → custom props): done except `head-mods.php` → custom props
-- Phase 2 (ACF blocks → `block.json` + native supports, structure-only SCSS): 9/28 — intro block, special copy blurb, icon grid, form container, mailing list, icon + copy grid, FAQs, tabbed content, location map
+- Phase 2 (ACF blocks → `block.json` + native supports, structure-only SCSS): 13 converted, 12 legacy left (none print `<style>` any more). Testimonial Carousel deleted (folded into Testimonials). Glide removed.
 - Phase 3 (client-safe editing: role-gated inserter, patterns, section styles, bindings): not started
 - Phase 4 (block library rationalization): in progress — Copy + Image retired behind a pattern; Featured Blogs reworked (3 recent or hand-picked posts, optional CTA tile)
 - Phase 5 (distribution model): decided — parent/child with a self-updating parent via GitHub releases; not built yet
