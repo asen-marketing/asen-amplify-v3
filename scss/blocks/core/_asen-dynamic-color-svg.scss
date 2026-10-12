@@ -1,0 +1,19 @@
+.asen-dynamic-color-svg {
+  .svg {
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
+
+    svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  // Recolor only when a text color is chosen; otherwise the SVG keeps its own colors.
+  &.has-text-color svg,
+  &.has-text-color svg path {
+    fill: currentColor;
+  }
+}

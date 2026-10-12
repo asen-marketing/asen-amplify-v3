@@ -9,14 +9,12 @@ if ( is_admin() ) {
 
 $link_type       = get_field( 'link_type_options' ) ?: 'no-link';
 $link_icon       = get_field( 'link_icon' );
-$align_center    = get_field( 'alignment_options' );
 $container_width = get_field( '__container_width' ) ?: 'xl';
 $heading_size    = get_field( '__heading_size' ) ?: 'h5';
 
 $classes = array_filter( array(
     'asen-icon-copy-grid',
     'link-' . $link_type,
-    $align_center ? 'align-center' : '',
     'block-width-' . $container_width,
     'asen-icon-copy-grid--heading-' . $heading_size,
 ) );

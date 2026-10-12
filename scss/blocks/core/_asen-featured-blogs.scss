@@ -1,0 +1,22 @@
+// Layout lives in _collection.scss; post cards are whole-card links.
+.asen-featured-blogs {
+  display: flex;
+  justify-content: center;
+  padding-left: $site-overall-gutter;
+  padding-right: $site-overall-gutter;
+  @include site-overall-gutter-small;
+
+  .inside {
+    width: 100%;
+    max-width: $site-overall-max-width;
+  }
+
+  a.post-item {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .item-meta {
+    margin-bottom: 0;
+  }
+}

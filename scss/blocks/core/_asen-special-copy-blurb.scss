@@ -5,12 +5,8 @@
   padding-right: $site-overall-gutter;
   @include site-overall-gutter-small;
 
-  &.align-center {
-    text-align: center;
-
-    .link-container {
-      justify-content: center;
-    }
+  &.has-text-align-center .link-container {
+    justify-content: center;
   }
 
   .inside {

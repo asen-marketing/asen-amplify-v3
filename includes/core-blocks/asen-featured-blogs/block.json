@@ -1,0 +1,64 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "acf/asen-featured-blogs",
+  "title": "Asen - Featured Blogs",
+  "description": "Three recent or hand-picked posts, with an optional \"See All Posts\" tile.",
+  "category": "asen-blocks",
+  "icon": "rss",
+  "keywords": [
+    "blog",
+    "posts",
+    "news",
+    "featured"
+  ],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "/templates/block/core-blocks/asen-featured-blogs.php"
+  },
+  "attributes": {
+    "style": {
+      "type": "object",
+      "default": {
+        "spacing": {
+          "padding": {
+            "top": "var:preset|spacing|lg",
+            "bottom": "var:preset|spacing|lg"
+          }
+        }
+      }
+    }
+  },
+  "supports": {
+    "align": false,
+    "anchor": true,
+    "spacing": {
+      "padding": [
+        "top",
+        "bottom"
+      ],
+      "margin": [
+        "top",
+        "bottom"
+      ]
+    },
+    "color": {
+      "background": true,
+      "text": true,
+      "link": false
+    },
+    "typography": {
+      "textAlign": true
+    }
+  },
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "post_source": "recent",
+        "blog_archive_cta_heading": "From the blog",
+        "__container_width": "xxl"
+      }
+    }
+  }
+}

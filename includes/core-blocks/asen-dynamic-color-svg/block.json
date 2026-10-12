@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "acf/asen-dynamic-color-svg",
+  "title": "Asen - Dynamic Color SVG",
+  "description": "An inlined SVG that takes the block's text color.",
+  "category": "asen-blocks",
+  "icon": "format-image",
+  "keywords": [
+    "svg",
+    "icon",
+    "logo",
+    "color"
+  ],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "/templates/block/core-blocks/asen-dynamic-color-svg.php"
+  },
+  "supports": {
+    "align": false,
+    "anchor": true,
+    "spacing": {
+      "margin": [
+        "top",
+        "bottom"
+      ]
+    },
+    "color": {
+      "background": false,
+      "text": true,
+      "link": false
+    },
+    "typography": {
+      "textAlign": true
+    }
+  }
+}

@@ -1,13 +1,13 @@
 {
     "key": "group_5f4fa849043a6",
-    "title": "Gutenberg - Asen Link Wrapper",
+    "title": "Core - Asen Link Wrapper",
     "fields": [
         {
             "key": "field_5f4fa8549c575",
             "label": "Link",
             "name": "link_object",
             "type": "link",
-            "instructions": "",
+            "instructions": "The link text is used as the accessible name for the whole wrapper.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -54,5 +54,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1625076318
+    "modified": 1791860000
 }

@@ -6,13 +6,11 @@
   padding-right: $site-overall-gutter;
   @include site-overall-gutter-small;
 
-  &.align-center {
-    .inside {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
+  // Native toolbar alignment centers the text; this centers the CTA row and icon with it.
+  &.has-text-align-center .inside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .inside {

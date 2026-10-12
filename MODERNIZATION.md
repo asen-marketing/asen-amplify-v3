@@ -85,8 +85,15 @@ Living document. Check items off as they ship and keep the "Roadmap status" line
 - [x] `asen-intro-block` converted: `apiVersion` 3, `supports.spacing` (top/bottom padding + margin) and `supports.color`, default `lg` padding in `attributes.style.default`, `get_block_wrapper_attributes()`, token font sizes without the responsive mixins, padding clones removed from its field group, `__spacing` removed from the shared token group.
 - [x] Batch 3: team hub, services hub, products showcase, testimonials. One shared partial (`templates/block/partials/collection.php`) renders grid / alternating rows / Splide carousel for all four, with per-CPT item templates and one layout partial (`_collection.scss`). Glide is gone (library, SCSS, `asen_enqueue_glide_js()`); Splide, Leaflet and `asen-carousel` are registered on `init` in `theme.php`. Testimonial Carousel deleted: it was a client-specific design (purple palette, star row, only rendered with 6–9 testimonials, undefined `$extra_classes`) and Testimonials' carousel now covers it — 1 per view crossfades, N per view slides. Alignment uses native `typography.textAlign`; item title size is a `__heading_size` select; column count drives both grid columns and carousel slides per view. Removed per-block: nav icon/colour fields, rotating colour repeaters, "full width colour" backgrounds (native background colour instead), font sizes/weights/transforms. Services/Products block heading + subheading are no longer gated behind the background option.
 - Found while doing batch 3: batch 2's regex removal of the FAQs registration also removed Team Hub's (a whitespace-only line after FAQs' `));`), so Team Hub was unregistered between `4575dc9` and this batch. Removal now asserts exactly one block per match.
-- [ ] Batch 4: delete the never-registered templates (blockquote ×3, fancy list) and the overlap blocks (button, buttons group, anchor, WYSIWYG, CTA); convert product/service tiers, split fancy copy, dropdown links, dynamic color SVG, video popup (YouTube API → viewScript), featured blogs, link wrapper.
-- [ ] Retrofit native `typography.textAlign` onto intro block, special copy blurb, icon + copy grid (drop their `align_center` fields).
+- [x] Batch 4. Deleted: button, buttons group, anchor, WYSIWYG, CTA (core equivalents), the never-registered blockquote ×3 and fancy list templates, Split Fancy Copy (had fields but zero CSS — its gradient classes never existed in this theme), and Product/Service Tiers (registered with no field group, so it could never hold content) — replaced by the `asen-pricing-tiers` core-block pattern. Also deleted the now-unused Reusable - Margin & Padding and Reusable - Spacing clone groups. Converted:
+  - Video Popup: native `<dialog>`, YouTube via a privacy-enhanced iframe (`youtube-nocookie.com`, no IFrame API, no jquery-modal), uploaded files via `<video>`; accepts an ID or any YouTube URL (`asen_youtube_id()`); closing removes the player so playback stops. This is the Kadence video-popup replacement.
+  - Dropdown Links: `<details>`/`<summary>` with real links (respects each link's new-tab setting) instead of a div-based fake select; small viewScript closes it on outside click / Escape.
+  - Dynamic Color SVG: inlined + sanitized (`asen_inline_svg()`: kses allowlist, scripts removed, camelCase restored) instead of an `<object>` recolored by JS; color comes from the block's native text color.
+  - Featured Blogs: on the collection partial (new `lead` arg renders the CTA tile first), post cards from `templates/block/partials/post-item.php`.
+  - Link Wrapper: `block.json` with jsx InnerBlocks; ACF's front-end inner container disabled for it (`acf/blocks/wrap_frontend_innerblocks`).
+- [x] Native `typography.textAlign` retrofitted onto intro block, special copy blurb, icon + copy grid (their alignment fields are gone).
+- Verified in the live editor: both patterns parse with no invalid blocks; the editor offers only the theme palette and the Asen spacing presets.
+- Upstream note: commit `a5dad98` deleted the Icon Grid field group JSON while the group was still active in the DB (most likely ACF Extended's sync removing the file, committed by GitHub Desktop's auto-message). Restored from history in batch 4.
 - [ ] Move the theme's admin `<style>` hacks into editor styles so the iframed (apiVersion 3) editor still looks right.
 
 ## Phase 3 — Client-safe editing (2–3 days)
@@ -101,9 +108,9 @@ Living document. Check items off as they ship and keep the "Roadmap status" line
 
 - [x] Copy + Image: block, template, and field group deleted; replaced by `patterns/asen-copy-image.php` (Group + two Media & Text rows), styled in `scss/blocks/_asen-copy-image.scss`.
 - [x] Featured Blogs: reworked to 3 posts, "most recent" or "hand-picked" (relationship field, max 3, falls back to recent), optional CTA tile (default on; makes the row 4-up via `.has-cta-tile`).
-- [ ] Delete + replacement for: Button, Buttons Group (→ `core/buttons` + variant block styles), Anchor (→ HTML anchor field), WYSIWYG (→ core text blocks), CTA (→ pattern). Delete outright while no v3 site has shipped; `inserter: false` only after that.
-- [ ] Video popup: confirm the Asen Video Popup block covers what Kadence's was used for; otherwise a `<dialog>`-based replacement.
-- [ ] Drop Glide; drop jquery-modal in favor of `<dialog>`; evaluate removing jQuery from `main.js`.
+- [x] Deleted Button, Buttons Group, Anchor, WYSIWYG, CTA. Still to do: register the `_buttons.scss` variants as block styles on `core/button` so clients pick them from a menu (Phase 3).
+- [x] Video popup rebuilt on `<dialog>` (covers the Kadence video-popup use).
+- [x] Glide dropped. [ ] Drop jquery-modal (only `main.js` modals left) and evaluate removing jQuery from `main.js`.
 
 ## Phase 5 — Distribution: parent/child with a self-updating parent (2–3 days)
 

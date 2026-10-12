@@ -15,7 +15,6 @@ $icon         = get_field( 'icon' );
 $heading      = get_field( 'heading' );
 $subheading   = get_field( 'subheading' );
 $blurb        = get_field( 'blurb' );
-$align_center = get_field( 'align_center' );
 $cta_options  = get_field( 'cta_options' );
 $cta_links    = get_field( 'cta_links' );
 
@@ -32,7 +31,6 @@ $text_size       = get_field( '__font_size' );
 
 $classes = array_filter( array(
     'asen-intro-block',
-    $align_center ? 'align-center' : '',
     $container_width ? 'block-width-' . $container_width : '',
     $text_spacing ? 'asen-intro-block--text-spacing-' . $text_spacing : '',
     $text_size ? 'asen-intro-block--text-' . $text_size : '',

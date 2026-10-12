@@ -47,6 +47,9 @@
       "background": true,
       "text": true,
       "link": false
+    },
+    "typography": {
+      "textAlign": true
     }
   },
   "example": {

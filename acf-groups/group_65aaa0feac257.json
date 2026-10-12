@@ -128,33 +128,6 @@
             "append": ""
         },
         {
-            "key": "field_681cf59f421fd",
-            "label": "Alignment Options",
-            "name": "alignment_options",
-            "aria-label": "",
-            "type": "radio",
-            "instructions": "Center aligns all content in each box.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "choices": [
-                "Left",
-                "Center"
-            ],
-            "default_value": 0,
-            "return_format": "value",
-            "allow_null": 0,
-            "other_choice": 0,
-            "allow_in_bindings": 1,
-            "layout": "horizontal",
-            "save_other_choice": 0
-        },
-        {
             "key": "field_69eb5d01a0002",
             "label": "Heading Size",
             "name": "heading_size",
@@ -328,7 +301,7 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1791840000,
+    "modified": 1791860000,
     "acfe_categories": {
         "block-fields": "Asen Core Blocks"
     }

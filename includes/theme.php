@@ -26,14 +26,6 @@ function asen_register_block_dependencies() {
 }
 add_action( 'init', 'asen_register_block_dependencies' );
 
-// Until the Video Popup block converts, the YouTube API loads when its block is in the content.
-function asen_enqueue_block_dependencies() {
-    if ( is_singular() && has_block( 'acf/asen-video-popup' ) ) {
-        wp_enqueue_script( 'yt-player-api', 'https://www.youtube.com/iframe_api', array(), null, true );
-    }
-}
-add_action( 'wp_enqueue_scripts', 'asen_enqueue_block_dependencies' );
-
 // Subresource integrity for the CDN-loaded Leaflet assets.
 add_filter( 'script_loader_tag', function ( $tag, $handle ) {
     return 'leaflet' === $handle ? str_replace( ' src=', ' integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" src=', $tag ) : $tag;

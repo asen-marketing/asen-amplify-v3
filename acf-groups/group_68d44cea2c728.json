@@ -1,13 +1,13 @@
 {
     "key": "group_68d44cea2c728",
-    "title": "Gutenberg - Asen Dynamic Color SVG",
+    "title": "Core - Asen Dynamic Color SVG",
     "fields": [
         {
-            "key": "field_68d44cea92d9b",
-            "label": "SVG Image",
-            "name": "svg_image",
+            "key": "field_69eb7f02a0001",
+            "label": "Block Name",
+            "name": "",
             "aria-label": "",
-            "type": "image",
+            "type": "message",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -17,8 +17,27 @@
                 "id": ""
             },
             "relevanssi_exclude": 0,
+            "message": "<h3>Asen - Dynamic Color SVG<\/h3>",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_68d44cea92d9b",
+            "label": "SVG Image",
+            "name": "svg_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Color it with the block's Text color; leave that empty to keep the file's own colors.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
             "uploader": "",
-            "return_format": "url",
+            "return_format": "id",
             "library": "all",
             "upload_folder": "",
             "acfe_thumbnail": 0,
@@ -31,34 +50,6 @@
             "mime_types": "svg",
             "allow_in_bindings": 0,
             "preview_size": "medium"
-        },
-        {
-            "key": "field_68d44d2292d9c",
-            "label": "SVG Color",
-            "name": "svg_color",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "default_value": "",
-            "enable_opacity": 0,
-            "return_format": "string",
-            "display": "default",
-            "button_label": "Select Color",
-            "color_picker": 1,
-            "absolute": 0,
-            "input": 1,
-            "allow_null": 1,
-            "theme_colors": 0,
-            "colors": [],
-            "allow_in_bindings": 0
         },
         {
             "key": "field_68d44d3192d9d",
@@ -110,5 +101,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1758743897
+    "modified": 1791860000
 }

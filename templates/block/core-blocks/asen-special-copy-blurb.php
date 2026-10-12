@@ -9,7 +9,6 @@ if ( is_admin() ) {
 
 $icon         = get_field( 'icon' );
 $blurb        = get_field( 'blurb' );
-$align_center = get_field( 'align_center' );
 $cta_options  = get_field( 'cta_options' );
 $cta_links    = get_field( 'cta_links' );
 
@@ -25,7 +24,6 @@ $link_icon     = $cta_links[0]['link_icon'] ?? null;
 
 $classes = array_filter( array(
     'asen-special-copy-blurb',
-    $align_center ? 'align-center' : '',
     'block-width-' . $container_width,
     'asen-special-copy-blurb--text-' . $text_size,
 ) );

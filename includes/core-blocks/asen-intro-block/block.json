@@ -46,6 +46,9 @@
         "top",
         "bottom"
       ]
+    },
+    "typography": {
+      "textAlign": true
     }
   },
   "example": {
@@ -55,7 +58,6 @@
         "heading": "Intro heading",
         "subheading": "Supporting subheading",
         "blurb": "A short blurb that sets up the section.",
-        "align_center": "1",
         "__container_width": "lg",
         "__font_size": "md"
       }

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "acf/asen-link-wrapper",
+  "title": "Asen - Link Wrapper",
+  "description": "Makes everything inside it a single link.",
+  "category": "asen-blocks",
+  "icon": "admin-links",
+  "keywords": [
+    "link",
+    "wrap",
+    "container"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "/templates/block/core-blocks/asen-link-wrapper.php"
+  },
+  "supports": {
+    "align": false,
+    "anchor": true,
+    "mode": false,
+    "jsx": true,
+    "html": false
+  }
+}

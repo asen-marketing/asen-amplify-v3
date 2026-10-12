@@ -1,0 +1,56 @@
+.asen-dropdown-links {
+  display: flex;
+  justify-content: center;
+  padding-left: $site-overall-gutter;
+  padding-right: $site-overall-gutter;
+  @include site-overall-gutter-small;
+
+  .inside {
+    width: 100%;
+    max-width: $site-overall-max-width;
+  }
+
+  .dropdown {
+    position: relative;
+  }
+
+  summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $gap-size-sm;
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+    &::after {
+      font: var(--fa-font-solid);
+      content: "\f078";
+    }
+  }
+  .dropdown[open] summary::after {
+    content: "\f077";
+  }
+
+  // Options float over the content below, so they need an opaque surface.
+  .dropdown-options {
+    position: absolute;
+    z-index: 10;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 60vh;
+    overflow-y: auto;
+    margin: 0;
+    padding: $gap-size-xs 0;
+    list-style: none;
+    background-color: $color-white;
+
+    a {
+      display: block;
+      padding: $gap-size-xs $gap-size-sm;
+    }
+  }
+}

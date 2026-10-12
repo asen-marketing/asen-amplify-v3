@@ -1,57 +1,19 @@
-// Max widths
-section.block-width-sm > .inside {
+// Container width for any block wrapper with an .inside child (driven by the __container_width token select).
+.block-width-sm > .inside {
   max-width: $container-width-sm;
 }
-section.block-width-md > .inside {
+.block-width-md > .inside {
   max-width: $container-width-md;
 }
-section.block-width-lg > .inside {
+.block-width-lg > .inside {
   max-width: $container-width-lg;
 }
-section.block-width-xl > .inside {
+.block-width-xl > .inside {
   max-width: $container-width-xl;
 }
-section.block-width-xxl > .inside {
+.block-width-xxl > .inside {
   max-width: $container-width-xxl;
 }
-section.block-width-full > .inside {
+.block-width-full > .inside {
   max-width: 100%;
-}
-
-// Spacing
-section.spacing-top-none {
-  padding-top: 0;
-}
-section.spacing-top-xs {
-  padding-top: $spacing-xs;
-}
-section.spacing-top-sm {
-  padding-top: $spacing-sm;
-}
-section.spacing-top-md {
-  padding-top: $spacing-md;
-}
-section.spacing-top-lg {
-  padding-top: $spacing-lg;
-}
-section.spacing-top-xl {
-  padding-top: $spacing-xl;
-}
-section.spacing-bottom-none {
-  padding-bottom: 0;
-}
-section.spacing-bottom-xs {
-  padding-bottom: $spacing-xs;
-}
-section.spacing-bottom-sm {
-  padding-bottom: $spacing-sm;
-}
-section.spacing-bottom-md {
-  padding-bottom: $spacing-md;
-}
-section.spacing-bottom-lg {
-  padding-bottom: $spacing-lg;
-}
-section.spacing-bottom-xl {
-  padding-bottom: $spacing-xl;
 }

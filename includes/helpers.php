@@ -164,3 +164,34 @@ function asen_geocode_address( $address ) {
     return $coords;
 }
 
+// An uploaded SVG's markup, sanitized for inline output (no scripts, handlers or external references).
+// $recolor drops the file's own <style> rules and style attributes, which would otherwise beat the theme's layered fill: currentColor.
+function asen_inline_svg( $attachment_id, $recolor = false ) {
+    $file = $attachment_id ? get_attached_file( $attachment_id ) : '';
+    if ( ! $file || 'image/svg+xml' !== get_post_mime_type( $attachment_id ) || ! is_readable( $file ) ) {
+        return '';
+    }
+    $svg = preg_replace( array( '/<\?xml.*?\?>/s', '/<!DOCTYPE.*?>/si', '/<!--.*?-->/s', '#<script\b.*?</script>#si' ), '', file_get_contents( $file ) );
+    if ( $recolor ) {
+        $svg = preg_replace( array( '#<style\b.*?</style>#si', '/\sstyle=("[^"]*"|\'[^\']*\')/i' ), '', $svg );
+    }
+
+    $common = array_fill_keys( array( 'id', 'class', 'style', 'fill', 'fill-rule', 'fill-opacity', 'clip-rule', 'clip-path', 'mask', 'opacity', 'stroke', 'stroke-width', 'stroke-linecap', 'stroke-linejoin', 'stroke-miterlimit', 'stroke-dasharray', 'stroke-opacity', 'transform', 'd', 'x', 'y', 'x1', 'y1', 'x2', 'y2', 'cx', 'cy', 'r', 'rx', 'ry', 'width', 'height', 'points', 'offset', 'stop-color', 'stop-opacity', 'gradientunits', 'gradienttransform', 'viewbox', 'preserveaspectratio', 'xmlns', 'xmlns:xlink', 'version', 'role', 'aria-hidden', 'aria-label', 'focusable', 'xml:space' ), true );
+    $allowed = array_fill_keys( array( 'svg', 'g', 'path', 'circle', 'ellipse', 'line', 'polyline', 'polygon', 'rect', 'defs', 'title', 'desc', 'lineargradient', 'radialgradient', 'stop', 'clippath', 'mask', 'symbol' ), $common );
+    $allowed['use']   = $common + array( 'href' => true, 'xlink:href' => true );
+    $allowed['style'] = array( 'type' => true ); // Illustrator exports color through classes; note the rules apply page-wide.
+
+    // kses lowercases attribute names; SVG's camelCase ones are restored so the markup is valid XML too.
+    $camel = array( 'viewbox' => 'viewBox', 'preserveaspectratio' => 'preserveAspectRatio', 'gradientunits' => 'gradientUnits', 'gradienttransform' => 'gradientTransform', 'lineargradient' => 'linearGradient', 'radialgradient' => 'radialGradient', 'clippath' => 'clipPath' );
+    return trim( preg_replace_callback( '/(?<=[\s<\/])(' . implode( '|', array_keys( $camel ) ) . ')(?=[\s=>\/])/', fn( $m ) => $camel[ $m[1] ], wp_kses( $svg, $allowed ) ) );
+}
+
+// YouTube video ID from a bare ID or any youtube.com / youtu.be URL.
+function asen_youtube_id( $value ) {
+    $value = trim( $value );
+    if ( preg_match( '~(?:youtu\.be/|youtube(?:-nocookie)?\.com/(?:watch\?(?:.*&)?v=|embed/|shorts/|live/|v/))([A-Za-z0-9_-]{11})~', $value, $m ) ) {
+        return $m[1];
+    }
+    return preg_match( '/^[A-Za-z0-9_-]{11}$/', $value ) ? $value : '';
+}
+

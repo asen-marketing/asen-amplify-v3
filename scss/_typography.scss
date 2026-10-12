@@ -189,8 +189,6 @@ ol {
   margin-bottom: 0;
 }
 
-// We want to unify the Gutenberg blockquote with the Asen Blockquote.
-.asen-blockquote blockquote,
 blockquote.wp-block-quote,
 .blog-post blockquote {
   text-align: center;
@@ -243,19 +241,6 @@ blockquote.wp-block-quote,
         font-size: 26px;
       }
     }
-  }
-}
-
-.asen-blockquote {
-  padding: 5% $site-overall-gutter 7%;
-  @include site-overall-gutter-small;
-  @media (max-width: $breakpoint-tablet-small) {
-    padding-top: 12%;
-    padding-bottom: 16%;
-  }
-  .inside {
-    max-width: 1180px;
-    margin: 0 auto;
   }
 }
 

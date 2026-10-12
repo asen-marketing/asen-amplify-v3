@@ -1,0 +1,18 @@
+// "Asen - Pricing Tiers" pattern: equal-height tiers with the button pinned to the bottom.
+.asen-pricing-tiers {
+  padding-left: $site-overall-gutter;
+  padding-right: $site-overall-gutter;
+  @include site-overall-gutter-small;
+
+  .tier {
+    height: 100%;
+
+    > * {
+      margin: 0;
+    }
+  }
+
+  .tier .wp-block-buttons {
+    margin-top: auto;
+  }
+}
