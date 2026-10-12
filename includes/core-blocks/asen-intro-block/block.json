@@ -1,15 +1,64 @@
 {
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
   "name": "acf/asen-intro-block",
-  "title": "Asen Intro Block",
+  "title": "Asen - Intro Block",
   "description": "Heading and subheading with blurb and optional CTA.",
   "category": "asen-blocks",
   "icon": "editor-textcolor",
+  "keywords": [
+    "intro",
+    "heading",
+    "blurb",
+    "cta"
+  ],
   "acf": {
     "mode": "auto",
     "renderTemplate": "/templates/block/core-blocks/asen-intro-block.php"
   },
+  "attributes": {
+    "style": {
+      "type": "object",
+      "default": {
+        "spacing": {
+          "padding": {
+            "top": "var:preset|spacing|lg",
+            "bottom": "var:preset|spacing|lg"
+          }
+        }
+      }
+    }
+  },
   "supports": {
     "align": false,
-    "anchor": true
+    "anchor": true,
+    "color": {
+      "background": true,
+      "text": true,
+      "link": false
+    },
+    "spacing": {
+      "padding": [
+        "top",
+        "bottom"
+      ],
+      "margin": [
+        "top",
+        "bottom"
+      ]
+    }
+  },
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "heading": "Intro heading",
+        "subheading": "Supporting subheading",
+        "blurb": "A short blurb that sets up the section.",
+        "align_center": "1",
+        "__container_width": "lg",
+        "__font_size": "md"
+      }
+    }
   }
 }

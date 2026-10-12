@@ -3,46 +3,6 @@
     "title": "Reusable - Asen Tokens",
     "fields": [
         {
-            "key": "field_69d7d2e0453ba",
-            "label": "Spacing",
-            "name": "__spacing",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "choices": {
-                "none": "None",
-                "xs": "X-Small",
-                "sm": "Small",
-                "md": "Medium",
-                "lg": "Large",
-                "xl": "X-Large"
-            },
-            "default_value": false,
-            "return_format": "value",
-            "multiple": 0,
-            "max": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "allow_null": 1,
-            "allow_in_bindings": 0,
-            "ui": 0,
-            "ajax": 0,
-            "create_options": 0,
-            "save_options": 0,
-            "allow_custom": 0,
-            "search_placeholder": "",
-            "min": ""
-        },
-        {
             "key": "field_69d7d44a453bb",
             "label": "Font Size",
             "name": "__font_size",
@@ -305,7 +265,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1775831813,
+    "modified": 1791820000,
     "acfe_categories": {
         "reusable": "Reusable"
     }

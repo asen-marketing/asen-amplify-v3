@@ -35,11 +35,11 @@ Living document. Check items off as they ship and keep the "Roadmap status" line
 ## Phase 0 — Groundwork & hygiene (1–2 days)
 
 - [x] `block_categories` → `block_categories_all`; intro block moved to the `asen-blocks` category.
-- [ ] Remove `site_colors` + `site_max_width` from `acf-groups/group_5e221e162fc69.json`; delete the echo in `includes/head-mods.php:40-52`; fix `templates/front-page-banner.php:224`; drop the stale comment in `_custom.scss`.
-- [ ] Fix `_block-globals.scss` spacing class names to `sm/md/lg` (keep `s/m/l` as aliases for one release); remove the duplicate declarations from `scss/blocks/core/_asen-intro-block.scss`.
-- [ ] Fix CPT template filenames: `single-product.php`, `single-service.php`; remove or wire up the `archive-*.php` files; fix the `'products'` / `'services'` checks in `head-mods.php`.
-- [ ] Move Leaflet (header.php) to the Location Map block; YouTube iframe API to the Video Popup block.
-- [ ] Move `wp68_admin_editor_fix_styles()` / `acfe_modal_width()` CSS into `includes/css/backend-styles.css`.
+- [x] `site_colors` + `site_max_width` removed from Site Options, `head-mods.php`, the front-page banner (now `var(--wp--style--global--wide-size)`), and `_custom.scss`.
+- [x] `_block-globals.scss` spacing classes are `sm/md/lg`; duplicates removed from the intro block.
+- [x] CPT template filenames: `single-product.php`, `single-service.php`, `archive-product.php`, `archive-service.php` (archives kept for forks that enable `has_archive`); `head-mods.php` checks fixed.
+- [x] Leaflet and the YouTube API enqueue only when `has_block()` finds their block (`asen_enqueue_block_dependencies()` in `theme.php`, Leaflet with SRI). Phase 2 follow-up: move the map block's inline script to a `viewScript` so Leaflet can load in the footer.
+- [x] Admin `<style>` echoes moved into `includes/css/backend-styles.css`.
 - [x] Delete `css/index_safe_save_*`; untrack `css/`; theme-scoped `.gitignore`; `README.md`; `style.css` headers.
 - [x] `style.css`: `Requires at least: 6.7`, `Requires PHP: 8.1`.
 
@@ -47,7 +47,7 @@ Living document. Check items off as they ship and keep the "Roadmap status" line
 
 ## Phase 1 — `theme.json` as token layer (2–3 days)
 
-- [ ] `theme.json` (v3) with:
+- [x] `theme.json` (v3) written. Deviations from the list below: `useRootPaddingAwareAlignments` is **off** (the classic header/footer markup handles its own gutters), and `styles.elements` is deferred — `_typography.scss` consumes the heading/font tokens instead, so there is still one source. Spec as planned:
   - `settings.color.palette` — fixed slugs: `primary`, `secondary`, `accent`, `dark`, `light`, `white`, `black`, plus `gray-100…900`. Per-client values are edited here (or in the child theme).
   - `settings.spacing.spacingSizes` — `xs/sm/md/lg/xl` from `_tokens.scss`, as `clamp()` so the 0.8/0.7/0.55 breakpoint mixins become unnecessary. `defaultSpacingSizes: false`, `customSpacingSize: false`, `padding/margin/blockGap: true`, `units: ["px","rem","%","vw"]`.
   - `settings.typography.fontSizes` (fluid) from `$font-size-*`; `fontFamilies` for the site font; `customFontSize: false`.
@@ -57,11 +57,11 @@ Living document. Check items off as they ship and keep the "Roadmap status" line
   - `settings.appearanceTools: true`.
 - [ ] Override layering (defaults → variants → options): `theme.json` sets the token; `_buttons.scss` / `_typography.scss` consume `var(--button-bg, var(--wp--preset--color--primary))`-style fallbacks; `head-mods.php` prints `--button-bg`, `--link-color`, `--banner-title-color`… **only when the Builders Only field is set**. Kills every `color: ;` from empty fields and keeps the option pickers as true overrides.
 - [ ] Optional: register the button variant classes as block styles on `core/button` (`is-style-red`) so clients pick from a dropdown instead of typing class names; SCSS targets both selectors.
-- [ ] `includes/theme-json.php`: `wp_theme_json_data_theme` filter that, for users **without** an `@asenmarketing.com` email, sets `color.custom`, `color.customGradient`, `spacing.customSpacingSize`, `typography.customFontSize` to `false`. Builders keep full control.
-- [ ] Rewrite `_tokens.scss` and `_colors.scss` as aliases (`$spacing-md: var(--wp--preset--spacing--md);` etc.). Replace `$site-overall-max-width` (14 refs) with `var(--wp--style--global--wide-size)`; `calc()` the two subtraction sites. Delete `_site-option-styles.scss`.
-- [ ] Editor parity: `add_theme_support('editor-styles')`, new `scss/editor.scss` → `css/editor.css` (tokens, typography, buttons, blocks only), `add_editor_style('css/editor.css')`.
+- [x] `includes/theme-json.php`: `asen_user_is_builder()` (filterable via `asen/is_builder`) + `wp_theme_json_data_theme` filter that turns off `color.custom`/`customGradient`/`customDuotone`, `spacing.customSpacingSize`, `typography.customFontSize`, `layout.allowCustomContentAndWideSize` for non-builders.
+- [x] `_tokens.scss` / `_colors.scss` are aliases; `$site-overall-max-width` is `var(--wp--style--global--wide-size)` (kept in `_site-option-styles.scss` as the single alias); the two subtraction sites use `calc()`; `_typography.scss` h1–h6 and `p` use the tokens; brand hex in `_off-canvas-menu.scss` replaced with `$color-primary`.
+- [x] Editor parity: `scss/editor.scss` → `css/editor.css`, loaded via `add_editor_style`.
 - [ ] `head-mods.php`: emit option values as `:root` custom props (`--header-height`, `--header-max-width`, `--off-canvas-breakpoint`, `--logo-height`…) and move the static rules into SCSS. Guard every `the_field()` echo so empty fields don't print `color: ;`.
-- [ ] Verify Kadence color pickers show the theme palette.
+- [x] ~~Verify Kadence color pickers show the theme palette.~~ Kadence retired for new builds.
 
 ## Phase 2 — ACF blocks → `block.json` + native supports (3–5 days, one block at a time)
 
@@ -69,7 +69,8 @@ Living document. Check items off as they ship and keep the "Roadmap status" line
 - [ ] Per template: `get_block_wrapper_attributes()` on the `<section>`; delete the per-instance `<style>`; delete padding/margin/font-size/color fields from the field group. Keep `__container_width`, `__gap`, `__heading_size`, `__border_radius` as ACF selects (no native equivalent).
 - [ ] Keep legacy field keys registered-but-hidden for one release so existing values still render through a fallback; optional one-shot migration mapping old px → nearest spacing preset into the block's `style` attribute.
 - [ ] Remove the matching `acf_register_block()` call from `gutenberg.php` once each block is on `block.json`.
-- [ ] Order: `asen-intro-block` (finish), then the 14 inline-style blocks, then the rest.
+- [x] `asen-intro-block` converted: `apiVersion` 3, `supports.spacing` (top/bottom padding + margin) and `supports.color`, default `lg` padding in `attributes.style.default`, `get_block_wrapper_attributes()`, token font sizes without the responsive mixins, padding clones removed from its field group, `__spacing` removed from the shared token group.
+- [ ] Next: the 13 inline-style blocks, then the rest.
 - [ ] Move the theme's admin `<style>` hacks into editor styles so the iframed (apiVersion 3) editor still looks right.
 
 ## Phase 3 — Client-safe editing (2–3 days)

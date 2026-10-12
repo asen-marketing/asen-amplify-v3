@@ -1,6 +1,10 @@
+// Vertical padding/margin and colors come from native block supports (theme.json presets); nothing here for those.
 .asen-intro-block {
   display: flex;
   justify-content: center;
+  padding-left: $site-overall-gutter;
+  padding-right: $site-overall-gutter;
+  @include site-overall-gutter-small;
 
   &.align-center {
     .inside {
@@ -11,93 +15,62 @@
     }
   }
 
-  &.spacing-top-xs {
-    padding-top: $spacing-xs;
-  }
-  &.spacing-top-sm {
-    padding-top: $spacing-sm;
-  }
-  &.spacing-top-md {
-    padding-top: $spacing-md;
-  }
-  &.spacing-top-lg {
-    padding-top: $spacing-lg;
-  }
-  &.spacing-top-xl {
-    padding-top: $spacing-xl;
-  }
-
-  &.spacing-bottom-xs {
-    padding-bottom: $spacing-xs;
-  }
-  &.spacing-bottom-sm {
-    padding-bottom: $spacing-sm;
-  }
-  &.spacing-bottom-md {
-    padding-bottom: $spacing-md;
-  }
-  &.spacing-bottom-lg {
-    padding-bottom: $spacing-lg;
-  }
-  &.spacing-bottom-xl {
-    padding-bottom: $spacing-xl;
-  }
-
   .inside {
     width: 100%;
     max-width: $site-overall-max-width;
   }
 
+  // Text scale: the presets are already fluid, so no responsive mixins.
   &--text-sm {
     h2 {
-      @include responsive-heading($heading-h4);
+      font-size: $heading-h4;
     }
     .subheading,
     i {
-      @include responsive-heading($font-size-md);
+      font-size: $font-size-md;
     }
     .blurb,
     .link-container a {
-      @include responsive-heading($font-size-sm);
+      font-size: $font-size-sm;
     }
   }
   &--text-md {
     h2 {
-      @include responsive-heading($heading-h3);
+      font-size: $heading-h3;
     }
     .subheading,
     i {
-      @include responsive-heading($font-size-lg);
+      font-size: $font-size-lg;
     }
     .blurb,
     .link-container a {
-      @include responsive-heading($font-size-md);
+      font-size: $font-size-md;
     }
   }
   &--text-lg {
     h2 {
-      @include responsive-heading($heading-h2);
+      font-size: $heading-h2;
     }
     .subheading,
     i {
-      @include responsive-heading($font-size-xl);
+      font-size: $font-size-xl;
     }
     .blurb,
     .link-container a {
-      @include responsive-heading($font-size-lg);
+      font-size: $font-size-lg;
     }
   }
   &--text-xl {
     h2 {
-      @include responsive-heading($heading-h1);
+      font-size: $heading-h1;
     }
     .subheading,
     i {
-      @include responsive-heading($font-size-xxl);
+      font-size: $font-size-xxl;
     }
     .blurb,
     .link-container a {
-      @include responsive-heading($font-size-xl);
+      font-size: $font-size-xl;
     }
   }
 
