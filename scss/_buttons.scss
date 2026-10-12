@@ -1,9 +1,11 @@
+// The theme's one button. Core's .wp-block-button__link gets the same treatment (its pill radius is in the vendor layer, hence the explicit 0).
 .button,
 .wp-block-button__link {
   border: none;
+  border-radius: 0;
   display: inline-block;
   font-weight: 500;
-  color: #fff;
+  color: $color-white;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -12,18 +14,14 @@
   -ms-user-select: none;
   user-select: none;
   background-color: $gray-800;
-  padding: 0.7em 1.3em; // Adjust padding to font-size;
-  font-size: 26px;
+  padding: 0.7em 1.3em; // Scales with font-size.
+  font-size: $font-size-lg;
   line-height: 1;
 
   transition: background-color 150ms ease, color 150ms ease;
 
-  @media (max-width: $breakpoint-tablet-small) {
-    font-size: 21px;
-  }
-
   &:hover {
-    color: #fff;
+    color: $color-white;
     background-color: $gray-700;
   }
 
@@ -32,8 +30,8 @@
   }
 
   &.button-small {
-    padding: 0.6em 1em; // Adjust padding to font-size;
-    font-size: 20px;
+    padding: 0.6em 1em;
+    font-size: $font-size-sm;
   }
 
   &.button-no-background {

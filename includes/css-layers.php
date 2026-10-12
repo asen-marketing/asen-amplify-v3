@@ -1,0 +1,46 @@
+<?php
+/**
+ * Cascade layers. scss/index.scss declares `vendor, reset, base, components, blocks, utilities`; here every stylesheet
+ * WordPress or a plugin enqueues is imported into `vendor`, so the theme's layered CSS sits above core and plugin
+ * defaults. Unlayered CSS (child theme, _custom.scss, inline block styles) still wins over everything.
+ */
+
+// Stylesheets that must stay unlayered: the theme's own (they declare the layer order) and core-block-supports, which
+// carries the layout values editors picked in the block sidebar and has to keep beating the theme.
+function asen_unlayered_style_handles() {
+    return apply_filters( 'asen/unlayered_style_handles', array( 'main', 'core-block-supports' ) );
+}
+
+// <link rel="stylesheet"> → <style>@import url() layer(vendor)</style> for third-party stylesheets on the front end.
+function asen_layer_third_party_styles( $tag, $handle, $href, $media ) {
+    if ( is_admin() || ! wp_style_is( 'main', 'enqueued' ) || in_array( $handle, asen_unlayered_style_handles(), true ) ) {
+        return $tag;
+    }
+    $media = ( $media && 'all' !== $media ) ? ' ' . esc_attr( $media ) : '';
+    return sprintf( "<style id=\"%s-css\">@import url(\"%s\") layer(vendor)%s;</style>\n", esc_attr( $handle ), esc_url( $href ), $media );
+}
+add_filter( 'style_loader_tag', 'asen_layer_third_party_styles', 10, 4 );
+
+// Inline styles (global-styles presets, core per-block CSS, plugin variables) get wrapped in `vendor` right before they print.
+function asen_layer_inline_styles() {
+    if ( is_admin() || ! wp_style_is( 'main', 'enqueued' ) ) {
+        return;
+    }
+    $styles = wp_styles();
+    foreach ( $styles->registered as $handle => $dep ) {
+        if ( in_array( $handle, asen_unlayered_style_handles(), true ) ) {
+            continue;
+        }
+        $after = $styles->get_data( $handle, 'after' );
+        if ( ! $after ) {
+            continue;
+        }
+        $css = implode( "\n", (array) $after );
+        if ( str_starts_with( ltrim( $css ), '@layer vendor{' ) ) {
+            continue;
+        }
+        $styles->registered[ $handle ]->extra['after'] = array( '@layer vendor{' . $css . '}' );
+    }
+}
+add_action( 'wp_print_styles', 'asen_layer_inline_styles', 1 );         // head
+add_action( 'wp_print_footer_scripts', 'asen_layer_inline_styles', 1 ); // late styles (classic themes print global-styles here)

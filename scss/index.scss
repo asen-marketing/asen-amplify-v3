@@ -1,44 +1,60 @@
-@import "vendor/reboot"; // Bootstrap resets.
-@import "vendor/glide"; // Glide for slideshows/carousels.
-@import "vendor/hamburger"; // Hamburger SCSS. So good.
+// Cascade layers, lowest to highest. Anything unlayered — the client's _custom.scss, child-theme CSS, editor-set inline
+// block styles — beats all of them, so overrides never need specificity games. WordPress core and plugin stylesheets
+// are imported into `vendor` by includes/css-layers.php.
+@layer vendor, reset, base, components, blocks, utilities;
 
-// We load some variables, placeholders, mixins, and css first.
+// Variables and mixins only (no CSS output), kept top-level so every layer can use them.
 @import "site-option-styles";
 @import "measurements";
 @import "colors";
-@import "utility";
 @import "tokens";
 
-// Styling is ordered symantically.
-// Don't put stuff at the top that is not often seen.
-@import "typography";
-@import "base";
-@import "buttons";
-@import "forms";
-@import "header";
-@import "front-page-banner";
-@import "interior-banner";
-@import "hamburger";
-@import "off-canvas-menu";
-@import "fixed-contact-cta";
-@import "scroll-down-cta";
-@import "woocommerce";
-@import "archives";
-@import "products";
-@import "services";
-@import "blog";
-@import "pagination";
-@import "team";
-@import "contact";
-@import "footer";
-@import "search";
-@import "404";
-@import "privacy";
-@import "modals";
+@layer reset {
+  @import "vendor/reboot";
+}
 
-// Gutenberg blocks folder.
-// Block files can be added by importing them into /blocks/index.scss
-@import "blocks";
-@import "block-globals";
+@layer base {
+  @import "typography";
+  @import "base";
+}
 
+@layer components {
+  @import "vendor/glide";
+  @import "vendor/hamburger";
+  @import "buttons";
+  @import "forms";
+  @import "header";
+  @import "front-page-banner";
+  @import "interior-banner";
+  @import "hamburger";
+  @import "off-canvas-menu";
+  @import "fixed-contact-cta";
+  @import "scroll-down-cta";
+  @import "woocommerce";
+  @import "archives";
+  @import "products";
+  @import "services";
+  @import "blog";
+  @import "pagination";
+  @import "team";
+  @import "contact";
+  @import "footer";
+  @import "search";
+  @import "404";
+  @import "privacy";
+  @import "modals";
+}
+
+// Block partials are structure only: layout, gaps, widths, token-driven modifiers. Colors, weights, transforms and
+// other decoration come from base typography, theme.json, native block supports, or the child theme.
+@layer blocks {
+  @import "blocks";
+}
+
+@layer utilities {
+  @import "utility";
+  @import "block-globals";
+}
+
+// Unlayered on purpose: client overrides win over everything above.
 @import "custom";
