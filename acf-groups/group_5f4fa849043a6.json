@@ -54,8 +54,11 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1791860000,
+    "modified": 1791840431,
     "acfe_autosync": [
         "json"
-    ]
+    ],
+    "acfe_categories": {
+        "block-fields": "Asen Core Blocks"
+    }
 }
