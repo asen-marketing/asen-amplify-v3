@@ -130,6 +130,7 @@ function asen_option_css() {
         '--banner-bg'                  => $opt( 'page_banner_background_color' ),
         '--banner-image-blend'         => $opt( 'page_banner_background_blend_mode' ),
         '--banner-overlay-bg'          => $opt( 'page_banner_background_overlay_color' ),
+        '--banner-overlay-opacity'     => is_numeric( $opt( 'page_banner_background_overlay_opacity' ) ) ? max( 0, min( 1, (float) $opt( 'page_banner_background_overlay_opacity' ) ) ) : null,
         '--banner-eyebrow-color'       => $opt( 'page_banner_eyebrow_color' ),
         '--banner-eyebrow-transform'   => $opt( 'page_banner_eyebrow_transform' ),
         '--banner-title-color'         => $opt( 'page_banner_title_color' ),

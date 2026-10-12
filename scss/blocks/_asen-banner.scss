@@ -97,6 +97,9 @@
   &.has-background .banner-overlay {
     background-color: inherit;
   }
+  &.has-overlay-default .banner-overlay {
+    opacity: var(--banner-overlay-opacity);
+  }
   &.has-overlay-light .banner-overlay {
     opacity: 0.25;
   }
@@ -107,9 +110,15 @@
     opacity: 0.75;
   }
 
-  // Title scale (block's Title Size select, or Builders Only default).
+  // Title scale (block's Title Size select, or Builders Only default); eyebrow and subtitle sizes come from Builders Only.
   @each $name, $size in $heading-scale {
     &.has-title-#{$name} .title {
+      font-size: $size;
+    }
+    &.has-eyebrow-#{$name} .eyebrow {
+      font-size: $size;
+    }
+    &.has-subtitle-#{$name} .subtitle {
       font-size: $size;
     }
   }

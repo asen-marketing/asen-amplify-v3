@@ -569,6 +569,30 @@
             "allow_in_bindings": 1
         },
         {
+            "key": "field_5eb316d2400fe",
+            "label": "Default Overlay Opacity",
+            "name": "page_banner_background_overlay_opacity",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Overlay strength (0\u20131) for banners whose Overlay is set to \"Site default\". Empty = 0.5.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "0.8",
+            "min": 0,
+            "max": 1,
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "step": 0.05,
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_682f765fcd8a9",
             "label": "Links & Buttons",
             "name": "",
@@ -1072,7 +1096,7 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1791880000,
+    "modified": 1791890000,
     "acfe_categories": {
         "site-option-fields": "Site Option Fields"
     }

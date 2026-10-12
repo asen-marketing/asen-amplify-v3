@@ -202,14 +202,19 @@ function asen_banner_defaults( $args ) {
         'eyebrow' => '', 'title' => '', 'subtitle' => '', 'links' => array(), 'background' => 'none', 'image' => null, 'slides' => array(),
         'video_desktop' => '', 'video_mobile' => '', 'overlay' => 'none', 'container_width' => 'xl', 'title_size' => '', 'has_text_align' => false,
     ) );
-    $option_size  = function_exists( 'get_field' ) ? get_field( 'page_banner_title_size', 'option' ) : '';
+    // Text Properties sizes are h1–h6 (the "-big" variants never had CSS, so they map to the base size) or "default".
+    $option_size  = fn( $name ) => function_exists( 'get_field' ) && preg_match( '/^(h[1-6])(-big)?$/', (string) get_field( $name, 'option' ), $m ) ? $m[1] : '';
     $option_align = function_exists( 'get_field' ) ? get_field( 'page_banner_text_align', 'option' ) : '';
-    $title_size   = $args['title_size'] ?: ( preg_match( '/^h[1-6]$/', (string) $option_size ) ? $option_size : 'h1' );
+    $title_size   = $args['title_size'] ?: ( $option_size( 'page_banner_title_size' ) ?: 'h1' );
+    $eyebrow_size = $option_size( 'page_banner_eyebrow_size' );
+    $sub_size     = $option_size( 'page_banner_subtitle_size' );
 
     $args['classes'] = array_filter( array(
         'asen-banner',
         'block-width-' . $args['container_width'],
         'has-title-' . $title_size,
+        $eyebrow_size ? 'has-eyebrow-' . $eyebrow_size : '',
+        $sub_size ? 'has-subtitle-' . $sub_size : '',
         'none' !== $args['background'] ? 'has-media' : '',
         'none' !== $args['overlay'] && 'none' !== $args['background'] ? 'has-overlay-' . $args['overlay'] : '',
         ! $args['has_text_align'] && in_array( $option_align, array( 'left', 'center', 'right' ), true ) ? 'has-text-align-' . $option_align : '',

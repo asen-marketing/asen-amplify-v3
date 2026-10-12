@@ -342,7 +342,7 @@
             "name": "overlay",
             "aria-label": "",
             "type": "radio",
-            "instructions": "Darkens the background so text stays readable. It's tinted with the block's Background color (black if none).",
+            "instructions": "Darkens the background so text stays readable. Tinted with the block's Background color (else the site default). \"Site default\" uses Builders Only \u2192 Page Banners.",
             "required": 0,
             "conditional_logic": [
                 [
@@ -359,12 +359,13 @@
                 "id": ""
             },
             "choices": {
+                "default": "Site default",
                 "none": "None",
                 "light": "Light",
                 "medium": "Medium",
                 "heavy": "Heavy"
             },
-            "default_value": "medium",
+            "default_value": "default",
             "layout": "horizontal",
             "return_format": "value",
             "allow_null": 0,
@@ -393,5 +394,5 @@
     "acfe_autosync": [
         "json"
     ],
-    "modified": 1791880000
+    "modified": 1791890000
 }
