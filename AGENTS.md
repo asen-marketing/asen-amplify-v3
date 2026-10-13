@@ -25,7 +25,8 @@ includes/
   gutenberg.php            the "Asen Blocks" inserter category + ACF block filters
   patterns.php             registers the "Asen" pattern category
   updates.php              self-update from GitHub releases (plugin-update-checker in includes/vendor); off on git checkouts
-  client-editing.php       client inserter allowlist, no block unlocking / code editor for clients, locked banner in new pages' block template
+  client-editing.php       client inserter allowlist, no block unlocking / code editor / binding changes for clients, locked banner in new pages' block template
+  block-bindings.php       asen/site-option bindings source (Site Options contact info) + editor data for js/editor-bindings.js
   css-layers.php           moves core/plugin stylesheets into the `vendor` cascade layer
   theme-json.php           editor styles + preset-only editor settings for non-Asen users (asen_user_is_builder())
   core-blocks/{slug}/      block.json (+ view.js / view.asset.php) for every block, auto-loaded by asen_register_acf_blocks()
@@ -116,7 +117,15 @@ $classes = [ 'asen-example', 'asen-example-' . $block['id'], $block['className']
 
 ## Client editing
 
-Clients (anyone `asen_user_is_builder()` says isn't Asen staff) get: preset-only color/spacing/font-size controls (`theme-json.php`); an inserter allowlist of Asen blocks plus core paragraph, heading, list, image, gallery, buttons, quote, separator, spacer, group, columns, media & text, cover, video, embed, table and synced patterns (`asen/client_allowed_blocks` to change it per site); no block unlocking and no code editor (`client-editing.php`). Builders see everything and can unlock. Layout safety comes from locking: the page banner is locked in place, and pattern sections use `templateLock: contentOnly` so clients edit text and images only. Styles panel options: Button → Knockout / Small / Wide (plus core's Outline, styled to match), Group → Light / Dark / Brand Section. Section styles work by resetting the component variables (`--link-color`, `--button-bg`, `--heading-color`…), so anything inside adapts; add new contexts the same way rather than with descendant color rules.
+Clients (anyone `asen_user_is_builder()` says isn't Asen staff) get: preset-only color/spacing/font-size controls (`theme-json.php`); an inserter allowlist of Asen blocks plus core paragraph, heading, list, image, gallery, buttons, quote, separator, spacer, group, columns, media & text, cover, video, embed, table and synced patterns (`asen/client_allowed_blocks` to change it per site); no block unlocking, no code editor, and no connecting/disconnecting block bindings (`client-editing.php`). Builders see everything and can unlock. Layout safety comes from locking: the page banner is locked in place, and pattern sections use `templateLock: contentOnly` so clients edit text and images only. Styles panel options: Button → Knockout / Small / Wide (plus core's Outline, styled to match), Group → Light / Dark / Brand Section. Section styles work by resetting the component variables (`--link-color`, `--button-bg`, `--heading-color`…), so anything inside adapts; add new contexts the same way rather than with descendant color rules.
+
+## Block bindings
+
+Core Paragraph, Heading, List Item, Button and Image can pull values from a source instead of storing them, and bound blocks can't be edited in place.
+
+- **`asen/site-option`** (`includes/block-bindings.php`): Site Options → Contact Information. Keys `phone`, `email`, `address`, `hours`. One key adapts to the attribute it's bound to: text content (paragraph/heading/list item) gets the linked value (`tel:`, `mailto:`, Google Maps; hours unlinked, one line per row), a button or image `url` gets the bare link, button text / captions get the plain value. Markup: `<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"asen/site-option","args":{"key":"phone"}}}}} --><p></p><!-- /wp:paragraph -->`. The Contact Page pattern uses all four. Add a key in `asen_contact_info()`; the editor picks it up automatically (`js/editor-bindings.js` gets the resolved values, so bound blocks preview real data and the keys appear in the block's Attributes panel). Use it anywhere contact info appears in content, so a client changes a phone number once.
+- **`acf/field`** (ACF Pro): fields of the current post, or of each post inside a Query Loop. The field needs "Allow Access to Value in Editor UI" (`allow_in_bindings`) on. Our CPTs don't use the block editor (their singles are PHP templates), so this matters only for a client CPT or page field built for block content.
+- Builders connect fields in the block's Attributes panel; clients can't change bindings (`canUpdateBlockBindings` off).
 
 ## Adding a block (checklist)
 
@@ -201,6 +210,6 @@ See [MODERNIZATION.md](MODERNIZATION.md). Update this line as phases land.
 - Phase 0 (hygiene + deprecated field removal): done
 - Phase 1 (`theme.json` tokens, editor styles, head-mods → custom props): done
 - Phase 2 (ACF blocks → `block.json` + native supports, structure-only SCSS): done — 17 blocks, all `block.json`, no inline `<style>` or `<script>` in any template, no jQuery in block JS
-- Phase 3 (client-safe editing: role-gated inserter, patterns, section styles, bindings): done except block bindings — allowlist, editor locks, banner block + locked page template, button/section styles, hero + 3 page-starter patterns
+- Phase 3 (client-safe editing: role-gated inserter, patterns, section styles, bindings): done — allowlist, editor locks, banner block + locked page template, button/section styles, hero + 3 page-starter patterns, `asen/site-option` bindings for contact info
 - Phase 4 (block library rationalization): mostly done — overlap and dead blocks deleted, two replacement patterns (copy + image, pricing tiers), Glide gone, Video Popup rebuilt on `<dialog>` (the Kadence video-popup replacement). jQuery and jquery-modal removed (`main.js` is vanilla)
 - Phase 5 (distribution): parent side done — self-updater, release + WP Engine workflows, child-aware loading, CHANGELOG. Child starter lives at `asenmarketing/asen-amplify-v3-starter`. Left: first release tag (v3.0.0) and a real client site on it.

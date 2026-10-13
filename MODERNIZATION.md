@@ -104,7 +104,7 @@ Living document. Check items off as they ship and keep the "Roadmap status" line
 - [x] Patterns: `asen-hero`, page starters `page-standard`, `page-services`, `page-contact` (banner locked, CTA/copy sections `contentOnly`). All validated in the live editor.
 - [ ] (was) `patterns/` directory: section patterns and page starters (`Block Types: core/post-content`, `Post Types: page`) so new pages open with a pattern picker. Core blocks only — never Kadence. Wrap sections in `templateLock: "contentOnly"`; `lock` structural blocks. (`patterns/asen-copy-image.php` and the `asen` category exist as the first example.)
 - [x] Section styles on Group (Light / Dark / Brand) via `register_block_style()` + `_section-styles.scss` — deliberately *not* `style_data`: that CSS would land in the vendor layer, below the theme. They reset the component variables instead. Button styles Knockout / Small / Wide on core/button; core's Outline styled to match.
-- [ ] Block bindings: `asen/site-option` source for phone/email/address/hours; ACF `acf/field` source for CPT meta in patterns.
+- [x] Block bindings (Oct 2026): `asen/site-option` source for phone/email/address/hours (new Hours field in Site Options → Contact Information), resolved per attribute (linked text / bare URL / plain), with an editor script so bound blocks show real values and the keys are pickable in the Attributes panel; the Contact Page pattern uses it; clients can't change bindings. ACF Pro already ships the `acf/field` source with editor UI — no theme code needed, and our CPTs don't use the block editor, so it's documented in AGENTS.md rather than used.
 - [x] ~~`inserter: false` on builder-only blocks~~ — covered by the client allowlist.
 
 ## Phase 4 — Rationalize the block library (ongoing)

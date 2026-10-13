@@ -427,6 +427,28 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_69ed2c41a7b03",
+            "label": "Hours",
+            "name": "site_hours",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "One line per row, e.g. \"Mon–Fri: 8am–5pm\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "rows": 3,
+            "new_lines": ""
         }
     ],
     "location": [
@@ -456,7 +478,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1791820000,
+    "modified": 1791917382,
     "acfe_categories": {
         "site-option-fields": "Site Option Fields"
     }

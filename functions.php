@@ -11,6 +11,7 @@ require_once get_template_directory() . '/includes/menus.php';
 require_once get_template_directory() . '/includes/acf-customizations.php';
 require_once get_template_directory() . '/includes/gutenberg.php';
 require_once get_template_directory() . '/includes/patterns.php';
+require_once get_template_directory() . '/includes/block-bindings.php';
 require_once get_template_directory() . '/includes/theme-json.php';
 require_once get_template_directory() . '/includes/css-layers.php';
 require_once get_template_directory() . '/includes/client-editing.php';

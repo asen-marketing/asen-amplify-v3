@@ -23,6 +23,8 @@ function asen_client_editor_settings( $settings ) {
     if ( ! asen_user_is_builder() ) {
         $settings['canLockBlocks']      = false;
         $settings['codeEditingEnabled'] = false;
+        // Bound blocks (Site Options contact info) stay bound; clients edit the option instead.
+        $settings['canUpdateBlockBindings'] = false;
     }
     return $settings;
 }
