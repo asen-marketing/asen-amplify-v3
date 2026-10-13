@@ -2,7 +2,7 @@
 /**
  * Self-update from GitHub releases (plugin-update-checker, includes/vendor). Each release carries asen-amplify-v3.zip, built by
  * .github/workflows/release.yml; sites pick it up under Dashboard → Updates and WP-Cron installs it automatically.
- * Private repo: give each site a read-only token with define( 'ASEN_AMPLIFY_GITHUB_TOKEN', '…' ); in wp-config.php.
+ * Public repo, so no token needed; ASEN_AMPLIFY_GITHUB_TOKEN in wp-config.php only lifts GitHub's anonymous API rate limit.
  * Opt a site out of automatic installs with define( 'ASEN_AMPLIFY_DISABLE_AUTO_UPDATE', true );
  */
 

@@ -125,7 +125,7 @@ Client repo contains **only the child theme**. The parent is installed once from
 - [ ] Staging soak (GitHub Action on push to `main`): `wpengine/github-action-wpe-site-deploy` rsyncs the theme to one WPE staging environment (`REMOTE_PATH: wp-content/themes/asen-amplify-v3/`). Tag only after it's been checked there.
 - [ ] Emergency push-to-all: the same deploy Action with a `matrix` of WPE environment names, run manually. Needs the agency SSH Gateway key as a repo secret.
 - [ ] Parent code changes: enqueue CSS/JS from `get_stylesheet_directory_uri()`; ACF `load_json` includes parent **and** child `acf-groups/`; block.json loader scans both `core-blocks/` dirs; WP-SCSS compiles from the child (`@import "../../asen-amplify-v3/scss/index"` then client partials).
-- [ ] Child scaffold repo (`asen-amplify-child-starter`): `style.css` (`Template: asen-amplify-v3`), `theme.json`, `functions.php`, `includes/`, `scss/index.scss` + `_custom.scss`, `acf-groups/`, `patterns/`, `templates/` for overrides.
+- [x] Child scaffold repo (`asenmarketing/asen-amplify-v3-starter`): `style.css` (`Template: asen-amplify-v3`), `theme.json`, `functions.php`, `includes/`, `scss/index.scss` + `_custom.scss`, `acf-groups/`, `patterns/`, `templates/` for overrides.
 - [ ] `CHANGELOG.md` + semver tags. Renamed mixins/classes/field names/template parts = major bump + migration note.
 - [ ] Verify on one WPE site: theme auto-update runs under WPE's cron; ACF renders from the updated local JSON without a manual Sync; the child's compiled CSS survives a parent update.
 
