@@ -1,268 +1,104 @@
-(function ($) {
+// Off-canvas menu: the hamburgers toggle it; the overlay, Escape and same-page links close it.
+(function () {
   "use strict";
 
-  var doc = document.documentElement;
-  doc.setAttribute("data-useragent", navigator.userAgent);
+  const container = document.querySelector(".off-canvas-menu-container");
+  if (!container) return;
 
-  var windowObject = $(window),
-    documentObject = $(document),
-    bodyObject = $("body"),
-    navigationHamburgerContainer = $(".off-canvas-menu-hamburger"),
-    navigationHamburger = navigationHamburgerContainer.find(".hamburger"),
-    navigationOffCanvasMenu = $(".off-canvas-menu-container"),
-    navigationOffCanvasInside = navigationOffCanvasMenu.children(".inside"),
-    navigationOffCanvasColumn =
-      navigationOffCanvasInside.children(".column-container"),
-    navigationOffCanvasParent = navigationOffCanvasMenu.find(
-      ".menu-item-has-children > a",
-    ),
-    navigationOffCanvasMenuLink = navigationOffCanvasMenu
-      .find("a")
-      .not(navigationOffCanvasParent),
-    navigationOffCanvasOverlay = $(".off-canvas-menu-backing-overlay");
+  const overlay = document.querySelector(".off-canvas-menu-backing-overlay");
+  const hamburgerContainers = document.querySelectorAll(".off-canvas-menu-hamburger");
+  const hamburgers = document.querySelectorAll(".off-canvas-menu-hamburger .hamburger");
+  const headerHamburger = [...hamburgers].find((button) => !container.contains(button));
+  const closeButton = [...hamburgers].find((button) => container.contains(button));
+  const inside = container.querySelector(".inside");
+  const column = container.querySelector(".column-container");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-  navigationHamburger.on("click", function () {
-    if (navigationHamburger.hasClass("is-active")) {
-      navigationOffCanvasOverlay.removeClass("is-active");
-      navigationHamburgerContainer.removeClass("is-active");
-      navigationHamburger.removeClass("is-active");
-      navigationOffCanvasMenu.removeClass("is-active");
-    } else {
-      navigationOffCanvasOverlay.addClass("is-active");
-      navigationHamburgerContainer.addClass("is-active");
-      navigationHamburger.addClass("is-active");
-      navigationOffCanvasMenu.addClass("is-active");
+  function isOpen() {
+    return container.classList.contains("is-active");
+  }
+
+  function setOpen(open) {
+    const focusWasInside = container.contains(document.activeElement);
+    [overlay, container, ...hamburgerContainers, ...hamburgers].forEach((el) => el && el.classList.toggle("is-active", open));
+    hamburgers.forEach((button) => button.setAttribute("aria-expanded", open));
+    container.inert = !open;
+
+    // The header hamburger fades out while the menu is open, so focus follows the toggle.
+    const focusTarget = open ? closeButton : focusWasInside && headerHamburger;
+    if (focusTarget) focusTarget.focus({ preventScroll: true });
+  }
+
+  hamburgers.forEach((button) => button.addEventListener("click", () => setOpen(!isOpen())));
+  if (overlay) overlay.addEventListener("click", () => setOpen(false));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && isOpen()) setOpen(false);
+  });
+
+  // Lock the menu's current top so submenus expand downward instead of pushing it up.
+  function pin() {
+    if (inside.classList.contains("is-pinned")) return;
+    const first = column.firstElementChild;
+    const restingTop = first.getBoundingClientRect().top;
+    const padding = parseFloat(getComputedStyle(column).paddingTop);
+    inside.classList.add("is-pinned");
+    column.style.paddingTop = padding + restingTop - first.getBoundingClientRect().top + "px";
+  }
+
+  function unpinIfIdle() {
+    if (!container.querySelector(".menu-item-has-children.is-active")) {
+      inside.classList.remove("is-pinned");
+      column.style.paddingTop = "";
     }
-  });
+  }
 
-  navigationOffCanvasOverlay.on("click", function () {
-    navigationOffCanvasOverlay.removeClass("is-active");
-    navigationHamburgerContainer.removeClass("is-active");
-    navigationHamburger.removeClass("is-active");
-    navigationOffCanvasMenu.removeClass("is-active");
-  });
-
-  navigationOffCanvasMenuLink.on("click", function (event) {
-    if (this.pathname === window.location.pathname) {
-      navigationOffCanvasOverlay.removeClass("is-active");
-      navigationHamburgerContainer.removeClass("is-active");
-      navigationHamburger.removeClass("is-active");
-      navigationOffCanvasMenu.removeClass("is-active");
-    }
-  });
-
-  // Lock the menu's current top so submenus expand downward
-  function pinOffCanvasMenu() {
-    if (navigationOffCanvasInside.hasClass("is-pinned")) return;
-    let firstItem = navigationOffCanvasColumn.children().first(),
-      restingTop = firstItem.offset().top,
-      padding = parseFloat(navigationOffCanvasColumn.css("padding-top"));
-    navigationOffCanvasInside.addClass("is-pinned");
-    navigationOffCanvasColumn.css(
-      "padding-top",
-      padding + restingTop - firstItem.offset().top,
+  // Height slide; a slide that's still running reverses from wherever it is.
+  function slide(submenu, open) {
+    const from = submenu.getBoundingClientRect().height;
+    submenu.getAnimations().forEach((animation) => animation.cancel());
+    submenu.style.display = "block";
+    const to = open ? submenu.scrollHeight : 0;
+    const animation = submenu.animate(
+      [
+        { height: from + "px", overflow: "hidden" },
+        { height: to + "px", overflow: "hidden" },
+      ],
+      { duration: reducedMotion.matches ? 0 : 400, easing: "ease-in-out" },
     );
+    animation.onfinish = () => {
+      if (!open) submenu.style.display = "";
+      unpinIfIdle();
+    };
   }
 
-  function onSubmenuAnimated() {
-    // Clear leftovers from interrupted animations
-    $(this).css({ height: "", padding: "", margin: "" });
+  const submenuToggles = new Set();
+  container.querySelectorAll(".menu-item-has-children").forEach((item) => {
+    const link = item.querySelector(":scope > a");
+    const submenu = item.querySelector(":scope > .sub-menu");
+    if (!link || !submenu) return;
 
-    if (
-      !navigationOffCanvasMenu.find(".menu-item-has-children.is-active").length
-    ) {
-      navigationOffCanvasInside.removeClass("is-pinned");
-      navigationOffCanvasColumn.css("padding-top", "");
-    }
-  }
+    submenuToggles.add(link);
+    link.setAttribute("aria-expanded", "false");
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      item.parentElement.querySelectorAll(":scope > .menu-item-has-children.is-active").forEach((other) => {
+        if (other === item) return;
+        other.classList.remove("is-active");
+        other.querySelector(":scope > a").setAttribute("aria-expanded", "false");
+        slide(other.querySelector(":scope > .sub-menu"), false);
+      });
 
-  navigationOffCanvasParent.on("click", function (event) {
-    event.preventDefault();
-    let clickedParent = $(this).parent(),
-      submenu = clickedParent.children("ul.sub-menu"),
-      otherParents = clickedParent.siblings(".is-active"),
-      otherSubmenus = otherParents.children("ul.sub-menu");
-
-    otherParents.removeClass("is-active");
-    otherSubmenus.stop(true).slideUp(400, onSubmenuAnimated);
-
-    clickedParent.toggleClass("is-active");
-    if (clickedParent.hasClass("is-active")) {
-      pinOffCanvasMenu();
-      submenu.stop(true).slideDown(400, onSubmenuAnimated);
-    } else {
-      submenu.stop(true).slideUp(400, onSubmenuAnimated);
-    }
+      const open = item.classList.toggle("is-active");
+      link.setAttribute("aria-expanded", open);
+      if (open) pin();
+      slide(submenu, open);
+    });
   });
 
-  // After HTML has loaded.
-  // In other words, the DOM tree is loaded.
-  // You can better add/remove classes, manipulate the DOM.
-  documentObject.ready(function () {
-    bodyObject.addClass("asen-dom-loaded");
+  container.addEventListener("click", (event) => {
+    const link = event.target.closest("a");
+    if (link && !submenuToggles.has(link) && link.pathname === window.location.pathname) {
+      setOpen(false);
+    }
   });
-
-  // Styling is ready. This is safer for interactive and user event stuff.
-  windowObject.on("load", function () {
-    bodyObject.addClass("asen-window-loaded");
-    setTimeout(function () {
-      bodyObject.addClass("asen-time-to-relax");
-    }, 1000);
-  }); // End window loaded.
-
-  // windowObject.on("scroll", function() {
-
-  // });
-
-  // Note we are using a timeout to check for resize each 250ms.
-  // This prevents many calls per second on resize.
-  // var resizeTimer;
-  // windowObject.on("resize", function() {
-  //   clearTimeout(resizeTimer);
-  //   resizeTimer = setTimeout(function() {}, 250);
-  // });
-})(jQuery);
-
-//Reference:
-//https://www.onextrapixel.com/2012/12/10/how-to-create-a-custom-file-input-with-jquery-css3-and-php/
-(function ($) {
-  // Browser supports HTML5 multiple file?
-  var multipleSupport = typeof $("<input/>")[0].multiple !== "undefined",
-    isIE = /msie/i.test(navigator.userAgent);
-
-  $.fn.customFile = function () {
-    return this.each(function () {
-      var $file = $(this).addClass("custom-file-upload-hidden"), // the original file input
-        $wrap = $('<div class="file-upload-wrapper">'),
-        $input = $('<input type="text" class="file-upload-input" disabled />'),
-        // Button that will be used in non-IE browsers
-        $button = $(
-          '<button type="button" class="button file-upload-button">Select a File</button>',
-        ),
-        // Hack for IE
-        $label = $(
-          '<label class="file-upload-button" for="' +
-            $file[0].id +
-            '">Select a File</label>',
-        );
-
-      // Hide by shifting to the left so we
-      // can still trigger events
-      $file.css({
-        position: "absolute",
-        left: "-9999px",
-      });
-
-      $wrap.insertAfter($file).append($file, $input, isIE ? $label : $button);
-
-      // Prevent focus
-      $file.attr("tabIndex", -1);
-      $button.attr("tabIndex", -1);
-
-      $button.click(function () {
-        $file.focus().click(); // Open dialog
-      });
-
-      $file.change(function () {
-        var files = [],
-          fileArr,
-          filename;
-
-        // If multiple is supported then extract
-        // all filenames from the file array
-        if (multipleSupport) {
-          fileArr = $file[0].files;
-          for (var i = 0, len = fileArr.length; i < len; i++) {
-            files.push(fileArr[i].name);
-          }
-          filename = files.join(", ");
-
-          // If not supported then just take the value
-          // and remove the path to just show the filename
-        } else {
-          filename = $file.val().split("\\").pop();
-        }
-
-        $input
-          .val(filename) // Set the value
-          .attr("title", filename) // Show filename in title tootlip
-          .focus(); // Regain focus
-      });
-
-      $input.on({
-        blur: function () {
-          $file.trigger("blur");
-        },
-        keydown: function (e) {
-          if (e.which === 13) {
-            // Enter
-            if (!isIE) {
-              $file.trigger("click");
-            }
-          } else if (e.which === 8 || e.which === 46) {
-            // Backspace & Del
-            // On some browsers the value is read-only
-            // with this trick we remove the old input and add
-            // a clean clone with all the original events attached
-            $file.replaceWith(($file = $file.clone(true)));
-            $file.trigger("change");
-            $input.val("");
-          } else if (e.which === 9) {
-            // TAB
-            return;
-          } else {
-            // All other keys
-            return false;
-          }
-        },
-      });
-    });
-  };
-
-  // Old browser fallback
-  if (!multipleSupport) {
-    $(document).on("change", "input.customfile", function () {
-      var $this = $(this),
-        // Create a unique ID so we
-        // can attach the label to the input
-        uniqId = "customfile_" + new Date().getTime(),
-        $wrap = $this.parent(),
-        // Filter empty input
-        $inputs = $wrap
-          .siblings()
-          .find(".file-upload-input")
-          .filter(function () {
-            return !this.value;
-          }),
-        $file = $(
-          '<input type="file" id="' +
-            uniqId +
-            '" name="' +
-            $this.attr("name") +
-            '"/>',
-        );
-
-      // 1ms timeout so it runs after all other events
-      // that modify the value have triggered
-      setTimeout(function () {
-        // Add a new input
-        if ($this.val()) {
-          // Check for empty fields to prevent
-          // creating new inputs when changing files
-          if (!$inputs.length) {
-            $wrap.after($file);
-            $file.customFile();
-          }
-          // Remove and reorganize inputs
-        } else {
-          $inputs.parent().remove();
-          // Move the input so it's always last on the list
-          $wrap.appendTo($wrap.parent());
-          $wrap.find("input").focus();
-        }
-      }, 1);
-    });
-  }
-})(jQuery);
-
-jQuery("input[type=file]").customFile();
+})();

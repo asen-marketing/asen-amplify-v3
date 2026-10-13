@@ -113,7 +113,7 @@ Living document. Check items off as they ship and keep the "Roadmap status" line
 - [x] Featured Blogs: reworked to 3 posts, "most recent" or "hand-picked" (relationship field, max 3, falls back to recent), optional CTA tile (default on; makes the row 4-up via `.has-cta-tile`).
 - [x] Deleted Button, Buttons Group, Anchor, WYSIWYG, CTA. Still to do: register the `_buttons.scss` variants as block styles on `core/button` so clients pick them from a menu (Phase 3).
 - [x] Video popup rebuilt on `<dialog>` (covers the Kadence video-popup use).
-- [x] Glide dropped. [ ] Drop jquery-modal (only `main.js` modals left) and evaluate removing jQuery from `main.js`.
+- [x] Glide dropped. [x] jquery-modal and jQuery dropped (Oct 2026): `main.js` rewritten vanilla (off-canvas menu, now with `inert`, `aria-expanded`, Escape); the custom file-input wrapper replaced by `::file-selector-button` styling (the wrapper set `tabIndex -1` on the input, so keyboard users couldn't upload); dead scroll-down CTA, `.modal`/`.blocker` CSS, `asen-*-loaded` body classes and `data-useragent` removed.
 
 ## Phase 5 — Distribution: parent/child with a self-updating parent (2–3 days)
 

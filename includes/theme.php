@@ -10,8 +10,7 @@ function site_enqueue_theme_scripts() {
     $cache_buster_css = file_exists( $css_path ) ? filemtime( $css_path ) : null;
     $cache_buster_js  = date( "YmdHi", filemtime( get_template_directory() . '/js/main.js' ) );
     wp_enqueue_style( 'main', get_theme_file_uri( 'css/index.css' ), array(), $cache_buster_css );
-    wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), $cache_buster_js, true );
-    wp_enqueue_script( 'jquery-modal', get_template_directory_uri() . '/js/vendor/jquery.modal.min.js', null, '0.9.2', true );
+    wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array(), $cache_buster_js, true );
 
     if ( function_exists( 'get_field' ) && get_field( 'enable_floating_cta', 'option' ) ) {
         wp_enqueue_script( 'asen-floating-cta', get_template_directory_uri() . '/js/floating-cta.js', array(), filemtime( get_template_directory() . '/js/floating-cta.js' ), true );
@@ -38,6 +37,23 @@ function asen_scss_watch_parent( $needs_compiling ) {
     return false;
 }
 add_filter( 'wp_scss_needs_compiling', 'asen_scss_watch_parent' );
+
+// Concurrent WP-SCSS compiles share one cache folder and can leave an empty css file, so one request compiles at a time.
+function asen_scss_compile_lock( $needs_compiling ) {
+    global $wpdb;
+    if ( ! $needs_compiling ) {
+        return false;
+    }
+    $lock     = 'asen_scss_' . md5( get_stylesheet_directory() );
+    $acquired = $wpdb->get_var( $wpdb->prepare( 'SELECT GET_LOCK(%s, 0)', $lock ) );
+    if ( '1' === $acquired ) {
+        add_action( 'shutdown', function () use ( $wpdb, $lock ) {
+            $wpdb->query( $wpdb->prepare( 'SELECT RELEASE_LOCK(%s)', $lock ) );
+        } );
+    }
+    return null === $acquired || '1' === $acquired;
+}
+add_filter( 'wp_scss_needs_compiling', 'asen_scss_compile_lock', 99 );
 
 // Libraries blocks depend on are registered, never enqueued globally: block viewScripts list them as dependencies,
 // and the collection partial enqueues the carousel only when a block renders in carousel layout.
