@@ -3,7 +3,7 @@
             get_template_part( 'templates/footer/footer' );
         } ?>
 
-        <?php if ( get_field( 'enable_floating_cta', 'option' ) ) {
+        <?php if ( class_exists( 'ACF' ) && get_field( 'enable_floating_cta', 'option' ) ) {
             get_template_part( 'templates/fixed-contact-cta-button' );
         } ?>
     </div><!-- .site-container -->

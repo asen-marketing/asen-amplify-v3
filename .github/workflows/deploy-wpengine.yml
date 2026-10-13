@@ -24,7 +24,7 @@ jobs:
           WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
           WPE_ENV: ${{ vars.WPE_STAGING_ENV }}
           REMOTE_PATH: wp-content/themes/asen-amplify-v3/
-          FLAGS: -azvr --inplace --delete --exclude=".*" --exclude=css/
+          FLAGS: -azvr --inplace --delete --exclude=".*" --exclude=/css/
 
   sites:
     if: github.event_name == 'workflow_dispatch'
@@ -40,4 +40,4 @@ jobs:
           WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
           WPE_ENV: ${{ matrix.environment }}
           REMOTE_PATH: wp-content/themes/asen-amplify-v3/
-          FLAGS: -azvr --inplace --delete --exclude=".*" --exclude=css/
+          FLAGS: -azvr --inplace --delete --exclude=".*" --exclude=/css/

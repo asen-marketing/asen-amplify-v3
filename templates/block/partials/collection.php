@@ -7,7 +7,8 @@
  * lead (optional [ 'template' => ..., 'args' => [...] ] rendered as the first item, e.g. a CTA tile).
  */
 
-$items     = array_filter( array_map( 'get_post', (array) ( $args['items'] ?? array() ) ) );
+// Filter before get_post(): an empty ACF selection is false, and get_post( false ) returns the current page.
+$items     = array_filter( array_map( 'get_post', array_filter( (array) ( $args['items'] ?? array() ) ) ) );
 $layout    = $args['layout'] ?? 'grid';
 $columns   = max( 1, min( 6, (int) ( $args['columns'] ?? 3 ) ) );
 $template  = $args['item_template'];

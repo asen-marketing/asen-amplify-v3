@@ -28,7 +28,7 @@ function asen_acf_force_json_autosync($field_group) {
 
 add_filter('acf/validate_field_group', 'asen_acf_force_json_autosync', 30);
 
-// Option Pages
+// Option Pages (Editors and up; edit_posts would let Contributors save them)
 function asen_setup_acf_option_pages() {
 
     if (function_exists('acf_add_options_page')) {
@@ -36,7 +36,7 @@ function asen_setup_acf_option_pages() {
             'page_title' => 'Site Options',
             'menu_title' => 'Site Options',
             'menu_slug'  => 'site-options',
-            'capability' => 'edit_posts',
+            'capability' => 'edit_others_posts',
             'redirect'   => true,
             'icon_url'   => get_template_directory_uri() . '/includes/images/site-icon-small.png',
         ]);
@@ -45,7 +45,7 @@ function asen_setup_acf_option_pages() {
             'menu_title'  => 'Site Options',
             'menu_slug'   => 'custom-options',
             'parent_slug' => 'site-options',
-            'capability'  => 'edit_posts',
+            'capability'  => 'edit_others_posts',
             'redirect'    => false,
         ]);
         acf_add_options_page([
@@ -53,7 +53,7 @@ function asen_setup_acf_option_pages() {
             'menu_title'  => 'Header Options',
             'menu_slug'   => 'header-options',
             'parent_slug' => 'site-options',
-            'capability'  => 'edit_posts',
+            'capability'  => 'edit_others_posts',
             'redirect'    => false,
         ]);
         acf_add_options_page([
@@ -61,7 +61,7 @@ function asen_setup_acf_option_pages() {
             'menu_title'  => 'Off-Canvas Options',
             'menu_slug'   => 'off-canvas-options',
             'parent_slug' => 'site-options',
-            'capability'  => 'edit_posts',
+            'capability'  => 'edit_others_posts',
             'redirect'    => false,
         ]);
         acf_add_options_page([
@@ -69,7 +69,7 @@ function asen_setup_acf_option_pages() {
             'menu_title'  => 'Footer Options',
             'menu_slug'   => 'footer-options',
             'parent_slug' => 'site-options',
-            'capability'  => 'edit_posts',
+            'capability'  => 'edit_others_posts',
             'redirect'    => false,
         ]);
         acf_add_options_page([
@@ -77,6 +77,7 @@ function asen_setup_acf_option_pages() {
             'menu_title'  => 'Archive Options',
             'menu_slug'   => 'blog-archive-options',
             'parent_slug' => 'edit.php',
+            'capability'  => 'edit_others_posts',
         ]);
 
 // if ( get_field('site_services_enabled', 'option') ) {

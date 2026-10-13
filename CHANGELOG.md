@@ -3,7 +3,7 @@
 Versions follow semver. A **major** bump means a child theme may need changes: renamed or removed blocks, field names,
 template parts, SCSS variables / mixins, CSS custom properties, or filters. Note the migration under the version.
 
-## 3.0.0 — unreleased
+## 3.0.0 — 2026-10-13
 
 First release of v3, split from amplify-lite (which stays frozen for existing sites). Highlights:
 

@@ -4,7 +4,7 @@
 <div class="off-canvas-menu-container" id="off-canvas-menu" inert>
     <div class="close-container">
         <div class="off-canvas-menu-hamburger">
-            <button class="hamburger hamburger--<?php the_field('site_hamburger_menu_animation', 'option'); ?>"
+            <button class="hamburger hamburger--<?php echo esc_attr( (string) get_field('site_hamburger_menu_animation', 'option') ); ?>"
                 type="button" aria-label="Close menu" aria-controls="off-canvas-menu" aria-expanded="false">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" aria-hidden="true" focusable="false">
                     <path
@@ -53,9 +53,9 @@
                 ?>
 
                 <?php if ($show_button && $cta_button) : ?>
-                    <a class="button button-small" href="<?php echo $cta_button['url']; ?>"
-                        title="<?php echo $cta_button['title']; ?>" target="<?php echo $cta_button['target']; ?>">
-                        <?php echo $cta_button['title']; ?>
+                    <a class="button button-small" href="<?php echo esc_url( $cta_button['url'] ); ?>"
+                        target="<?php echo esc_attr( $cta_button['target'] ?: '_self' ); ?>">
+                        <?php echo esc_html( $cta_button['title'] ); ?>
                     </a>
                 <?php endif; ?>
 

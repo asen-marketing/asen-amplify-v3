@@ -11,8 +11,9 @@ function asen_curate_menu_list() {
     $current_user_email_domain = explode('@', $current_user->user_email);
     $current_user_roles = $current_user->roles;
     remove_menu_page( 'edit-comments.php' );
+    $acf = function_exists( 'get_field' );
 
-    if (!get_field('site_blog_enabled', 'option')) {
+    if ($acf && !get_field('site_blog_enabled', 'option')) {
         remove_menu_page( 'edit.php' );
     }
     if (
@@ -21,19 +22,19 @@ function asen_curate_menu_list() {
     ) {
         remove_menu_page( 'kadence-blocks' );
     }
-    if (!get_field('site_faqs_enabled', 'option')) {
+    if ($acf && !get_field('site_faqs_enabled', 'option')) {
         remove_menu_page( 'edit.php?post_type=faq' );
     }
-        if (!get_field('site_products_enabled', 'option')) {
+        if ($acf && !get_field('site_products_enabled', 'option')) {
         remove_menu_page( 'edit.php?post_type=product' );
     }
-    if (!get_field('site_services_enabled', 'option')) {
+    if ($acf && !get_field('site_services_enabled', 'option')) {
         remove_menu_page( 'edit.php?post_type=service' );
     }
-        if (!get_field('site_team_members_enabled', 'option')) {
+        if ($acf && !get_field('site_team_members_enabled', 'option')) {
         remove_menu_page( 'edit.php?post_type=team' );
     }
-        if (!get_field('site_testimonials_enabled', 'option')) {
+        if ($acf && !get_field('site_testimonials_enabled', 'option')) {
         remove_menu_page( 'edit.php?post_type=testimonial' );
     }
 }

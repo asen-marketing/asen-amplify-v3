@@ -15,7 +15,7 @@ function asen_body_class_mods( $classes ) {
         if ( 'static' === get_field( 'site_header_position', 'option' ) ) {
             $classes[] = 'has-static-header';
         }
-        if ( get_field( 'overlapping_header', 'option' ) && ! get_field( 'disable_overlapping_header', $page_id ) ) {
+        if ( get_field( 'overlapping_header', 'option' ) && ! ( $page_id && get_field( 'disable_overlapping_header', $page_id ) ) ) {
             $classes[] = 'has-overlapping-header';
         }
         if ( get_field( 'sticky_hamburger', 'option' ) ) {

@@ -12,11 +12,12 @@
 </a>
 <?php endif; ?>
 <?php elseif ( get_field('site_header_cta_option', 'option') == 'phone' ) : ?>
-<?php if ( get_field('site_phone_number', 'option') ) : ?>
+<?php $phone = asen_contact_info()['phone']; ?>
+<?php if ( $phone['url'] ) : ?>
 <a class="button button-small button-no-background button-phone"
-    href="tel:<?php echo asen_clean_phone_number(get_field('site_phone_number', 'option')); ?>"
-    title="Call <?php echo get_bloginfo('name', 'display'); ?>">
-    <?php the_field('site_phone_number', 'option'); ?>
+    href="<?php echo esc_url( $phone['url'] ); ?>"
+    title="Call <?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
+    <?php echo $phone['html']; ?>
 </a>
 <?php else : ?>
 <p>Set a phone number!</p>

@@ -154,13 +154,22 @@ function asen_geocode_address( $address ) {
         'timeout'    => 8,
         'user-agent' => 'AsenAmplify/3 (' . home_url() . ')',
     ) );
-    $hit = is_wp_error( $response ) ? null : ( json_decode( wp_remote_retrieve_body( $response ), true )[0] ?? null );
+    $results = 200 === (int) wp_remote_retrieve_response_code( $response ) ? json_decode( wp_remote_retrieve_body( $response ), true ) : null;
+
+    // Network error, rate limit or garbage: retry in a few minutes and keep showing the last good result meanwhile.
+    if ( ! is_array( $results ) ) {
+        $known = get_option( $key . '_last' );
+        set_transient( $key, $known ?: 0, 10 * MINUTE_IN_SECONDS );
+        return $known ?: null;
+    }
+    $hit = $results[0] ?? null;
     if ( empty( $hit['lat'] ) ) {
-        set_transient( $key, 0, DAY_IN_SECONDS );
+        set_transient( $key, 0, DAY_IN_SECONDS ); // Nominatim answered: the address isn't found.
         return null;
     }
     $coords = array( 'lat' => (float) $hit['lat'], 'lon' => (float) $hit['lon'] );
     set_transient( $key, $coords, 30 * DAY_IN_SECONDS );
+    update_option( $key . '_last', $coords, false );
     return $coords;
 }
 
@@ -181,9 +190,15 @@ function asen_inline_svg( $attachment_id, $recolor = false ) {
     $allowed['use']   = $common + array( 'href' => true, 'xlink:href' => true );
     $allowed['style'] = array( 'type' => true ); // Illustrator exports color through classes; note the rules apply page-wide.
 
+    // SVG paint properties in style="" (core's safe CSS list only gained fill/stroke in WP 7.1).
+    $svg_css = fn( $props ) => array_merge( $props, array( 'fill', 'fill-opacity', 'fill-rule', 'stroke', 'stroke-width', 'stroke-opacity', 'stroke-linecap', 'stroke-linejoin', 'stroke-miterlimit', 'stroke-dasharray', 'stop-color', 'stop-opacity', 'clip-rule', 'opacity' ) );
+    add_filter( 'safe_style_css', $svg_css );
+    $clean = wp_kses( $svg, $allowed );
+    remove_filter( 'safe_style_css', $svg_css );
+
     // kses lowercases attribute names; SVG's camelCase ones are restored so the markup is valid XML too.
     $camel = array( 'viewbox' => 'viewBox', 'preserveaspectratio' => 'preserveAspectRatio', 'gradientunits' => 'gradientUnits', 'gradienttransform' => 'gradientTransform', 'lineargradient' => 'linearGradient', 'radialgradient' => 'radialGradient', 'clippath' => 'clipPath' );
-    return trim( preg_replace_callback( '/(?<=[\s<\/])(' . implode( '|', array_keys( $camel ) ) . ')(?=[\s=>\/])/', fn( $m ) => $camel[ $m[1] ], wp_kses( $svg, $allowed ) ) );
+    return trim( preg_replace_callback( '/(?<=[\s<\/])(' . implode( '|', array_keys( $camel ) ) . ')(?=[\s=>\/])/', fn( $m ) => $camel[ $m[1] ], $clean ) );
 }
 
 // YouTube video ID from a bare ID or any youtube.com / youtu.be URL.

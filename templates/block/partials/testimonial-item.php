@@ -3,11 +3,11 @@
  * Testimonial for the Testimonials block (templates/block/partials/collection.php).
  */
 
-$post    = $args['post'];
-$quote   = get_field( 'testimonial_quote', $post->ID );
-$author  = get_field( 'testimonial_author', $post->ID );
-$company = get_field( 'testimonial_company', $post->ID );
-$image   = get_field( 'testimonial_image', $post->ID );
+$item    = $args['post'];
+$quote   = get_field( 'testimonial_quote', $item->ID );
+$author  = get_field( 'testimonial_author', $item->ID );
+$company = get_field( 'testimonial_company', $item->ID );
+$image   = get_field( 'testimonial_image', $item->ID );
 ?>
 <figure class="testimonial-item">
     <?php if ( $image ) : ?>

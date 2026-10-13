@@ -12,14 +12,17 @@ function asen_unlayered_style_handles() {
 }
 
 // <link rel="stylesheet"> → <style>@import url() layer(vendor)</style> for third-party stylesheets on the front end.
+// Tags carrying SRI (integrity=) stay links: @import can't verify them. $href arrives HTML-escaped (&#038;), and entities
+// aren't decoded inside <style>, so it's decoded first; esc_url_raw() still strips quotes and angle brackets.
 function asen_layer_third_party_styles( $tag, $handle, $href, $media ) {
-    if ( is_admin() || ! wp_style_is( 'main', 'enqueued' ) || in_array( $handle, asen_unlayered_style_handles(), true ) ) {
+    if ( is_admin() || ! wp_style_is( 'main', 'enqueued' ) || in_array( $handle, asen_unlayered_style_handles(), true ) || str_contains( $tag, 'integrity=' ) ) {
         return $tag;
     }
+    $url   = esc_url_raw( html_entity_decode( $href, ENT_QUOTES | ENT_HTML5 ) );
     $media = ( $media && 'all' !== $media ) ? ' ' . esc_attr( $media ) : '';
-    return sprintf( "<style id=\"%s-css\">@import url(\"%s\") layer(vendor)%s;</style>\n", esc_attr( $handle ), esc_url( $href ), $media );
+    return sprintf( "<style id=\"%s-css\">@import url(\"%s\") layer(vendor)%s;</style>\n", esc_attr( $handle ), $url, $media );
 }
-add_filter( 'style_loader_tag', 'asen_layer_third_party_styles', 10, 4 );
+add_filter( 'style_loader_tag', 'asen_layer_third_party_styles', 20, 4 );
 
 // Inline styles (global-styles presets, core per-block CSS, plugin variables) get wrapped in `vendor` right before they print.
 function asen_layer_inline_styles() {

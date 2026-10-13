@@ -22,22 +22,17 @@ $site_name = get_bloginfo( 'name', 'display' );
                     <?php endif; ?>
                 </div>
                 <div class="right">
+                    <?php $contact = asen_contact_info(); ?>
                     <h5>Office</h5>
-                    <?php if ( get_field('site_address_1', 'option') && get_field('site_city', 'option') && get_field('site_state', 'option') && get_field('site_zip', 'option') ) : ?>
-                        <p>
-                            <a href="https://www.google.com/maps/place/<?php the_field('site_address_1', 'option'); ?>,+<?php the_field('site_city', 'option'); ?>,+<?php the_field('site_state', 'option'); ?>+<?php the_field('site_zip', 'option'); ?>" title="Locate <?php echo $site_name; ?>" target="_blank">
-                                <?php the_field('site_address_1', 'option');
-                                    if ( get_field('site_address_2', 'option') ) : echo ' <br />' . get_field('site_address_2', 'option'); endif; ?><br />
-                                <?php the_field('site_city', 'option'); ?>, <?php the_field('site_state', 'option'); ?> <?php the_field('site_zip', 'option'); ?>
-                            </a>
-                        </p>
+                    <?php if ( $contact['address']['html'] ) : ?>
+                        <p><a href="<?php echo esc_url( $contact['address']['url'] ); ?>" title="Locate <?php echo esc_attr( $site_name ); ?>" target="_blank" rel="noopener noreferrer"><?php echo $contact['address']['html']; ?></a></p>
                     <?php endif; ?>
-                    <?php if ( get_field('site_phone_number', 'option') ) : ?>
-                        <p><a href="tel:<?php echo asen_clean_phone_number(get_field('site_phone_number', 'option')); ?>" title="Call <?php echo $site_name; ?>."><?php the_field('site_phone_number', 'option'); ?></a></p>
+                    <?php if ( $contact['phone']['url'] ) : ?>
+                        <p><a href="<?php echo esc_url( $contact['phone']['url'] ); ?>" title="Call <?php echo esc_attr( $site_name ); ?>"><?php echo $contact['phone']['html']; ?></a></p>
                     <?php endif; ?>
-                    <?php if ( get_field('site_busines_hours', 'option') ) : ?>
+                    <?php if ( $contact['hours']['html'] ) : ?>
                         <h5>Hours</h5>
-                        <?php the_field('site_busines_hours', 'option'); ?>
+                        <p><?php echo $contact['hours']['html']; ?></p>
                     <?php endif; ?>
                     <?php if ( have_rows('site_social_media_selection', 'option') ) : ?>
                         <h5>Social</h5>

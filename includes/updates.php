@@ -23,10 +23,19 @@ if ( defined( 'ASEN_AMPLIFY_GITHUB_TOKEN' ) && ASEN_AMPLIFY_GITHUB_TOKEN ) {
     $asen_update_checker->setAuthentication( ASEN_AMPLIFY_GITHUB_TOKEN );
 }
 
-// Install this theme's updates automatically, the way WordPress handles minor core releases.
+// Published releases only. The library otherwise falls back to the newest tag, then the main branch, whenever the
+// release lookup fails (a rate-limited API call is enough), which could install unreleased code.
+add_filter( $asen_update_checker->getUniqueName( 'vcs_update_detection_strategies' ), function ( $strategies ) {
+    return array_intersect_key( $strategies, array( YahnisElsts\PluginUpdateChecker\v5p7\Vcs\Api::STRATEGY_LATEST_RELEASE => true ) );
+} );
+
+// Install updates automatically within the installed major version. A major (breaking for child themes) waits for "Update now".
 function asen_auto_update_parent_theme( $update, $item ) {
     if ( isset( $item->theme ) && 'asen-amplify-v3' === $item->theme ) {
-        return ! ( defined( 'ASEN_AMPLIFY_DISABLE_AUTO_UPDATE' ) && ASEN_AMPLIFY_DISABLE_AUTO_UPDATE );
+        if ( defined( 'ASEN_AMPLIFY_DISABLE_AUTO_UPDATE' ) && ASEN_AMPLIFY_DISABLE_AUTO_UPDATE ) {
+            return false;
+        }
+        return isset( $item->new_version ) && (int) wp_get_theme( 'asen-amplify-v3' )->get( 'Version' ) === (int) $item->new_version;
     }
     return $update;
 }
