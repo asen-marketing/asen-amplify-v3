@@ -12,7 +12,7 @@ Living document. Check items off as they ship and keep the "Roadmap status" line
 ## Repos
 
 - `asen-marketing/amplify-lite` — v2, frozen. Existing client forks keep using it; only security fixes go there. Its `.gitignore` excludes `/index.php`, so a fresh clone is a theme WordPress refuses to activate — fix that there if anyone clones it again.
-- `asen-marketing/asen-amplify-v3` — v3, this repo. Cloned from amplify-lite with history, theme directory `asen-amplify-v3`, `Theme Name: Asen Amplify`, version 3.0.0.
+- `asenmarketing/asen-amplify-v3` — v3, this repo. Cloned from amplify-lite with history, theme directory `asen-amplify-v3`, `Theme Name: Asen Amplify`, version 3.0.0.
 
 ## Starting point (Oct 2026)
 

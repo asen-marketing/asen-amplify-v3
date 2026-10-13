@@ -14,7 +14,7 @@ if ( is_dir( get_template_directory() . '/.git' ) || ( function_exists( 'wp_is_d
 require_once __DIR__ . '/vendor/plugin-update-checker/plugin-update-checker.php';
 
 $asen_update_checker = YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
-    'https://github.com/asen-marketing/asen-amplify-v3/',
+    'https://github.com/asenmarketing/asen-amplify-v3/',
     get_template_directory(),
     'asen-amplify-v3'
 );
