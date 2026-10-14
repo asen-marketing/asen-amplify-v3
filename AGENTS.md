@@ -190,8 +190,9 @@ Older client sites are forks of amplify-lite and stay that way. Rules for mainta
 
 ## Dev environment
 
-- Sites run in **Local** (`*.local`). Theme path: `app/public/wp-content/themes/asen-amplify-v3/`.
-- WP-SCSS recompiles on each page load while `always_recompile` is on; compile errors show for logged-in users. Check `css/index.css` mtime if styles look stale.
+- Sites run in **Local** (`*.local`). Theme path: `app/public/wp-content/themes/asen-amplify-v3/`. The dev site runs it the way client sites do: `themes/asen-amplify-child/` is a clone of the starter repo and is the active theme, with WP-SCSS Base Location set to Child Theme. Parent SCSS changes therefore compile into the **child's** `css/index.css`; the parent's own `css/` is stale and unused.
+- WP-SCSS recompiles on each page load while `always_recompile` is on; compile errors show for logged-in users. Check the child's `css/index.css` mtime if styles look stale.
+- Local's push to WP Engine never sends `.git` folders or `wp-config.php`, plus whatever `app/public/.wpe-push-ignore` lists (on this site: Novamira and Query Monitor, which must not reach a server).
 - Some locals expose a **Novamira MCP** server (REST-first WP control). It can run PHP/WP-CLI, read/write theme files, and inspect options — use it for "what is this option set to" questions instead of guessing. Native Gutenberg content writes through it require the Block Editor Queue admin page to be open in a browser.
 - Query Monitor is active locally; keep an eye on it after adding queries.
 - Keep a page at `/asen-v3-test/` on the dev site with one instance of every converted block plus core paragraph/button and the patterns; it's the visual regression check (not in the repo — content lives in that site's DB).
