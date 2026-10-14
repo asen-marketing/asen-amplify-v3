@@ -3,7 +3,7 @@
 Versions follow semver. A **major** bump means a child theme may need changes: renamed or removed blocks, field names,
 template parts, SCSS variables / mixins, CSS custom properties, or filters. Note the migration under the version.
 
-## 3.0.1 — unreleased
+## 3.0.1 — 2026-10-14
 
 - Logged-in toolbars render correctly again: the admin bar, plugins' admin-bar items (Yoast) and Query Monitor stay out of the `vendor` cascade layer, where the theme's element rules were beating their ID-scoped rules and pushing admin-bar links out of the bar.
 
