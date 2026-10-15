@@ -159,7 +159,7 @@ function asen_option_css() {
             continue;
         }
         $value = trim( str_replace( array( ';', '{', '}', '<', '>' ), '', (string) $value ) );
-        // Palette and size options store a theme.json variable name (--wp--preset--…)
+        // Size options store a theme.json variable name (--wp--preset--…), as did 3.1.0's palette colors
         if ( preg_match( '/^--[\w-]+$/', $value ) ) {
             $value = 'var(' . $value . ')';
         }

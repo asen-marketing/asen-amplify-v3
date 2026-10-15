@@ -205,9 +205,9 @@
                     "default_value": "",
                     "enable_opacity": 0,
                     "return_format": "string",
-                    "display": "palette",
+                    "display": "default",
                     "button_label": "Select Color",
-                    "color_picker": 0,
+                    "color_picker": 1,
                     "absolute": 0,
                     "input": 1,
                     "allow_null": 1,
@@ -238,9 +238,9 @@
                     "default_value": "",
                     "enable_opacity": 0,
                     "return_format": "string",
-                    "display": "palette",
+                    "display": "default",
                     "button_label": "Select Color",
-                    "color_picker": 0,
+                    "color_picker": 1,
                     "absolute": 0,
                     "input": 1,
                     "allow_null": 1,
@@ -478,7 +478,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1792069489,
+    "modified": 1792070678,
     "acfe_categories": {
         "site-option-fields": "Site Option Fields"
     }
