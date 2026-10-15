@@ -370,18 +370,19 @@
                 "id": ""
             },
             "relevanssi_exclude": 0,
-            "default_value": "#000000",
+            "default_value": "",
             "enable_opacity": 0,
             "return_format": "string",
-            "display": "default",
+            "display": "palette",
             "button_label": "Select Color",
-            "color_picker": 1,
+            "color_picker": 0,
             "absolute": 0,
             "input": 1,
             "allow_null": 1,
-            "theme_colors": 0,
+            "theme_colors": 1,
             "colors": [],
-            "allow_in_bindings": 0
+            "allow_in_bindings": 0,
+            "acfe_advanced": 1
         },
         {
             "key": "field_68123055c5105",
@@ -398,18 +399,19 @@
                 "id": ""
             },
             "relevanssi_exclude": 0,
-            "default_value": "#999999",
+            "default_value": "",
             "enable_opacity": 0,
             "return_format": "string",
-            "display": "default",
+            "display": "palette",
             "button_label": "Select Color",
-            "color_picker": 1,
+            "color_picker": 0,
             "absolute": 0,
             "input": 1,
             "allow_null": 1,
-            "theme_colors": 0,
+            "theme_colors": 1,
             "colors": [],
-            "allow_in_bindings": 0
+            "allow_in_bindings": 0,
+            "acfe_advanced": 1
         },
         {
             "key": "field_682cdca0da85a",
@@ -488,18 +490,19 @@
                 "id": ""
             },
             "relevanssi_exclude": 0,
-            "default_value": "#000000",
+            "default_value": "",
             "enable_opacity": 0,
             "return_format": "string",
             "allow_in_bindings": 0,
-            "display": "default",
+            "display": "palette",
             "button_label": "Select Color",
-            "color_picker": true,
+            "color_picker": 0,
             "absolute": false,
             "input": true,
             "allow_null": true,
-            "theme_colors": false,
-            "colors": []
+            "theme_colors": 1,
+            "colors": [],
+            "acfe_advanced": 1
         },
         {
             "key": "field_680b961696770",
@@ -524,18 +527,19 @@
                 "id": ""
             },
             "relevanssi_exclude": 0,
-            "default_value": "#FFFFFF",
+            "default_value": "",
             "enable_opacity": 0,
             "return_format": "string",
             "allow_in_bindings": 0,
-            "display": "default",
+            "display": "palette",
             "button_label": "Select Color",
-            "color_picker": true,
+            "color_picker": 0,
             "absolute": false,
             "input": true,
             "allow_null": true,
-            "theme_colors": false,
-            "colors": []
+            "theme_colors": 1,
+            "colors": [],
+            "acfe_advanced": 1
         },
         {
             "key": "field_5e8e27c27438a",
@@ -626,7 +630,7 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1791810000,
+    "modified": 1792069489,
     "acfe_categories": {
         "site-option-fields": "Site Option Fields"
     }

@@ -20,15 +20,16 @@
             "default_value": "",
             "enable_opacity": 0,
             "return_format": "string",
-            "display": "default",
+            "display": "palette",
             "button_label": "Select Color",
-            "color_picker": 1,
+            "color_picker": 0,
             "absolute": 0,
             "input": 1,
             "allow_null": 1,
-            "theme_colors": 0,
+            "theme_colors": 1,
             "colors": [],
-            "allow_in_bindings": 1
+            "allow_in_bindings": 1,
+            "acfe_advanced": 1
         },
         {
             "key": "field_5eb1b34af2587",
@@ -140,7 +141,7 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1747947223,
+    "modified": 1792069489,
     "acfe_categories": {
         "reusable": "Reusable"
     }

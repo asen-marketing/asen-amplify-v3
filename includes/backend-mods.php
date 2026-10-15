@@ -3,6 +3,8 @@
 function asen_backend_scripts_enqueue() {
 	// Custom backend styles
     wp_enqueue_style( 'backend-styles', get_template_directory_uri() . '/includes/css/backend-styles.css', __FILE__ );
+    // theme.json preset variables, for ACF color swatches that store a palette variable
+    wp_add_inline_style( 'backend-styles', wp_get_global_stylesheet( array( 'variables' ) ) );
 }
 add_action( 'admin_enqueue_scripts', 'asen_backend_scripts_enqueue' );
 

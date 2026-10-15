@@ -61,6 +61,7 @@ function asen_option_css() {
 
     $opt     = fn( $name ) => get_field( $name, 'option' );
     $px      = fn( $value ) => is_numeric( $value ) ? (float) $value . 'px' : null;
+    $size    = fn( $value ) => is_numeric( $value ) ? $px( $value ) : $value; // token selects; numbers are pre-token pixel values
     $row     = fn( $name ) => is_array( $opt( $name ) ) ? ( $opt( $name )[0] ?? array() ) : array();
     $icon    = fn( $code ) => is_string( $code ) && preg_match( '/^[0-9a-f]{2,6}$/i', $code ) ? '"\\' . $code . '"' : null;
     $page_id = is_singular() ? get_queried_object_id() : 0;
@@ -86,10 +87,10 @@ function asen_option_css() {
         '--button-bg-hover'         => $opt( 'button_background_hover_color' ),
         '--button-color'            => $opt( 'button_text_color' ),
         '--button-color-hover'      => $opt( 'button_text_hover_color' ),
-        '--button-font-size'        => $px( $opt( 'regular_button_font_size' ) ),
+        '--button-font-size'        => $size( $opt( 'regular_button_font_size' ) ),
         '--button-padding-y'        => $px( $opt( 'regular_button_vertical_padding' ) ),
         '--button-padding-x'        => $px( $opt( 'regular_button_horizontal_padding' ) ),
-        '--button-small-font-size'  => $px( $opt( 'small_button_font_size' ) ),
+        '--button-small-font-size'  => $size( $opt( 'small_button_font_size' ) ),
         '--button-small-padding-y'  => $px( $opt( 'small_button_vertical_padding' ) ),
         '--button-small-padding-x'  => $px( $opt( 'small_button_horizontal_padding' ) ),
 
@@ -97,14 +98,14 @@ function asen_option_css() {
         '--off-canvas-bg'                 => $opt( 'off_canvas_background_color' ),
         '--off-canvas-color'              => $opt( 'off_canvas_text_color' ),
         '--off-canvas-hover-color'        => $opt( 'off_canvas_hover_color' ),
-        '--off-canvas-font-size'          => $px( $opt( 'off_canvas_font_size' ) ),
-        '--off-canvas-font-size-mobile'   => $px( $opt( 'off_canvas_mobile_font_size' ) ),
+        '--off-canvas-font-size'          => $size( $opt( 'off_canvas_font_size' ) ),
+        '--off-canvas-font-size-mobile'   => $size( $opt( 'off_canvas_mobile_font_size' ) ),
         '--off-canvas-text-transform'     => $opt( 'off_canvas_uppercase' ) ? 'uppercase' : null,
         '--off-canvas-indicator-closed'   => $icon( $opt( 'sub-menu_indicator_closed' ) ),
         '--off-canvas-indicator-open'     => $icon( $opt( 'sub-menu_indicator_open' ) ),
         '--off-canvas-indicator-open-transform' => $icon( $opt( 'sub-menu_indicator_open' ) ) ? 'none' : null,
         '--off-canvas-copyright-color'    => $opt( 'off_canvas_copyright_color' ),
-        '--off-canvas-copyright-font-size' => $px( $opt( 'off_canvas_copyright_font_size' ) ),
+        '--off-canvas-copyright-font-size' => $size( $opt( 'off_canvas_copyright_font_size' ) ),
         '--off-canvas-button-bg'          => $off_canvas_button['button_background_color'] ?? null,
         '--off-canvas-button-color'       => $off_canvas_button['button_text_color'] ?? null,
         '--off-canvas-button-bg-hover'    => $off_canvas_button['button_background_hover_color'] ?? null,
@@ -114,17 +115,17 @@ function asen_option_css() {
         '--footer-bg'                     => $opt( 'footer_background_color' ),
         '--footer-color'                  => $opt( 'footer_text_color' ),
         '--footer-hover-color'            => $opt( 'footer_text_hover_color' ),
-        '--footer-font-size'              => $px( $opt( 'footer_font_size' ) ),
+        '--footer-font-size'              => $size( $opt( 'footer_font_size' ) ),
         '--footer-logo-height'            => $px( $opt( 'footer_logo_height' ) ),
         '--footer-bottom-bg'              => $opt( 'footer_bottom_background_color' ),
         '--footer-bottom-color'           => $opt( 'footer_bottom_text_color' ),
         '--footer-bottom-hover-color'     => $opt( 'footer_bottom_text_hover_color' ),
-        '--footer-bottom-font-size'       => $px( $opt( 'footer_bottom_font_size' ) ),
-        '--footer-social-size'            => $px( $opt( 'footer_social_links_size' ) ),
+        '--footer-bottom-font-size'       => $size( $opt( 'footer_bottom_font_size' ) ),
+        '--footer-social-size'            => $size( $opt( 'footer_social_links_size' ) ),
         '--footer-mailing-title-color'    => $opt( 'footer_mailing_list_title_color' ),
-        '--footer-mailing-title-size'     => $px( $opt( 'footer_mailing_list_title_size' ) ),
+        '--footer-mailing-title-size'     => $size( $opt( 'footer_mailing_list_title_size' ) ),
         '--footer-mailing-subtitle-color' => $opt( 'footer_mailing_list_subtitle_color' ),
-        '--footer-mailing-subtitle-size'  => $px( $opt( 'footer_mailing_list_subtitle_size' ) ),
+        '--footer-mailing-subtitle-size'  => $size( $opt( 'footer_mailing_list_subtitle_size' ) ),
 
         // Asen - Banner defaults
         '--banner-bg'                  => $opt( 'page_banner_background_color' ),
@@ -157,7 +158,12 @@ function asen_option_css() {
         if ( null === $value || false === $value || '' === $value || '0' === $value || is_array( $value ) ) {
             continue;
         }
-        $css .= $name . ':' . trim( str_replace( array( ';', '{', '}', '<', '>' ), '', (string) $value ) ) . ';';
+        $value = trim( str_replace( array( ';', '{', '}', '<', '>' ), '', (string) $value ) );
+        // Palette and size options store a theme.json variable name (--wp--preset--…)
+        if ( preg_match( '/^--[\w-]+$/', $value ) ) {
+            $value = 'var(' . $value . ')';
+        }
+        $css .= $name . ':' . $value . ';';
     }
     if ( $css ) {
         wp_add_inline_style( 'main', ':root{' . $css . '}' );

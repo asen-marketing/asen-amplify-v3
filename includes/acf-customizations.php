@@ -195,6 +195,54 @@ add_filter('acf/load_field/name=single_team_member_cta_form', 'asen_populate_gfo
 add_filter('acf/load_field/name=contact_form', 'asen_populate_gform_dropdown');
 add_filter('acf/load_field/name=mailing_list_form', 'asen_populate_gform_dropdown');
 
+// Size options list the theme.json tokens and store the token's CSS variable, so a child theme's presets show up and
+// asen_option_css() prints var(). Older options saved a pixel number, which still prints as px.
+function asen_populate_font_size_choices($field) {
+    $choices = [];
+    foreach ((array) wp_get_global_settings(['typography', 'fontSizes', 'theme']) as $size) {
+        $choices['--wp--preset--font-size--' . _wp_to_kebab_case($size['slug'])] = $size['name'] . ' (' . $size['size'] . ')';
+    }
+    $field['choices'] = $choices ?: $field['choices'];
+    return $field;
+}
+
+function asen_populate_heading_size_choices($field) {
+    $choices = [];
+    foreach (array_keys((array) wp_get_global_settings(['custom', 'heading'])) as $heading) {
+        $choices['--wp--custom--heading--' . _wp_to_kebab_case($heading)] = strtoupper($heading) . ' heading';
+    }
+    $field = asen_populate_font_size_choices($field);
+    $field['choices'] = $choices + $field['choices'];
+    return $field;
+}
+
+add_filter('acf/load_field/name=footer_font_size', 'asen_populate_font_size_choices');
+add_filter('acf/load_field/name=footer_bottom_font_size', 'asen_populate_font_size_choices');
+add_filter('acf/load_field/name=footer_mailing_list_subtitle_size', 'asen_populate_font_size_choices');
+add_filter('acf/load_field/name=footer_social_links_size', 'asen_populate_font_size_choices');
+add_filter('acf/load_field/name=footer_mailing_list_title_size', 'asen_populate_heading_size_choices');
+add_filter('acf/load_field/name=off_canvas_copyright_font_size', 'asen_populate_font_size_choices');
+add_filter('acf/load_field/name=small_button_font_size', 'asen_populate_font_size_choices');
+add_filter('acf/load_field/name=regular_button_font_size', 'asen_populate_font_size_choices');
+add_filter('acf/load_field/name=off_canvas_font_size', 'asen_populate_heading_size_choices');
+add_filter('acf/load_field/name=off_canvas_mobile_font_size', 'asen_populate_heading_size_choices');
+
+// ACFE color pickers with "Use Theme Colors" offer the theme.json palette as CSS variables instead of hex, so a saved
+// option follows palette changes. Swatches render with the variables backend-mods.php prints in the admin.
+function asen_acfe_theme_color_variables($colors, $field) {
+    if (empty($field['theme_colors'])) {
+        return $colors;
+    }
+    foreach ((array) wp_get_global_settings(['color', 'palette', 'theme']) as $color) {
+        unset($colors[strtolower($color['color'])]);
+        $variable          = '--wp--preset--color--' . _wp_to_kebab_case($color['slug']);
+        $colors[$variable] = ['color' => $variable, 'slug' => $color['slug'], 'label' => $color['name'], 'rgba' => []];
+    }
+    return $colors;
+}
+
+add_filter('acfe/fields/color_picker/colors', 'asen_acfe_theme_color_variables', 10, 2);
+
 function asen_acf_admin_panel_permission($show) {
     $current_user              = wp_get_current_user();
     $current_user_email_domain = explode('@', $current_user->user_email);
