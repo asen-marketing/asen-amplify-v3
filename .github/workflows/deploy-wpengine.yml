@@ -1,0 +1,43 @@
+# Pushes the theme straight to WP Engine environments over the SSH Gateway, outside the release/auto-update path.
+#  - Every push to main → the staging environment in repo variable WPE_STAGING_ENV (skipped if unset), to check a change before tagging.
+#  - Run manually with a JSON list of environment names to push an urgent fix to many sites at once.
+# Needs repo secret WPE_SSHG_KEY_PRIVATE (a WP Engine user SSH key with access to those environments).
+name: Deploy to WP Engine
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      environments:
+        description: 'WP Engine environment names as a JSON array, e.g. ["clientone","clienttwo"]'
+        required: true
+
+jobs:
+  staging:
+    if: github.event_name == 'push' && vars.WPE_STAGING_ENV != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: wpengine/github-action-wpe-site-deploy@v3
+        with:
+          WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
+          WPE_ENV: ${{ vars.WPE_STAGING_ENV }}
+          REMOTE_PATH: wp-content/themes/asen-amplify-v3/
+          FLAGS: -azvr --inplace --delete --exclude=".*" --exclude=/css/
+
+  sites:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        environment: ${{ fromJSON(inputs.environments) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: wpengine/github-action-wpe-site-deploy@v3
+        with:
+          WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
+          WPE_ENV: ${{ matrix.environment }}
+          REMOTE_PATH: wp-content/themes/asen-amplify-v3/
+          FLAGS: -azvr --inplace --delete --exclude=".*" --exclude=/css/
