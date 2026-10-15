@@ -3,7 +3,7 @@
 Versions follow semver. A **major** bump means a child theme may need changes: renamed or removed blocks, field names,
 template parts, SCSS variables / mixins, CSS custom properties, or filters. Note the migration under the version.
 
-## Unreleased
+## 3.1.0 — 2026-10-15
 
 - Footer Options colors are palette-only swatches from theme.json and save the palette variable (`--wp--preset--color--{slug}`), so they follow palette changes. The hard-coded `#999999` / `#000000` / `#FFFFFF` defaults are gone; empty falls back to `_component-vars.scss`.
 - Footer Options font sizes (footer, bottom bar, mailing-list title / subtitle, social icons) are theme.json font-size selects (title also offers the heading scale) instead of pixel inputs. Previously saved pixel values still print until the option is re-saved.
