@@ -33,3 +33,19 @@ function asen_theme_json_client_settings( $theme_json ) {
     ) );
 }
 add_filter( 'wp_theme_json_data_theme', 'asen_theme_json_client_settings' );
+
+// theme.json is the only palette. When Kadence Blocks' saved palette has colors (its 3.8 design tokens write a default one),
+// it adds them, plus WP's legacy default colors, to the editor, the theme.json palette and ACF swatches. Every one of those
+// reads this option, so read it as empty. A child that wants Kadence's palette: add_filter( 'asen/allow_kadence_palette', '__return_true' ).
+function asen_empty_kadence_palette( $value ) {
+    if ( apply_filters( 'asen/allow_kadence_palette', false ) ) {
+        return $value;
+    }
+    $colors = json_decode( (string) $value, true );
+    if ( ! is_array( $colors ) || empty( $colors['palette'] ) ) {
+        return $value;
+    }
+    $colors['palette'] = array();
+    return wp_json_encode( $colors );
+}
+add_filter( 'option_kadence_blocks_colors', 'asen_empty_kadence_palette' );

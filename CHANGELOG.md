@@ -3,6 +3,10 @@
 Versions follow semver. A **major** bump means a child theme may need changes: renamed or removed blocks, field names,
 template parts, SCSS variables / mixins, CSS custom properties, or filters. Note the migration under the version.
 
+## 3.1.2 — 2026-10-15
+
+- theme.json is the only color palette when Kadence Blocks is active. Kadence 3.8 saves a default palette, and Kadence then adds those colors plus WordPress's legacy default colors to the block editor, the theme.json palette and the ACF color picker swatches. The theme now reads Kadence's palette as empty. A child theme that wants Kadence's palette back: `add_filter( 'asen/allow_kadence_palette', '__return_true' )`.
+
 ## 3.1.1 — 2026-10-15
 
 - Site Options color fields are back to the normal color picker (wheel and hex input), with the theme.json palette as its swatches, instead of 3.1.0's swatch-only palette. They save hex again; a color saved as a palette variable under 3.1.0 still prints.
